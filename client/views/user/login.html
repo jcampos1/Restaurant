@@ -1,0 +1,30 @@
+<h1>Login</h1>
+<a ui-sref="create_user">Link</a>
+<hr>
+<form name="userForm" novalidate ng-submit="login()">
+  <div class="form-group"
+      ng-class="{'has-error': userForm.email.$invalid
+        && userForm.email.$dirty}">
+    <input type="email" class="form-control focus" name="email"
+        placeholder="email" required
+        ng-model="credentials.email">
+        <span class="has-error control-label" ng-show="
+        userForm.email.$invalid && userForm.email.$dirty">
+      email is required.
+    </span>
+        <input type="password" class="form-control focus" name="password"
+        placeholder="password" autocomplete="off" required
+        ng-model="credentials.password">
+    <span class="has-error control-label" ng-show="
+        userForm.password.$invalid && userForm.password.$dirty">
+      password is required.
+    </span>
+  </div>
+  <button class="btn btn-default" ng-disabled="userForm.$invalid">login</button>
+</form>
+<hr>
+<div class="list-group">
+  <a class="list-group-item" ng-repeat="user in users">{{user.email}}&nbsp;
+    <i class="glyphicon glyphicon-remove pull-right"
+        ng-click="_delete(user)"></i></a>
+</div>

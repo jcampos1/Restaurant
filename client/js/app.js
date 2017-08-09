@@ -11,11 +11,21 @@ angular
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
       $urlRouterProvider) {
     $stateProvider
+    .state('create_user', {
+        url: '/user/create',
+        templateUrl: 'views/user/create.html',
+        controller: 'CreateController'
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/user/login.html',
+        controller: 'LoginController'
+      })
       .state('todo', {
-        url: '',
+        url: '/todo',
         templateUrl: 'views/todo.html',
         controller: 'TodoController'
       });
 
-    $urlRouterProvider.otherwise('todo');
+    $urlRouterProvider.otherwise('login');
   }]);
