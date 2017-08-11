@@ -1,0 +1,151 @@
+<!- Fondo ->
+<img src="../../images/fond-01.jpg" alt="fondo" class="fond01">
+
+<img src="../../images/logo02.png" class="logo2" alt="logo">
+<div class="container03">
+    <!-- Iconos operaciones crud -->
+    <ul class="cls01">
+        <li><a href="#" ng-click="boardFind( )"><i class="fa fa-list" aria-hidden="true"></i></a></li>
+        <li><new-board-component></new-board-component></li>
+        <li><edit-board-component></edit-board-component></li>
+        <li><a ng-click="dropBoard()"><i class="fa fa-times" aria-hidden="true"></i></a></li>
+    </ul>
+    <!-- /Iconos operaciones crud  -->
+
+    <!-- Barra lateral izquierda -->
+    <aside class="cls02">
+        <ul>
+            <li class="cls03"><a href="#"><span> Mesas</span></a></li>
+            <li class="cls03"><a href="#"><span> Categorias</span></a></li>
+            <li class="cls03"><a href="#"><span> Productos</span></a></li>
+        </ul>
+    </aside>
+    <!-- /Barra lateral izquierda  -->
+
+    <!-- Lista de mesas -->
+    <section class="cls04">
+        <h2>Listado de mesas</h2>
+
+        <div class="cls05" ng-repeat="board in boards" ng-click="boardToEdit(board)">
+            <span class="cls06 cls07"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa: {{ board.number }} / {{ board.space }} lugares</p>
+            </div>
+        </div>
+
+        <div class="cls05">
+            <span class="cls06 cls07"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #1 / 4 lugares</p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls08"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #2 / 6 lugares</p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls07"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #3 / 2 lugares</p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls07"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #4 / 4 lugares </p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls08"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #5 / 6 lugares</p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls08"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #6 / 4 lugares</p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls07"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #1 / 4 lugares</p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls08"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #2 / 6 lugares</p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls07"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #1 / 4 lugares</p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls08"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #2 / 6 lugares</p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls07"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #3 / 2 lugares</p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls07"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #4 / 4 lugares </p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls08"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #5 / 6 lugares</p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls08"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #6 / 4 lugares</p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls07"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #1 / 4 lugares</p>
+            </div>
+        </div>
+        <div class="cls05">
+            <span class="cls06 cls08"></span>
+            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <div class="">
+                <p>Mesa #2 / 6 lugares</p>
+            </div>
+        </div>
+    </section>
+    <!-- /Lista de mesas  -->
+</div>

@@ -1,6 +1,409 @@
-body {
-  padding-top:50px
+/*** estilos generales ***/
+
+/*** Footer ***/
+footer {
+    text-align: center;
+    background: lightgray;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    padding-top: 3px;
+    z-index: 1000;
 }
-.glyphicon-remove:hover {
-  cursor:pointer
+/**************/
+
+/***Estilo para todas las listas***/
+ul{
+    border: 1px solid red;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
+
+/****IMAGEN DE FONDO****/
+img.bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    width: 100%;
+    max-height: 120%;
+    opacity: 0.9;
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+}
+/***********************/
+
+/****IMAGEN DE FONDO****/
+/***********************/
+.navbar {
+    height: 50px;
+    z-index: 1;
+    background: orange;
+}
+
+/*Parrafo del footer*/
+footer p{
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+/****Logo****/
+.logo {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    max-width: 250px;
+    max-height: 140px;
+    animation-name: logo-init;
+    animation-duration: 0.7s;
+    animation-delay: 1s;
+    z-index: 1000;
+}
+
+.logo:hover {
+    box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0.2), 0 0 0 0 rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    max-width: 253px;
+    max-height: 143px;
+}
+
+.logo2 {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    max-width: 140px;
+    max-height: 80px;
+    z-index: 1000;
+}
+
+.logo2:hover {
+    box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0.2), 0 0 0 0 rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    max-width: 160px;
+    max-height: 90px;
+}
+/***********************/
+
+/***Login***/
+form.login{
+    border: 3px solid orange;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 15px;
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.5), 0 6px 20px 0 rgba(255, 255, 255, 0.5);
+    max-width: 400px;
+    min-height: 400px;
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+form.login:hover{
+    max-width: 402px;
+    min-height: 402px; 
+}
+
+form.login:hover .icon-login{
+    animation-name: example;
+    animation-duration: 0.4s;
+    animation-delay: 0.5s;
+}
+
+.icon-login{
+    display: block;
+    margin: auto;
+    width: 220px;
+    height: 80px;
+}
+/***********/
+
+/*** Estilos para campos de formulario ***/
+input[type=text], input[type=password], input[type=number] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-left: 3px solid orange; 
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    margin: 4px;
+}
+
+input[type=text]:focus, input[type=password]:focus{
+    border: 3px solid orange;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid orange;
+}
+
+.button2:hover {
+    background-color: orange;
+    color: white;
+}
+
+/******************************/
+
+/*** Fuentes ***/
+.font01{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.font02{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: orange;
+}
+/***************/
+
+.flt-right{
+    float: right;
+}
+
+a:link {
+    text-decoration: none;
+    color: orange;
+}
+
+/***Lista de los cruds***/
+.container03{
+    padding: 0 10px;
+    margin-top: 80px;
+}
+ul.cls01 {
+    margin-bottom: 200px;
+    width: 80%;
+    margin: 0 0 100px 0;
+    overflow: visible;
+}
+
+ul.cls01 li {
+    border: 1px solid blue;
+    margin-right: 10px;
+    float: left;
+}
+
+ul.cls01 a {
+    border: 4px solid orange;
+    padding: 20px;
+    border-radius: 60px;
+    color: black;
+    display: block;
+}
+
+ul.cls01 a:hover {
+    transform: scale(1.1);
+    background: orange;
+}
+
+ul.cls01 i {
+    color: orange;
+    font-size: 30px;
+}
+
+ul.cls01 a:hover i {
+    color: white;
+}
+/***********************/
+
+/*** Barra lateral derecha ***/
+.cls02 {
+    border: 1px solid red;
+    background: orange;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    width: 20%; 
+    min-height: 100%;
+}
+
+ul li.cls03 {
+    border: 1px solid blue;
+    position: relative;
+    border-width: 4px 4px 0 4px;
+    border-style: solid;
+    border-color: lightgray;
+    padding: 10px;
+    height: 80px;
+}
+
+.cls03 span:hover {
+    font-size: 25px;
+}
+
+.cls03 li:hover {
+    transform: scale(1.1);
+}
+
+.cls02 span{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+/*****************************/
+
+/*** Entradas: mesas ***/
+.cls04 {
+    position: relative;
+    border: 1px solid blue;
+    text-align: center;
+    width: 80%;
+    clear: both;
+    margin-top: 20px;
+    overflow:visible;
+    z-index: -1;
+}
+
+.cls05 {
+    position: relative;
+    padding: 20px;
+    font-size: 14px;
+    float: left;
+    width: 150px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 0 15px 15px 0;
+}
+
+.cls06 {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 15px; height: 15px;
+    border-radius: 15px;
+    z-index: 200;
+}
+
+/*estado de mesa libre*/
+.cls07 {
+    background: green;
+}
+
+/*estado de mesa ocupado*/
+.cls08 {
+    background: red;
+}
+
+.cls05:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+/***********************/
+
+/*** Imagen de fondo ***/
+.fond01 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    z-index: -1000;
+}
+/***********************/
+
+/*****Animaciones******/
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+    0%   {-ms-transform: rotate(0deg); /* IE 9 */ -webkit-transform: rotate(0deg); /* Safari */ transform:  rotateY(0deg);}
+    25%   {-ms-transform: rotate(90deg); /* IE 9 */ -webkit-transform: rotate(90deg); /* Safari */ transform: rotateY(90deg);}
+    50%   {-ms-transform: rotate(180deg); /* IE 9 */ -webkit-transform: rotate(180deg); /* Safari */ transform: rotateY(180deg);}
+    75%   {-ms-transform: rotate(270deg); /* IE 9 */ -webkit-transform: rotate(270deg); /* Safari */ transform: rotateY(270deg);}
+    100%   {-ms-transform: rotate(360deg); /* IE 9 */ -webkit-transform: rotate(360deg); /* Safari */ transform: rotateY(360deg);}
+}
+
+/* Standard syntax */
+@keyframes example {
+    0%   {-ms-transform: rotate(0deg); /* IE 9 */ -webkit-transform: rotate(0deg); /* Safari */ transform: rotateY(0deg)}
+    25%   {-ms-transform: rotate(90deg); /* IE 9 */ -webkit-transform: rotate(90deg); /* Safari */ transform: rotateY(90deg)}
+    50%   {-ms-transform: rotate(180deg); /* IE 9 */ -webkit-transform: rotate(180deg); /* Safari */ transform:  rotateY(180deg)}
+    75%   {-ms-transform: rotate(270deg); /* IE 9 */ -webkit-transform: rotate(270deg); /* Safari */ transform: rotateY(270deg)}
+    100%   {-ms-transform: rotate(360deg); /* IE 9 */ -webkit-transform: rotate(360deg); /* Safari */ transform: rotateY(360deg)}
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes logo-init {
+    0%   {top: 100%;}
+    20%   {top: 75%;}
+    40%   {top: 50%;}
+    50%   {top: 25%; max-width: 380px; max-height: 220px;}
+    70%   {top: 10px; }
+    80%   {max-width: 200px; max-height: 100px;}
+    100%   {max-width: 250px; max-height: 140px;}
+}
+
+/* Standard syntax */
+@keyframes logo-init {
+    0%   {top: 100%;}
+    20%   {top: 75%;}
+    40%   {top: 50%;}
+    50%   {top: 25%; max-width: 380px; max-height: 220px;}
+    70%   {top: 10px; }
+    80%   {max-width: 200px; max-height: 100px;}
+    100%   {max-width: 250px; max-height: 140px;}
+}
+/*******************/
+
+@media only screen and (max-width: 800px) {
+    img.bg {
+        min-height: 100%;
+    }
+
+    .logo{
+        max-width: 160px; max-height: 90px;
+    }
+
+    .logo:hover {
+        box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0.2), 0 0 0 0 rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        max-width: 180px;
+        max-height: 120px;
+    }
+}
+
+

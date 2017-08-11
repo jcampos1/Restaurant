@@ -1,0 +1,41 @@
+<a href="#" ng-click="$ctrl.editBoard()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+
+<script type="text/ng-template" id="modalEditBoard.html">
+    <div class="modal-header">
+        <h3 class="box-title">Editar mesa</h3>
+    </div>
+    <div class="modal-body">
+        <form name="editBoard" novalidate>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="font02">(*) Número</label>
+                    <input type="text" name="numero" placeholder="Numero" ng-model="board.number" required>
+                    <span class="has-error control-label" ng-show="
+                        editBoard.numero.$invalid && editBoard.numero.$dirty">
+                    Numero is requirido.
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    <label class="font02">(*) Lugares</label>
+                    <input type="number" name="lugares" min="0" max="16" placeholder="Lugares" ng-model="board.space" required>
+                    <span class="has-error control-label" ng-show="
+                        editBoard.lugares.$invalid && editBoard.lugares.$dirty">
+                    Lugares is requirido.
+                    </span>
+                </div>
+            </div>
+
+            <label class="font02">Descripción</label>
+            <input type="text" name="descripcion" placeholder="Descripción" ng-model="board.description">
+            <br />
+            <div class="modal-footer">
+                <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
+                    class="fa fa-close"></i> Cancelar
+                </a> <a ng-disabled="!editBoard.$valid" ng-click="edit(editBoard)"
+                    class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
+                    Editar
+                </a>
+            </div>
+        </form>
+    </div>
+</script>

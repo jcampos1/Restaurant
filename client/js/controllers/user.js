@@ -5,49 +5,86 @@
 
 angular
   .module('app')
-  .controller('LoginController', ['$scope', '$state', 'User', function($scope,
-      $state, User) {
-        $scope.users = []
+  .controller('LoginController', ['$scope', 'SweetAlert', '$state', 'User', '$location', '$log', function($scope, SweetAlert,
+      $state, User, $location, $log) {
+    
+    $scope.users = []
 
+    /*Inicio de sesión*/
     $scope.login = function() {
-      $scope.loginResult = User.login($scope.credentials,
-        function() {
-          // success
-          alert("redirigir a usuario");
-          console.log("esta logueado");
-          $state.go('create_user');
-        }, function(res) {
-          // error
-          alert("error");
-          console.log(res);
-          
-        });
-        
+      User.login($scope.credentials, function() {
+        var next = $location.nextAfterLogin || '/';
+        $location.nextAfterLogin = null;
+        $location.path(next);
+      }, function(error) {
+          $log.error(error);
+      });
     }
-      User.find().$promise
-        .then(function(results) {
-          $scope.users = results;
-        });;
+
+    /*Resetear contraseña*/
+    $scope.reset = function() {
+      console.log($scope.credentials);
+      User.resetPassword({
+        email: $scope.credentials.email,
+        }, function(error) {
+          if (error){
+            $log.error(error);
+            return false;
+          } 
+
+          $state.go("login");
+      });
+    }
+
+    $scope.setPassword = function( ) {
+      console.log($scope.credentials.password);
+      User.setPassword({
+        newPassword: $scope.credentials.password,
+        }, function(error) {
+          $log.error(error);
+          if (error){
+            $log.error(error);
+            return false;
+          } 
+          alert("contraseña cambiada");
+          $state.go("login");
+      });
+    }
+
+    /*Encontrar todos los usuarios registrados*/
+    /*User.find().$promise
+    .then(function(results) {
+      $scope.users = results;
+      $log.info($scope.users);
+    });*/
+
+    /*Cerrar sesión*/
+    $scope.logout = function( ) {
+      User.logout();
+    }
+
   }]);
 
   angular
   .module('app')
   .controller('CreateController', ['$scope', '$state', 'User', function($scope,
       $state, User) {
-    $scope.create = function() {
-      $scope.createResult = User.create($scope.credentials,
-        function() {
-          
-          // success
-          alert("usuario creado");
-          console.log("usuario creado");
-          $state.go('login');
-        }, function(res) {
-          // error
-          alert("error");
-          console.log(res);
-          
-        });
 
+    $scope.create = function() {
+      User.create($scope.credentials,
+      function() {
+        alert("usuario creado");
+        console.log("usuario creado");
+        $state.go('login');
+      }, function(res) {
+        // error
+        alert("error");
+        console.log(res);
+      });
+    }
+
+    /*Cerrar sesión*/
+    $scope.logout = function( ) {
+      User.logout();
     }
   }]);

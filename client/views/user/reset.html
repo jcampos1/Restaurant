@@ -1,0 +1,14 @@
+<img src="../../images/bg-01.jpg" class="bg" alt="Background image">
+<img src="../../images/logo02.png" class="logo" alt="Background image">
+<form name="userForm" class="login" novalidate>
+    <span ><img src="../../images/icon-plat01.png"  class="icon-login" alt="icon-login"></span>
+    
+    <label class="font01">(*) Email</label>
+    <input type="text" name="email" placeholder="Email" required ng-model="credentials.email">
+    <span class="has-error control-label" ng-show="
+        userForm.email.$invalid && userForm.email.$dirty">
+      email is required.
+    </span>
+    <button class="button button2 flt-right" ng-click="reset()">Recuperar</button>
+    <a href="" ng-click="logout()">Login</a>
+</form>

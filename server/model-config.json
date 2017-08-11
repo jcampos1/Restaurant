@@ -12,8 +12,7 @@
     "public": false
   },
   "user": {
-    "dataSource": "db",
-    "public": true
+    "dataSource": "db"
   },
   "AccessToken": {
     "dataSource": "db",
@@ -31,7 +30,14 @@
     "dataSource": "db",
     "public": false
   },
+  "Email": {
+    "dataSource": "emailDs"
+  },
   "Todo": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Board": {
     "dataSource": "db",
     "public": true
   }
