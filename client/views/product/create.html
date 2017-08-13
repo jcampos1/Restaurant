@@ -1,0 +1,58 @@
+<a class="a_icon" ng-click="$ctrl.newProduct()"><i class="fa fa-plus" aria-hidden="true"></i></a>
+
+<script type="text/ng-template" id="modalNewProduct.html">
+    <div class="modal-header">
+        <h3 class="box-title">Nuevo producto</h3>
+    </div>
+    <div class="modal-body">
+        <form name="newProduct" novalidate>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="font02">(*) Código</label>
+                    <input type="text" name="code" placeholder="Código" ng-model="product.code" required>
+                    <span class="has-error control-label" ng-show="
+                        newProduct.code.$invalid && newProduct.code.$dirty">
+                    Código es requirido.
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    <label class="font02">(*) Nombre</label>
+                    <input type="text" name="nombre" placeholder="Nombre" ng-model="product.name" required>
+                    <span class="has-error control-label" ng-show="
+                        newProduct.nombre.$invalid && newProduct.nombre.$dirty">
+                    Nombre es requirido.
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="font02">(*) Categoria</label>
+                    <select chosen
+                            data-placeholder-text-single="'Seleccione categoria'"
+                            no-results-text="'Sin resultados'"
+                            ng-model="category"
+                            ng-options="cat as cat.name for cat in categorys track by cat.id">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label class="font02">(*) Precio</label>
+                    <input type="number" name="price" min="0" placeholder="Precio" ng-model="product.price" required>
+                    <span class="has-error control-label" ng-show="
+                        newProduct.price.$invalid && newProduct.price.$dirty">
+                    Precio es requirido.
+                    </span>
+                </div>
+            </div>
+            <br />
+            <div class="modal-footer">
+                <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
+                    class="fa fa-close"></i> Cancelar
+                </a> <a ng-disabled="!newProduct.$valid" ng-click="save(newProduct)"
+                    class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
+                    Guardar
+                </a>
+            </div>
+        </form>
+    </div>
+</script>

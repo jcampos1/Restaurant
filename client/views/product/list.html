@@ -7,11 +7,11 @@
 <div class="container03">
     <!-- Iconos operaciones crud -->
     <ul class="cls01">
-        <li><a id="list" class="a_icon" ng-click="categoryFind( )"><i class="fa fa-list" aria-hidden="true"></i></a></li>
-        <li><detail-category-component></detail-category-component></li>
-        <li><new-category-component></new-category-component></li>
-        <li><edit-category-component></edit-category-component></li>
-        <li><a class="a_icon" ng-click="dropCategory()"><i class="fa fa-times" aria-hidden="true"></i></a></li>
+        <li><a id="list" class="a_icon" ng-click="productFind( )"><i class="fa fa-list" aria-hidden="true"></i></a></li>
+        <li><detail-product-component></detail-product-component></li>
+        <li><new-product-component></new-product-component></li>
+        <li><edit-product-component></edit-product-component></li>
+        <li><a class="a_icon" ng-click="dropProduct()"><i class="fa fa-times" aria-hidden="true"></i></a></li>
     </ul>
     <!-- /Iconos operaciones crud  -->
 
@@ -25,17 +25,17 @@
     </aside>
     <!-- /Barra lateral izquierda  -->
 
-    <!-- Lista de mesas -->
+    <!-- Lista de productos -->
     <section class="cls04">
-        <h2>Categoria de productos</h2>
+        <h2>Lista de productos</h2>
 
-        <div class="cls05" ng-repeat="category in categorys" ng-click="selectedCategory(category)">
+        <div class="cls05" ng-repeat="product in products" ng-click="selectedProduct(product)">
             <span class="cls06 cls07"></span>
             <img src="../../images/sin-img-01.png" alt="Imagen de fondo">
             <div class="cls09">
-                <p>{{ category.name }}</p>
+                <p>{{ product.code }} / {{ product.price}}</p>
             </div>
         </div>
     </section>
-    <!-- /Lista de mesas  -->
+    <!-- /Lista de productos  -->
 </div>

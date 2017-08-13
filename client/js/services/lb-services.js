@@ -3318,6 +3318,58 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
           { 'id': '@id' },
           {
 
+            // INTERNAL. Use Category.products.findById() instead.
+            "prototype$__findById__products": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/categories/:id/products/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Category.products.destroyById() instead.
+            "prototype$__destroyById__products": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/categories/:id/products/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Category.products.updateById() instead.
+            "prototype$__updateById__products": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/categories/:id/products/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Category.products() instead.
+            "prototype$__get__products": {
+              isArray: true,
+              url: urlBase + "/categories/:id/products",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Category.products.create() instead.
+            "prototype$__create__products": {
+              url: urlBase + "/categories/:id/products",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Category.products.destroyAll() instead.
+            "prototype$__delete__products": {
+              url: urlBase + "/categories/:id/products",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Category.products.count() instead.
+            "prototype$__count__products": {
+              url: urlBase + "/categories/:id/products/count",
+              method: "GET",
+            },
+
             /**
              * @ngdoc method
              * @name lbServices.Category#create
@@ -3874,6 +3926,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               url: urlBase + "/categories/change-stream",
               method: "POST",
             },
+
+            // INTERNAL. Use Product.category() instead.
+            "::get::Product::category": {
+              url: urlBase + "/products/:id/category",
+              method: "GET",
+            },
           }
         );
 
@@ -4123,6 +4181,341 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         */
         R.modelName = "Category";
 
+    /**
+     * @ngdoc object
+     * @name lbServices.Category.products
+     * @header lbServices.Category.products
+     * @object
+     * @description
+     *
+     * The object `Category.products` groups methods
+     * manipulating `Product` instances related to `Category`.
+     *
+     * Call {@link lbServices.Category#products Category.products()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Category#products
+             * @methodOf lbServices.Category
+             *
+             * @description
+             *
+             * Queries products of category.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - category id
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `filter` – `{object=}` -
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Product` object.)
+             * </em>
+             */
+        R.products = function() {
+          var TargetResource = $injector.get("Product");
+          var action = TargetResource["::get::Category::products"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Category.products#count
+             * @methodOf lbServices.Category.products
+             *
+             * @description
+             *
+             * Counts products of category.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - category id
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.products.count = function() {
+          var TargetResource = $injector.get("Product");
+          var action = TargetResource["::count::Category::products"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Category.products#create
+             * @methodOf lbServices.Category.products
+             *
+             * @description
+             *
+             * Creates a new instance in products of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - category id
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `data` – `{object=}` -
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Product` object.)
+             * </em>
+             */
+        R.products.create = function() {
+          var TargetResource = $injector.get("Product");
+          var action = TargetResource["::create::Category::products"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Category.products#createMany
+             * @methodOf lbServices.Category.products
+             *
+             * @description
+             *
+             * Creates a new instance in products of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - category id
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `data` – `{object=}` -
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Product` object.)
+             * </em>
+             */
+        R.products.createMany = function() {
+          var TargetResource = $injector.get("Product");
+          var action = TargetResource["::createMany::Category::products"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Category.products#destroyAll
+             * @methodOf lbServices.Category.products
+             *
+             * @description
+             *
+             * Deletes all products of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - category id
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `where` – `{object=}` -
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.products.destroyAll = function() {
+          var TargetResource = $injector.get("Product");
+          var action = TargetResource["::delete::Category::products"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Category.products#destroyById
+             * @methodOf lbServices.Category.products
+             *
+             * @description
+             *
+             * Delete a related item by id for products.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - category id
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `fk` – `{*}` - Foreign key for products
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.products.destroyById = function() {
+          var TargetResource = $injector.get("Product");
+          var action = TargetResource["::destroyById::Category::products"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Category.products#findById
+             * @methodOf lbServices.Category.products
+             *
+             * @description
+             *
+             * Find a related item by id for products.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - category id
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `fk` – `{*}` - Foreign key for products
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Product` object.)
+             * </em>
+             */
+        R.products.findById = function() {
+          var TargetResource = $injector.get("Product");
+          var action = TargetResource["::findById::Category::products"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Category.products#updateById
+             * @methodOf lbServices.Category.products
+             *
+             * @description
+             *
+             * Update a related item by id for products.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - category id
+             *
+             *  - `fk` – `{*}` - Foreign key for products
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `data` – `{object=}` -
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Product` object.)
+             * </em>
+             */
+        R.products.updateById = function() {
+          var TargetResource = $injector.get("Product");
+          var action = TargetResource["::updateById::Category::products"];
+          return action.apply(R, arguments);
+        };
 
 
         return R;
@@ -4992,6 +5385,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
           { 'id': '@id' },
           {
 
+            // INTERNAL. Use Product.category() instead.
+            "prototype$__get__category": {
+              url: urlBase + "/products/:id/category",
+              method: "GET",
+            },
+
             /**
              * @ngdoc method
              * @name lbServices.Product#create
@@ -5548,6 +5947,65 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               url: urlBase + "/products/change-stream",
               method: "POST",
             },
+
+            // INTERNAL. Use Category.products.findById() instead.
+            "::findById::Category::products": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/categories/:id/products/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Category.products.destroyById() instead.
+            "::destroyById::Category::products": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/categories/:id/products/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Category.products.updateById() instead.
+            "::updateById::Category::products": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/categories/:id/products/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Category.products() instead.
+            "::get::Category::products": {
+              isArray: true,
+              url: urlBase + "/categories/:id/products",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Category.products.create() instead.
+            "::create::Category::products": {
+              url: urlBase + "/categories/:id/products",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Category.products.createMany() instead.
+            "::createMany::Category::products": {
+              isArray: true,
+              url: urlBase + "/categories/:id/products",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Category.products.destroyAll() instead.
+            "::delete::Category::products": {
+              url: urlBase + "/categories/:id/products",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Category.products.count() instead.
+            "::count::Category::products": {
+              url: urlBase + "/categories/:id/products/count",
+              method: "GET",
+            },
           }
         );
 
@@ -5797,6 +6255,46 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         */
         R.modelName = "Product";
 
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Product#category
+             * @methodOf lbServices.Product
+             *
+             * @description
+             *
+             * Fetches belongsTo relation category.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - product id
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Category` object.)
+             * </em>
+             */
+        R.category = function() {
+          var TargetResource = $injector.get("Category");
+          var action = TargetResource["::get::Product::category"];
+          return action.apply(R, arguments);
+        };
 
 
         return R;

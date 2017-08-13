@@ -6,7 +6,7 @@
 angular
   .module('app', [
     'lbServices', 'comunication01', 'myservices01', 
-    'ui.router', 'ngResource', 'oitozero.ngSweetAlert', 'cgNotify', 'ui.bootstrap'
+    'ui.router', 'ngResource', 'oitozero.ngSweetAlert', 'cgNotify', 'localytics.directives', 'ui.bootstrap'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$httpProvider',  function($stateProvider,
       $urlRouterProvider, $httpProvider) {
@@ -43,13 +43,18 @@ angular
       templateUrl: 'views/category/list.html',
       controller: 'CategoryController'
     })
+    .state('productList', {
+      url: '/productList',
+      templateUrl: 'views/product/list.html',
+      controller: 'ProductController'
+    })
     .state('todo', {
         url: '/todo',
         templateUrl: 'views/todo.html',
         controller: 'TodoController'
       });
+
     $urlRouterProvider.otherwise('login');
 
     //Redirección de usuario al inicio de sesión trás expirar la sesión
-    
 }]);
