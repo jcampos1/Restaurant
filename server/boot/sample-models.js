@@ -3,6 +3,7 @@
 // This file is licensed under the Artistic License 2.0.
 // License text available at https://opensource.org/licenses/Artistic-2.0
 
+//CREACIÓN DE USUARIOS INICIALES
 module.exports = function(app) {
   var User = app.models.user;
   var Role = app.models.Role;
@@ -15,7 +16,7 @@ module.exports = function(app) {
   ], function(err, users) {
     if (err) throw err;
 
-    console.log('Created users:', users);
+    console.log('Usuarios creados:', users);
 
     //Crear rol admin
     Role.create({
@@ -23,16 +24,16 @@ module.exports = function(app) {
     }, function(err, role) {
       if (err) throw err;
 
-      console.log('Created role:', role);
+      console.log('Rol admin creado:', role);
 
-      //make bob an admin
+      //Asociar rol admin
       role.principals.create({
         principalType: RoleMapping.USER,
         principalId: users[2].id
       }, function(err, principal) {
         if (err) throw err;
 
-        console.log('Created principal:', principal);
+        console.log('Asociado rol admin:', principal);
       });
     });
 
@@ -42,16 +43,16 @@ module.exports = function(app) {
     }, function(err, role) {
       if (err) throw err;
 
-      console.log('Created role:', role);
+      console.log('Rol camarero creado:', role);
 
-      //make Jane an waiter
+      //Asociar rol camarero
       role.principals.create({
         principalType: RoleMapping.USER,
         principalId: users[1].id
       }, function(err, principal) {
         if (err) throw err;
 
-        console.log('Created principal:', principal);
+        console.log('Asociado rol camarero:', principal);
       });
     });
 
@@ -61,16 +62,16 @@ module.exports = function(app) {
     }, function(err, role) {
       if (err) throw err;
 
-      console.log('Created role:', role);
+      console.log('Rol cajero creado:', role);
 
-      //make John an cashier
+      //Asociar rol cajero
       role.principals.create({
         principalType: RoleMapping.USER,
         principalId: users[0].id
       }, function(err, principal) {
         if (err) throw err;
 
-        console.log('Created principal:', principal);
+        console.log('Rol cajero asociado:', principal);
       });
     });
   });

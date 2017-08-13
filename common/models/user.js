@@ -11,19 +11,20 @@ module.exports = function(User) {
   
   //Envia link para cambio de contraseña
   User.on('resetPasswordRequest', function(info) {
-    var url = 'http://' + config.host + ':' + config.port + '/changePassword';
+    var url = 'http://' + config.host + ':' + config.port + '#/resetPassword';
     var html = 'Click <a href="' + url + '?access_token=' +
         info.accessToken.id + '">Aquí</a> para cambiar su clave';
 
-    console.log("EL USUARIO ES: ");console.log(info.email);
+    console.log("EL USUARIO ES:");
+    console.log(info.email);
     User.app.models.Email.send({
       to: info.email,
       from: ds.emailDs.transports[0].auth.user,
       subject: 'Contraseña',
       html: html
     }, function(err) {
-      if (err) return console.log('> error sending password reset email');
-      console.log('> sending password reset email to:', info.email);
+      if (err) return console.log('Erro al enviar reinicio de contraseña');
+      console.log('Enviando reinicio de contraseña:', info.email);
     });
   });
 

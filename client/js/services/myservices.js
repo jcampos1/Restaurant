@@ -1,8 +1,9 @@
 /* ************** DECLARACION DE MODULOS ****************** */
 'use strict';
-angular.module("myservices01", ['oitozero.ngSweetAlert', 'comunication01']);
+angular.module("myservices01", ['oitozero.ngSweetAlert', 'cgNotify', 'comunication01']);
 
-angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert) {
+angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, notify) {
+    var urlNotify = '../vendor/angular-notify/angular-notify.html';
   return {
     unselected: function() {
         SweetAlert.swal({
@@ -18,15 +19,22 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert) 
     dropBoard: function( ) {
         SweetAlert.swal({
             title: "Confirmación",
-            text: "¿Seguro de eliminar la mesa " + cm01.getData02().number + "?",
+            text: "¿Seguro de eliminar la mesa " + cm01.getData01().number + "?",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Ok",
-            closeOnConfirm: true}, 
-            function(){ 
-                cm01.setEvnt02();
+            closeOnConfirm: true,
+            closeOnCancel: true}, 
+            function(isConfirm){
+                if (isConfirm) {
+                    cm01.setEvnt02("emit");
+                }
         });
+    },
+
+    msgSuccess: function( ) {
+        notify({ message:'Elemento grabado exitosamente', position: 'right', classes:'alert-success', templateUrl: urlNotify} );
     }
   };
 });

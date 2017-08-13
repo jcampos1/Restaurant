@@ -1,6 +1,4 @@
-/*** estilos generales ***/
-
-/*** Footer ***/
+/**************** ESTILOS GENERALES ***************/
 footer {
     text-align: center;
     background: lightgray;
@@ -12,15 +10,20 @@ footer {
     padding-top: 3px;
     z-index: 1000;
 }
-/**************/
 
-/***Estilo para todas las listas***/
 ul{
     border: 1px solid red;
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
+
+.navbar {
+    height: 50px;
+    z-index: 1;
+    background: orange;
+}
+/***************************************************/
 
 /****IMAGEN DE FONDO****/
 img.bg{
@@ -36,22 +39,15 @@ img.bg{
 }
 /***********************/
 
-/****IMAGEN DE FONDO****/
-/***********************/
-.navbar {
-    height: 50px;
-    z-index: 1;
-    background: orange;
-}
-
-/*Parrafo del footer*/
+/***PARRAFO DEL FOOTER***/
 footer p{
     position: absolute;
     top: 50%; 
     left: 50%; 
     transform: translate(-50%, -50%);
 }
-/****Logo****/
+
+/**** LOGOS ****/
 .logo {
     position: fixed;
     top: 10px;
@@ -88,8 +84,12 @@ footer p{
 }
 /***********************/
 
-/***Login***/
+/******** LOGIN *********/
 form.login{
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 3px solid orange;
     border-radius: 4px;
     box-sizing: border-box;
@@ -97,8 +97,6 @@ form.login{
     box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.5), 0 6px 20px 0 rgba(255, 255, 255, 0.5);
     max-width: 400px;
     min-height: 400px;
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 form.login:hover{
@@ -118,9 +116,9 @@ form.login:hover .icon-login{
     width: 220px;
     height: 80px;
 }
-/***********/
+/***************************/
 
-/*** Estilos para campos de formulario ***/
+/*** CAMPOS DE FORMULARIO ***/
 input[type=text], input[type=password], input[type=number] {
     width: 100%;
     box-sizing: border-box;
@@ -135,7 +133,7 @@ input[type=text], input[type=password], input[type=number] {
     margin: 4px;
 }
 
-input[type=text]:focus, input[type=password]:focus{
+input[type=text]:focus, input[type=password], input[type=number]:focus{
     border: 3px solid orange;
 }
 
@@ -177,9 +175,12 @@ input[type=text]:focus, input[type=password]:focus{
     color: white;
 }
 
+.a_icon {
+    cursor: pointer;
+}
 /******************************/
 
-/*** Fuentes ***/
+/*** FUENTES ***/
 .font01{
     font-family: "Times New Roman", Times, serif;
     font-size: 24px;
@@ -228,6 +229,15 @@ ul.cls01 a {
     border-radius: 60px;
     color: black;
     display: block;
+}
+
+a.active {
+    transform: scale(1.1);
+    background: orange;
+}
+
+i.active {
+    color: white;
 }
 
 ul.cls01 a:hover {
@@ -405,5 +415,3 @@ ul li.cls03 {
         max-height: 120px;
     }
 }
-
-

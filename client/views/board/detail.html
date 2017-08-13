@@ -1,0 +1,32 @@
+<a class="a_icon" ng-click="$ctrl.detailBoard()"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+
+<script type="text/ng-template" id="modalDetailBoard.html">
+    <div class="modal-header">
+        <h3 class="box-title">Detalle de mesa</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <label for="">Número</label>
+                {{board.number}}
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <label for="">Lugares</label>
+                {{board.space}}
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <label for="">Activo</label>
+                {{board.active}}
+            </div>
+            <div class="col-xs-12 col-sm-12">
+                <label for="">Descripción</label>
+                {{board.description}}
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
+            class="fa fa-close"></i> Cancelar
+        </a>
+    </div>
+</script>

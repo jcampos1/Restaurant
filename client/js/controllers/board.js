@@ -11,6 +11,24 @@ angular
 
         $scope.boards = []
 
+        //Muestra en detalle la información
+        vm.detailBoard = function() {
+          if( cm01.isValid(cm01.getData01()) ) {
+            var modalInstance = $uibModal.open({
+              animation : true,
+              templateUrl : 'modalDetailBoard.html',
+              controller : 'DetailBoardController',
+              backdrop: true,
+              size : "md"
+            });
+            modalInstance.result.then(function() {
+            }, function() {
+            });
+          }else{
+            ms01.unselected();
+          }
+        }
+
         //Muestra formulario de creación
         vm.newBoard = function() {
           var modalInstance = $uibModal.open({
@@ -45,25 +63,23 @@ angular
 
         //Eliminación
         $scope.dropBoard = function() {
-          if( cm01.isValid(cm01.getData02()) ) {
+          if( cm01.isValid(cm01.getData01()) ) {
             ms01.dropBoard();
           }else{
             ms01.unselected();
           }
         }
 
-        //Fija la mesa a editar
-        $scope.boardToEdit = function( board ) {
+        //Graba la mesa seleccionada
+        $scope.selectedBoard = function( board ) {
           cm01.setData01(board);
-          cm01.setData02(board);
         }
         
         //Encuentra todas las mesas
         $scope.boardFind = function( ) {
-          Board.find().$promise
+          Board.find({"filter":{"where": {"active":"true"}}}).$promise
           .then(function(results) {
             $scope.boards = results;
-            $log.info($scope.boards);
           });
         }
 
@@ -71,15 +87,20 @@ angular
         $scope.$watch(function() { return cm01.getEvnt01() }, function() {
           if( cm01.isValid(cm01.getEvnt01()) ){
             $scope.boardFind( );
-            cm01.SetEvnt01(null);
+            cm01.setEvnt01(null);
           }
         });
               
         //Acción ejecutada después de confirmar eliminación
         $scope.$watch(function() { return cm01.getEvnt02() }, function() {
           if( cm01.isValid(cm01.getEvnt02()) ){
-            alert("Se eliminaa");
-            $scope.boardFind();
+            cm01.getData01().active = false;
+            cm01.getData01().$save().then(function(instance){
+              $scope.boardFind();
+              ms01.msgSuccess();
+              cm01.setData01(null);
+              cm01.setEvnt02(null);
+            });
           }
 	      });
 
@@ -87,23 +108,31 @@ angular
         $scope.boardFind( );
   }]);
 
+angular.module("app").controller('DetailBoardController',
+  ['$scope', 'cm01', '$uibModalInstance', '$log', function($scope, cm01, $uibModalInstance,
+    $log) {
+
+      $scope.board = cm01.getData01();
+      
+      $scope.cancel = function() {
+        $uibModalInstance.dismiss(false);
+      };
+}]);
+
 angular.module("app").controller('NewBoardController',
-  ['$scope', 'Board', 'cm01', '$uibModalInstance', '$state', '$location', '$log', function($scope, Board, cm01, $uibModalInstance,
+  ['$scope', 'Board', 'cm01', 'ms01', '$uibModalInstance', '$state', '$location', '$log', function($scope, Board, cm01, ms01, $uibModalInstance, notify,
     $state, $location, $log) {
 
       $scope.board = new Object();
       
-      $scope.save = function( board, form ) {
+      //Creación de mesa
+      $scope.save = function( form ) {
         if( form.$valid ) {
-          Board.create(board,
-          function() {
-            $log.info(board);
-            alert("guardado exitosamente");
-            cm01.setEvnt01("bordReload");
+          Board.create($scope.board).$promise
+          .then(function(board) {
+            cm01.setEvnt01("emit");
+            ms01.msgSuccess();
             $scope.cancel();
-          }, function(res) {
-            alert("error");
-            $log.error(res);
           });
         }
       }
@@ -113,7 +142,7 @@ angular.module("app").controller('NewBoardController',
 }]);
 
 angular.module("app").controller('editBoardController',
-  ['$scope', 'Board', 'cm01', '$uibModalInstance', '$state', '$location', '$log', function($scope, Board, cm01, $uibModalInstance,
+  ['$scope', 'Board', 'cm01', 'ms01', '$uibModalInstance', '$state', '$location', '$log', function($scope, Board, cm01, ms01, $uibModalInstance,
     $state, $location, $log) {
 
       $scope.board = cm01.getData01();
@@ -121,9 +150,9 @@ angular.module("app").controller('editBoardController',
       $scope.edit = function( form ) {
         if( form.$valid ) {
           $scope.board.$save().then(function(instance){
-            $log.info(instance);
-            alert("editado exitosamente");
-            cm01.setData01("bordReload");
+            ms01.msgSuccess();
+            cm01.setEvnt01("emit");
+            cm01.setData01(null);
             $scope.cancel();
           });
         }
@@ -149,5 +178,11 @@ angular.module('app').component('editBoardComponent',
 angular.module('app').component('listBoardComponent',
 {
       templateUrl: '../../views/board/list.html',
+      controller : 'BoardController'
+});
+
+angular.module('app').component('detailBoardComponent',
+{
+      templateUrl: '../../views/board/detail.html',
       controller : 'BoardController'
 });

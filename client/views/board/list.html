@@ -1,14 +1,17 @@
-<!- Fondo ->
+<!-- Fondo -->
 <img src="../../images/fond-01.jpg" alt="fondo" class="fond01">
 
+<!-- logo -->
 <img src="../../images/logo02.png" class="logo2" alt="logo">
+
 <div class="container03">
     <!-- Iconos operaciones crud -->
     <ul class="cls01">
-        <li><a href="#" ng-click="boardFind( )"><i class="fa fa-list" aria-hidden="true"></i></a></li>
+        <li><a id="list" class="a_icon" ng-click="boardFind( )"><i class="fa fa-list" aria-hidden="true"></i></a></li>
+        <li><detail-board-component></detail-board-component></li>
         <li><new-board-component></new-board-component></li>
         <li><edit-board-component></edit-board-component></li>
-        <li><a ng-click="dropBoard()"><i class="fa fa-times" aria-hidden="true"></i></a></li>
+        <li><a class="a_icon" ng-click="dropBoard()"><i class="fa fa-times" aria-hidden="true"></i></a></li>
     </ul>
     <!-- /Iconos operaciones crud  -->
 
@@ -26,7 +29,7 @@
     <section class="cls04">
         <h2>Listado de mesas</h2>
 
-        <div class="cls05" ng-repeat="board in boards" ng-click="boardToEdit(board)">
+        <div class="cls05" ng-repeat="board in boards" ng-click="selectedBoard(board)">
             <span class="cls06 cls07"></span>
             <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
             <div class="">

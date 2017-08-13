@@ -2,10 +2,10 @@
   "name": "Board",
   "base": "PersistedModel",
   "idInjection": false,
-  "forceId": false,
   "options": {
     "validateUpsert": true
   },
+  "forceId": false,
   "properties": {
     "number": {
       "type": "string",

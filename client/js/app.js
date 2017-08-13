@@ -6,7 +6,7 @@
 angular
   .module('app', [
     'lbServices', 'comunication01', 'myservices01', 
-    'ui.router', 'ngResource', 'oitozero.ngSweetAlert', 'ui.bootstrap'
+    'ui.router', 'ngResource', 'oitozero.ngSweetAlert', 'cgNotify', 'ui.bootstrap'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$httpProvider',  function($stateProvider,
       $urlRouterProvider, $httpProvider) {
