@@ -3,12 +3,14 @@
 // This file is licensed under the Artistic License 2.0.
 // License text available at https://opensource.org/licenses/Artistic-2.0
 
-//CREACIÓN DE USUARIOS INICIALES
 module.exports = function(app) {
+
   var User = app.models.user;
   var Role = app.models.Role;
   var RoleMapping = app.models.RoleMapping;
+  var Category = app.models.category;
 
+  /***************** CREACIÓN DE USUARIOS INICIALES *****************/
   User.create([
     {username: 'John', email: 'john@doe.com', password: 'jun'},
     {username: 'Jane', email: 'junior.uc.91@hotmail.com', password: 'jun'},
@@ -75,4 +77,18 @@ module.exports = function(app) {
       });
     });
   });
+  /******************************************************************/
+
+  /***************** CREACIÓN CATEGORIAS INICIALES *****************/
+  Category.create([
+    {name: "Xis", description: "Descripción Xis"},
+    {name: "Bebidas", description: "Descripción Bebidas"},
+    {name: "Petiscos", description: "Descripción Petiscos"},
+    {name: "Sobremesa", description: "Descripción Sobremesa"}
+  ], function(err, categorys) {
+    if (err) throw err;
+
+    console.log('Categorias creadas:', categorys);
+  });
+  /*****************************************************************/
 };

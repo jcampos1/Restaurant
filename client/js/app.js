@@ -38,6 +38,11 @@ angular
       templateUrl: 'views/board/list.html',
       controller: 'BoardController'
     })
+    .state('categoryList', {
+      url: '/categoryList',
+      templateUrl: 'views/category/list.html',
+      controller: 'CategoryController'
+    })
     .state('todo', {
         url: '/todo',
         templateUrl: 'views/todo.html',

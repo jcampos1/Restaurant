@@ -212,7 +212,7 @@ a:link {
 }
 ul.cls01 {
     margin-bottom: 200px;
-    width: 80%;
+    width: 90%;
     margin: 0 0 100px 0;
     overflow: visible;
 }
@@ -262,7 +262,7 @@ ul.cls01 a:hover i {
     position: fixed;
     top: 50px;
     right: 0;
-    width: 20%; 
+    width: 10%; 
     min-height: 100%;
 }
 
@@ -301,7 +301,7 @@ ul li.cls03 {
     position: relative;
     border: 1px solid blue;
     text-align: center;
-    width: 80%;
+    width: 90%;
     clear: both;
     margin-top: 20px;
     overflow:visible;
@@ -310,12 +310,18 @@ ul li.cls03 {
 
 .cls05 {
     position: relative;
-    padding: 20px;
     font-size: 14px;
     float: left;
-    width: 150px;
+    width: 180px;
+    height: 200px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 0 15px 15px 0;
+    overflow: visible;
+}
+
+.cls05:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .cls06 {
@@ -325,6 +331,12 @@ ul li.cls03 {
     width: 15px; height: 15px;
     border-radius: 15px;
     z-index: 200;
+}
+
+.cls05 img {
+    border: 1px solid red;
+    width:100%;
+    height: 140px;
 }
 
 /*estado de mesa libre*/
@@ -337,9 +349,20 @@ ul li.cls03 {
     background: red;
 }
 
-.cls05:hover {
-    cursor: pointer;
-    transform: scale(1.1);
+.cls09 {
+    position: relative;
+    background: orange;
+    color: white;
+    font-size: 14px; font-weight: bold;
+    text-align: center;
+    height: 60px;
+}
+
+.cls09 p{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /***********************/

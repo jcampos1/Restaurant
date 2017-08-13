@@ -18,8 +18,8 @@
     <!-- Barra lateral izquierda -->
     <aside class="cls02">
         <ul>
-            <li class="cls03"><a href="#"><span> Mesas</span></a></li>
-            <li class="cls03"><a href="#"><span> Categorias</span></a></li>
+            <li class="cls03"><a ui-sref="boardList"><span> Mesas</span></a></li>
+            <li class="cls03"><a ui-sref="categoryList"><span> Categorias</span></a></li>
             <li class="cls03"><a href="#"><span> Productos</span></a></li>
         </ul>
     </aside>
@@ -32,8 +32,8 @@
         <div class="cls05" ng-repeat="board in boards" ng-click="selectedBoard(board)">
             <span class="cls06 cls07"></span>
             <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
-            <div class="">
-                <p>Mesa: {{ board.number }} / {{ board.space }} lugares</p>
+            <div class="cls09">
+                <p>{{ board.number }} / {{ board.space }} lugares</p>
             </div>
         </div>
 

@@ -1,0 +1,34 @@
+<a class="a_icon" ng-click="$ctrl.editCategory()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+
+<script type="text/ng-template" id="modalEditCategory.html">
+    <div class="modal-header">
+        <h3 class="box-title">Editar categoria</h3>
+    </div>
+    <div class="modal-body">
+        <form name="editCategory" novalidate>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="font02">(*) Nombre</label>
+                    <input type="text" name="nombre" placeholder="Nombre" ng-model="category.name" required>
+                    <span class="has-error control-label" ng-show="
+                        editCategory.nombre.$invalid && editCategory.nombre.$dirty">
+                    Nombre is requirido.
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    <label class="font02">Descripción</label>
+                    <input type="text" name="descripcion" placeholder="Descripción" ng-model="category.description">
+                </div>
+            </div>
+            <br />
+            <div class="modal-footer">
+                <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
+                    class="fa fa-close"></i> Cancelar
+                </a> <a ng-disabled="!editCategory.$valid" ng-click="edit(editCategory)"
+                    class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
+                    Editar
+                </a>
+            </div>
+        </form>
+    </div>
+</script>

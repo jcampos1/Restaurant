@@ -1,0 +1,28 @@
+<a class="a_icon" ng-click="$ctrl.detailCategory()"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+
+<script type="text/ng-template" id="modalDetailCategory.html">
+    <div class="modal-header">
+        <h3 class="box-title">Detalle de categoria</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6">
+                <label for="">Número</label>
+                {{category.name}}
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <label for="">Activo</label>
+                {{category.active}}
+            </div>
+            <div class="col-xs-12 col-sm-12">
+                <label for="">Descripción</label>
+                {{category.description}}
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
+            class="fa fa-close"></i> Cancelar
+        </a>
+    </div>
+</script>

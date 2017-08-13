@@ -40,5 +40,17 @@
   "Board": {
     "dataSource": "db",
     "public": true
+  },
+  "category": {
+    "dataSource": "db",
+    "public": true
+  },
+  "products": {
+    "dataSource": "db",
+    "public": true
+  },
+  "product": {
+    "dataSource": "db",
+    "public": true
   }
 }
