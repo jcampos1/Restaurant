@@ -27,10 +27,9 @@ ul{
     padding: 3px 0;
     position: absolute;
     top: 23px;
-    right: 5px;
+    right: -25px;
     transform: translate(-50%, -50%);
     color: white;
-    font-weight: bold;
     font-size: 16px;
     margin-right: 5px;
     transition: border 0.2s;

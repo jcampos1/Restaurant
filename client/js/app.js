@@ -48,6 +48,11 @@ angular
       templateUrl: 'views/product/list.html',
       controller: 'ProductController'
     })
+    .state('userList', {
+      url: '/userList',
+      templateUrl: 'views/user/list.html',
+      controller: 'UserController'
+    })
     .state('todo', {
         url: '/todo',
         templateUrl: 'views/todo.html',

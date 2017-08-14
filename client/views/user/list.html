@@ -1,0 +1,54 @@
+<!-- Fondo -->
+<img src="../../images/fond-01.jpg" alt="fondo" class="fond01">
+
+<!-- logo -->
+<img src="../../images/logo02.png" class="logo2" alt="logo">
+
+<div class="container03">
+    <!-- Iconos operaciones crud -->
+    <ul class="cls01">
+        <li>
+            <a id="list" class="a_icon" ng-click="userFind( )">
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+            <label for="list" class="cls17">Listar</label>
+        </li>
+        <li>
+            <detail-user-component></detail-user-component>
+            <label for="detalle" class="cls17">Detalle</label>
+        </li>
+        <!-- <li>
+            <new-product-component></new-product-component>
+            <label for="list" class="cls17">Crear</label>
+        </li>
+        <li>
+            <edit-product-component></edit-product-component>
+            <label for="list" class="cls17">Editar</label>
+        </li>
+        <li>
+            <a class="a_icon" ng-click="dropProduct()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+            <label for="list" class="cls17">Eliminar</label>
+        </li>-->
+    </ul>
+    <!-- /Iconos operaciones crud  -->
+
+    <!-- Barra lateral izquierda -->
+    <aside class="cls02" ng-include="'/views/sideBarRightAdmin.html'">
+    </aside>
+    <!-- /Barra lateral izquierda -->
+
+    <!-- Lista de productos -->
+    <section class="cls04">
+        <label for="listado" class="cls17 cls18">Lista de usuarios</label>
+
+        <div class="cls05" ng-repeat="user in users" ng-click="selectedUser(user)">
+            <img src="../../images/icon-user01.png" alt="Imagen de fondo">
+            <div class="cls09">
+                <p>{{ user.email }}</p>
+            </div>
+        </div>
+    </section>
+    <!-- /Lista de productos  -->
+</div>

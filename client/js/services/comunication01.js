@@ -9,11 +9,15 @@ angular.module("comunication01").factory('cm01', function($log) {
 		evnt03: null, //Actualizar lista de categorias
 		evnt04: null, //Confirmación de eliminación de categoria
 		evnt05: null, //Actualizar lista de productos
-		evnt06: null, //Confirmación de eliminación de productos
+		evnt06: null, //Confirmación de eliminación de producto
+		evnt07: null, //Verificación si el usuario esta logueado o no
+		evnt08: null, //Actualizar lista de usuarios
+		evnt09: null, //Confirmación de eliminación de usuario
 
 		data01: null, //Mesa seleccionada
 		data02: null, //Categoria Seleccionada
 		data03: null, //Producto Seleccionado
+		data04: null, //Usuario Seleccionado
 			
 		getEvnt01: function() {
 					return this.evnt01;
@@ -51,6 +55,24 @@ angular.module("comunication01").factory('cm01', function($log) {
 		setEvnt06: function(data) {
 				this.evnt06 = data;
 		},
+		getEvnt07: function() {
+				return this.evnt07;
+		},
+		setEvnt07: function(data) {
+				this.evnt07 = data;
+		},
+		getEvnt08: function() {
+				return this.evnt08;
+		},
+		setEvnt08: function(data) {
+				this.evnt08 = data;
+		},
+		getEvnt09: function() {
+			return this.evnt09;
+		},
+		setEvnt09: function(data) {
+				this.evnt09 = data;
+		},
 		getData01: function() {
 					return this.data01;
 		},
@@ -68,6 +90,12 @@ angular.module("comunication01").factory('cm01', function($log) {
 		},
 		setData03: function(data) {
 				this.data03 = data;
+		},
+		getData04: function() {
+				return this.data04;
+		},
+		setData04: function(data) {
+				this.data04 = data;
 		},
 		isValid: function(data) {
 			return data!=null && data!=undefined;

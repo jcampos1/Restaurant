@@ -1,0 +1,20 @@
+<a class="a_icon" ng-click="$ctrl.detailUser()"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+
+<script type="text/ng-template" id="modalDetailUser.html">
+    <div class="modal-header">
+        <h3 class="box-title">Detalle de usuario</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6">
+                <label for="">Correo Electrónico</label>
+                {{user.email}}
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
+            class="fa fa-close"></i> Cancelar
+        </a>
+    </div>
+</script>

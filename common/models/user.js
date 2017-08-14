@@ -8,7 +8,25 @@ var ds = require('../../server/datasources.json');
 var path = require('path');
 
 module.exports = function(User) {
-  
+
+  /******Creación de usuario******/
+  User.createWhithRoles = function(user, roles, cb) {
+    console.log("EL USUARIO A AGREGAR ES: ");
+    console.log(user);
+    console.log("LOS ROLES SON: ");
+    console.log(roles);
+    cb(null, 'Greetings... ');
+  }
+
+  User.remoteMethod('createWhithRoles', {
+        accepts: [
+          {arg: 'user', type: 'objet', required: true},
+          {arg: 'roles', type: 'array', required: true}],
+        returns: {arg: 'greeting', type: 'string'},
+        http: {verb: 'post', status: 200}
+  });
+  /******************************/
+
   //Envia link para cambio de contraseña
   User.on('resetPasswordRequest', function(info) {
     var url = 'http://' + config.host + ':' + config.port + '#/resetPassword';
