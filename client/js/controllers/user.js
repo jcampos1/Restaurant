@@ -13,10 +13,13 @@ angular
     /*Inicio de sesión*/
     $scope.login = function() {
       User.login($scope.credentials, function() {
-        var next = $location.nextAfterLogin || '/';
+        $scope.messageStatus = "";
+        $state.go("boardList");
+        /*var next = $location.nextAfterLogin || '/';
         $location.nextAfterLogin = null;
-        $location.path(next);
+        $location.path(next);*/
       }, function(error) {
+        $scope.messageStatus ="Correo o contraseña incorrecta";
           $log.error(error);
       });
     }

@@ -12,7 +12,6 @@ footer {
 }
 
 ul{
-    border: 1px solid red;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -22,6 +21,24 @@ ul{
     height: 50px;
     z-index: 1;
     background: orange;
+}
+
+.navbar-header a{
+    padding: 3px 0;
+    position: absolute;
+    top: 23px;
+    right: 5px;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 5px;
+    transition: border 0.2s;
+}
+
+.navbar-header a:hover{
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
 }
 /***************************************************/
 
@@ -202,7 +219,7 @@ input[type=text]:focus, input[type=password], input[type=number]:focus{
 /*** FUENTES ***/
 .font01{
     font-family: "Times New Roman", Times, serif;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: white;
 }
@@ -237,7 +254,6 @@ ul.cls01 {
 }
 
 ul.cls01 li {
-    border: 1px solid blue;
     margin-right: 10px;
     float: left;
 }
@@ -276,7 +292,6 @@ ul.cls01 a:hover i {
 
 /*** Barra lateral derecha ***/
 .cls02 {
-    border: 1px solid red;
     background: orange;
     position: fixed;
     top: 50px;
@@ -286,7 +301,6 @@ ul.cls01 a:hover i {
 }
 
 ul li.cls03 {
-    border: 1px solid blue;
     position: relative;
     border-width: 4px 4px 0 4px;
     border-style: solid;
@@ -318,7 +332,6 @@ ul li.cls03 {
 /*** Entradas: mesas ***/
 .cls04 {
     position: relative;
-    border: 1px solid blue;
     text-align: center;
     width: 90%;
     clear: both;
@@ -353,7 +366,6 @@ ul li.cls03 {
 }
 
 .cls05 img {
-    border: 1px solid red;
     width:100%;
     height: 140px;
 }
@@ -382,6 +394,24 @@ ul li.cls03 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.cls10 {
+    font-style: italic;
+    color: red;
+    margin-left: 4px;
+    display: block;
+}
+
+.cls11{
+    color: white;
+    font-size: 14px;
+}
+
+.cls12{
+    position: absolute;
+    bottom: 4px;
+    left: 10px;
 }
 
 /***********************/

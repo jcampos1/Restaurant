@@ -3,21 +3,22 @@
 <form name="userForm" class="login" novalidate>
     <span ><img src="../../images/icon-plat01.png"  class="icon-login" alt="icon-login"></span>
     
-    <label class="font01">(*) Usuario</label>
+    <p class="cls10">{{ messageStatus }}</p>
+    <label class="font01">(*) Correo</label>
     <input type="text" name="email" placeholder="Email" required ng-model="credentials.email">
-    <span class="has-error control-label" ng-show="
+    <span class="cls10" ng-show="
         userForm.email.$invalid && userForm.email.$dirty">
-      email is required.
+      Correo es requerido.
     </span>
     
     <label class="font01">(*) Password</label>
     <input type="password" name="password" placeholder="Password" autocomplete="off" ng-model="credentials.password" required>
-    <span class="has-error control-label" ng-show="
+    <span class="cls10" ng-show="
         userForm.password.$invalid && userForm.password.$dirty">
-      password is required.
+      Contraseña es requerido.
     </span>
     <button class="button button2 flt-right" ng-click="login()">Ingresar</button>
-    <a ui-sref="reset" >Olvidaste tu contraseña</a>
+    <a ui-sref="reset" class="cls11 cls12">¿Olvidaste tu contraseña?</a>
     <br>
     <a ui-sref="boardList" >Lista de mesas</a>
     <a ui-sref="categoryList" >Lista de categorias</a>
