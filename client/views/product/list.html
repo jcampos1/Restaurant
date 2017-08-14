@@ -7,27 +7,41 @@
 <div class="container03">
     <!-- Iconos operaciones crud -->
     <ul class="cls01">
-        <li><a id="list" class="a_icon" ng-click="productFind( )"><i class="fa fa-list" aria-hidden="true"></i></a></li>
-        <li><detail-product-component></detail-product-component></li>
-        <li><new-product-component></new-product-component></li>
-        <li><edit-product-component></edit-product-component></li>
-        <li><a class="a_icon" ng-click="dropProduct()"><i class="fa fa-times" aria-hidden="true"></i></a></li>
+        <li>
+            <a id="list" class="a_icon" ng-click="productFind( )">
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+            <label for="list" class="cls17">Listar</label>
+        </li>
+        <li>
+            <detail-product-component></detail-product-component>
+            <label for="list" class="cls17">Detalle</label>
+        </li>
+        <li>
+            <new-product-component></new-product-component>
+            <label for="list" class="cls17">Crear</label>
+        </li>
+        <li>
+            <edit-product-component></edit-product-component>
+            <label for="list" class="cls17">Editar</label>
+        </li>
+        <li>
+            <a class="a_icon" ng-click="dropProduct()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+            <label for="list" class="cls17">Eliminar</label>
+        </li>
     </ul>
     <!-- /Iconos operaciones crud  -->
 
     <!-- Barra lateral izquierda -->
-    <aside class="cls02">
-        <ul>
-            <li class="cls03"><a ui-sref="boardList"><span> Mesas</span></a></li>
-            <li class="cls03"><a ui-sref="categoryList"><span> Categorias</span></a></li>
-            <li class="cls03"><a ui-sref="productList"><span> Productos</span></a></li>
-        </ul>
+    <aside class="cls02" ng-include="'/views/sideBarRightAdmin.html'">
     </aside>
-    <!-- /Barra lateral izquierda  -->
+    <!-- /Barra lateral izquierda -->
 
     <!-- Lista de productos -->
     <section class="cls04">
-        <h2>Lista de productos</h2>
+        <label for="listado" class="cls17 cls18">Lista de productos</label>
 
         <div class="cls05" ng-repeat="product in products" ng-click="selectedProduct(product)">
             <img src="../../images/icon-menu01.png" alt="Imagen de fondo">

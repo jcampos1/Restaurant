@@ -8,7 +8,7 @@ angular
   .controller('ProductController', ['$scope', 'Product', 'Category', 'cm01', 'ms01', '$uibModal', '$location', '$log', function($scope, Product, Category, cm01, ms01,
       $uibModal, $location, $log) {
         var vm = this;
-        $scope.products = []
+        $scope.products = [];
 
         //Muestra en detalle la información
         vm.detailProduct = function() {
@@ -110,6 +110,9 @@ angular
 
         //Encuentra todos las productos
         $scope.productFind( );
+
+        //Evento para resaltar opción actual seleccionada
+        ms01.sidebarRightAdmin($scope);
   }]);
 
 angular.module("app").controller('DetailProductController',

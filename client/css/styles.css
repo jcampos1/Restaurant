@@ -246,6 +246,7 @@ a:link {
     padding: 0 10px;
     margin-top: 80px;
 }
+
 ul.cls01 {
     margin-bottom: 200px;
     width: 90%;
@@ -256,6 +257,23 @@ ul.cls01 {
 ul.cls01 li {
     margin-right: 10px;
     float: left;
+}
+
+.cls17{
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+    color: gray;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    display: block;
+}
+
+.cls18{
+    margin-bottom: 15px;
+    font-size: 30px;
+    border-bottom: 2px solid orange;
+    border-top: 2px solid orange;
 }
 
 ul.cls01 a {
@@ -292,48 +310,63 @@ ul.cls01 a:hover i {
 
 /*** Barra lateral derecha ***/
 .cls02 {
-    background: orange;
+    background: #fafad2;
     position: fixed;
     top: 50px;
     right: 0;
-    width: 10%; 
+    width: 100px; 
+    border-left: thin solid orange;
     min-height: 100%;
 }
 
 ul li.cls03 {
-    position: relative;
-    border-width: 4px 4px 0 4px;
-    border-style: solid;
-    border-color: lightgray;
-    padding: 10px;
-    height: 80px;
+    height: 130px;
+    margin-bottom: 5px;
 }
 
-.cls03 span:hover {
-    font-size: 25px;
+ul li img.cls13 {
+    width: 88px;
+    height: 88px;
+    margin: 4px 4px 0 4px;
+    margin-bottom: 4px;
+    display: block;
 }
 
-.cls03 li:hover {
+ul li label.cls14 {
+    width: 100%;
+    padding: 2px;
+    font-family: "Times New Roman", Times, serif;
+    color: orange;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-align: center;
+    display: block;
+}
+
+ul li label.cls15 {
+    font-size: 18px;
+    letter-spacing: 0;
+}
+
+ul li.cls03:hover {
     transform: scale(1.1);
 }
 
-.cls02 span{
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
+/*Opción seleccionada*/
+.cls16 {
+    background: #fafae9;
+    border-bottom: 2px solid orange;
+    border-top: 2px solid orange;
 }
+
 /*****************************/
 
 /*** Entradas: mesas ***/
 .cls04 {
     position: relative;
     text-align: center;
-    width: 90%;
+    width: 93%;
     clear: both;
     margin-top: 20px;
     overflow:visible;
@@ -349,6 +382,10 @@ ul li.cls03 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 0 15px 15px 0;
     overflow: visible;
+}
+
+.cls05:hover{
+    border: 2px solid orange;
 }
 
 .cls05:hover {

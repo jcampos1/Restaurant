@@ -7,27 +7,41 @@
 <div class="container03">
     <!-- Iconos operaciones crud -->
     <ul class="cls01">
-        <li><a id="list" class="a_icon" ng-click="categoryFind( )"><i class="fa fa-list" aria-hidden="true"></i></a></li>
-        <li><detail-category-component></detail-category-component></li>
-        <li><new-category-component></new-category-component></li>
-        <li><edit-category-component></edit-category-component></li>
-        <li><a class="a_icon" ng-click="dropCategory()"><i class="fa fa-times" aria-hidden="true"></i></a></li>
+        <li>
+            <a id="list" class="a_icon" ng-click="categoryFind( )">
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+            <label for="list" class="cls17">Listar</label>
+        </li>
+        <li>
+            <detail-category-component></detail-category-component>
+            <label for="list" class="cls17">Detalle</label>
+        </li>
+        <li>
+            <new-category-component></new-category-component>
+            <label for="list" class="cls17">Crear</label>
+        </li>
+        <li>
+            <edit-category-component></edit-category-component>
+            <label for="list" class="cls17">Editar</label>
+        </li>
+        <li>
+            <a class="a_icon" ng-click="dropCategory()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+            <label for="list" class="cls17">Eliminar</label>
+        </li>
     </ul>
     <!-- /Iconos operaciones crud  -->
 
     <!-- Barra lateral izquierda -->
-    <aside class="cls02">
-        <ul>
-            <li class="cls03"><a ui-sref="boardList"><span> Mesas</span></a></li>
-            <li class="cls03"><a ui-sref="categoryList"><span> Categorias</span></a></li>
-            <li class="cls03"><a ui-sref="productList"><span> Productos</span></a></li>
-        </ul>
+    <aside class="cls02" ng-include="'/views/sideBarRightAdmin.html'">
     </aside>
-    <!-- /Barra lateral izquierda  -->
+    <!-- /Barra lateral izquierda -->
 
     <!-- Lista de mesas -->
     <section class="cls04">
-        <h2>Categoria de productos</h2>
+        <label for="listado" class="cls17 cls18">Categoria de productos</label>
 
         <div class="cls05" ng-repeat="category in categorys" ng-click="selectedCategory(category)">
             <img src="../../images/sin-img-01.png" alt="Imagen de fondo">

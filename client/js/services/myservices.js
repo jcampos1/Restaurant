@@ -2,7 +2,7 @@
 'use strict';
 angular.module("myservices01", ['oitozero.ngSweetAlert', 'cgNotify', 'comunication01']);
 
-angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, notify) {
+angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, notify, $location) {
     var urlNotify = '../vendor/angular-notify/angular-notify.html';
   return {
     unselected: function() {
@@ -65,6 +65,13 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
                     cm01.setEvnt06("emit");
                 }
         });
+    },
+
+    sidebarRightAdmin: function( scope ) {
+        scope.isActive = function (viewLocation) {
+            var active = (viewLocation === $location.path());
+            return active;
+        };
     },
 
     msgSuccess: function( ) {

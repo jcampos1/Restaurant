@@ -9,7 +9,7 @@ angular
       $uibModal, $location, $log) {
         var vm = this;
 
-        $scope.boards = []
+        $scope.boards = [];
 
         //Muestra en detalle la información
         vm.detailBoard = function() {
@@ -106,6 +106,9 @@ angular
 
         //Encuentra todas las mesas
         $scope.boardFind( );
+
+        //Evento para resaltar opción actual seleccionada
+        ms01.sidebarRightAdmin($scope);
   }]);
 
 angular.module("app").controller('DetailBoardController',

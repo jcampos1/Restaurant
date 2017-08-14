@@ -9,7 +9,7 @@ angular
       $uibModal, $location, $log) {
         var vm = this;
 
-        $scope.categorys = []
+        $scope.categorys = [];
 
         //Muestra en detalle la información
         vm.detailCategory = function() {
@@ -106,6 +106,9 @@ angular
 
         //Encuentra todas las mesas
         $scope.categoryFind( );
+
+        //Evento para resaltar opción actual seleccionada
+        ms01.sidebarRightAdmin($scope);
   }]);
 
 angular.module("app").controller('DetailCategoryController',
