@@ -22,7 +22,7 @@ module.exports = function(app) {
 
     //Crear rol admin
     Role.create({
-      name: 'admin'
+      name: 'Administrador'
     }, function(err, role) {
       if (err) throw err;
 
@@ -41,7 +41,7 @@ module.exports = function(app) {
 
     //creacion rol camarero
     Role.create({
-      name: 'waiter'
+      name: 'Camarero'
     }, function(err, role) {
       if (err) throw err;
 
@@ -60,7 +60,7 @@ module.exports = function(app) {
 
     //creacion rol cajero
     Role.create({
-      name: 'cashier'
+      name: 'Cajero'
     }, function(err, role) {
       if (err) throw err;
 

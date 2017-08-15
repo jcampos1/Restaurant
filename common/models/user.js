@@ -10,20 +10,67 @@ var path = require('path');
 module.exports = function(User) {
 
   /******Creación de usuario******/
-  User.createWhithRoles = function(user, roles, cb) {
+  User.createWithRoles = function(user, roles, cb) {
+    var app = User.app;
+    var Role = app.models.Role;
+    var RoleMapping = app.models.RoleMapping;
     console.log("EL USUARIO A AGREGAR ES: ");
     console.log(user);
     console.log("LOS ROLES SON: ");
     console.log(roles);
-    cb(null, 'Greetings... ');
+
+    User.create(user, function(err, userInstance) {
+      if (err) cb (err);
+
+      console.log('Usuario creado:', userInstance);
+
+      roles.forEach(function(item) {
+        Role.findOne({where: {name:item.name}}, function(err, role){
+          if (err) {cb(err)};
+
+          console.log('ROL FUE ENCONTRADO:', role);
+
+          //Asociar rol admin
+          role.principals.create({
+            principalType: RoleMapping.USER,
+            principalId: userInstance.id
+          }, function(err, principal) {
+            if (err) throw err;
+
+            console.log('ASOCIADO ROL:', role.name);
+          });
+        });
+      }, this);
+      cb(null, userInstance);
+    });
   }
 
-  User.remoteMethod('createWhithRoles', {
+  User.remoteMethod('createWithRoles', {
         accepts: [
-          {arg: 'user', type: 'objet', required: true},
+          {arg: 'user', type: 'object', required: true},
           {arg: 'roles', type: 'array', required: true}],
-        returns: {arg: 'greeting', type: 'string'},
+        returns: {arg: 'user', type: 'object'},
         http: {verb: 'post', status: 200}
+  });
+  /******************************/
+
+  /******Encontrar roles de un usuario******/
+  User.findRolesByUser = function(user, cb) {
+    console.log("EL USUARIO A CONSEGUIR LOS ROLES ES: ");
+    console.log(user);
+
+    var app = User.app;
+    var Role = app.models.Role;
+    Role.getRoles({id: user.id}, function(err, roles){
+      if(err){ cb(err); }
+      cb(roles);
+    });
+  }
+
+  User.remoteMethod('findRolesByUser', {
+        accepts: {arg: 'user', type: 'object', required: true},
+        returns: {arg: 'roles', type: 'array'},
+        http: {verb: 'get', status: 200}
   });
   /******************************/
 

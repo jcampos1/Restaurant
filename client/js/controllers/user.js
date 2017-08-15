@@ -8,36 +8,8 @@ angular
   .controller('LoginController', ['$scope', 'cm01', 'ms01', 'SweetAlert', '$state', 'User', '$location', '$log', function($scope, cm01, ms01, SweetAlert,
       $state, User, $location, $log) {
     
-        var vm = this;
-    $scope.users = []
-
-    //Graba el usuario seleccionado
-    /*$scope.selectedUser = function( user ) {
-      cm01.setData04(user);
-      alert("SE EJECUTO");
-      User.findRolesByUser({user: user}, function(roles){
-        $log.info("ROLES DEL USUARIO SELECCIONADO");
-        $log.info(roles);
-      });
-    }*/
-
-    //Muestra en detalle la información
-    /*vm.detailUser = function() {
-      if( cm01.isValid(cm01.getData04()) ) {
-        var modalInstance = $uibModal.open({
-          animation : true,
-          templateUrl : 'modalDetailUser.html',
-          controller : 'DetailUserController',
-          backdrop: true,
-          size : "md"
-        });
-        modalInstance.result.then(function() {
-        }, function() {
-        });
-      }else{
-        ms01.unselected();
-      }
-    }*/
+      var vm = this;
+      $scope.users = [];
 
     /*Inicio de sesión*/
     $scope.login = function() {
@@ -92,7 +64,21 @@ angular
       $state, User, $location, $log, $uibModal) {
     
       var vm = this;
-    $scope.users = []
+      $scope.users = [];
+
+      //Muestra formulario de creación
+      vm.newUser = function() {
+        var modalInstance = $uibModal.open({
+          animation : true,
+          templateUrl : 'modalNewUser.html',
+          controller : 'NewUserController',
+          backdrop: true,
+          size : "md"
+        });
+        modalInstance.result.then(function() {
+        }, function() {
+        });
+      }
 
     //Graba el usuario seleccionado
     $scope.selectedUser = function( user ) {
@@ -129,6 +115,14 @@ angular
       });
     }
 
+    //Evento para recargar usuarios
+    $scope.$watch(function() { return cm01.getEvnt08() }, function() {
+      if( cm01.isValid(cm01.getEvnt08()) ){
+        $scope.userFind( );
+        cm01.setEvnt08(null);
+      }
+    });
+
     $scope.userFind();
 
     //Evento para resaltar opción actual seleccionada
@@ -144,8 +138,6 @@ angular
     $scope.create = function() {
       User.create($scope.credentials,
       function() {
-        alert("usuario creado");
-        console.log("usuario creado");
         $state.go('login');
       }, function(res) {
         // error
@@ -160,16 +152,45 @@ angular
     }
   }]);
 
+  angular.module("app").controller('NewUserController',
+  ['$scope', 'User', 'Role', 'cm01', 'ms01', '$uibModalInstance', 'notify', '$state', '$location', '$log', function($scope, User, Role, cm01, ms01, $uibModalInstance, notify,
+    $state, $location, $log) { 
+
+      $scope.user = new Object();
+      
+      /*Encuentra todos los roles*/
+      Role.find(function(roles){
+          $scope.roles = roles;
+        },
+        function(err) {
+          $log.error(err);
+        });
+
+      //Creación de usuario
+      $scope.save = function( form ) {
+        if( form.$valid ) {
+          User.createWithRoles({user:$scope.user, roles:$scope.rolesSelected}).$promise
+          .then(function(user) {
+            cm01.setEvnt08("emit");
+            ms01.msgSuccess();
+            $scope.cancel();
+          });
+        }
+      }
+
+      $scope.cancel = function() {
+        $uibModalInstance.dismiss(false);
+      };
+}]);
+
 angular.module("app").controller('DetailUserController',
-  ['$scope', 'cm01', '$uibModalInstance', '$log', function($scope, cm01, $uibModalInstance,
+  ['User', '$scope', 'cm01', '$uibModalInstance', '$log', function(User, $scope, cm01, $uibModalInstance,
     $log) { 
       //Usuario seleccionado
       $scope.user = cm01.getData04();
 
-      //Encuentra la categoria asociada al producto
-      /*Category.findById({id: $scope.product.categoryId}).$promise
-      .then(function(category) {
-        $scope.category = category;
+      /*User.findRolesByUser({user:$scope.user}, function(roles){
+        $log.info(roles);
       });*/
       
       $scope.cancel = function() {
@@ -216,5 +237,11 @@ angular.module('app').component('accessLogoutComponent',
 angular.module('app').component('detailUserComponent',
 {
       templateUrl: '../../views/user/detail.html',
+      controller : 'UserController'
+});
+
+angular.module('app').component('newUserComponent',
+{
+      templateUrl: '../../views/user/create.html',
       controller : 'UserController'
 });

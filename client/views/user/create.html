@@ -1,4 +1,4 @@
-<h1>Register</h1>
+<!--<h1>Register</h1>
 <hr>
 <form name="userForm" novalidate ng-submit="create()">
   <div class="form-group"
@@ -21,4 +21,86 @@
   </div>
   <button class="btn btn-default" ng-disabled="userForm.$invalid">Add</button>
 </form>
-<a href="" ng-click="logout()">cerrar sesion</a>
+<a href="" ng-click="logout()">cerrar sesion</a>-->
+
+
+
+<!--<div class="row">
+                <div class="col-sm-6">
+                    <label class="font02">(*) Nombre</label>
+                    <input type="text" name="nombre" placeholder="Nombre" ng-model="category.name" required>
+                    <span class="has-error control-label" ng-show="
+                        newCategory.nombre.$invalid && newCategory.nombre.$dirty">
+                    Nombre es requirido.
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                   <label class="font02">Descripción</label>
+                    <input type="text" name="descripcion" placeholder="Descripción" ng-model="category.description">
+                </div>
+            </div>
+            <br />
+            <div class="modal-footer">
+                <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
+                    class="fa fa-close"></i> Cancelar
+                </a> <a ng-disabled="!newCategory.$valid" ng-click="save(newCategory)"
+                    class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
+                    Guardar
+                </a>
+            </div>-->
+
+<a class="a_icon" ng-click="$ctrl.newUser()"><i class="fa fa-plus" aria-hidden="true"></i></a>
+
+<script type="text/ng-template" id="modalNewUser.html">
+    <div class="modal-header">
+        <h3 class="box-title">Nuevo usuario</h3>
+    </div>
+    <div class="modal-body">
+        <form name="newUser" novalidate>
+          <div class="row">
+            <div class="col-sm-6">
+              <p class="cls10">{{ messageStatus }}</p>
+              <label class="font02">(*) Correo</label>
+              <input type="text" name="email" placeholder="Email" required ng-model="user.email">
+              <span class="has-error control-label" ng-show="
+                  newUser.email.$invalid && newUser.email.$dirty">
+                Correo es requerido.
+              </span>
+            </div>
+            <div class="col-sm-6">
+              <label class="font02">(*) Contraseña</label>
+              <input type="password" name="password" placeholder="Password" autocomplete="off" ng-model="user.password" required>
+              <span class="cls10" ng-show="
+                  newUser.password.$invalid && newUser.password.$dirty">
+                Contraseña es requerido.
+              </span>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-6">
+                  <label class="font02">(*) Roles</label>
+                  <select chosen
+                          data-placeholder-text-single="'Seleccione categoria'" name="roles"
+                          no-results-text="'Sin resultados'"
+                          ng-model="rolesSelected"
+                          ng-options="rol as rol.name for rol in roles track by rol.id" multiple>
+                      <option value=""></option>
+                  </select>
+                <span class="cls10" ng-show="
+                  newUser.roles.$invalid && newUser.roles.$dirty">
+                    Roles es requerido.
+                </span>
+              </div>
+          </div>
+            <div class="modal-footer">
+                <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
+                    class="fa fa-close"></i> Cancelar
+                </a> <a ng-disabled="!newUser.$valid" ng-click="save(newUser)"
+                    class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
+                    Guardar
+                </a>
+            </div>
+          <br>
+        </form>
+    </div>
+</script>

@@ -1195,7 +1195,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.User#createWhithRoles
+             * @name lbServices.User#createWithRoles
              * @methodOf lbServices.User
              *
              * @description
@@ -1211,7 +1211,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * @param {Object} postData Request data.
              *
-             *  - `user` – `{objet}` -
+             *  - `user` – `{object}` -
              *
              *  - `roles` – `{*}` -
              *
@@ -1227,10 +1227,10 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * Data properties:
              *
-             *  - `greeting` – `{string=}` -
+             *  - `user` – `{object=}` -
              */
-            "createWhithRoles": {
-              url: urlBase + "/users/createWhithRoles",
+            "createWithRoles": {
+              url: urlBase + "/users/createWithRoles",
               method: "POST",
             },
 

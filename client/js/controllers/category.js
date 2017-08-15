@@ -123,7 +123,7 @@ angular.module("app").controller('DetailCategoryController',
 }]);
 
 angular.module("app").controller('NewCategoryController',
-  ['$scope', 'Category', 'cm01', 'ms01', '$uibModalInstance', '$state', '$location', '$log', function($scope, Category, cm01, ms01, $uibModalInstance, notify,
+  ['$scope', 'Category', 'cm01', 'ms01', '$uibModalInstance', 'notify', '$state', '$location', '$log', function($scope, Category, cm01, ms01, $uibModalInstance, notify,
     $state, $location, $log) {
 
       $scope.category = new Object();

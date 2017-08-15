@@ -9,7 +9,7 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "admin",
+      "principalId": "Administrador",
       "permission": "ALLOW"
     },
     {
@@ -35,7 +35,7 @@
     {
       "accessType": "EXECUTE",
       "principalType": "ROLE",
-      "principalId": "admin",
+      "principalId": "Administrador",
       "permission": "ALLOW",
       "property": "findRolesByUser"
     }
