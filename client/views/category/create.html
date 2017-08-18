@@ -2,31 +2,31 @@
 
 <script type="text/ng-template" id="modalNewCategory.html">
     <div class="modal-header">
-        <h3 class="box-title">Nueva categoria</h3>
+        <h3 class="box-title">{{'GENE.NEW' | translate}}</h3>
     </div>
     <div class="modal-body">
         <form name="newCategory" novalidate>
             <div class="row">
                 <div class="col-sm-6">
-                    <label class="font02">(*) Nombre</label>
-                    <input type="text" name="nombre" placeholder="Nombre" ng-model="category.name" required>
+                    <label class="font02">(*) {{'GENE.NAME' | translate}}</label>
+                    <input type="text" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="category.name" required>
                     <span class="has-error control-label" ng-show="
                         newCategory.nombre.$invalid && newCategory.nombre.$dirty">
-                    Nombre es requirido.
+                    {{'FORM.REQU' | translate}}
                     </span>
                 </div>
                 <div class="col-sm-6">
-                   <label class="font02">Descripción</label>
-                    <input type="text" name="descripcion" placeholder="Descripción" ng-model="category.description">
+                   <label class="font02">{{'GENE.DSCA' | translate}}</label>
+                    <input type="text" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="category.description">
                 </div>
             </div>
             <br />
             <div class="modal-footer">
                 <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
-                    class="fa fa-close"></i> Cancelar
+                    class="fa fa-close"></i>{{'GENE.CANC' | translate}}
                 </a> <a ng-disabled="!newCategory.$valid" ng-click="save(newCategory)"
                     class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
-                    Guardar
+                    {{'GENE.GUAR' | translate}}
                 </a>
             </div>
         </form>

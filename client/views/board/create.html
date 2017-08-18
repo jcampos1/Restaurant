@@ -2,38 +2,38 @@
 
 <script type="text/ng-template" id="modalNewBoard.html">
     <div class="modal-header">
-        <h3 class="box-title">Nueva mesa</h3>
+        <h3 class="box-title">{{'GENE.NEW' | translate}}</h3>
     </div>
     <div class="modal-body">
         <form name="newBoard" novalidate>
             <div class="row">
                 <div class="col-sm-6">
-                    <label class="font02">(*) Número</label>
-                    <input type="text" name="numero" placeholder="Numero" ng-model="board.number" required>
+                    <label class="font02">(*) {{'GENE.NUME' | translate}}</label>
+                    <input type="text" name="numero" placeholder="{{'GENE.NUME' | translate}}" ng-model="board.number" required>
                     <span class="has-error control-label" ng-show="
                         newBoard.numero.$invalid && newBoard.numero.$dirty">
-                    Numero es requirido.
+                    {{'FORM.REQU' | translate}}
                     </span>
                 </div>
                 <div class="col-sm-6">
-                    <label class="font02">(*) Lugares</label>
-                    <input type="number" name="lugares" min="0" max="16" placeholder="Lugares" ng-model="board.space" required>
+                    <label class="font02">(*) {{'GENE.LUGA' | translate}}</label>
+                    <input type="number" name="lugares" min="0" max="16" placeholder="{{'GENE.LUGA' | translate}}" ng-model="board.space" required>
                     <span class="has-error control-label" ng-show="
                         newBoard.lugares.$invalid && newBoard.lugares.$dirty">
-                    Lugares es requirido.
+                    {{'FORM.REQU' | translate}}
                     </span>
                 </div>
             </div>
 
-            <label class="font02">Descripción</label>
-            <input type="text" name="descripcion" placeholder="Descripción" ng-model="board.description">
+            <label class="font02">{{'GENE.DSCA' | translate}}</label>
+            <input type="text" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="board.description">
             <br />
             <div class="modal-footer">
                 <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
-                    class="fa fa-close"></i> Cancelar
+                    class="fa fa-close"></i>{{'GENE.CANC' | translate}}
                 </a> <a ng-disabled="!newBoard.$valid" ng-click="save(newBoard)"
                     class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
-                    Guardar
+                    {{'GENE.GUAR' | translate}}
                 </a>
             </div>
         </form>

@@ -2,33 +2,33 @@
 
 <script type="text/ng-template" id="modalNewProduct.html">
     <div class="modal-header">
-        <h3 class="box-title">Nuevo producto</h3>
+        <h3 class="box-title">{{'GENE.NEW' | translate}}</h3>
     </div>
     <div class="modal-body">
         <form name="newProduct" novalidate>
             <div class="row">
                 <div class="col-sm-6">
-                    <label class="font02">(*) Código</label>
-                    <input type="text" name="code" placeholder="Código" ng-model="product.code" required>
+                    <label class="font02">(*) {{'GENE.CODE' | translate}}</label>
+                    <input type="text" name="code" placeholder="{{'GENE.CODE' | translate}}" ng-model="product.code" required>
                     <span class="has-error control-label" ng-show="
                         newProduct.code.$invalid && newProduct.code.$dirty">
-                    Código es requirido.
+                    {{'FORM.REQU' | translate}}
                     </span>
                 </div>
                 <div class="col-sm-6">
-                    <label class="font02">(*) Nombre</label>
-                    <input type="text" name="nombre" placeholder="Nombre" ng-model="product.name" required>
+                    <label class="font02">(*) {{'GENE.NAME' | translate}} </label>
+                    <input type="text" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="product.name" required>
                     <span class="has-error control-label" ng-show="
                         newProduct.nombre.$invalid && newProduct.nombre.$dirty">
-                    Nombre es requirido.
+                    {{'FORM.REQU' | translate}}
                     </span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <label class="font02">(*) Categoria</label>
+                    <label class="font02">(*) {{'GENE.CATE' | translate}}</label>
                     <select chosen
-                            data-placeholder-text-single="'Seleccione categoria'"
+                            data-placeholder-text-single="'{{\'GENE.CATE\' | translate}}'"
                             no-results-text="'Sin resultados'"
                             ng-model="category"
                             ng-options="cat as cat.name for cat in categorys track by cat.id">
@@ -36,21 +36,21 @@
                     </select>
                 </div>
                 <div class="col-sm-6">
-                    <label class="font02">(*) Precio</label>
-                    <input type="number" name="price" min="0" placeholder="Precio" ng-model="product.price" required>
+                    <label class="font02">(*) {{'GENE.PREC' | translate}}</label>
+                    <input type="number" name="price" min="0" placeholder="{{'GENE.PREC' | translate}}" ng-model="product.price" required>
                     <span class="has-error control-label" ng-show="
                         newProduct.price.$invalid && newProduct.price.$dirty">
-                    Precio es requirido.
+                    {{'FORM.REQU' | translate}}
                     </span>
                 </div>
             </div>
             <br />
             <div class="modal-footer">
                 <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
-                    class="fa fa-close"></i> Cancelar
+                    class="fa fa-close"></i> {{'GENE.CANC' | translate}}
                 </a> <a ng-disabled="!newProduct.$valid" ng-click="save(newProduct)"
                     class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
-                    Guardar
+                    {{'GENE.GUAR' | translate}}
                 </a>
             </div>
         </form>

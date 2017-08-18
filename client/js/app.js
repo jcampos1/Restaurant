@@ -6,7 +6,7 @@
 angular
   .module('app', [
     'lbServices', 'comunication01', 'myservices01', 
-    'ui.router', 'ngResource', 'oitozero.ngSweetAlert', 'cgNotify', 'localytics.directives', 'ui.bootstrap'
+    'ui.router', 'ngResource', 'oitozero.ngSweetAlert', 'cgNotify', 'localytics.directives', 'ui.bootstrap', 'pascalprecht.translate'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$httpProvider',  function($stateProvider,
       $urlRouterProvider, $httpProvider) {
@@ -62,4 +62,74 @@ angular
     $urlRouterProvider.otherwise('login');
 
     //Redirección de usuario al inicio de sesión trás expirar la sesión
+}])
+.config(['$translateProvider',  function( $translateProvider ) {
+
+  //IDIOMA BRASILEÑO
+  $translateProvider.translations( "pt", {
+    "GENE": {
+      "USER":         "Usuário",
+      "USERS":        "Usuários",
+      "PASS":         "Senha",
+      "ENTR":         "Entrar",
+      "FORG_PASS":    "Esqueceu a senha?",
+      "LIST":         "Lista",
+      "DETA":         "Detalho",
+      "NEW":          "Novo",
+      "EDIT":         "Editar",
+      "DELE":         "Deletar",
+      "MESA":         "Mesa",
+      "MESAS":        "Mesas",
+      "CATE":         "Categoria",
+      "PROD":         "Produtos",
+      "NUME":         "Números",
+      "LUGA":         "Lugares",
+      "DSCA":         "Descripción",
+      "CANC":         "Cancelar",
+      "GUAR":         "Guardar",
+      "ACTI":         "Activo",
+      "NAME":         "Nombre",
+      "CODE":         "Código",
+      "PREC":         "Precio",
+    },
+
+    "FORM": {
+      "REQU":         "Este campo é obrigatório."
+    }
+  });
+
+  //IDIOMA ESPAÑOL
+  $translateProvider.translations( "es", {
+    "GENE": {
+      "USER":         "Usuario",
+      "USERS":        "Usuarios",
+      "PASS":         "Contraseña",
+      "ENTR":         "Entrar",
+      "FORG_PASS":    "¿Olvidaste tu contraseña?",
+      "LIST":         "Lista",
+      "DETA":         "Detalle",
+      "NEW":          "Nuevo",
+      "EDIT":         "Editar",
+      "DELE":         "Eliminar",
+      "MESA":         "Mesa",
+      "MESAS":        "Mesas",
+      "CATE":         "Categoria",
+      "PROD":         "Productos",
+      "NUME":         "Números",
+      "LUGA":         "Lugares",
+      "DSCA":         "Descripción", 
+      "CANC":         "Cancelar", 
+      "GUAR":         "Guardar",
+      "ACTI":         "Activo",
+      "NAME":         "Nombre",
+      "CODE":         "Código",
+      "PREC":         "Precio",
+    },
+
+    "FORM": {
+      "REQU":         "Este campo es obligatorio."
+    }
+  });
+
+  $translateProvider.preferredLanguage("es");
 }]);

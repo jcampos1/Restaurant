@@ -4,21 +4,21 @@
     <span ><img src="../../images/icon-plat01.png"  class="icon-login" alt="icon-login"></span>
     
     <p class="cls10">{{ messageStatus }}</p>
-    <label class="font01">(*) Correo</label>
-    <input type="text" name="email" placeholder="Email" required ng-model="credentials.email">
+    <label class="font01">(*){{"GENE.USER" | translate}} </label>
+    <input type="text" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="credentials.email">
     <span class="cls10" ng-show="
         userForm.email.$invalid && userForm.email.$dirty">
-      Correo es requerido.
+      {{"FORM.REQU" | translate}}
     </span>
     
-    <label class="font01">(*) Password</label>
-    <input type="password" name="password" placeholder="Password" autocomplete="off" ng-model="credentials.password" required>
+    <label class="font01">(*) {{"GENE.PASS" | translate}}</label>
+    <input type="password" name="password" placeholder="{{'GENE.PASS' | translate}}" autocomplete="off" ng-model="credentials.password" required>
     <span class="cls10" ng-show="
         userForm.password.$invalid && userForm.password.$dirty">
-      Contraseña es requerido.
+        {{"FORM.REQU" | translate}}
     </span>
-    <button class="button button2 flt-right" ng-click="login()">Ingresar</button>
-    <a ui-sref="reset" class="cls11 cls12">¿Olvidaste tu contraseña?</a>
+    <button class="button button2 flt-right cls19" ng-click="login()">Ingresar</button>
+    <a ui-sref="reset" class="cls11 cls12">{{"GENE.FORG_PASS" | translate}}</a>
     <br>
 </form>
 

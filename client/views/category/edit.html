@@ -2,31 +2,31 @@
 
 <script type="text/ng-template" id="modalEditCategory.html">
     <div class="modal-header">
-        <h3 class="box-title">Editar categoria</h3>
+        <h3 class="box-title">{{'GENE.EDIT' | translate}}</h3>
     </div>
     <div class="modal-body">
         <form name="editCategory" novalidate>
             <div class="row">
                 <div class="col-sm-6">
-                    <label class="font02">(*) Nombre</label>
-                    <input type="text" name="nombre" placeholder="Nombre" ng-model="category.name" required>
+                    <label class="font02">(*) {{'GENE.NAME' | translate}}</label>
+                    <input type="text" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="category.name" required>
                     <span class="has-error control-label" ng-show="
                         editCategory.nombre.$invalid && editCategory.nombre.$dirty">
-                    Nombre is requirido.
+                    {{'FORM.REQU' | translate}}
                     </span>
                 </div>
                 <div class="col-sm-6">
-                    <label class="font02">Descripción</label>
-                    <input type="text" name="descripcion" placeholder="Descripción" ng-model="category.description">
+                    <label class="font02">{{'GENE.DSCA' | translate}}</label>
+                    <input type="text" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="category.description">
                 </div>
             </div>
             <br />
             <div class="modal-footer">
                 <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
-                    class="fa fa-close"></i> Cancelar
+                    class="fa fa-close"></i>{{'GENE.CANC' | translate}}
                 </a> <a ng-disabled="!editCategory.$valid" ng-click="edit(editCategory)"
                     class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
-                    Editar
+                    {{'GENE.EDIT' | translate}}
                 </a>
             </div>
         </form>

@@ -11,25 +11,25 @@
             <a id="list" class="a_icon" ng-click="categoryFind( )">
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
-            <label for="list" class="cls17">Listar</label>
+            <label for="list" class="cls17">{{"GENE.LIST" | translate}}</label>
         </li>
         <li>
             <detail-category-component></detail-category-component>
-            <label for="list" class="cls17">Detalle</label>
+            <label for="list" class="cls17">{{"GENE.DETA" | translate}}</label>
         </li>
         <li>
             <new-category-component></new-category-component>
-            <label for="list" class="cls17">Crear</label>
+            <label for="list" class="cls17">{{"GENE.NEW" | translate}}</label>
         </li>
         <li>
             <edit-category-component></edit-category-component>
-            <label for="list" class="cls17">Editar</label>
+            <label for="list" class="cls17">{{"GENE.EDIT" | translate}}</label>
         </li>
         <li>
             <a class="a_icon" ng-click="dropCategory()">
                 <i class="fa fa-times" aria-hidden="true"></i>
             </a>
-            <label for="list" class="cls17">Eliminar</label>
+            <label for="list" class="cls17">{{"GENE.DELE" | translate}}</label>
         </li>
     </ul>
     <!-- /Iconos operaciones crud  -->
@@ -41,7 +41,7 @@
 
     <!-- Lista de mesas -->
     <section class="cls04">
-        <label for="listado" class="cls17 cls18">Categoria de productos</label>
+        <label for="listado" class="cls17 cls18">{{"GENE.CATE" | translate}}</label>
 
         <div class="cls05" ng-repeat="category in categorys" ng-click="selectedCategory(category)">
             <img src="../../images/sin-img-01.png" alt="Imagen de fondo">

@@ -66,8 +66,9 @@ footer p{
 /**** LOGOS ****/
 .logo {
     position: fixed;
-    top: 10px;
-    left: 10px;
+    top: 170px;
+    left: 50%;
+    transform: translate(-50%, -50%);
     max-width: 250px;
     max-height: 140px;
     animation-name: logo-init;
@@ -112,12 +113,12 @@ form.login{
     padding: 15px;
     box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.5), 0 6px 20px 0 rgba(255, 255, 255, 0.5);
     max-width: 400px;
-    min-height: 400px;
+    min-height: 520px;
 }
 
 form.login:hover{
     max-width: 402px;
-    min-height: 402px; 
+    min-height: 522px; 
 }
 
 form.login:hover .icon-login{
@@ -130,11 +131,17 @@ form.login:hover .icon-login{
     display: block;
     margin: auto;
     width: 220px;
-    height: 80px;
+    height: 130px;
+    padding: 25px 0;
 }
 /***************************/
 
 /*** CAMPOS DE FORMULARIO ***/
+
+.cls19 {
+    margin-top: 25px;
+}
+
 input[type=text], input[type=password], input[type=number], select {
     width: 100%;
     box-sizing: border-box;
@@ -146,7 +153,7 @@ input[type=text], input[type=password], input[type=number], select {
     background-position: 10px 10px; 
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
-    margin: 4px;
+    margin: 4px 4px 25px 4px;
 }
 
 input[type=text]:focus, input[type=password], input[type=number]:focus{
@@ -163,7 +170,6 @@ input[type=text]:focus, input[type=password], input[type=number]:focus{
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
     -webkit-transition-duration: 0.2s; /* Safari */
     transition-duration: 0.2s;
     cursor: pointer;

@@ -12,25 +12,25 @@
                 <i class="fa fa-list" aria-hidden="true">
                 </i>
             </a>
-            <label for="list" class="cls17">Listar</label>
+            <label for="list" class="cls17">{{"GENE.LIST" | translate}}</label>
         </li>
         <li>
             <detail-board-component></detail-board-component>
-            <label for="list" class="cls17">Detalle</label>
+            <label for="list" class="cls17">{{"GENE.DETA" | translate}}</label>
         </li>
         <li>
             <new-board-component></new-board-component>
-            <label for="list" class="cls17">Nuevo</label>
+            <label for="list" class="cls17">{{"GENE.NEW" | translate}}</label>
         </li>
         <li>
             <edit-board-component></edit-board-component>
-            <label for="list" class="cls17">Editar</label>
+            <label for="list" class="cls17">{{"GENE.EDIT" | translate}}</label>
         </li>
         <li>
             <a class="a_icon" ng-click="dropBoard()">
                 <i class="fa fa-times" aria-hidden="true"></i>
             </a>
-            <label for="list" class="cls17">Eliminar</label>
+            <label for="list" class="cls17">{{"GENE.DELE" | translate}}</label>
         </li>
     </ul>
     <!-- /Iconos operaciones crud  -->
@@ -42,13 +42,13 @@
 
     <!-- Lista de mesas -->
     <section class="cls04">
-        <label for="listado" class="cls17 cls18">Listado de mesas</label>
+        <label for="listado" class="cls17 cls18">{{"GENE.MESAS" | translate}}</label>
 
         <div class="cls05" ng-repeat="board in boards" ng-click="selectedBoard(board)">
             <span class="cls06 cls07"></span>
             <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
             <div class="cls09">
-                <p>{{ board.number }} / {{ board.space }} lugares</p>
+                <p>{{ board.number }} / {{ board.space }} {{'GENE.LUGA' | translate}}</p>
             </div>
         </div>
     </section>
