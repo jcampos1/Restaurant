@@ -1,9 +1,9 @@
 <img src="../../images/bg-01.jpg" class="bg" alt="Background image">
-<img src="../../images/logo02.png" class="logo" alt="Background image">
+<img src="../../images/logo.png" class="logo" alt="Background image">
 <form name="userForm" class="login" novalidate>
     <span ><img src="../../images/icon-plat01.png"  class="icon-login" alt="icon-login"></span>
     
-    <p class="cls10">{{ messageStatus }}</p>
+    <p class="cls10" ng-show="messageStatus">{{ 'USER.' + messageStatus | translate }}</p>
     <label class="font01">(*){{"GENE.USER" | translate}} </label>
     <input type="text" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="credentials.email">
     <span class="cls10" ng-show="
@@ -11,13 +11,13 @@
       {{"FORM.REQU" | translate}}
     </span>
     
-    <label class="font01">(*) {{"GENE.PASS" | translate}}</label>
+    <label class="font01 cls19">(*) {{"GENE.PASS" | translate}}</label>
     <input type="password" name="password" placeholder="{{'GENE.PASS' | translate}}" autocomplete="off" ng-model="credentials.password" required>
     <span class="cls10" ng-show="
         userForm.password.$invalid && userForm.password.$dirty">
         {{"FORM.REQU" | translate}}
     </span>
-    <button class="button button2 flt-right cls19" ng-click="login()">Ingresar</button>
+    <button class="button button2 flt-right cls19" ng-click="login()">{{'GENE.ACCE' | translate}}</button>
     <a ui-sref="reset" class="cls11 cls12">{{"GENE.FORG_PASS" | translate}}</a>
     <br>
 </form>

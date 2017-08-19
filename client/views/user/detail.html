@@ -2,19 +2,31 @@
 
 <script type="text/ng-template" id="modalDetailUser.html">
     <div class="modal-header">
-        <h3 class="box-title">Detalle de usuario</h3>
+        <h3 class="box-title">{{'GENE.DETA' | translate}}</h3>
     </div>
     <div class="modal-body">
         <div class="row">
-            <div class="col-xs-6 col-sm-6">
-                <label for="">Correo Electrónico</label>
+            <div class="col-xs-6 col-sm-4">
+                <label for="">{{'GENE.USER' | translate}}</label>
                 {{user.email}}
+            </div>
+            <div class="col-xs-6 col-sm-4">
+                <label for="">{{'GENE.NAME' | translate}}</label>
+                {{user.name}}
+            </div>
+            <div class="col-xs-6 col-sm-4">
+                <label for="">{{'GENE.PHONE' | translate}}</label>
+                {{user.phone}}
+            </div>
+            <div class="col-xs-6 col-sm-4">
+                <label for="">{{'GENE.ADDR' | translate}}</label>
+                {{user.address}}
             </div>
         </div>
     </div>
     <div class="modal-footer">
         <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
-            class="fa fa-close"></i> Cancelar
+            class="fa fa-close"></i> {{'GENE.CANC' | translate}}
         </a>
     </div>
 </script>

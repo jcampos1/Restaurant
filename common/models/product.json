@@ -19,6 +19,9 @@
       "type": "number",
       "required": true
     },
+    "description": {
+      "type": "string"
+    },
     "active": {
       "type": "boolean",
       "required": true,

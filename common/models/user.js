@@ -9,7 +9,7 @@ var path = require('path');
 
 module.exports = function(User) {
 
-  /******Creación de usuario******/
+  /******Creación de usuario y asignacion de roles******/
   User.createWithRoles = function(user, roles, cb) {
     var app = User.app;
     var Role = app.models.Role;
@@ -52,7 +52,7 @@ module.exports = function(User) {
         returns: {arg: 'user', type: 'object'},
         http: {verb: 'post', status: 200}
   });
-  /******************************/
+  /******************************************/
 
   /******Encontrar roles de un usuario******/
   User.findRolesByUser = function(user, cb) {
@@ -74,9 +74,9 @@ module.exports = function(User) {
   });
   /******************************/
 
-  //Envia link para cambio de contraseña
+  /*****Evento para el envio de email de reseteo de contraseña*****/
   User.on('resetPasswordRequest', function(info) {
-    var url = 'http://' + config.host + ':' + config.port + '#/resetPassword';
+    var url = 'http://' + config.host + ':' + config.port + '#!/resetPassword';
     var html = 'Click <a href="' + url + '?access_token=' +
         info.accessToken.id + '">Aquí</a> para cambiar su clave';
 
@@ -92,8 +92,29 @@ module.exports = function(User) {
       console.log('Enviando reinicio de contraseña:', info.email);
     });
   });
+  /************************************************************** */
 
-  User.setPassword = function (ctx, newPassword, cb) {
+  /**************RESETEO DE CONTRASEÑA DEL USUARIO******************/
+  User.resetPass = function(info, cb) {
+    console.log("CORREO ELECTRONICO");
+    console.log(info.email);
+    console.log("TOKEN TEMPORAL");
+    console.log(info.accessToken.id);
+    console.log("CONSTRASENA");
+    console.log(info.newPassword);
+    
+    cb(null, "se ejecuto menol");
+  }
+
+  User.remoteMethod('resetPass', {
+        accepts: [
+          {arg: 'newPassword', type: 'string', required: true}],
+        returns: {arg: 'greeting', type: 'string'},
+        http: {verb: 'put', status: 200}
+  });
+  /*****************************************************************/
+
+  /*User.setPassword = function (ctx, newPassword, cb) {
   var newErrMsg, newErr;
   try {
       console.log(ctx.req.accessToken.userId);
@@ -133,5 +154,5 @@ User.remoteMethod(
     ],
     returns: {arg: 'passwordChange', type: 'boolean'}
   }
-);
+);*/
 }

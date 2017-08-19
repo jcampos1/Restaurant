@@ -28,8 +28,8 @@
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.CATE' | translate}}</label>
                     <select chosen
-                            data-placeholder-text-single="'{{\'GENE.CATE\' | translate}}'"
-                            no-results-text="'Sin resultados'"
+                            data-placeholder-text-single="'{{'GENE.LBL02' | translate}}'"
+                            no-results-text="'{{'GENE.LBL01' | translate}}'"
                             ng-model="category"
                             ng-options="cat as cat.name for cat in categorys track by cat.id">
                         <option value=""></option>
@@ -42,6 +42,12 @@
                         newProduct.price.$invalid && newProduct.price.$dirty">
                     {{'FORM.REQU' | translate}}
                     </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="font02">{{'GENE.DSCA' | translate}}</label>
+                    <input type="text" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="product.description">
                 </div>
             </div>
             <br />

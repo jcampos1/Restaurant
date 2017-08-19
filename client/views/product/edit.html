@@ -2,7 +2,7 @@
 
 <script type="text/ng-template" id="modalEditProduct.html">
     <div class="modal-header">
-        <h3 class="box-title">Editar producto</h3>
+        <h3 class="box-title">{{'GENE.EDIT' | translate}}</h3>
     </div>
     <div class="modal-body">
         <form name="editProduct" novalidate>
@@ -28,8 +28,8 @@
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.CATE' | translate}}</label>
                     <select chosen
-                            data-placeholder-text-single="'{{\'GENE.CATE\' | translate}}'"
-                            no-results-text="'Sin resultados'"
+                            data-placeholder-text-single="'{{'GENE.LBL02' | translate}}'"
+                            no-results-text="'{{'GENE.LBL01' | translate}}'"
                             ng-model="category"
                             ng-options="cat as cat.name for cat in categorys track by cat.id">
                         <option value=""></option>
@@ -37,11 +37,17 @@
                 </div>
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.PREC' | translate}}</label>
-                    <input type="number" name="price" min="0" placeholder="Precio" ng-model="product.price" required>
+                    <input type="number" name="price" min="0" placeholder="{{'GENE.PREC' | translate}}" ng-model="product.price" required>
                     <span class="has-error control-label" ng-show="
                         editProduct.price.$invalid && editProduct.price.$dirty">
                     {{'FORM.REQU' | translate}}
                     </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="font02">{{'GENE.DSCA' | translate}}</label>
+                    <input type="text" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="product.description">
                 </div>
             </div>
             <br />

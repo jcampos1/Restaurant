@@ -12,9 +12,30 @@ module.exports = function(app) {
 
   /***************** CREACIÓN DE USUARIOS INICIALES *****************/
   User.create([
-    {username: 'John', email: 'john@doe.com', password: 'jun'},
-    {username: 'Jane', email: 'junior.uc.91@hotmail.com', password: 'jun'},
-    {username: 'Bob', email: 'bob@projects.com', password: 'jun'}
+    {
+      username: 'John',
+      email: 'john@doe.com', 
+      password: 'jun',
+      name: 'John',
+      phone: '04143494487',
+      address: 'Urb. Bello Monte III'
+    },
+    {
+      username: 'Jane', 
+      email: 'junior.uc.91@hotmail.com', 
+      password: 'jun',
+      name: 'Jane Foster',
+      phone: '04244445673',
+      address: 'Urb. La Isabelica'
+    },
+    {
+      username: 'Bob', 
+      email: 'bob@projects.com', 
+      password: 'jun',
+      name: 'Bob Restrepo',
+      phone: '04123494487',
+      address: 'Urb. Bella Vista'
+    }
   ], function(err, users) {
     if (err) throw err;
 

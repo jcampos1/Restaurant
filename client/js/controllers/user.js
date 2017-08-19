@@ -5,7 +5,7 @@
 
 angular
   .module('app')
-  .controller('LoginController', ['$scope', 'cm01', 'ms01', 'SweetAlert', '$state', 'User', '$location', '$log', function($scope, cm01, ms01, SweetAlert,
+  .controller('LoginController', ['$scope', '$http', 'cm01', 'ms01', 'ms02', 'SweetAlert', '$state', 'User', '$location', '$log', function($scope, $http, cm01, ms01, ms02, SweetAlert,
       $state, User, $location, $log) {
     
       var vm = this;
@@ -20,42 +20,30 @@ angular
         /*var next = $location.nextAfterLogin || '/';
         $location.nextAfterLogin = null;
         $location.path(next);*/
-      }, function(error) {
-        $scope.messageStatus ="Correo o contraseña incorrecta";
-          $log.error(error);
+      }, function(err) {
+        $scope.messageStatus = err.data.error.statusCode;
+        $log.info($scope.messageStatus);
+        $log.error(err);
       });
     }
 
     /*Resetear contraseña*/
     $scope.reset = function() {
-      console.log($scope.credentials);
-      User.resetPassword({
-        email: $scope.credentials.email,
-        }, function(error) {
-          if (error){
-            $log.error(error);
-            return false;
-          } 
-
+      User.resetPassword( {email: $scope.user.email}
+        ,function successCallback(response) {
+          ms01.msgSendEmail();
           $state.go("login");
-      });
+        },
+        function errorCallback(err) {
+          $scope.messageStatus = err.data.error.statusCode;
+          $log.error(err);
+        });
     }
 
-    $scope.setPassword = function( ) {
-      console.log($scope.credentials.password);
-      User.setPassword({
-        newPassword: $scope.credentials.password,
-        }, function(error) {
-          $log.error(error);
-          if (error){
-            $log.error(error);
-            return false;
-          } 
-          alert("contraseña cambiada");
-          $state.go("login");
-      });
+    /*Nueva contraseña*/
+    $scope.resetPassword = function( ) {
+        ms02.resetPassword($scope.user.newPassword);
     }
-
   }]);
 
   angular

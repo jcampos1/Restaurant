@@ -3,12 +3,13 @@
 <form name="userForm" class="login" novalidate>
     <span ><img src="../../images/icon-plat01.png"  class="icon-login" alt="icon-login"></span>
     
-    <label class="font01">(*) Email</label>
-    <input type="text" name="email" placeholder="Email" required ng-model="credentials.email">
+    <p class="cls10" ng-show="messageStatus">{{ 'USER.' + messageStatus | translate }}</p>
+    <label class="font01">(*) {{'GENE.USER' | translate}}</label>
+    <input type="text" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="user.email">
     <span class="cls10" ng-show="
         userForm.email.$invalid && userForm.email.$dirty">
-      Correo es requerido.
+      {{'FORM.REQU' | translate}}
     </span>
-    <button class="button button2 flt-right" ng-click="reset()">Recuperar</button>
-    <a ui-sref="login" ng-click="login()" class="cls11 cls12">Login</a>
+    <button class="button button2 flt-right" ng-click="reset()">{{'GENE.RECU' | translate}}</button>
+    <a ui-sref="login" ng-click="login()" class="cls11 cls12">{{'GENE.LOGI' | translate}}</a>
 </form>

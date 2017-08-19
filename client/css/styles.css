@@ -39,6 +39,10 @@ ul{
     border-top: 3px solid white;
     border-bottom: 3px solid white;
 }
+
+a, span, label, p {
+    font-family: 'Oswald', sans-serif;
+}
 /***************************************************/
 
 /****IMAGEN DE FONDO****/
@@ -66,7 +70,7 @@ footer p{
 /**** LOGOS ****/
 .logo {
     position: fixed;
-    top: 170px;
+    top: 13%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 250px;
@@ -104,7 +108,7 @@ footer p{
 /******** LOGIN *********/
 form.login{
     position: absolute;
-    top: 50%; 
+    top: 55%; 
     left: 50%;
     transform: translate(-50%, -50%);
     border: 3px solid orange;
@@ -113,12 +117,12 @@ form.login{
     padding: 15px;
     box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.5), 0 6px 20px 0 rgba(255, 255, 255, 0.5);
     max-width: 400px;
-    min-height: 520px;
+    min-height: 470px;
 }
 
 form.login:hover{
     max-width: 402px;
-    min-height: 522px; 
+    min-height: 472px; 
 }
 
 form.login:hover .icon-login{
@@ -131,8 +135,8 @@ form.login:hover .icon-login{
     display: block;
     margin: auto;
     width: 220px;
-    height: 130px;
-    padding: 25px 0;
+    height: 100px;
+    padding: 10px 0;
 }
 /***************************/
 
@@ -153,10 +157,10 @@ input[type=text], input[type=password], input[type=number], select {
     background-position: 10px 10px; 
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
-    margin: 4px 4px 25px 4px;
+    margin: 4px 4px 4px 4px;
 }
 
-input[type=text]:focus, input[type=password], input[type=number]:focus{
+input[type=text]:focus, input[type=password]:focus, input[type=number]:focus{
     border: 3px solid orange;
 }
 
@@ -244,11 +248,21 @@ input[type=text]:focus, input[type=password], input[type=number]:focus{
     height: 100%;
 }
 
+.chosen-container-multi .chosen-choices {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    font-size: 16px;
+    cursor: text;
+}
+
 /******************************/
 
 /*** FUENTES ***/
 .font01{
-    font-family: "Times New Roman", Times, serif;
+
+    /*font-family: "Times New Roman", Times, serif;*/
     font-size: 20px;
     font-weight: bold;
     text-shadow: 4px 4px 4px 4px gray;

@@ -76,6 +76,32 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
 
     msgSuccess: function( ) {
         notify({ message:'Operación realizada exitosamente', position: 'right', classes:'alert-success', templateUrl: urlNotify} );
+    },
+
+    msgSendEmail: function( ) {
+        notify({ message:'Un correo le fue enviado para la recuperación de su contraseña', position: 'right', classes:'alert-success', templateUrl: urlNotify} );
+    },
+
+    msgResetPassword: function( ) {
+        notify({ message:'Su contraseña fue establecida exitosamente', position: 'right', classes:'alert-success', templateUrl: urlNotify} );
+    }
+  };
+});
+
+angular.module("myservices01").factory('ms02', function($log, $http, $location, ms01, $state) {
+  return {
+    resetPassword: function(newPassword) {
+        $http.post("/api/users/reset-password?access_token="+
+            $location.search().access_token, {newPassword: newPassword}).then(
+            function successCallback( response ) {
+                $log.info("SE CAMBIO LA CONTRASEÑA");
+                $log.info(response);
+                ms01.msgResetPassword();
+                $state.go("login");
+            },
+            function errorCallback( response ){
+                $log.error(response);
+        });
     }
   };
 });

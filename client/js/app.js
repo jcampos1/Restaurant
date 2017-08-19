@@ -91,10 +91,28 @@ angular
       "NAME":         "Nombre",
       "CODE":         "Código",
       "PREC":         "Precio",
+      "ROLES":        "Roles",
+      "ACCE":         "Acceder",
+      "SALI":         "Salir",
+      "PHONE":        "Teléfono",
+      "ADDR":         "Dirección",
+      "COMM":         "Comentarios",
+      "RECU":         "Recuperar",
+      "LOGI":         "iniciar sesión",
+      "NEWPASS":      "Nueva contraseña",
+      "CONF":         "Confirmación",
+
+      "LBL01":        "Sin resultados",
+      "LBL02":        "Seleccione",
     },
 
     "FORM": {
       "REQU":         "Este campo é obrigatório."
+    },
+
+    "USER": {
+      "401":          "Usuario o contraseña incorrectos",
+      "404":          "Usuario no encontrado",
     }
   });
 
@@ -124,10 +142,29 @@ angular
       "NAME":         "Nombre",
       "CODE":         "Código",
       "PREC":         "Precio",
+      "ROLES":        "Roles",
+      "LBL01":        "Sin resultados",
+      "ACCE":         "Acceder",
+      "SALI":         "Salir",
+      "PHONE":        "Teléfono",
+      "ADDR":         "Dirección",
+      "COMM":         "Comentarios",
+      "RECU":         "Recuperar",
+      "LOGI":         "iniciar sesión",
+      "NEWPASS":      "Nueva contraseña",
+      "CONF":         "Confirmación",
+      
+      "LBL01":        "Sin resultados",
+      "LBL02":        "Seleccione",
     },
 
     "FORM": {
       "REQU":         "Este campo es obligatorio."
+    },
+
+    "USER": {
+      "401":          "Usuario o contraseña incorrectos",
+      "404":          "Usuario no encontrado",
     }
   });
 
