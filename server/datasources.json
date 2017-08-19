@@ -16,8 +16,8 @@
           "rejectUnauthorized": false
         },
         "auth": {
-          "user": "tu correo",
-          "pass": "contrasena"
+          "user": "micorreo",
+          "pass": "micontrasena"
         }
       }
     ]

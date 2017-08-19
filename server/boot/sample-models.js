@@ -41,25 +41,6 @@ module.exports = function(app) {
 
     console.log('Usuarios creados:', users);
 
-    //Crear rol admin
-    Role.create({
-      name: 'Administrador'
-    }, function(err, role) {
-      if (err) throw err;
-
-      console.log('Rol admin creado:', role);
-
-      //Asociar rol admin
-      role.principals.create({
-        principalType: RoleMapping.USER,
-        principalId: users[2].id
-      }, function(err, principal) {
-        if (err) throw err;
-
-        console.log('Asociado rol admin:', principal);
-      });
-    });
-
     //creacion rol camarero
     Role.create({
       name: 'Camarero'
@@ -95,6 +76,35 @@ module.exports = function(app) {
         if (err) throw err;
 
         console.log('Rol cajero asociado:', principal);
+      });
+
+      //Asociar rol cajero
+      role.principals.create({
+        principalType: RoleMapping.USER,
+        principalId: users[2].id
+      }, function(err, principal) {
+        if (err) throw err;
+
+        console.log('Rol cajero asociado:', principal);
+      });
+    });
+
+    //Crear rol admin
+    Role.create({
+      name: 'Administrador'
+    }, function(err, role) {
+      if (err) throw err;
+
+      console.log('Rol admin creado:', role);
+
+      //Asociar rol admin
+      role.principals.create({
+        principalType: RoleMapping.USER,
+        principalId: users[2].id
+      }, function(err, principal) {
+        if (err) throw err;
+
+        console.log('Asociado rol admin:', principal);
       });
     });
   });

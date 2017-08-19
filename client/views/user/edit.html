@@ -1,58 +1,58 @@
-<a class="a_icon" ng-click="$ctrl.newUser()"><i class="fa fa-plus" aria-hidden="true"></i></a>
+<a class="a_icon" ng-click="$ctrl.editUser()"><i class="fa fa-plus" aria-hidden="true"></i></a>
 
-<script type="text/ng-template" id="modalNewUser.html">
+<script type="text/ng-template" id="modalEditUser.html">
     <div class="modal-header">
-        <h3 class="box-title">{{'GENE.NEW' | translate}}</h3>
+        <h3 class="box-title">{{'GENE.EDIT' | translate}}</h3>
     </div>
     <div class="modal-body">
-        <form name="newUser" novalidate>
+        <form name="editUser" novalidate>
             <div class="row">
                 <p class="cls10">{{ messageStatus }}</p>
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.USER' | translate}}</label>
                     <input type="text" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="user.email">
                     <span class="has-error control-label" ng-show="
-                        newUser.email.$invalid && newUser.email.$dirty">
+                        editUser.email.$invalid && editUser.email.$dirty">
                     {{'FORM.REQU' | translate}}
                     </span>
                 </div>
-                <div class="col-sm-6">
-                    <label class="font02">(*) {{'GENE.PASS' | translate}}</label>
-                    <input type="password" name="password" placeholder="{{'GENE.PASS' | translate}}" autocomplete="off" ng-model="user.password" required>
-                    <span class="cls10" ng-show="
-                        newUser.password.$invalid && newUser.password.$dirty">
-                        {{'FORM.REQU' | translate}}
-                    </span>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.NAME' | translate}} </label>
                     <input type="text" name="name" placeholder="{{'GENE.NAME' | translate}}" ng-model="user.name" required>
                     <span class="has-error control-label" ng-show="
-                        newUser.name.$invalid && newUser.name.$dirty">
+                        editUser.name.$invalid && editUser.name.$dirty">
                     {{'FORM.REQU' | translate}}
                     </span>
                 </div>
+                <!-- <div class="col-sm-6">
+                    <label class="font02">(*) {{'GENE.PASS' | translate}}</label>
+                    <input type="password" name="password" placeholder="{{'GENE.PASS' | translate}}" autocomplete="off" ng-model="user.password" required>
+                    <span class="cls10" ng-show="
+                        editUser.password.$invalid && editUser.password.$dirty">
+                        {{'FORM.REQU' | translate}}
+                    </span>
+                </div>-->
+            </div>
+            <div class="row">
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.PHONE' | translate}} </label>
                     <input type="text" name="phone" placeholder="{{'GENE.PHONE' | translate}}" ng-model="user.phone" required>
                     <span class="has-error control-label" ng-show="
-                        newUser.phone.$invalid && newUser.phone.$dirty">
+                        editUser.phone.$invalid && editUser.phone.$dirty">
+                    {{'FORM.REQU' | translate}}
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    <label class="font02">(*) {{'GENE.ADDR' | translate}} </label>
+                    <input type="text" name="address" placeholder="{{'GENE.ADDR' | translate}}" ng-model="user.address" required>
+                    <span class="has-error control-label" ng-show="
+                        editUser.address.$invalid && editUser.address.$dirty">
                     {{'FORM.REQU' | translate}}
                     </span>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6">
-                    <label class="font02">(*) {{'GENE.ADDR' | translate}} </label>
-                    <input type="text" name="address" placeholder="{{'GENE.ADDR' | translate}}" ng-model="user.address" required>
-                    <span class="has-error control-label" ng-show="
-                        newUser.address.$invalid && newUser.address.$dirty">
-                    {{'FORM.REQU' | translate}}
-                    </span>
-                </div>
-                <div class="col-sm-6">
+                <div class="col-sm-12 col-xs-12">
                     <label class="font02">(*) {{'GENE.ROLES' | translate}}</label>
                     <select chosen
                             data-placeholder-text-single="'{{'GENE.LBL02' | translate}}'" name="roles"
@@ -62,7 +62,7 @@
                         <option value=""></option>
                     </select>
                     <span class="cls10" ng-show="
-                        newUser.roles.$invalid && newUser.roles.$dirty">
+                        editUser.roles.$invalid && editUser.roles.$dirty">
                         {{'FORM.REQU' | translate}}
                     </span>
                 </div>
@@ -76,7 +76,7 @@
             <div class="modal-footer">
                 <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
                     class="fa fa-close"></i> {{'GENE.CANC' | translate}}
-                </a> <a ng-disabled="!newUser.$valid" ng-click="save(newUser)"
+                </a> <a ng-disabled="!editUser.$valid" ng-click="edit(editUser)"
                     class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
                     {{'GENE.GUAR' | translate}}
                 </a>

@@ -54,19 +54,33 @@ angular
       var vm = this;
       $scope.users = [];
 
-      //Muestra formulario de creación
-      vm.newUser = function() {
-        var modalInstance = $uibModal.open({
-          animation : true,
-          templateUrl : 'modalNewUser.html',
-          controller : 'NewUserController',
-          backdrop: true,
-          size : "md"
-        });
-        modalInstance.result.then(function() {
-        }, function() {
-        });
-      }
+    //Muestra formulario de creación
+    vm.newUser = function() {
+      var modalInstance = $uibModal.open({
+        animation : true,
+        templateUrl : 'modalNewUser.html',
+        controller : 'NewUserController',
+        backdrop: true,
+        size : "md"
+      });
+      modalInstance.result.then(function() {
+      }, function() {
+      });
+    }
+
+    //Muestra formulario de edición
+    vm.editUser = function() {
+      var modalInstance = $uibModal.open({
+        animation : true,
+        templateUrl : 'modalEditUser.html',
+        controller : 'EditUserController',
+        backdrop: true,
+        size : "md"
+      });
+      modalInstance.result.then(function() {
+      }, function() {
+      });
+    }
 
     //Graba el usuario seleccionado
     $scope.selectedUser = function( user ) {
@@ -115,7 +129,7 @@ angular
 
     //Evento para resaltar opción actual seleccionada
     ms01.sidebarRightAdmin($scope);
-
+    
   }]);
 
   angular
@@ -140,7 +154,7 @@ angular
     }
   }]);
 
-  angular.module("app").controller('NewUserController',
+angular.module("app").controller('NewUserController',
   ['$scope', 'User', 'Role', 'cm01', 'ms01', '$uibModalInstance', 'notify', '$state', '$location', '$log', function($scope, User, Role, cm01, ms01, $uibModalInstance, notify,
     $state, $location, $log) { 
 
@@ -162,6 +176,47 @@ angular
             cm01.setEvnt08("emit");
             ms01.msgSuccess();
             $scope.cancel();
+          });
+        }
+      }
+
+      $scope.cancel = function() {
+        $uibModalInstance.dismiss(false);
+      };
+}]);
+
+angular.module("app").controller('EditUserController',
+  ['$scope', 'User', 'Role', 'cm01', 'ms01', '$uibModalInstance', '$log',
+  function($scope, User, Role, cm01, ms01, $uibModalInstance, $log) { 
+
+      //Usuario seleccionado
+      $scope.user = cm01.getData04();
+      
+      /*Encuentra todos los roles*/
+      Role.find(function(roles){
+          $scope.roles = roles;
+        },
+        function(err) {
+          $log.error(err);
+        });
+
+      //Creación de usuario
+      $scope.edit = function( form ) {
+        if( form.$valid ) {
+          $log.info("USUARIO A EDITAR");
+          $log.info($scope.user);
+          $log.info("ROLES");
+          $log.info($scope.rolesSelected);
+          User.dropRoles({user:$scope.user}).$promise
+          .then(function(err){
+              $log.info("EL VALOR DEVUELTO POR LA ELIMINACION DE ROLES ES: ");
+              $log.info(err);
+              User.updateWithRoles({user:$scope.user, roles:$scope.rolesSelected}).$promise
+              .then(function(user) {
+                cm01.setEvnt08("emit");
+                ms01.msgSuccess();
+                $scope.cancel();
+              });
           });
         }
       }
@@ -231,5 +286,11 @@ angular.module('app').component('detailUserComponent',
 angular.module('app').component('newUserComponent',
 {
       templateUrl: '../../views/user/create.html',
+      controller : 'UserController'
+});
+
+angular.module('app').component('editUserComponent',
+{
+      templateUrl: '../../views/user/edit.html',
       controller : 'UserController'
 });

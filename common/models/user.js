@@ -14,10 +14,6 @@ module.exports = function(User) {
     var app = User.app;
     var Role = app.models.Role;
     var RoleMapping = app.models.RoleMapping;
-    console.log("EL USUARIO A AGREGAR ES: ");
-    console.log(user);
-    console.log("LOS ROLES SON: ");
-    console.log(roles);
 
     User.create(user, function(err, userInstance) {
       if (err) cb (err);
@@ -54,14 +50,96 @@ module.exports = function(User) {
   });
   /******************************************/
 
-  /******Encontrar roles de un usuario******/
-  User.findRolesByUser = function(user, cb) {
-    console.log("EL USUARIO A CONSEGUIR LOS ROLES ES: ");
-    console.log(user);
-
+  /******Actualización de usuario******/
+  User.updateWithRoles = function(user, roles, cb) {
     var app = User.app;
     var Role = app.models.Role;
-    Role.getRoles({id: user.id}, function(err, roles){
+    var RoleMapping = app.models.RoleMapping;
+
+    //Se actualiza los datos del usuario
+    User.upsert(user, function(err, userInstance) {
+      if (err) cb (err);
+
+      console.log('Usuario actualizado:', userInstance);
+
+      roles.forEach(function(item) {
+            //Asociar rol admin
+            Role.findOne({where: {name:item.name}}, function(err, role){
+              if (err) {cb(err)};
+              //Asociar rol admin
+              role.principals.create({
+                principalType: RoleMapping.USER,
+                principalId: userInstance.id
+              }, function(err, principal) {
+                if (err){ cb(err); }
+                console.log('ASOCIADO ROL:', role.name);
+              }); 
+            }); 
+      });
+      
+      cb(null, userInstance); 
+    });
+  }
+
+  User.remoteMethod('updateWithRoles', {
+        accepts: [
+          {arg: 'user', type: 'object', required: true},
+          {arg: 'roles', type: 'array', required: true}],
+        returns: {arg: 'user', type: 'object'},
+        http: {verb: 'put', status: 200}
+  });
+  /******************************************/
+
+  /******Eliminación de roles de usuario******/
+  User.dropRoles = function(user, cb) {
+    var app = User.app;
+    var RoleMapping = app.models.RoleMapping;
+
+    //Se encuentra todos los perfiles del usuario
+    RoleMapping.find({where: {principalId: user.id }},
+      function(err, models) {
+      if (err) { cb (err); }
+      
+      //Se elimina cada perfil
+      models.forEach(function(item) {
+        RoleMapping.destroyById(item.id,
+        function (err) {
+          if (err) { cb (err); }
+          console.log("perfil eliminado: "+item.name);
+        });
+      });
+      cb(null);
+    });
+  }
+
+  User.remoteMethod('dropRoles', {
+        accepts:{arg: 'user', type: 'object', required: true},
+        http: {verb: 'post', status: 200}
+  });
+  /******************************************/
+
+  /******Encontrar todos los perfiles de un usuario******/
+  /*User.findRolesByUser = function(user, cb) {
+    var app = User.app;
+    var Role = app.models.Role;
+    var RoleMapping = app.models.RoleMapping;
+    var roles = new Array();
+    //Se encuentra todos los perfiles del usuario
+    RoleMapping.find({where: {principalId: user.id }},
+      function(err, models) {
+      if (err) { cb (err); }
+
+      models.forEach(function(item) {
+          Role.findById(item.roleId,
+            function(err, role) {
+              if (err) { cb (err); }
+              roles.push(role);
+          });
+      });
+    });
+
+    var RoleMapping = User.app.models.RoleMapping;
+    RoleMapping.find({"where": {"principalId": userInstance.id}}, function(err, models){
       if(err){ cb(err); }
       cb(roles);
     });
@@ -71,7 +149,7 @@ module.exports = function(User) {
         accepts: {arg: 'user', type: 'object', required: true},
         returns: {arg: 'roles', type: 'array'},
         http: {verb: 'get', status: 200}
-  });
+  });*/
   /******************************/
 
   /*****Evento para el envio de email de reseteo de contraseña*****/
@@ -93,66 +171,4 @@ module.exports = function(User) {
     });
   });
   /************************************************************** */
-
-  /**************RESETEO DE CONTRASEÑA DEL USUARIO******************/
-  User.resetPass = function(info, cb) {
-    console.log("CORREO ELECTRONICO");
-    console.log(info.email);
-    console.log("TOKEN TEMPORAL");
-    console.log(info.accessToken.id);
-    console.log("CONSTRASENA");
-    console.log(info.newPassword);
-    
-    cb(null, "se ejecuto menol");
-  }
-
-  User.remoteMethod('resetPass', {
-        accepts: [
-          {arg: 'newPassword', type: 'string', required: true}],
-        returns: {arg: 'greeting', type: 'string'},
-        http: {verb: 'put', status: 200}
-  });
-  /*****************************************************************/
-
-  /*User.setPassword = function (ctx, newPassword, cb) {
-  var newErrMsg, newErr;
-  try {
-      console.log(ctx.req.accessToken.userId);
-    this.findOne({where: {id: ctx.req.accessToken.userId}}, function (err, user) {
-      if (err) {
-        cb(err);
-      } else if (!user) {
-        newErrMsg = "No match between provided current logged user and email";
-        newErr = new Error(newErrMsg);
-        newErr.statusCode = 401;
-        newErr.code = 'LOGIN_FAILED_EMAIL';
-        cb(newErr);
-        } else {
-            user.updateAttributes({'password': newPassword}, function (err, instance) {
-              if (err) {
-                cb(err);
-              } else {
-                cb(null, true);
-              }
-            });
-        } 
-    });
-  } catch (err) {
-    console.error(err);
-    cb(err);
-  }
-};
-
-User.remoteMethod(
-  'setPassword',
-  {
-    description: "Allows a logged user to change his/her password.",
-    http: {verb: 'put'},
-    accepts: [
-      {arg: 'ctx', type: 'object', http: {source: 'context'}},
-      {arg: 'newPassword', type: 'string', required: true, description: "The user NEW password"}
-    ],
-    returns: {arg: 'passwordChange', type: 'boolean'}
-  }
-);*/
 }

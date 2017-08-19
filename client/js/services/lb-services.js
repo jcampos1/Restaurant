@@ -1236,7 +1236,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.User#findRolesByUser
+             * @name lbServices.User#updateWithRoles
              * @methodOf lbServices.User
              *
              * @description
@@ -1246,6 +1246,52 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * </em>
              *
              * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `user` – `{object}` -
+             *
+             *  - `roles` – `{*}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `user` – `{object=}` -
+             */
+            "updateWithRoles": {
+              url: urlBase + "/users/updateWithRoles",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.User#dropRoles
+             * @methodOf lbServices.User
+             *
+             * @description
+             *
+             * <em>
+             * (The remote method definition does not provide any description.)
+             * </em>
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
              *
              *  - `user` – `{object}` -
              *
@@ -1259,91 +1305,11 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *   populated with the actual data once the response is returned
              *   from the server.
              *
-             * Data properties:
-             *
-             *  - `roles` – `{*=}` -
+             * This method returns no data.
              */
-            "findRolesByUser": {
-              url: urlBase + "/users/findRolesByUser",
-              method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.User#resetPass
-             * @methodOf lbServices.User
-             *
-             * @description
-             *
-             * <em>
-             * (The remote method definition does not provide any description.)
-             * </em>
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             *  - `password` – `{string}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * Data properties:
-             *
-             *  - `greeting` – `{string=}` -
-             */
-            "resetPass": {
-              url: urlBase + "/users/resetPass",
-              method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.User#setPassword
-             * @methodOf lbServices.User
-             *
-             * @description
-             *
-             * Allows a logged user to change his/her password.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             *  - `ctx` – `{object=}` -
-             *
-             *  - `newPassword` – `{string}` - The user NEW password
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * Data properties:
-             *
-             *  - `passwordChange` – `{boolean=}` -
-             */
-            "setPassword": {
-              url: urlBase + "/users/setPassword",
-              method: "PUT",
+            "dropRoles": {
+              url: urlBase + "/users/dropRoles",
+              method: "POST",
             },
 
             /**
