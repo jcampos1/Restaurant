@@ -1,4 +1,6 @@
-<a class="a_icon" ng-click="$ctrl.editBoard()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+<a class="a_icon" ng-click="$ctrl.editBoard()">
+    <img class="cls20" src="../../images/ico-edit.png" alt="list">
+</a>
 
 <script type="text/ng-template" id="modalEditBoard.html">
     <div class="modal-header">
@@ -9,7 +11,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.NUME' | translate}}</label>
-                    <input type="text" name="numero" placeholder="{{'GENE.NUME' | translate}}" ng-model="board.number" required>
+                    <input type="text" class="general" name="numero" placeholder="{{'GENE.NUME' | translate}}" ng-model="board.number" required>
                     <span class="has-error control-label" ng-show="
                         editBoard.numero.$invalid && editBoard.numero.$dirty">
                     {{'FORM.REQU' | translate}}
@@ -26,7 +28,7 @@
             </div>
 
             <label class="font02">{{'GENE.DSCA' | translate}}</label>
-            <input type="text" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="board.description">
+            <input type="text" class="general" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="board.description">
             <br />
             <div class="modal-footer">
                 <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i

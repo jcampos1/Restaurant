@@ -1,29 +1,33 @@
 <img src="../../images/bg-01.jpg" class="bg" alt="Background image">
 <img src="../../images/logo.png" class="logo" alt="Background image">
 <form name="userForm" class="login" novalidate>
-    <span ><img src="../../images/icon-plat01.png"  class="icon-login" alt="icon-login"></span>
-    
-    <p class="cls10" ng-show="messageStatus">{{ 'USER.' + messageStatus | translate }}</p>
-    <label class="font01">(*){{"GENE.USER" | translate}} </label>
-    <input type="text" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="credentials.email">
-    <span class="cls10" ng-show="
-        userForm.email.$invalid && userForm.email.$dirty">
-      {{"FORM.REQU" | translate}}
-    </span>
-    
-    <label class="font01 cls19">(*) {{"GENE.PASS" | translate}}</label>
-    <input type="password" name="password" placeholder="{{'GENE.PASS' | translate}}" autocomplete="off" ng-model="credentials.password" required>
-    <span class="cls10" ng-show="
-        userForm.password.$invalid && userForm.password.$dirty">
-        {{"FORM.REQU" | translate}}
-    </span>
-    <button class="button button2 flt-right cls19" ng-click="login()">{{'GENE.ACCE' | translate}}</button>
-    <a ui-sref="reset" class="cls11 cls12">{{"GENE.FORG_PASS" | translate}}</a>
-    <br>
+    <div class="cls21">
+        <label for="header" class="cls24"> LOGIN</label>
+    </div>
+    <div class="cls22">
+        <span class="cls25" ng-show="messageStatus">{{ 'USER.' + messageStatus | translate }}</span>
+        <div class="inner-addon left-addon">
+            <i class="glyphicon glyphicon-envelope cls26"></i>
+            <input type="email" autocomplete="off" class="login" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="credentials.email">
+            <span class="cls25" ng-show="
+                userForm.email.$invalid && userForm.email.$dirty">
+            {{"FORM.REQU" | translate}}
+            </span>
+        </div>
+        <div class="inner-addon left-addon">
+            <i class="glyphicon glyphicon-lock cls26"></i>
+            <input type="password" class="login" name="password" placeholder="{{'GENE.PASS' | translate}}" autocomplete="off" ng-model="credentials.password" required>
+            <span class="cls25" ng-show="
+                userForm.password.$invalid && userForm.password.$dirty">
+                {{"FORM.REQU" | translate}}
+            </span>
+        </div>
+        <div class="cls29">
+            <button class="btnLogin fontBtnLogin cls27" ng-click="login()">{{'GENE.ACCE' | translate}}</button>
+        </div>
+    </div>
+    <div class="cls23">
+        <a ui-sref="reset" class="fontForg">{{"GENE.FORG_PASS" | translate}}</a>
+    </div>
+    <!-- <span ><img src="../../images/icon-plat01.png"  class="icon-login" alt="icon-login"></span>-->
 </form>
-
-<div class="list-group">
-  <a class="list-group-item" ng-repeat="user in users">{{user.email}}&nbsp;
-    <i class="glyphicon glyphicon-remove pull-right"
-        ></i></a>
-</div>

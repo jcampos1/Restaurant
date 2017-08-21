@@ -123,25 +123,45 @@ angular.module("app").controller('DetailCategoryController',
 }]);
 
 angular.module("app").controller('NewCategoryController',
-  ['$scope', 'Category', 'cm01', 'ms01', '$uibModalInstance', 'notify', '$state', '$location', '$log', function($scope, Category, cm01, ms01, $uibModalInstance, notify,
+  ['$scope', 'Category', 'cm01', 'ms01', 'FileUploader', '$uibModalInstance', 'notify', '$state', '$location', '$log', function($scope, Category, cm01, ms01, FileUploader, $uibModalInstance, notify,
     $state, $location, $log) {
 
-      $scope.category = new Object();
-      
-      //Creación de mesa
-      $scope.save = function( form ) {
-        if( form.$valid ) {
-          Category.create($scope.category).$promise
-          .then(function(category) {
-            cm01.setEvnt03("emit");
-            ms01.msgSuccess();
-            $scope.cancel();
-          });
+    $scope.category = new Object();
+
+    //Creación de mesa
+    $scope.save = function( form ) {
+      if( form.$valid ) {
+        if( $scope.image ){
+          $scope.category.image= $scope.image.file.name
         }
+        Category.create($scope.category).$promise
+        .then(function(category) {
+          cm01.setEvnt03("emit");
+          ms01.msgSuccess();
+          $scope.cancel();
+          $scope.image.upload();
+        });
       }
-      $scope.cancel = function() {
-        $uibModalInstance.dismiss(false);
-      };
+    }
+
+    // create a uploader with options
+    var uploader = $scope.uploader = new FileUploader({
+      scope: $scope,                          // to automatically update the html. Default: $rootScope
+      url: '/api/containers/container1/upload',
+      formData: [
+        { key: 'value' }
+      ]
+    });
+
+    // REGISTER HANDLERS
+    // --------------------
+    uploader.onAfterAddingFile = function(item) {
+      $scope.image = item;
+    };
+
+    $scope.cancel = function() {
+      $uibModalInstance.dismiss(false);
+    };
 }]);
 
 angular.module("app").controller('EditCategoryController',

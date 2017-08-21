@@ -1,4 +1,6 @@
-<a class="a_icon" ng-click="$ctrl.newProduct()"><i class="fa fa-plus" aria-hidden="true"></i></a>
+<a class="a_icon" ng-click="$ctrl.newProduct()">
+    <img class="cls20" src="../../images/ico-new.png" alt="new">
+</a>
 
 <script type="text/ng-template" id="modalNewProduct.html">
     <div class="modal-header">
@@ -9,7 +11,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.CODE' | translate}}</label>
-                    <input type="text" name="code" placeholder="{{'GENE.CODE' | translate}}" ng-model="product.code" required>
+                    <input type="text" class="general" name="code" placeholder="{{'GENE.CODE' | translate}}" ng-model="product.code" required>
                     <span class="has-error control-label" ng-show="
                         newProduct.code.$invalid && newProduct.code.$dirty">
                     {{'FORM.REQU' | translate}}
@@ -17,7 +19,7 @@
                 </div>
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.NAME' | translate}} </label>
-                    <input type="text" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="product.name" required>
+                    <input type="text" class="general" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="product.name" required>
                     <span class="has-error control-label" ng-show="
                         newProduct.nombre.$invalid && newProduct.nombre.$dirty">
                     {{'FORM.REQU' | translate}}
@@ -45,9 +47,15 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12 col-xs-12">
                     <label class="font02">{{'GENE.DSCA' | translate}}</label>
-                    <input type="text" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="product.description">
+                    <input type="text" class="general" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="product.description">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <label class="font02">Seleccione una imagen</label>
+                    <input class="general" nv-file-select uploader="uploader" type="file"/>
                 </div>
             </div>
             <br />

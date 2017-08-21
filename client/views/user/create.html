@@ -1,4 +1,6 @@
-<a class="a_icon" ng-click="$ctrl.newUser()"><i class="fa fa-plus" aria-hidden="true"></i></a>
+<a class="a_icon" ng-click="$ctrl.newUser()">
+    <img class="cls20" src="../../images/ico-new.png" alt="new">
+</a>
 
 <script type="text/ng-template" id="modalNewUser.html">
     <div class="modal-header">
@@ -10,7 +12,7 @@
                 <p class="cls10">{{ messageStatus }}</p>
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.USER' | translate}}</label>
-                    <input type="text" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="user.email">
+                    <input type="text" class="general" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="user.email">
                     <span class="has-error control-label" ng-show="
                         newUser.email.$invalid && newUser.email.$dirty">
                     {{'FORM.REQU' | translate}}
@@ -18,7 +20,7 @@
                 </div>
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.PASS' | translate}}</label>
-                    <input type="password" name="password" placeholder="{{'GENE.PASS' | translate}}" autocomplete="off" ng-model="user.password" required>
+                    <input type="password" class="general" name="password" placeholder="{{'GENE.PASS' | translate}}" autocomplete="off" ng-model="user.password" required>
                     <span class="cls10" ng-show="
                         newUser.password.$invalid && newUser.password.$dirty">
                         {{'FORM.REQU' | translate}}
@@ -28,7 +30,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.NAME' | translate}} </label>
-                    <input type="text" name="name" placeholder="{{'GENE.NAME' | translate}}" ng-model="user.name" required>
+                    <input type="text" class="general" name="name" placeholder="{{'GENE.NAME' | translate}}" ng-model="user.name" required>
                     <span class="has-error control-label" ng-show="
                         newUser.name.$invalid && newUser.name.$dirty">
                     {{'FORM.REQU' | translate}}
@@ -36,7 +38,7 @@
                 </div>
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.PHONE' | translate}} </label>
-                    <input type="text" name="phone" placeholder="{{'GENE.PHONE' | translate}}" ng-model="user.phone" required>
+                    <input type="text" class="general" name="phone" placeholder="{{'GENE.PHONE' | translate}}" ng-model="user.phone" required>
                     <span class="has-error control-label" ng-show="
                         newUser.phone.$invalid && newUser.phone.$dirty">
                     {{'FORM.REQU' | translate}}
@@ -46,7 +48,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.ADDR' | translate}} </label>
-                    <input type="text" name="address" placeholder="{{'GENE.ADDR' | translate}}" ng-model="user.address" required>
+                    <input type="text" class="general" name="address" placeholder="{{'GENE.ADDR' | translate}}" ng-model="user.address" required>
                     <span class="has-error control-label" ng-show="
                         newUser.address.$invalid && newUser.address.$dirty">
                     {{'FORM.REQU' | translate}}
@@ -70,7 +72,7 @@
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
                     <label class="font02">(*) {{'GENE.COMM' | translate}} </label>
-                    <input type="text" name="comments" placeholder="{{'GENE.COMM' | translate}}" ng-model="user.comments">
+                    <input type="text" class="general" name="comments" placeholder="{{'GENE.COMM' | translate}}" ng-model="user.comments">
                 </div>
             </div>
             <div class="modal-footer">

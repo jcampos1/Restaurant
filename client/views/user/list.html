@@ -2,14 +2,14 @@
 <img src="../../images/fond-01.jpg" alt="fondo" class="fond01">
 
 <!-- logo -->
-<img src="../../images/logo02.png" class="logo2" alt="logo">
+<img src="../../images/logo.png" class="logo" alt="logo">
 
 <div class="container03">
     <!-- Iconos operaciones crud -->
     <ul class="cls01">
         <li>
             <a id="list" class="a_icon" ng-click="userFind( )">
-                <i class="fa fa-list" aria-hidden="true"></i>
+                <img class="cls20" src="../../images/ico-list.png" alt="list">
             </a>
             <label for="list" class="cls17"> {{"GENE.LIST" | translate}}</label>
         </li>
@@ -44,7 +44,7 @@
         <label for="listado" class="cls17 cls18">{{"GENE.USERS" | translate}}</label>
 
         <div class="cls05" ng-repeat="user in users" ng-click="selectedUser(user)">
-            <img src="../../images/icon-user01.png" alt="Imagen de fondo">
+            <img src="../../images/ico-user.png" alt="Imagen de fondo">
             <div class="cls09">
                 <p>{{ user.email }}</p>
             </div>

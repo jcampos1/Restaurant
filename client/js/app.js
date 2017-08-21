@@ -5,7 +5,7 @@
 
 angular
   .module('app', [
-    'lbServices', 'comunication01', 'myservices01', 
+    'lbServices', 'comunication01', 'myservices01', 'angularFileUpload',
     'ui.router', 'ngResource', 'oitozero.ngSweetAlert', 'cgNotify', 'localytics.directives', 'ui.bootstrap', 'pascalprecht.translate'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$httpProvider',  function($stateProvider,
@@ -53,10 +53,10 @@ angular
       templateUrl: 'views/user/list.html',
       controller: 'UserController'
     })
-    .state('todo', {
-        url: '/todo',
-        templateUrl: 'views/todo.html',
-        controller: 'TodoController'
+    .state('order', {
+        url: '/order',
+        templateUrl: 'views/order/create.html',
+        controller: 'OrderController'
       });
 
     $urlRouterProvider.otherwise('login');

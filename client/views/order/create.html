@@ -1,0 +1,65 @@
+<!-- Mesa y productos seleccionados -->
+<section class="cls32">
+    <div ng-repeat="product in lstProducts">
+        <img class="cls40" src="{{'../../images/storage/container1/'+product.image}}" alt="Imagen de producto">
+        <span class="cls41">{{ product.code }} / {{ product.price}}</span>
+        <input type="number" class="cls42" name="cant{{product.id}}" min="1">
+    </div>
+</section>
+<!--/Mesa y productos seleccionados -->
+
+<section class="cls30">
+    <!-- Barra de herramientas -->
+    <uib-tabset active="active">
+        <!-- Mesas -->
+        <uib-tab index="0">
+            <uib-tab-heading>
+                <img src="../../images/ico-mesa.png" alt="Icono mesa" style="width:120px; height: 80px;" ng-click="boardfind()">
+                <label for="mesas" class="cls17">{{'GENE.MESAS' | translate}}</label>
+            </uib-tab-heading>
+            <section class="cls31">
+                <!-- Entradas para las mesas -->
+                <div class="cls05" ng-repeat="board in boards">
+                    <span class="cls06 cls07"></span>
+                    <img src="../../images/ico-mesa.png" alt="Icono mesa" style="width:100%">
+                    <div class="cls09">
+                        <p>{{ board.number }} / {{ board.space }} {{'GENE.LUGA' | translate}}</p>
+                    </div>
+                </div>
+                <!--/Entradas para las mesas -->
+            </section>
+        </uib-tab>
+        <!--/Mesas -->
+        <uib-tab index="1" ng-click="productFind()">
+            <uib-tab-heading>
+                <img src="../../images/icon-menu01.png" alt="Norway" style="width:120px; height: 80px;">
+                <label for="mesas" class="cls17">{{'GENE.PROD' | translate}}</label>
+            </uib-tab-heading>
+            <label for="filtro" class="cls17 cls36"> {{filterProduct | uppercase}}</label>
+            <section class="cls34">
+                <!-- Entradas para los productos -->
+                <div class="cls05 cls39" ng-repeat="product in products">
+                    <!--<div class="cls37">
+                        <img src="../../images/ico-new.png" class="cls38" alt="icono nuevo">
+                    </div>-->
+                    <img src="{{'../../images/storage/container1/'+product.image}}" alt="Imagen de producto" ng-click="selectProduct(product)">
+                    <div class="cls09">
+                        <p>{{ product.code }} / {{ product.price}}</p>
+                    </div>
+                </div>
+                <!--/Entradas para los productos -->
+            </section>
+            <div class="cls35">
+                <ul>
+                    <li ng-repeat="category in categorys" class="cls03">
+                        <a ng-click="productsByCategory(category)" class="a_icon">
+                            <img src="{{'../../images/storage/container1/'+category.image}}" class="cls13">
+                            <label for="mesas" class="cls14">{{category.name}}</label>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </uib-tab>
+    </uib-tabset>
+    <!--/Barra de herramientas -->
+</section>

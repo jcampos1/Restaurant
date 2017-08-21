@@ -1,15 +1,26 @@
 <img src="../../images/bg-01.jpg" class="bg" alt="Background image">
-<img src="../../images/logo02.png" class="logo" alt="Background image">
+<img src="../../images/logo.png" class="logo" alt="Logo">
 <form name="userForm" class="login" novalidate>
-    <span ><img src="../../images/icon-plat01.png"  class="icon-login" alt="icon-login"></span>
-    
-    <p class="cls10" ng-show="messageStatus">{{ 'USER.' + messageStatus | translate }}</p>
-    <label class="font01">(*) {{'GENE.USER' | translate}}</label>
-    <input type="text" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="user.email">
-    <span class="cls10" ng-show="
-        userForm.email.$invalid && userForm.email.$dirty">
-      {{'FORM.REQU' | translate}}
-    </span>
-    <button class="button button2 flt-right" ng-click="reset()">{{'GENE.RECU' | translate}}</button>
-    <a ui-sref="login" ng-click="login()" class="cls11 cls12">{{'GENE.LOGI' | translate}}</a>
+    <!--<span ><img src="../../images/icon-plat01.png"  class="icon-login" alt="icon-login"></span>-->
+    <div class="cls21">
+        <label for="header" class="cls24">Resetear</label>
+    </div>
+    <div class="cls22">
+        <span class="cls25" ng-show="messageStatus">{{ 'USER.' + messageStatus | translate }}</span>
+        <div class="inner-addon left-addon">
+            <i class="glyphicon glyphicon-envelope cls26"></i>
+            <input type="email" autocomplete="off" class="login" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="user.email">
+            <span class="cls25" ng-show="
+                userForm.email.$invalid && userForm.email.$dirty">
+            {{"FORM.REQU" | translate}}
+            </span>
+        </div>
+        
+        <div class="cls29">
+            <button ng-disabled="!userForm.$valid" class="btnLogin fontBtnLogin cls27" ng-click="reset()">{{'GENE.RECU' | translate}}</button>
+        </div>
+    </div>
+    <div class="cls23">
+        <a ui-sref="login" class="fontForg">{{'GENE.LOGI' | translate}}</a>
+    </div>
 </form>

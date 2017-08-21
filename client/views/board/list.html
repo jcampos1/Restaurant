@@ -2,15 +2,14 @@
 <img src="../../images/fond-01.jpg" alt="fondo" class="fond01">
 
 <!-- logo -->
-<img src="../../images/logo02.png" class="logo2" alt="logo">
+<img src="../../images/logo.png" class="logo" alt="logo">
 
 <div class="container03">
     <!-- Iconos operaciones crud -->
     <ul class="cls01">
         <li>
             <a id="list" class="a_icon" ng-click="boardFind( )">
-                <i class="fa fa-list" aria-hidden="true">
-                </i>
+                <img class="cls20" src="../../images/ico-list.png" alt="list">
             </a>
             <label for="list" class="cls17">{{"GENE.LIST" | translate}}</label>
         </li>
@@ -28,7 +27,7 @@
         </li>
         <li>
             <a class="a_icon" ng-click="dropBoard()">
-                <i class="fa fa-times" aria-hidden="true"></i>
+                <img class="cls20" src="../../images/ico-trash.png" alt="trash">
             </a>
             <label for="list" class="cls17">{{"GENE.DELE" | translate}}</label>
         </li>
@@ -46,7 +45,7 @@
 
         <div class="cls05" ng-repeat="board in boards" ng-click="selectedBoard(board)">
             <span class="cls06 cls07"></span>
-            <img src="../../images/mesa-01.png" alt="Norway" style="width:100%">
+            <img src="../../images/ico-mesa.png" alt="Norway" style="width:100%">
             <div class="cls09">
                 <p>{{ board.number }} / {{ board.space }} {{'GENE.LUGA' | translate}}</p>
             </div>

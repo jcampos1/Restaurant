@@ -133,7 +133,7 @@ angular.module("app").controller('DetailProductController',
 }]);
 
 angular.module("app").controller('NewProductController',
-  ['$scope', 'Product', 'Category', 'cm01', 'ms01', '$uibModalInstance', '$state', '$location', '$log', function($scope, Product, Category, cm01, ms01, $uibModalInstance,
+  ['$scope', 'Product', 'Category', 'cm01', 'ms01', 'FileUploader', '$uibModalInstance', '$state', '$location', '$log', function($scope, Product, Category, cm01, ms01, FileUploader, $uibModalInstance,
     $state, $location, $log) {
 
       $scope.product = new Object();
@@ -148,14 +148,34 @@ angular.module("app").controller('NewProductController',
       //Creación de mesa
       $scope.save = function( form ) {
         if( form.$valid ) {
+          if( $scope.image ){
+            $scope.product.image= $scope.image.file.name
+          }
           Category.products.create({id: $scope.category.id}, $scope.product).$promise
           .then(function(product) {
             cm01.setEvnt05("emit");
             ms01.msgSuccess();
             $scope.cancel();
+            $scope.image.upload();
           });
         }
       }
+
+    // create a uploader with options
+    var uploader = $scope.uploader = new FileUploader({
+      scope: $scope,                          // to automatically update the html. Default: $rootScope
+      url: '/api/containers/container1/upload',
+      formData: [
+        { key: 'value' }
+      ]
+    });
+
+    // REGISTER HANDLERS
+    // --------------------
+    uploader.onAfterAddingFile = function(item) {
+      $scope.image = item;
+    };
+
       $scope.cancel = function() {
         $uibModalInstance.dismiss(false);
       };

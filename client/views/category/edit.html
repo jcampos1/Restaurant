@@ -1,4 +1,6 @@
-<a class="a_icon" ng-click="$ctrl.editCategory()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+<a class="a_icon" ng-click="$ctrl.editCategory()">
+    <img class="cls20" src="../../images/ico-edit.png" alt="edit">
+</a>
 
 <script type="text/ng-template" id="modalEditCategory.html">
     <div class="modal-header">
@@ -9,7 +11,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.NAME' | translate}}</label>
-                    <input type="text" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="category.name" required>
+                    <input type="text" class="general" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="category.name" required>
                     <span class="has-error control-label" ng-show="
                         editCategory.nombre.$invalid && editCategory.nombre.$dirty">
                     {{'FORM.REQU' | translate}}
@@ -17,7 +19,7 @@
                 </div>
                 <div class="col-sm-6">
                     <label class="font02">{{'GENE.DSCA' | translate}}</label>
-                    <input type="text" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="category.description">
+                    <input type="text" class="general" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="category.description">
                 </div>
             </div>
             <br />

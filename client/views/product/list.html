@@ -2,14 +2,14 @@
 <img src="../../images/fond-01.jpg" alt="fondo" class="fond01">
 
 <!-- logo -->
-<img src="../../images/logo02.png" class="logo2" alt="logo">
+<img src="../../images/logo.png" class="logo" alt="logo">
 
 <div class="container03">
     <!-- Iconos operaciones crud -->
     <ul class="cls01">
         <li>
             <a id="list" class="a_icon" ng-click="productFind( )">
-                <i class="fa fa-list" aria-hidden="true"></i>
+                <img class="cls20" src="../../images/ico-list.png" alt="list">
             </a>
             <label for="list" class="cls17">{{"GENE.LIST" | translate}}</label>
         </li>
@@ -27,7 +27,7 @@
         </li>
         <li>
             <a class="a_icon" ng-click="dropProduct()">
-                <i class="fa fa-times" aria-hidden="true"></i>
+                <img class="cls20" src="../../images/ico-trash.png" alt="trash">
             </a>
             <label for="list" class="cls17">{{"GENE.DELE" | translate}}</label>
         </li>
@@ -42,9 +42,8 @@
     <!-- Lista de productos -->
     <section class="cls04">
         <label for="listado" class="cls17 cls18">{{"GENE.PROD" | translate}}</label>
-
         <div class="cls05" ng-repeat="product in products" ng-click="selectedProduct(product)">
-            <img src="../../images/icon-menu01.png" alt="Imagen de fondo">
+            <img src="{{'../../images/storage/container1/'+product.image}}" alt="Imagen de producto">
             <div class="cls09">
                 <p>{{ product.code }} / {{ product.price}}</p>
             </div>

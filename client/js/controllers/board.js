@@ -166,6 +166,12 @@ angular.module("app").controller('editBoardController',
       };
 }]);
 
+angular.module("app").controller('SelectBoardController',
+  ['$scope', 'Board', 'cm01', 'ms01', '$state', '$location', '$log', function($scope, Board, cm01, ms01,
+    $state, $location, $log) {
+      
+}]);
+
 angular.module('app').component('newBoardComponent',
 {
       templateUrl: '../../views/board/create.html',
@@ -188,4 +194,10 @@ angular.module('app').component('detailBoardComponent',
 {
       templateUrl: '../../views/board/detail.html',
       controller : 'BoardController'
+});
+
+angular.module('app').component('selectBoardComponent',
+{
+      templateUrl: '../../views/board/select.html',
+      controller : 'SelectBoardController'
 });

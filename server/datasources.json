@@ -16,10 +16,16 @@
           "rejectUnauthorized": false
         },
         "auth": {
-          "user": "micorreo",
-          "pass": "micontrasena"
+          "user": "jcampos@ea-asc.com",
+          "pass": "jcampos1"
         }
       }
     ]
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./client/images/storage"
   }
 }

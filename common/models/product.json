@@ -22,6 +22,11 @@
     "description": {
       "type": "string"
     },
+    "image": {
+      "type": "string",
+      "required": true,
+      "default": "sin-img-01.png"
+    },
     "active": {
       "type": "boolean",
       "required": true,

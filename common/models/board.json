@@ -18,6 +18,11 @@
     "description": {
       "type": "string"
     },
+    "free": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
     "active": {
       "type": "boolean",
       "required": true,

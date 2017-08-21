@@ -1,4 +1,6 @@
-<a class="a_icon" ng-click="$ctrl.editProduct()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+<a class="a_icon" ng-click="$ctrl.editProduct()">
+    <img class="cls20" src="../../images/ico-edit.png" alt="edit">
+</a>
 
 <script type="text/ng-template" id="modalEditProduct.html">
     <div class="modal-header">
@@ -9,7 +11,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.CODE' | translate}}</label>
-                    <input type="text" name="code" placeholder="{{'GENE.CODE' | translate}}" ng-model="product.code" required>
+                    <input type="text" class="general" name="code" placeholder="{{'GENE.CODE' | translate}}" ng-model="product.code" required>
                     <span class="has-error control-label" ng-show="
                         editProduct.code.$invalid && editProduct.code.$dirty">
                     {{'FORM.REQU' | translate}}
@@ -17,7 +19,7 @@
                 </div>
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.NAME' | translate}}</label>
-                    <input type="text" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="product.name" required>
+                    <input type="text" class="general" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="product.name" required>
                     <span class="has-error control-label" ng-show="
                         editProduct.nombre.$invalid && editProduct.nombre.$dirty">
                     {{'FORM.REQU' | translate}}
@@ -47,7 +49,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label class="font02">{{'GENE.DSCA' | translate}}</label>
-                    <input type="text" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="product.description">
+                    <input type="text" class="general" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="product.description">
                 </div>
             </div>
             <br />

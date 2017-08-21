@@ -1,4 +1,6 @@
-<a class="a_icon" ng-click="$ctrl.newCategory()"><i class="fa fa-plus" aria-hidden="true"></i></a>
+<a class="a_icon" ng-click="$ctrl.newCategory()">
+    <img class="cls20" src="../../images/ico-new.png" alt="list">
+</a>
 
 <script type="text/ng-template" id="modalNewCategory.html">
     <div class="modal-header">
@@ -9,7 +11,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.NAME' | translate}}</label>
-                    <input type="text" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="category.name" required>
+                    <input type="text" class="general" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="category.name" required>
                     <span class="has-error control-label" ng-show="
                         newCategory.nombre.$invalid && newCategory.nombre.$dirty">
                     {{'FORM.REQU' | translate}}
@@ -17,7 +19,13 @@
                 </div>
                 <div class="col-sm-6">
                    <label class="font02">{{'GENE.DSCA' | translate}}</label>
-                    <input type="text" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="category.description">
+                    <input type="text" class="general" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="category.description">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <label class="font02">Seleccione una imagen</label>
+                    <input class="general" nv-file-select uploader="uploader" type="file"/>
                 </div>
             </div>
             <br />
