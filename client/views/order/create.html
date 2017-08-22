@@ -1,10 +1,46 @@
 <!-- Mesa y productos seleccionados -->
 <section class="cls32">
-    <div ng-repeat="product in lstProducts">
-        <img class="cls40" src="{{'../../images/storage/container1/'+product.image}}" alt="Imagen de producto">
-        <span class="cls41">{{ product.code }} / {{ product.price}}</span>
-        <input type="number" class="cls42" name="cant{{product.id}}" min="1">
+    {{order.board.number}}
+    <div ng-repeat="(key, item) in lstItems" class="cls43">
+        
+        <!-- Imagen del producto -->
+        <img class="cls40" src="{{'../../images/storage/container1/'+item.product.image}}" alt="Imagen de producto">
+        <!--/Imagen del producto -->
+
+        <!-- Descripción del prod y cantidades -->
+        <div class="cls44">
+            <!-- Descripcion -->
+            <div class="cls46">
+                <span class="cls17">{{ item.product.name }}</span>
+                <span class="cls17">{{ item.product.price}}</span>
+            </div>
+            <!-- Cantidades -->
+            <div class="cls47">
+                <a class="cls48" href="" ng-click=""> <span class="cls50 glyphicon glyphicon-plus-sign"></span></a>
+                <input class="cls49" type="number" value="1" class="cls42" name="cant{{key}}" min="1">
+                <a class="cls48 cls51" href="" ng-click=""><span class=" cls50 glyphicon glyphicon-minus-sign"></span></a>
+            </div>
+        </div>
+        <!--/Descripción del prod y cantidades -->
+
+        <!-- Adiciones y consideraciones -->
+        <div class="cls45">
+            
+            <button ng-click="quitItem(key, item.product)">quitar</button>
+            <ul>
+                <li ng-repeat="add in product.lstAdd">
+                    {{add.description}}
+                </li>
+            </ul>
+            <ul>
+                <li ng-repeat="quit in product.lstQuit">
+                    {{quit.description}}
+                </li>
+            </ul>
+        </div>
+        <!--/Adiciones y consideraciones -->
     </div>
+    TOTAL: {{total}}
 </section>
 <!--/Mesa y productos seleccionados -->
 
@@ -19,7 +55,7 @@
             </uib-tab-heading>
             <section class="cls31">
                 <!-- Entradas para las mesas -->
-                <div class="cls05" ng-repeat="board in boards">
+                <div class="cls05" ng-repeat="board in boards" ng-click="selectBoard(board)">
                     <span class="cls06 cls07"></span>
                     <img src="../../images/ico-mesa.png" alt="Icono mesa" style="width:100%">
                     <div class="cls09">
@@ -38,11 +74,11 @@
             <label for="filtro" class="cls17 cls36"> {{filterProduct | uppercase}}</label>
             <section class="cls34">
                 <!-- Entradas para los productos -->
-                <div class="cls05 cls39" ng-repeat="product in products">
+                <div class="cls05 cls39" ng-repeat="product in products" ng-click="selectProduct(product)"> 
                     <!--<div class="cls37">
                         <img src="../../images/ico-new.png" class="cls38" alt="icono nuevo">
                     </div>-->
-                    <img src="{{'../../images/storage/container1/'+product.image}}" alt="Imagen de producto" ng-click="selectProduct(product)">
+                    <img src="{{'../../images/storage/container1/'+product.image}}" alt="Imagen de producto">
                     <div class="cls09">
                         <p>{{ product.code }} / {{ product.price}}</p>
                     </div>

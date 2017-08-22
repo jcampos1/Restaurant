@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.PREC' | translate}}</label>
-                    <input type="number" name="price" min="0" placeholder="{{'GENE.PREC' | translate}}" ng-model="product.price" required>
+                    <input class="general" type="number" name="price" min="0" placeholder="{{'GENE.PREC' | translate}}" ng-model="product.price" required>
                     <span class="has-error control-label" ng-show="
                         editProduct.price.$invalid && editProduct.price.$dirty">
                     {{'FORM.REQU' | translate}}

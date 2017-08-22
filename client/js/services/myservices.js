@@ -16,6 +16,18 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
         });
     },
 
+    //Alerta cuando se selecciona una segunda mesa para el pedido
+    twiceBoard: function() {
+        SweetAlert.swal({
+            title: "Aviso",
+            text: "Usted ya ha seleccionado una mesa para el pedido",
+            type: "warning",
+            confirmButtonText: "Ok",
+            closeOnConfirm: true}, 
+            function(){ 
+        });
+    },
+
     dropBoard: function( ) {
         SweetAlert.swal({
             title: "Confirmación",
@@ -74,8 +86,19 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
         };
     },
 
+    /************************ NOTIFICACIONES *************************** */
     msgSuccess: function( ) {
         notify({ message:'Operación realizada exitosamente', position: 'right', classes:'alert-success', templateUrl: urlNotify} );
+    },
+
+    //notificacion para eliminacion de item
+    msgDestroy: function( ) {
+        notify({ message:'Cancelado', duration: 1000, position: 'right', classes:'alert-danger', templateUrl: urlNotify} );
+    },
+
+    //Notificacion para adicion de item
+    msgAdd: function( ) {
+        notify({ message:'Añadido', duration: 1000, position: 'right', classes:'alert-success', templateUrl: urlNotify} );
     },
 
     msgSendEmail: function( ) {
@@ -84,7 +107,28 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
 
     msgResetPassword: function( ) {
         notify({ message:'Su contraseña fue establecida exitosamente', position: 'right', classes:'alert-success', templateUrl: urlNotify} );
-    }
+    },
+    /********************************************************************** */
+
+    /************************ FUNCIONES GENERALES ************************* */
+    
+    //Verifica si el usuario logueado posee un rol administrador
+    hasRole: function( roles, rol ) {
+        var ret = false;
+        roles.roles.forEach(function(element) {
+            if( element.name == rol ){
+                ret = true;
+            }
+        }, this);
+        return ret;
+    },
+
+    //Elimina un elemento de un array
+    arrayDestroyByIndex: function ( array, $index ) {
+        array.splice($index, 1);
+    },
+
+    /*********************************************************************** */
   };
 });
 

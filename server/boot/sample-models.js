@@ -112,10 +112,10 @@ module.exports = function(app) {
 
   /***************** CREACIÓN CATEGORIAS INICIALES *****************/
   Category.create([
-    {name: "Xis", description: "Descripción Xis"},
-    {name: "Bebidas", description: "Descripción Bebidas"},
-    {name: "Petiscos", description: "Descripción Petiscos"},
-    {name: "Sobremesa", description: "Descripción Sobremesa"}
+    {name: "Xis", description: "Descripción Xis", image: 'sin-img-01.png'},
+    {name: "Bebidas", description: "Descripción Bebidas", image: 'sin-img-01.png'},
+    {name: "Petiscos", description: "Descripción Petiscos", image: 'sin-img-01.png'},
+    {name: "Sobremesa", description: "Descripción Sobremesa", image: 'sin-img-01.png'}
   ], function(err, categorys) {
     if (err) throw err;
 

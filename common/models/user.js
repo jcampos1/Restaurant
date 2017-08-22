@@ -119,37 +119,38 @@ module.exports = function(User) {
   /******************************************/
 
   /******Encontrar todos los perfiles de un usuario******/
-  /*User.findRolesByUser = function(user, cb) {
+  User.findRolesByUser = function(user, cb) {
     var app = User.app;
     var Role = app.models.Role;
     var RoleMapping = app.models.RoleMapping;
-    var roles = new Array();
+
     //Se encuentra todos los perfiles del usuario
-    RoleMapping.find({where: {principalId: user.id }},
+    RoleMapping.find({where: {principalId: user }},
       function(err, models) {
-      if (err) { cb (err); }
-
-      models.forEach(function(item) {
-          Role.findById(item.roleId,
-            function(err, role) {
-              if (err) { cb (err); }
-              roles.push(role);
+          if (err) { cb (err); }
+          
+          var ids = new Array();
+          var obj = new Object();
+          //Se construye el filtro para todos los roles a buscar
+          models.forEach(function(roleMapping){
+              obj.id = roleMapping.roleId;
+              ids.push(obj);
+              obj = new Object();
           });
-      });
-    });
-
-    var RoleMapping = User.app.models.RoleMapping;
-    RoleMapping.find({"where": {"principalId": userInstance.id}}, function(err, models){
-      if(err){ cb(err); }
-      cb(roles);
-    });
+      
+          Role.find({where: {or:ids}}, 
+            function( err, roles ){
+                if (err) { cb (err); }
+                cb(null, roles);
+          });
+    })
   }
 
   User.remoteMethod('findRolesByUser', {
-        accepts: {arg: 'user', type: 'object', required: true},
+        accepts: {arg: 'user', type: 'number', required: true},
         returns: {arg: 'roles', type: 'array'},
         http: {verb: 'get', status: 200}
-  });*/
+  });
   /******************************/
 
   /*****Evento para el envio de email de reseteo de contraseña*****/

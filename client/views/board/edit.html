@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.LUGA' | translate}}</label>
-                    <input type="number" name="lugares" min="0" max="16" placeholder="{{'GENE.LUGA' | translate}}" ng-model="board.space" required>
+                    <input class="general" type="number" name="lugares" min="0" max="16" placeholder="{{'GENE.LUGA' | translate}}" ng-model="board.space" required>
                     <span class="has-error control-label" ng-show="
                         editBoard.lugares.$invalid && editBoard.lugares.$dirty">
                     {{'FORM.REQU' | translate}}

@@ -78,8 +78,6 @@ angular
         $scope.productFind = function( ) {
           Product.find({"filter":{"where": {"active":"true"}}}).$promise
           .then(function(results) {
-            $log.info("LOS PRODUCTOS SON");
-            $log.info(results);
             $scope.products = results;
           });
         }

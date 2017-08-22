@@ -5,18 +5,38 @@
 
 angular
   .module('app')
-  .controller('LoginController', ['$scope', '$http', 'cm01', 'ms01', 'ms02', 'SweetAlert', '$state', 'User', '$location', '$log', function($scope, $http, cm01, ms01, ms02, SweetAlert,
-      $state, User, $location, $log) {
+  .controller('LoginController', ['$scope', '$http', 'cm01', 'ms01', 'ms02', 'SweetAlert', '$state', 'User', 'Role', '$location', '$log', function($scope, $http, cm01, ms01, ms02, SweetAlert,
+      $state, User, Role, $location, $log) {
     
       var vm = this;
       $scope.users = [];
+    
+    //Encuentra todos los roles de la aplicacion
+    Role.find().$promise.then(
+      function(roles){
+        cm01.setRoles(roles);
+    });
 
     /*Inicio de sesión*/
     $scope.login = function() {
       User.login($scope.credentials, function() {
         $scope.messageStatus = "";
-        $state.go("boardList");
-        cm01.setEvnt07("emit");
+        User.findRolesByUser({user: User.getCurrentId()},
+        function(roles) {
+            $log.info(roles);
+            cm01.setEvnt07("emit");
+            if( ms01.hasRole(roles, "Administrador") ){
+                $state.go("boardList");
+            }else{
+                if( ms01.hasRole(roles, "Cajero") ){
+                    $state.go("order");
+                }else{
+                  $state.go("order");
+                }
+            }
+        });
+        //$state.go("boardList");
+        
         /*var next = $location.nextAfterLogin || '/';
         $location.nextAfterLogin = null;
         $location.path(next);*/
@@ -90,7 +110,6 @@ angular
 
     //Muestra en detalle la información
     vm.detailUser = function() {
-      console.log("SE MUESTRA MODAL");
       if( cm01.isValid(cm01.getData04()) ) {
         var modalInstance = $uibModal.open({
           animation : true,
@@ -111,8 +130,6 @@ angular
     $scope.userFind = function( ) {
       User.find().$promise
       .then(function(results) {
-        $log.info("LOS USUARIOS SON:");
-        $log.info(results);
         $scope.users = results;
       });
     }

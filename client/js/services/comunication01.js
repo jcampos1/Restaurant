@@ -18,6 +18,7 @@ angular.module("comunication01").factory('cm01', function($log) {
 		data02: null, //Categoria Seleccionada
 		data03: null, //Producto Seleccionado
 		data04: null, //Usuario Seleccionado
+		roles: null,  //Roles de la aplicacion
 			
 		getEvnt01: function() {
 					return this.evnt01;
@@ -96,6 +97,12 @@ angular.module("comunication01").factory('cm01', function($log) {
 		},
 		setData04: function(data) {
 				this.data04 = data;
+		},
+		getRoles: function() {
+				return this.roles;
+		},
+		setRoles: function(data) {
+				this.roles = data;
 		},
 		isValid: function(data) {
 			return data!=null && data!=undefined;
