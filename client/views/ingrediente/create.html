@@ -1,0 +1,49 @@
+<a class="a_icon" ng-click="$ctrl.newIngrediente()">
+    <img class="cls20" src="../../images/ico-new.png" alt="list">
+</a>
+
+<script type="text/ng-template" id="modalNewIngrediente.html">
+    <div class="modal-header">
+        <h3 class="box-title">{{'GENE.NEW' | translate}}</h3>
+    </div>
+    <div class="modal-body">
+        <form name="newIngrediente" novalidate>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="font02">(*) {{'GENE.NAME' | translate}}</label>
+                    <input class="general" type="text" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="ingrediente.name" required>
+                    <span class="has-error control-label" ng-show="
+                        newIngrediente.nombre.$invalid && newIngrediente.nombre.$dirty">
+                    {{'FORM.REQU' | translate}}
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                   <label class="font02">{{'GENE.TIPO' | translate}}</label>
+                    <!--<input type="text" name="tipo" placeholder="{{'GENE.TIPO' | translate}}" ng-model="ingrediente.type">-->
+                    <select chosen name="tipo"
+                            data-placeholder-text-single="'{{'GENE.LBL02' | translate}}'"
+                            no-results-text="'{{'GENE.LBL01' | translate}}'"
+                            ng-model="type"
+                            ng-options="typ as typ.dsca for typ in types track by typ.value">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <label class="font02">Seleccione una imagen</label>
+                    <input class="general" nv-file-select uploader="uploader" type="file"/>
+                </div>
+            </div>
+            <br />
+            <div class="modal-footer">
+                <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
+                    class="fa fa-close"></i>{{'GENE.CANC' | translate}}
+                </a> <a ng-disabled="!newIngrediente.$valid" ng-click="save(newIngrediente)"
+                    class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
+                    {{'GENE.GUAR' | translate}}
+                </a>
+            </div>
+        </form>
+    </div>
+</script>

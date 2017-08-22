@@ -49,6 +49,10 @@
     "dataSource": "db",
     "public": true
   },
+  "ingrediente": {
+    "dataSource": "db",
+    "public": true
+  },
   "container": {
     "dataSource": "storage",
     "public": true

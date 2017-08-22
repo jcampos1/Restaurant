@@ -1,0 +1,30 @@
+<a class="a_icon" ng-click="$ctrl.detailIngrediente()">
+    <img class="cls20" src="../../images/ico-detail.png" alt="detail">
+</a>
+
+<script type="text/ng-template" id="modalDetailIngrediente.html">
+    <div class="modal-header">
+        <h3 class="box-title">{{'GENE.DETA' | translate}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6">
+                <label for="">{{'GENE.NAME' | translate}}</label>
+                {{ingrediente.name}}
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <label for="">{{'GENE.ACTI' | translate}}</label>
+                {{ingrediente.active}}
+            </div>
+            <div class="col-xs-12 col-sm-12">
+                <label for="">{{'GENE.TIPO' | translate}}</label>
+                {{type}}
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
+            class="fa fa-close"></i> {{'GENE.CANC' | translate}}
+        </a>
+    </div>
+</script>

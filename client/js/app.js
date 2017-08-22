@@ -8,6 +8,11 @@ angular
     'lbServices', 'comunication01', 'myservices01', 'angularFileUpload',
     'ui.router', 'ngResource', 'oitozero.ngSweetAlert', 'cgNotify', 'localytics.directives', 'ui.bootstrap', 'pascalprecht.translate'
   ])
+.constant('INGR', 
+[
+{ value: 0, dsca: "Observación"}, 
+{ value: 1, dsca: "Adicional"}
+])
   .config(['$stateProvider', '$urlRouterProvider', '$httpProvider',  function($stateProvider,
       $urlRouterProvider, $httpProvider) {
 
@@ -53,6 +58,11 @@ angular
       templateUrl: 'views/user/list.html',
       controller: 'UserController'
     })
+    .state('ingredienteList', {
+      url: '/ingredienteList',
+      templateUrl: 'views/ingrediente/list.html',
+      controller: 'IngredienteController'
+    })
     .state('order', {
         url: '/order',
         templateUrl: 'views/order/create.html',
@@ -82,6 +92,8 @@ angular
       "MESAS":        "Mesas",
       "CATE":         "Categoria",
       "PROD":         "Produtos",
+      "INGRE":        "Ingrediente",
+      "INGRES":       "Ingredientes",
       "NUME":         "Números",
       "LUGA":         "Lugares",
       "DSCA":         "Descripción",
@@ -92,6 +104,7 @@ angular
       "CODE":         "Código",
       "PREC":         "Precio",
       "ROLES":        "Roles",
+      "TIPO":         "Tipo",
       "ACCE":         "Acceder",
       "SALI":         "Salir",
       "PHONE":        "Teléfono",
@@ -133,6 +146,8 @@ angular
       "MESAS":        "Mesas",
       "CATE":         "Categoria",
       "PROD":         "Productos",
+      "INGRE":        "Ingrediente",
+      "INGRES":       "Ingredientes",
       "NUME":         "Números",
       "LUGA":         "Lugares",
       "DSCA":         "Descripción", 
@@ -143,6 +158,7 @@ angular
       "CODE":         "Código",
       "PREC":         "Precio",
       "ROLES":        "Roles",
+      "TIPO":         "Tipo",
       "LBL01":        "Sin resultados",
       "ACCE":         "Acceder",
       "SALI":         "Salir",

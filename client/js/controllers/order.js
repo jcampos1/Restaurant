@@ -27,24 +27,41 @@ angular
 
         //Agrega un producto a un pedido
         $scope.selectProduct = function ( product ) {
-            order.product = product;
-            order.cant = 1;
-            order.lstAdd = new Array();
-            order.lstQuit = new Array();
+            $scope.item = new Object();
+            $scope.item.product = product;
+            $scope.item.cant = 1;
+            $scope.item.lstAdd = new Array();
+            $scope.item.lstQuit = new Array();
             $scope.total += product.price; 
 
-            $scope.lstItems.push(order);
+            $scope.lstItems.push($scope.item);
             ms01.msgAdd();
         }
 
         //Cancela un item del pedido
         $scope.quitItem = function( $index, product ) {
-            $scope.total -= product.price;
+            $scope.total -= product.price*$scope.lstItems[$index].cant;
             ms01.arrayDestroyByIndex( $scope.lstItems, $index );
             ms01.msgDestroy();
         }
 
-        $scope.Inc
+        //Aumentar la cantidad pedida de un producto seleccionado
+        $scope.aument = function( $index ) {
+          var item = $scope.lstItems[$index];
+          item.cant++;
+          $scope.total += item.product.price;
+          $scope.lstItems[$index] = item;
+          $("#cant"+$index).val(item.cant);
+        }
+
+        //Reducir la cantidad pedida de un producto seleccionado
+        $scope.reduc = function( $index ) {
+          var item = $scope.lstItems[$index]
+          item.cant--;
+          $scope.total -= item.product.price;
+          $scope.lstItems[$index] = item;
+          $("#cant"+$index).val(item.cant);
+        }
 
         //Encuentra todas las mesas con un filtro
         $scope.boardFind = function( ) {

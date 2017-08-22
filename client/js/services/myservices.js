@@ -79,6 +79,23 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
         });
     },
 
+    dropIngrediente: function( ) {
+        SweetAlert.swal({
+            title: "Confirmación",
+            text: "¿Seguro de eliminar el ingrediente: " + cm01.getData05().name + "?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Ok",
+            closeOnConfirm: true,
+            closeOnCancel: true}, 
+            function(isConfirm){
+                if (isConfirm) {
+                    cm01.setEvnt11("emit");
+                }
+        });
+    },
+
     sidebarRightAdmin: function( scope ) {
         scope.isActive = function (viewLocation) {
             var active = (viewLocation === $location.path());
