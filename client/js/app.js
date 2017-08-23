@@ -114,6 +114,8 @@ angular
       "LOGI":         "iniciar sesión",
       "NEWPASS":      "Nueva contraseña",
       "CONF":         "Confirmación",
+      "CONF2":        "Confirmar",
+      "INSI":         "¿Comer aqui?",
 
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",
@@ -169,6 +171,8 @@ angular
       "LOGI":         "iniciar sesión",
       "NEWPASS":      "Nueva contraseña",
       "CONF":         "Confirmación",
+      "CONF2":        "Confirmar",
+      "INSI":         "¿Comer aqui?",
       
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",

@@ -159,6 +159,7 @@ form.login:hover{
     font-weight: bold;
 }
 
+
 input.login {
     width: 100%;
     margin-top: 40px;
@@ -688,21 +689,76 @@ ul li.cls03:hover {
 }
 
 .cls54 {
-    border: 1px solid blue;
+    border: 2px solid rgba(211, 69, 59, 1);
     width: 100%;
-    height: 20%;
-    position: absolute;
-    left: 0;
-    bottom: 60px;
+    padding: 5px;
+    box-shadow: 0 4px 8px 0 rgba(211, 69, 59, 0.2), 0 6px 20px 0 rgba(211, 69, 59, 0.19);
+    margin-top: 2%;
+    height: 8%;
+    background: rgba(000, 128, 000, 0.4);
 }
 
 .cls55 {
-    border: 1px solid green;
     width: 100%;
-    height: 60%;
-    position: relative;
-    left: 0;
+    height: 72%;
+    margin-bottom: 6%;
     overflow: auto;
+}
+
+.cls63 {
+    height: 8%;
+    margin-bottom: 4%;
+}
+
+.cls56 {
+    width: 30%;
+    height: 100%;
+    float: left;
+}
+
+.cls57 {
+    width: 70%;
+    height: 100%;
+    float: left;
+}
+
+.cls58 {
+    color: rgba(211, 69, 59, 1);
+}
+
+.cls59 {
+    float: right;
+}
+
+.cls60 {
+    width: 30%;
+    height: 100%;
+}
+
+.cls61 {
+    padding: 2px;
+    font-size: 22px;
+    background-color: rgba(211, 69, 59, 1);
+    width: 100%;
+    height: 100%;
+}
+
+.cls62 {
+    font-size: 24px;
+}
+
+.cls64{
+    width: 20px;
+    height: 20px;
+    background: rgba(211, 69, 59, 1);
+}
+
+.cls65 {
+    font-size: 16px;
+}
+
+.cls66 {
+    margin-bottom: 0;
 }
 
 .cls52 {
@@ -782,10 +838,11 @@ ul li.cls03:hover {
 
 .cls35 {
     border: 1px solid blue;
-    width: 100px;
+    width: 10%;
     height: 100%;
     position: absolute;
-    right: 0;
+    text-align: center;
+    right: 5%;
 }
 
 .cls36 {

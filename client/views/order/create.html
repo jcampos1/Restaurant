@@ -1,6 +1,17 @@
 <!-- Mesa y productos seleccionados -->
 <section class="cls32">
-    <label ng-show="order.board.number" for="mesa" class="cls17 cls18"> #{{order.board.number}}</label>
+    <div class="cls63">
+        <!-- Mesa seleccionada -->
+        <label for="mesa" class="cls17 cls18 cls66"> #{{order.board.number}}</label>
+        <!--/Mesa seleccionada -->
+        <!-- ¿Para llevar? -->
+        <label class="checkbox-inline">
+            <input class="form-control a_icon cls64" type="checkbox" id="checkboxEnLinea1" value="opcion_1" >
+             <span class="cls17 cls65"> {{'GENE.INSI' | translate }}</span>
+        </label>
+        <!--/¿Para llevar? -->
+    </div>
+    
     <section class="cls55">
         <div ng-repeat="(key, item) in lstItems" class="cls43">
 
@@ -42,7 +53,17 @@
         </div>
     </section>
     <div class="cls54">
-        {{total}}
+        <div class="cls56">
+            <button ng-click="confirm()" class="button2 cls61">
+                <span class="glyphicon glyphicon-ok-sign"></span>
+                {{ 'GENE.CONF2' | translate }}
+					
+				</button>
+        </div>
+        <div class="cls57">
+            <label for="total" class="cls17 cls59 cls62">Total: <span class="cls58 cls62">{{total}}</span></label>
+            <img src="../../images/ico-pay.png" class="cls60">
+        </div>
     </div>
     
 </section>
@@ -50,11 +71,11 @@
 
 <section class="cls30">
     <!-- Barra de herramientas -->
-    <uib-tabset active="active">
+    <uib-tabset active="active" ng-click="boardfind()">
         <!-- Mesas -->
         <uib-tab index="0">
             <uib-tab-heading>
-                <img src="../../images/ico-mesa.png" alt="Icono mesa" style="width:120px; height: 80px;" ng-click="boardfind()">
+                <img src="../../images/ico-mesa.png" alt="Icono mesa" style="width:120px; height: 80px;">
                 <label for="mesas" class="cls17">{{'GENE.MESAS' | translate}}</label>
             </uib-tab-heading>
             <section class="cls31">
@@ -70,6 +91,8 @@
             </section>
         </uib-tab>
         <!--/Mesas -->
+
+        <!-- Productos -->
         <uib-tab index="1" ng-click="productFind()">
             <uib-tab-heading>
                 <img src="../../images/icon-menu01.png" alt="Norway" style="width:120px; height: 80px;">
@@ -100,6 +123,40 @@
                 </ul>
             </div>
         </uib-tab>
+        <!--/Productos -->
+
+        <!-- Adicionales -->
+        <uib-tab index="2" ng-click="ingredienteFind()">
+            <uib-tab-heading>
+                <img src="../../images/ico-ingr.png" alt="Norway" style="width:120px; height: 80px;">
+                <label for="mesas" class="cls17">{{'GENE.INGRE' | translate}}</label>
+            </uib-tab-heading>
+            <label for="filtro" class="cls17 cls36"> {{filterIngrediente | uppercase}}</label>
+            <section class="cls34">
+                <!-- Entradas para los ingredientes -->
+                <div class="cls05 cls39" ng-repeat="ingrediente in ingredientes" ng-click="selectIngrediente(ingrediente)"> 
+                    <!--<div class="cls37">
+                        <img src="../../images/ico-new.png" class="cls38" alt="icono nuevo">
+                    </div>-->
+                    <img src="{{'../../images/storage/container1/'+ingrediente.image}}" alt="Imagen de ingrediente">
+                    <div class="cls09">
+                        <p>{{ ingrediente.name }} <span ng-if="ingrediente.type == 1">/ {{ingrediente.price}}</span></p>
+                    </div>
+                </div>
+                <!--/Entradas para los productos -->
+            </section>
+            <div class="cls35">
+                <ul>
+                    <li ng-repeat="type in types" class="cls03">
+                        <a ng-click="ingredientesByType(type)" class="a_icon">
+                            <img src="../../images/storage/container1/sin-img-01.png" class="cls13">
+                            <label for="mesas" class="cls14">{{type.dsca}}</label>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </uib-tab>
+        <!--/Adicionales -->
     </uib-tabset>
     <!--/Barra de herramientas -->
 </section>
