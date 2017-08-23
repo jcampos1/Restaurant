@@ -11,13 +11,23 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.NAME' | translate}}</label>
-                    <input type="text" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="ingrediente.name" required>
+                    <input class="general" type="text" name="nombre" placeholder="{{'GENE.NAME' | translate}}" ng-model="ingrediente.name" required>
                     <span class="has-error control-label" ng-show="
                         editIngrediente.nombre.$invalid && editIngrediente.nombre.$dirty">
                     {{'FORM.REQU' | translate}}
                     </span>
                 </div>
                 <div class="col-sm-6">
+                    <label class="font02">(*) {{'GENE.PREC' | translate}}</label>
+                    <input class="general" type="number" name="price" min="0" placeholder="{{'GENE.PREC' | translate}}" ng-model="ingrediente.price" required>
+                    <span class="has-error control-label" ng-show="
+                        editIngrediente.price.$invalid && editIngrediente.price.$dirty">
+                    {{'FORM.REQU' | translate}}
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
                     <label class="font02">{{'GENE.TIPO' | translate}}</label>
                     <!--<input type="text" name="tipo" placeholder="{{'GENE.TIPO' | translate}}" ng-model="ingrediente.type">-->
                     <select chosen name="tipo"
