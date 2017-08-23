@@ -687,6 +687,23 @@ ul li.cls03:hover {
     margin-right: 2%;
 }
 
+.cls54 {
+    border: 1px solid blue;
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    left: 0;
+    bottom: 60px;
+}
+
+.cls55 {
+    border: 1px solid green;
+    width: 100%;
+    height: 60%;
+    position: relative;
+    left: 0;
+    overflow: auto;
+}
 
 .cls52 {
     position: relative;

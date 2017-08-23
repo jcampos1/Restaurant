@@ -115,7 +115,8 @@ module.exports = function(app) {
     {name: "Xis", description: "Descripción Xis", image: 'sin-img-01.png'},
     {name: "Bebidas", description: "Descripción Bebidas", image: 'sin-img-01.png'},
     {name: "Petiscos", description: "Descripción Petiscos", image: 'sin-img-01.png'},
-    {name: "Sobremesa", description: "Descripción Sobremesa", image: 'sin-img-01.png'}
+    {name: "Sobremesa", description: "Descripción Sobremesa", image: 'sin-img-01.png'},
+    {"name": "Ensaladas","description": "Todas las ensaladas","image": "icon-ens01.png"}
   ], function(err, categorys) {
     if (err) throw err;
 
