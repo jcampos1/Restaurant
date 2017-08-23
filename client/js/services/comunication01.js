@@ -15,12 +15,14 @@ angular.module("comunication01").factory('cm01', function($log) {
 		evnt09: null, //Confirmación de eliminación de usuario
 		evnt10: null, //Actualizar lista de ingredientes
 		evnt11: null, //Confirmación de eliminación de ingrediente
+		evnt11: null, //Confirmación de eliminación de ingrediente
 
 		data01: null, //Mesa seleccionada
 		data02: null, //Categoria Seleccionada
 		data03: null, //Producto Seleccionado
 		data04: null, //Usuario Seleccionado
 		data05: null, //Ingrediente Seleccionado
+		data06: null, //Producto seleccionado para agregar ingrediente (adicional o principal)
 		roles: null,  //Roles de la aplicacion
 			
 		getEvnt01: function() {
@@ -113,11 +115,17 @@ angular.module("comunication01").factory('cm01', function($log) {
 		setData04: function(data) {
 				this.data04 = data;
 		},
-			getData05: function() {
+		getData05: function() {
 			return this.data05;
 		},
 		setData05: function(data) {
 				this.data05 = data;
+		},
+		getData06: function() {
+			return this.data06;
+		},
+		setData06: function(data) {
+				this.data06 = data;
 		},
 		getRoles: function() {
 				return this.roles;

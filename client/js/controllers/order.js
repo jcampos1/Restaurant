@@ -43,8 +43,11 @@ angular
             $scope.item = new Object();
             $scope.item.product = product;
             $scope.item.cant = 1;
-            $scope.item.lstAdd = new Array();
-            $scope.item.lstQuit = new Array();
+            $scope.lstAdd = new Array();
+            $scope.lstQuit = new Array();
+    
+            $scope.item.lstAdd = $scope.lstAdd;
+            $scope.item.lstQuit = $scope.lstQuit;
             $scope.total += product.price; 
 
             $scope.lstItems.push($scope.item);
@@ -53,7 +56,12 @@ angular
 
         //Cancela un item del pedido
         $scope.quitItem = function( $index, product ) {
+            //Se descuenta el producto  
             $scope.total -= product.price*$scope.lstItems[$index].cant;
+            //Se descuenta sus adicionales
+            $scope.lstItems[$index].lstAdd.forEach(function(elem){
+                $scope.total -= elem.price;
+            });
             ms01.arrayDestroyByIndex( $scope.lstItems, $index );
             ms01.msgDestroy();
         }
@@ -131,6 +139,30 @@ angular
           });
         }
         /************************************************************ */
+
+        //Graba el indice del producto seleccionado para agregar ingrediente (adicional o principal)
+        $scope.selectProductForIngr = function( $index ){
+            console.log("SE SELECCIONO PRODUCTO");
+            cm01.setData06($index);
+        }
+
+        //Asocia un ingrediente a un producto
+        $scope.associateIngToProd = function( ingr ) {
+            if( cm01.getData06() != null ){
+              //¿Es adicional?
+              if( ingr.type == INGR[1].value ) {
+                  $scope.lstItems[cm01.getData06()].lstAdd.push(angular.copy(ingr));
+                  $log.info("Lista de adicionales es: "); $log.info($scope.lstItems[cm01.getData06()].lstAdd);
+                  $scope.total += ingr.price;
+              }else{
+                  $scope.lstItems[cm01.getData06()].lstQuit.push(ingr);
+              }
+            }else{
+              ms01.dontProduct();
+            }
+        }
+
+        //$scope.addIngrediente = function( $index )
 
         //Comprueba si un producto ya fue seleccionado
         function exist( product ){

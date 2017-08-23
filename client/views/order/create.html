@@ -13,7 +13,7 @@
     </div>
     
     <section class="cls55">
-        <div ng-repeat="(key, item) in lstItems" class="cls43">
+        <div ng-repeat="(key, item) in lstItems" class="cls43 a_icon" ng-click="selectProductForIngr(key)">
 
             <!-- Imagen del producto -->
             <img class="cls40" src="{{'../../images/storage/container1/'+item.product.image}}" alt="Imagen de producto">
@@ -38,14 +38,21 @@
             <!-- Adiciones y consideraciones -->
             <div class="cls45">
                 <a href="" class="cls52" ng-click="quitItem(key, item.product)"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
+            <!--/Adiciones y consideraciones -->
+
+            <!-- Adiciones y consideraciones -->
+            <div class="cls67">
                 <ul>
-                    <li ng-repeat="add in product.lstAdd">
-                        {{add.description}}
+                    <li ng-repeat="add in item.lstAdd">
+                        <span class="cls17 cls68">+ {{add.name}}</span>
+                        <span class="cls17 cls68"> <span class="glyphicon glyphicon-remove" style="display: inline;"> </span>
+
                     </li>
                 </ul>
                 <ul>
-                    <li ng-repeat="quit in product.lstQuit">
-                        {{quit.description}}
+                    <li ng-repeat="quit in item.lstQuit">
+                        <span class="cls17 cls68">- {{quit.name}}</span>
                     </li>
                 </ul>
             </div>
@@ -134,7 +141,7 @@
             <label for="filtro" class="cls17 cls36"> {{filterIngrediente | uppercase}}</label>
             <section class="cls34">
                 <!-- Entradas para los ingredientes -->
-                <div class="cls05 cls39" ng-repeat="ingrediente in ingredientes" ng-click="selectIngrediente(ingrediente)"> 
+                <div class="cls05 cls39" ng-repeat="ingrediente in ingredientes" ng-click="associateIngToProd(ingrediente)"> 
                     <!--<div class="cls37">
                         <img src="../../images/ico-new.png" class="cls38" alt="icono nuevo">
                     </div>-->

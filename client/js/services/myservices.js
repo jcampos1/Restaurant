@@ -28,6 +28,18 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
         });
     },
 
+    //Alerta cuando se selecciona un ingrediente sin haber seleccionado el producto
+    dontProduct: function() {
+        SweetAlert.swal({
+            title: "Aviso",
+            text: "Aun no se ha seleccionado el producto para asociar ingrediente",
+            type: "warning",
+            confirmButtonText: "Ok",
+            closeOnConfirm: true}, 
+            function(){ 
+        });
+    },
+
     dropBoard: function( ) {
         SweetAlert.swal({
             title: "Confirmación",
