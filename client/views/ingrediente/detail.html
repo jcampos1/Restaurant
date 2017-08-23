@@ -16,9 +16,13 @@
                 <label for="">{{'GENE.ACTI' | translate}}</label>
                 {{ingrediente.active}}
             </div>
+            <div class="col-xs-12 col-sm-6" ng-show="type.value == 1">
+                <label for="">{{'GENE.PREC' | translate}}</label>
+                {{ingrediente.price}}
+            </div>
             <div class="col-xs-12 col-sm-12">
                 <label for="">{{'GENE.TIPO' | translate}}</label>
-                {{type}}
+                {{type.dsca}}
             </div>
         </div>
     </div>

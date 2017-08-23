@@ -21,6 +21,10 @@
       "required": true,
       "default": "sin-img-01.png"
     },
+    "price": {
+      "type": "number",
+      "required": false
+    },
     "active": {
       "type": "boolean",
       "required": true,

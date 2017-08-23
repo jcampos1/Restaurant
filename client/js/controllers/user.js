@@ -134,11 +134,34 @@ angular
       });
     }
 
+    //Eliminación
+    $scope.dropUser = function() {
+      if( cm01.isValid(cm01.getData04()) ) {
+        ms01.dropUser();
+      }else{
+        ms01.unselected();
+      }
+    }
+
     //Evento para recargar usuarios
     $scope.$watch(function() { return cm01.getEvnt08() }, function() {
       if( cm01.isValid(cm01.getEvnt08()) ){
         $scope.userFind( );
         cm01.setEvnt08(null);
+      }
+    });
+
+    //Acción ejecutada después de confirmar eliminación
+    $scope.$watch(function() { return cm01.getEvnt09() }, function() {
+      if( cm01.isValid(cm01.getEvnt09()) ){
+        cm01.getData04().active = false;
+        cm01.getData04().$save().then(function(instance){
+          console.log('paso por aqui ok');
+          $scope.userFind();
+          ms01.msgSuccess();
+          cm01.setData04(null);
+          cm01.setEvnt09(null);
+        });
       }
     });
 
