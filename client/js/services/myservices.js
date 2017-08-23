@@ -45,6 +45,23 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
         });
     },
 
+    dropUser: function( ) {
+        SweetAlert.swal({
+            title: "Confirmación",
+            text: "¿Seguro de eliminar el usuario: " + cm01.getData04().email + "?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Ok",
+            closeOnConfirm: true,
+            closeOnCancel: true}, 
+            function(isConfirm){
+                if (isConfirm) {
+                    cm01.setEvnt09("emit");
+                }
+        });
+    },
+
     dropCategory: function( ) {
         SweetAlert.swal({
             title: "Confirmación",

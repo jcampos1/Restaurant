@@ -23,7 +23,7 @@
     },
     "price": {
       "type": "number",
-      "required": true
+      "required": false
     },
     "active": {
       "type": "boolean",

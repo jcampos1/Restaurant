@@ -119,7 +119,7 @@ angular.module("app").controller('DetailIngredienteController',
 
       $scope.types = INGR;
 
-      $scope.type = $scope.types[$scope.ingrediente.type].dsca;
+      $scope.type = $scope.types[$scope.ingrediente.type];
       
       $scope.cancel = function() {
         $uibModalInstance.dismiss(false);
@@ -148,6 +148,12 @@ angular.module("app").controller('NewIngredienteController',
             $scope.cancel();
             $scope.image.upload();
           });
+        }
+      }
+
+      $scope.changeType = function() {
+        if($scope.type.value == 0) {
+          $scope.ingrediente.price = '';
         }
       }
 
@@ -193,6 +199,12 @@ angular.module("app").controller('EditIngredienteController',
             cm01.setData05(null);
             $scope.cancel();
           });
+        }
+      }
+
+      $scope.changeType = function() {
+        if($scope.type.value == 0) {
+          $scope.ingrediente.price = '';
         }
       }
 
