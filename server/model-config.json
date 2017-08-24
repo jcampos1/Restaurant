@@ -56,5 +56,9 @@
   "container": {
     "dataSource": "storage",
     "public": true
+  },
+  "order": {
+    "dataSource": "db",
+    "public": true
   }
 }

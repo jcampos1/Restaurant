@@ -1,0 +1,33 @@
+{
+  "name": "order",
+  "plural": "orders",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "orderdate": {
+      "type": "date"
+    },
+    "total": {
+      "type": "number",
+      "required": true
+    },
+    "boardnumb": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "products": {
+      "type": "hasMany",
+      "model": "product",
+      "foreignKey": "orderId",
+      "through": "orderproduct"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
