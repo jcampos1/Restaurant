@@ -40,6 +40,30 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
         });
     },
 
+    //Alerta mostrada por la confirmación del pedido sin haber seleccionado producto
+    zeroProduct: function() {
+        SweetAlert.swal({
+            title: "Aviso",
+            text: "No puede confirmar pedido sin haber asociado productos",
+            type: "warning",
+            confirmButtonText: "Ok",
+            closeOnConfirm: true}, 
+            function(){ 
+        });
+    },
+
+    //Alerta al confirmar un pedido para comer en sitio sin haber seleccionado mesa
+    dontBoard: function() {
+        SweetAlert.swal({
+            title: "Aviso",
+            text: "Pedido sin mesa asignada",
+            type: "warning",
+            confirmButtonText: "Ok",
+            closeOnConfirm: true}, 
+            function(){ 
+        });
+    },
+
     dropBoard: function( ) {
         SweetAlert.swal({
             title: "Confirmación",

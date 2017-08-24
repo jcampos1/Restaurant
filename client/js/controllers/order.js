@@ -14,10 +14,19 @@ angular
         $scope.products = [];
         $scope.categorys = [];
         $scope.types = INGR;
-        $scope.lstItems = [];
-        $scope.total = 0;
-        $scope.order = new Object();
-        
+
+        valorsInitials( );
+
+        //Asigna/restaura valores
+        function valorsInitials( ) {
+          $scope.lstItems = [];
+          $scope.total = 0;
+          $scope.order = new Object();
+          //Por defecto el pedido es para comer en el sitio
+          $scope.order.onSite = true;
+
+        }
+
         /****************ACCIONES SOBRE MESAS ************************ */
         //Asina mesa al pedido
         $scope.selectBoard = function ( board ) {
@@ -155,14 +164,53 @@ angular
                   $log.info("Lista de adicionales es: "); $log.info($scope.lstItems[cm01.getData06()].lstAdd);
                   $scope.total += ingr.price;
               }else{
-                  $scope.lstItems[cm01.getData06()].lstQuit.push(ingr);
+                  $scope.lstItems[cm01.getData06()].lstQuit.push(angular.copy(ingr));
               }
             }else{
               ms01.dontProduct();
             }
         }
 
-        //$scope.addIngrediente = function( $index )
+        //Cancela ingrediente adicional asociado a un producto
+        $scope.quitIngrOfProd = function( $key, $index ){
+            $scope.total -= $scope.lstItems[$key].lstAdd[$index].price;
+            $scope.lstItems[$key].lstAdd.splice($index, 1);
+            ms01.msgDestroy();
+        }
+
+        //Cancela observacion asociado a un producto
+        $scope.quitObserOfProd = function( $key, $index ){
+            $scope.lstItems[$key].lstQuit.splice($index, 1);
+            ms01.msgDestroy();
+        }
+
+        //CONFIRMAR PEDIDO
+        $scope.confirm = function( ){
+          //Se selecciono al menos un producto?
+            if( $scope.lstItems.length > 0 ){
+                //Para llevar?
+                if( $scope.order.onSite ){
+                    //Se selecciono una mesa?
+                    if( $scope.order.board instanceof Object ){
+                        $scope.order.lstProducts = $scope.lstItems;
+                        $scope.order.total = $scope.total;
+                        $log.info("LA COMANDA A ATENDER ES:");
+                        $log.info($scope.order);
+                    }else{
+                        //Alerta de mesa no seleccionada
+                        ms01.dontBoard();
+                    }
+                }else{
+                    $scope.order.lstProducts = $scope.lstItems;
+                    $scope.order.total = $scope.total;
+                    $log.info("LA COMANDA A ATENDER ES:");
+                    $log.info($scope.order);
+                }
+            }else{
+                //Alerta de ningun producto asociado al pedido
+                ms01.zeroProduct();
+            }
+        }
 
         //Comprueba si un producto ya fue seleccionado
         function exist( product ){

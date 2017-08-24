@@ -1,3 +1,5 @@
+<!-- ********************** BARRA LATERAL DERECHA *********************** -->
+
 <!-- Mesa y productos seleccionados -->
 <section class="cls32">
     <div class="cls63">
@@ -6,14 +8,14 @@
         <!--/Mesa seleccionada -->
         <!-- ¿Para llevar? -->
         <label class="checkbox-inline">
-            <input class="form-control a_icon cls64" type="checkbox" id="checkboxEnLinea1" value="opcion_1" >
+            <input ng-model="order.onSite" class="form-control a_icon cls64" type="checkbox" id="checkboxEnLinea1" value="opcion_1" >
              <span class="cls17 cls65"> {{'GENE.INSI' | translate }}</span>
         </label>
         <!--/¿Para llevar? -->
     </div>
     
     <section class="cls55">
-        <div ng-repeat="(key, item) in lstItems" class="cls43 a_icon" ng-click="selectProductForIngr(key)">
+        <div ng-repeat="(key, item) in lstItems" class="cls43 cls80 a_icon" ng-click="selectProductForIngr(key)">
 
             <!-- Imagen del producto -->
             <img class="cls40" src="{{'../../images/storage/container1/'+item.product.image}}" alt="Imagen de producto">
@@ -35,24 +37,37 @@
             </div>
             <!--/Descripción del prod y cantidades -->
 
-            <!-- Adiciones y consideraciones -->
+            <!-- Quitar item -->
             <div class="cls45">
                 <a href="" class="cls52" ng-click="quitItem(key, item.product)"><span class="glyphicon glyphicon-remove"></span></a>
             </div>
-            <!--/Adiciones y consideraciones -->
+            <!--/Quitar item -->
 
             <!-- Adiciones y consideraciones -->
             <div class="cls67">
                 <ul>
-                    <li ng-repeat="add in item.lstAdd">
-                        <span class="cls17 cls68">+ {{add.name}}</span>
-                        <span class="cls17 cls68"> <span class="glyphicon glyphicon-remove" style="display: inline;"> </span>
-
+                    <li ng-repeat="(index1, add) in item.lstAdd">
+                        <div class="row cls69">
+                            <div class="col-xs-8 col-sm-8">
+                                <span class="cls17">+ {{add.name}}</span>
+                            </div>
+                            <div class="col-xs-4 col-sm-4">
+                                <a href="" ng-click="quitIngrOfProd(key, index1)"> <span class="cls70"> <span class="glyphicon glyphicon-remove"> </span>
+                            </a>
+                            </div>
+                        </div>
                     </li>
-                </ul>
-                <ul>
-                    <li ng-repeat="quit in item.lstQuit">
-                        <span class="cls17 cls68">- {{quit.name}}</span>
+                
+                    <li ng-repeat="(index1, quit) in item.lstQuit">
+                        <div class="row cls69">
+                            <div class="col-xs-8 col-sm-8">
+                                <span class="cls17">- {{quit.name}}</span>
+                            </div>
+                            <div class="col-xs-4 col-sm-4">
+                                <a href="" ng-click="quitObserOfProd(key, index1)"> <span class="cls70"> <span class="glyphicon glyphicon-remove"> </span>
+                                </a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -68,7 +83,7 @@
 				</button>
         </div>
         <div class="cls57">
-            <label for="total" class="cls17 cls59 cls62">Total: <span class="cls58 cls62">{{total}}</span></label>
+            <label for="total" class="cls17 cls59 cls62">Total: <span class="cls58 cls62">{{total | number : 2}}</span></label>
             <img src="../../images/ico-pay.png" class="cls60">
         </div>
     </div>
@@ -76,6 +91,9 @@
 </section>
 <!--/Mesa y productos seleccionados -->
 
+<!-- ********************************************************************* -->
+
+<!-- Tabs Mesas, productos e ingredientes -->
 <section class="cls30">
     <!-- Barra de herramientas -->
     <uib-tabset active="active" ng-click="boardfind()">
@@ -167,3 +185,14 @@
     </uib-tabset>
     <!--/Barra de herramientas -->
 </section>
+
+<script>
+$(document).ready(function(){ 
+    jQuery('.cls80').click(function(){ 
+        alert("se ejecuto");
+        var id = $(this).id;
+        alert("id es "+id);
+    });
+});
+
+</script>

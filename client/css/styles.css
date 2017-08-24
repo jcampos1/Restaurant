@@ -480,7 +480,7 @@ ul.cls01 a:hover {
     top: 50px;
     right: 0;
     width: 100px; 
-    border-left: thin solid orange;
+    border-left: thin solid #D34539;
     min-height: 100%;
 }
 
@@ -492,7 +492,7 @@ ul li.cls03 {
 ul li img.cls13 {
     width: 88px;
     height: 88px;
-    margin: 4px 4px 0 4px;
+    margin: auto;
     margin-bottom: 4px;
     display: block;
 }
@@ -628,7 +628,8 @@ ul li.cls03:hover {
 
 /******** SECCION DE PEDIDO *********/
 .cls32 {
-    width: 400px;
+    border: 1px solid blue;
+    width: 22%;
     height: 100%;
     padding: 5px;
     position: fixed;
@@ -645,10 +646,10 @@ ul li.cls03:hover {
     border-radius: 2px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 100%;
-    height: 120px;
+    height: auto;
     padding: 5px;
     margin-bottom: 10px;
-    overflow: visible;
+    overflow: auto;
 }
 
 .cls44 {
@@ -762,17 +763,19 @@ ul li.cls03:hover {
 }
 
 .cls67 {
-    height: 100px;
-    border: 2px solid black;
-    text-align: center;
-    background: rgba(211, 69, 59, 0.9);
-    overflow: auto;
+    max-height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden; 
     clear: both;
 }
 
 .cls68 {
     font-weight: bold;
     color: white;
+}
+
+.cls69 {
+    border-bottom: 1px solid rgba(211, 69, 59, 1);
 }
 
 .cls52 {
@@ -827,36 +830,39 @@ ul li.cls03:hover {
 /*********************************/
 
 /***** BARRA DE HERRAMIENTAS *****/
+/*Contenedor principal*/
 .cls30 {
-    width: 75%;
+    width: 78%;
     height: 100%;
     padding: 0 10px;
-    position: fixed;
+    position: absolute;
     top: 55px;
-    left: 400px;
+    left: 22%;
 }
 
 .cls31 {
-    border: 1px solid red;;
+    position: relative;
+    top: 20px;
+    height: 100%;
+}
+
+.cls34 {
+    width: 90%;
+    height: 100%;
     position: relative;
     top: 20px;
 }
 
-.cls34 {
-    border: 1px solid yellow;
-    width: 85%;
+.cls35 {
+    background: #fafad2;
+    width: 130px;
+    border-left: thin solid #D34539;
     height: 100%;
     position: relative;
-    top: 30px;
-}
-
-.cls35 {
-    border: 1px solid blue;
-    width: 10%;
-    height: 100%;
-    position: absolute;
     text-align: center;
-    right: 5%;
+    float: right;
+    overflow-y: auto;
+    overflow-x: hidden; 
 }
 
 .cls36 {
