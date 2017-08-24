@@ -76,7 +76,7 @@ angular
     .state('orderList', {
         url: '/orderList',
         templateUrl: 'views/order/list.html',
-        controller: 'OrderController'
+        controller: 'ListOrderController'
     });
 
     $urlRouterProvider.otherwise('login');

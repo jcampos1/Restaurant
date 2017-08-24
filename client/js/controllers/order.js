@@ -225,15 +225,20 @@ angular
         }
 
         $scope.boardFind();
+  }])
+    
+  angular.module("app").controller('ListOrderController',
+  ['$scope', 'Order', 'cm01', '$log', function($scope, Order, cm01,
+    $log) {
 
-
-        ///////////////////////////////////////////////
-        $scope.orderFind = function( ) {
-          Order.find({"filter":{"where": {"active":"true"}}}).$promise
-          .then(function(results) {
+    //Encuentra todas las ordenes en estado abierto
+    $scope.orderFind = function( ) {
+        Order.find({"filter":{"where": {"active":"true"}}}).$promise
+        .then(function(results) {
             $scope.orders = results;
-          });
-        }
+            $log.info("LISTA DE ORDENES");$log.info(results);
+        });
+    }
 
-         $scope.orderFind();
-  }]);
+    $scope.orderFind();
+}]);
