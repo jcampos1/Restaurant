@@ -18,6 +18,11 @@ angular
 
     //Configuración de rutas
     $stateProvider
+    .state('principal', {
+        url: '/principal',
+        templateUrl: 'views/user/principal.html',
+        controller: 'PrincipalController'
+      })
     .state('create_user', {
         url: '/user/create',
         templateUrl: 'views/user/create.html',

@@ -11,6 +11,9 @@ angular
       var vm = this;
       $scope.users = [];
     
+    $scope.isAdmin = function( ){
+      
+    }
     //Encuentra todos los roles de la aplicacion
     Role.find().$promise.then(
       function(roles){
@@ -25,7 +28,12 @@ angular
         function(roles) {
             $log.info(roles);
             cm01.setEvnt07("emit");
-            if( ms01.hasRole(roles, "Administrador") ){
+            cm01.setAdmin(ms01.hasRole(roles, "Administrador"));
+            cm01.setCajero(ms01.hasRole(roles, "Cajero"));
+            cm01.setCamarero(ms01.hasRole(roles, "Camarero"));
+            
+            $state.go("principal");
+            /*if( ms01.hasRole(roles, "Administrador") ){
                 $state.go("boardList");
             }else{
                 if( ms01.hasRole(roles, "Cajero") ){
@@ -33,7 +41,7 @@ angular
                 }else{
                   $state.go("order");
                 }
-            }
+            }*/
         });
         //$state.go("boardList");
         

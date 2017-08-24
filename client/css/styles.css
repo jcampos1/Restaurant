@@ -75,9 +75,9 @@ footer p{
     transform: translate(-50%, -50%);
     max-width: 250px;
     max-height: 140px;
-    animation-name: logo-init;
+    /*animation-name: logo-init;
     animation-duration: 0.7s;
-    animation-delay: 1s;
+    animation-delay: 1s;*/
     z-index: 1000;
 }
 
@@ -416,11 +416,13 @@ a:link {
 
 /***Lista de los cruds***/
 .container03{
+    
     padding: 0 10px;
     margin-top: 80px;
 }
 
 ul.cls01 {
+    border: 1px solid blue;
     width: 90%;
     height: 100px;
     margin: 0 0 10px 0;
@@ -549,6 +551,12 @@ ul li.cls03:hover {
 }
 
 .cls05:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    border: 2px solid rgba(211, 69, 59, 0.6);
+}
+
+.cls70:hover {
     cursor: pointer;
     transform: scale(1.1);
     border: 2px solid rgba(211, 69, 59, 0.6);
@@ -696,7 +704,7 @@ ul li.cls03:hover {
     padding: 5px;
     box-shadow: 0 4px 8px 0 rgba(211, 69, 59, 0.2), 0 6px 20px 0 rgba(211, 69, 59, 0.19);
     margin-top: 2%;
-    height: 8%;
+    height: 9%;
 }
 
 .cls55 {
@@ -776,6 +784,28 @@ ul li.cls03:hover {
 
 .cls69 {
     border-bottom: 1px solid rgba(211, 69, 59, 1);
+}
+
+.modulos{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 520px;
+    height: 280px;
+}
+
+div.polaroid {
+    border: 1px solid rgba(211, 69, 59, 0.8);
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div.cls71 {
+  padding: 10px 20px;
 }
 
 .cls52 {
