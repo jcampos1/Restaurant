@@ -72,7 +72,12 @@ angular
         url: '/order',
         templateUrl: 'views/order/create.html',
         controller: 'OrderController'
-      });
+    })
+    .state('orderList', {
+        url: '/orderList',
+        templateUrl: 'views/order/list.html',
+        controller: 'OrderController'
+    });
 
     $urlRouterProvider.otherwise('login');
 

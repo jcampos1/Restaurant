@@ -1,0 +1,10 @@
+<div class="" ng-repeat="order in orders">
+    <p style="margin-top: 50px">{{ order.number }}</p>
+    <p>{{ order.total }} </p>
+    <p>{{ order.boardnumb }} </p>
+
+    <p>Items</p>
+    <div ng-repeat="item in order.items">
+        <p>{{item.}}</p>
+    </div>
+</div>

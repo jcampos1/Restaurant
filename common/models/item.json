@@ -1,0 +1,45 @@
+{
+  "name": "item",
+  "plural": "items",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "cant": {
+      "type": "number",
+      "required": true
+    },
+    "llevar": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "product": {
+      "type": "belongsTo",
+      "model": "product",
+      "foreignKey": "productId"
+    },
+    "adds": {
+      "type": "hasAndBelongsToMany",
+      "model": "ingrediente",
+      "foreignKey": ""
+    },
+    "order": {
+      "type": "belongsTo",
+      "model": "order",
+      "foreignKey": ""
+    },
+    "quits": {
+      "type": "hasAndBelongsToMany",
+      "model": "ingrediente",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

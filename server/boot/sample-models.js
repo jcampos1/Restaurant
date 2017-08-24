@@ -9,6 +9,7 @@ module.exports = function(app) {
   var Role = app.models.Role;
   var RoleMapping = app.models.RoleMapping;
   var Category = app.models.category;
+  var Order = app.models.order;
 
   /***************** CREACIÓN DE USUARIOS INICIALES *****************/
   User.create([
@@ -123,4 +124,18 @@ module.exports = function(app) {
     console.log('Categorias creadas:', categorys);
   });
   /*****************************************************************/
+  //  Order.create([
+  //   {number: "00001", total: 1000, boardnumb: '1'},
+  //   {number: "00002", total: 2000, boardnumb: '2'},
+  //   {number: "00003", total: 3000, boardnumb: '3'}
+  // ], function(err, orders) {
+  //   if (err) throw err;
+  //   orders[0].products.create({
+  //     code: "prod1",
+  //     name: "pizza",
+  //     price: 3000,
+  //     description: "pizza"
+  //   });
+  //   console.log('Ordenes creadas:', orders);
+  // });
 };
