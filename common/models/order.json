@@ -7,8 +7,8 @@
     "validateUpsert": true
   },
   "properties": {
-    "orderdate": {
-      "type": "date"
+    "number": {
+      "type": "string"
     },
     "total": {
       "type": "number",
@@ -17,15 +17,19 @@
     "boardnumb": {
       "type": "string",
       "required": true
+    },
+    "active": {
+      "type": "boolean",
+      "required": true,
+      "default": true
     }
   },
   "validations": [],
   "relations": {
-    "products": {
+    "items": {
       "type": "hasMany",
-      "model": "product",
-      "foreignKey": "orderId",
-      "through": "orderproduct"
+      "model": "item",
+      "foreignKey": "orderId"
     }
   },
   "acls": [],

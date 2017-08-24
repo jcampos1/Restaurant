@@ -5,8 +5,8 @@
 
 angular
   .module('app')
-  .controller('OrderController', ['$scope', 'Board', 'Category', 'Product', 'Ingrediente', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', 
-  function($scope, Board, Category, Product, Ingrediente, INGR, cm01, ms01,
+  .controller('OrderController', ['$scope', 'Order', 'Board', 'Category', 'Product', 'Ingrediente', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', 
+  function($scope, Order, Board, Category, Product, Ingrediente, INGR, cm01, ms01,
       $uibModal, $location, $log) {
         var vm = this;
 
@@ -14,6 +14,8 @@ angular
         $scope.products = [];
         $scope.categorys = [];
         $scope.types = INGR;
+
+        $scope.orders = [];
 
         valorsInitials( );
 
@@ -223,4 +225,15 @@ angular
         }
 
         $scope.boardFind();
+
+
+        ///////////////////////////////////////////////
+        $scope.orderFind = function( ) {
+          Order.find({"filter":{"where": {"active":"true"}}}).$promise
+          .then(function(results) {
+            $scope.orders = results;
+          });
+        }
+
+         $scope.orderFind();
   }]);
