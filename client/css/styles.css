@@ -578,8 +578,8 @@ ul li.cls03:hover {
 
 /*Item de la lista de pedidos*/
 .cls72 {
-    width: 250px;
-    height: 130px;
+    width: 270px;
+    height: 150px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 10px;
     float: left;
@@ -589,6 +589,7 @@ ul li.cls03:hover {
     width: 35%;
     height: 100%;
     border: 2px solid lightgray;
+    background: rgba(211, 69, 59, 0.9);
     float: left;
 }
 
@@ -600,16 +601,37 @@ ul li.cls03:hover {
 .cls75{
     width: 65%;
     height: 100%;
+    text-align: center;
     float: left;
 }
 
+.cls76{
+    color: white;
+}
+
+.cls77{
+    color: rgba(211, 69, 59, 1);
+}
+
 .container04{
-    border: 1px solid red;
+    border: 2px solid lightgray;
     position: absolute;
     top: 160px;
-    width: 100%;
+    left: 20%;
+    width: 80%;
     height: 100%;
-    padding: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container05{
+    border: 2px solid lightgray;
+    position: absolute;
+    top: 160px;
+    left: 0;
+    width: 20%;
+    height: 100%;
+    padding: 10px;
 }
 /*****************************/
 

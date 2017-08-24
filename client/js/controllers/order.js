@@ -198,6 +198,8 @@ angular
                         $scope.order.total = $scope.total;
                         $log.info("LA COMANDA A ATENDER ES:");
                         $log.info($scope.order);
+
+                        /*AQUI ESTA LA MAGIA*/ 
                     }else{
                         //Alerta de mesa no seleccionada
                         ms01.dontBoard();
