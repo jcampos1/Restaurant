@@ -764,7 +764,6 @@ ul li.cls03:hover {
 }
 
 .cls44 {
-    border: 1px solid green;
     width: 60%;
     height: 100px;
     float: left;
@@ -939,7 +938,6 @@ div.cls71 {
 
 /*operaciones del prod seleccionado*/
 .cls45 {
-    border: 1px solid purple;
     width: 5%;
     height: 100px;
     float: left;
@@ -958,7 +956,6 @@ div.cls71 {
 .cls40 {
     width: 35%;
     height: 100px;
-    border: 1px solid red;
     float: left;
 }
 /*********************************/
