@@ -5,8 +5,8 @@
 
 angular
   .module('app')
-  .controller('OrderController', ['$scope', 'Board', 'Category', 'Product', 'Ingrediente', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', 
-  function($scope, Board, Category, Product, Ingrediente, INGR, cm01, ms01,
+  .controller('OrderController', ['$scope', 'Order', 'Board', 'Category', 'Product', 'Ingrediente', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', 
+  function($scope, Order, Board, Category, Product, Ingrediente, INGR, cm01, ms01,
       $uibModal, $location, $log) {
         var vm = this;
 
@@ -14,6 +14,8 @@ angular
         $scope.products = [];
         $scope.categorys = [];
         $scope.types = INGR;
+
+        $scope.orders = [];
 
         valorsInitials( );
 
@@ -196,6 +198,8 @@ angular
                         $scope.order.total = $scope.total;
                         $log.info("LA COMANDA A ATENDER ES:");
                         $log.info($scope.order);
+
+                        /*AQUI ESTA LA MAGIA*/ 
                     }else{
                         //Alerta de mesa no seleccionada
                         ms01.dontBoard();
@@ -223,4 +227,20 @@ angular
         }
 
         $scope.boardFind();
-  }]);
+  }])
+    
+  angular.module("app").controller('ListOrderController',
+  ['$scope', 'Order', 'cm01', '$log', function($scope, Order, cm01,
+    $log) {
+
+    //Encuentra todas las ordenes en estado abierto
+    $scope.orderFind = function( ) {
+        Order.find({"filter":{"where": {"active":"true"}}}).$promise
+        .then(function(results) {
+            $scope.orders = results;
+            $log.info("LISTA DE ORDENES");$log.info(results);
+        });
+    }
+
+    $scope.orderFind();
+}]);

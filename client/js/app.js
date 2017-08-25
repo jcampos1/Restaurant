@@ -18,6 +18,11 @@ angular
 
     //Configuración de rutas
     $stateProvider
+    .state('principal', {
+        url: '/principal',
+        templateUrl: 'views/user/principal.html',
+        controller: 'PrincipalController'
+      })
     .state('create_user', {
         url: '/user/create',
         templateUrl: 'views/user/create.html',
@@ -67,7 +72,12 @@ angular
         url: '/order',
         templateUrl: 'views/order/create.html',
         controller: 'OrderController'
-      });
+    })
+    .state('orderList', {
+        url: '/orderList',
+        templateUrl: 'views/order/list.html',
+        controller: 'ListOrderController'
+    });
 
     $urlRouterProvider.otherwise('login');
 

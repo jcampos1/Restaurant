@@ -2,7 +2,7 @@
 'use strict';
 angular.module("comunication01", []);
 
-angular.module("comunication01").factory('cm01', function($log) {
+angular.module("comunication01").factory('cm01', function($log, $rootScope) {
   return {
 		evnt01: null, //Actualizar lista de mesas
 		evnt02: null, //Confirmación de eliminación de mesa
@@ -24,6 +24,10 @@ angular.module("comunication01").factory('cm01', function($log) {
 		data05: null, //Ingrediente Seleccionado
 		data06: null, //Producto seleccionado para agregar ingrediente (adicional o principal)
 		roles: null,  //Roles de la aplicacion
+
+		admin: null, //El usuario es administrador?
+		cajero: null, //El usuario es cajero?
+		camarero: null, //El usuario es camarero?
 			
 		getEvnt01: function() {
 					return this.evnt01;
@@ -127,6 +131,26 @@ angular.module("comunication01").factory('cm01', function($log) {
 		setData06: function(data) {
 				this.data06 = data;
 		},
+
+		isAdmin: function() {
+			return this.admin;
+		},
+		setAdmin: function(data) {
+				this.admin = data;
+		},
+		isCajero: function() {
+			return this.cajero;
+		},
+		setCajero: function(data) {
+				this.cajero = data;
+		},
+		isCamarero: function() {
+			return this.camarero;
+		},
+		setCamarero: function(data) {
+				this.camarero = data;
+		},
+
 		getRoles: function() {
 				return this.roles;
 		},
