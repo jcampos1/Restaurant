@@ -129,6 +129,8 @@ function($scope, Order, Board, cm01, ms01, $uibModalInstance,
 
     //Pedido seleccionado
     $scope.order = cm01.getData07();
+    //Mesa del pedido seleccionado
+    $scope.board = Order.board({id: $scope.order.id});
 
     //Encuentra todas las mesas disponibles
     $scope.boardFind = function( ) {
@@ -172,9 +174,6 @@ angular.module("app").controller('ConfirmOrderController',
 function($scope, Order, Board, cm01, ms01, $uibModalInstance,
   $log, order, items) {
 
-    console.log(order);
-    console.log(items);
-    
     $scope.order = order;
     $scope.board = order.board;
     $scope.items = items;
