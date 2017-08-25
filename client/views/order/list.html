@@ -1,6 +1,33 @@
-<p style="position:relative;top:80px;"><label for="lista" class="cls17 cls18">Lista de ordenes</label></p>
+<div class="container06">
+    <!-- Operaciones sobre pedido -->
+    <ul class="cls01">
+        <li>
+            <a id="list" class="a_icon" ng-click="productFind( )">
+                <img class="cls20" src="../../images/ico-list.png" alt="list">
+            </a>
+            <label for="list" class="cls17">{{"GENE.LIST" | translate}}</label>
+        </li>
+        <li>
+                <detail-order-component/>
+            <label for="list" class="cls17">{{"GENE.DETA" | translate}}</label>
+        </li>
+        <li>
+            <move-board-of-order-Component/>
+            <label for="list" class="cls17">{{"GENE.MOVE" | translate}}</label>
+        </li>
+        <li>
+            <a class="a_icon" ng-click="dropOrder()">
+                <img class="cls20" src="../../images/ico-trash.png" alt="trash">
+            </a>
+            <label for="list" class="cls17">{{'GENE.CANC' | translate}}</label>
+        </li>
+    </ul>
+    <!--/Operaciones sobre pedido -->
+</div>
+
+<p style="position:relative;top:50px;"><label for="lista" class="cls17 cls18">Lista de ordenes</label></p>
 <div class="container04">
-    <div class="cls72 cls70" ng-repeat="order in orders" >
+    <div class="cls72 cls70" ng-repeat="order in orders" ng-click="selectedOrder(order)">
         <div class="cls73">
             <img src="../../images/ico-mesa.png" class="cls74">
             <span class="cls17 cls76">{{order.boardnumb}}</span>
@@ -12,4 +39,13 @@
         </div> 
     </div>
 </div>
-<div class="container05"></div>
+<div class="container05">
+    <ul class="cls01">
+            <li>
+                <a id="list" class="a_icon" ui-sref="principal">
+                    <img class="cls20" src="../../images/ico-home.png" alt="Inicio">
+                </a>
+                <label for="list" class="cls17">Inicio</label>
+            </li>
+    </ul>
+</div>

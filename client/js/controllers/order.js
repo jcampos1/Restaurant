@@ -3,9 +3,141 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
+angular.module("app").controller('OrderController',
+['$scope', 'Order', '$uibModal', 'cm01', 'ms01', '$log', 
+function($scope, Order, $uibModal, cm01,ms01, $log) {
+
+    var vm = this;
+
+    //Muestra en detalle la información
+    vm.detailOrder = function() {
+        if( cm01.isValid(cm01.getData07()) ) {
+            var modalInstance = $uibModal.open({
+            animation : true,
+            templateUrl : 'modalDetailOrder.html',
+            controller : 'DetailOrderController',
+            backdrop: true,
+            size : "md"
+            });
+            modalInstance.result.then(function() {
+            }, function() {
+            });
+        }else{
+            ms01.unselected();
+        }
+    }
+
+    //Muestra el proceso de cambio de mesa
+    vm.moveBoardOfOrder = function() {
+        if( cm01.isValid(cm01.getData07()) ) {
+            var modalInstance = $uibModal.open({
+            animation : true,
+            templateUrl : 'modalMoveBoardOfOrder.html',
+            controller : 'MoveBoardOfOrderController',
+            backdrop: true,
+            size : "lg"
+            });
+            modalInstance.result.then(function() {
+            }, function() {
+            });
+        }else{
+            ms01.unselected();
+        }
+    }
+
+    //Eliminación
+    $scope.dropOrder = function() {
+        if( cm01.isValid(cm01.getData07()) ) {
+          ms01.dropOrder();
+        }else{
+          ms01.unselected();
+        }
+    }
+
+    //Graba el pedido seleccionado
+    $scope.selectedOrder = function( order ) {
+        cm01.setData07(order);
+    }
+
+    //Encuentra todas las ordenes en estado abierto
+    $scope.orderFind = function( ) {
+        Order.find({"filter":{"where": {"active":"true"}}}).$promise
+        .then(function(results) {
+            $scope.orders = results;
+            $log.info("LISTA DE ORDENES");$log.info(results);
+        });
+    }
+
+    //Acción ejecutada después de confirmar eliminación
+    $scope.$watch(function() { return cm01.getEvnt13() }, function() {
+        if( cm01.isValid(cm01.getEvnt13()) ){
+          cm01.getData07().active = false;
+          cm01.getData07().$save().then(function(instance){
+            $scope.orderFind();
+            ms01.msgSuccess();
+            cm01.setData07(null);
+            cm01.setEvnt13(null);
+          });
+        }
+    });
+
+    $scope.orderFind();
+}]);
+
+//Detalle de pedido de usuario
+angular.module("app").controller('DetailOrderController',
+['$scope', 'cm01', '$uibModalInstance', '$log', function($scope, cm01, $uibModalInstance,
+  $log) {
+
+    //Pedido seleccionado
+    $scope.order = cm01.getData07();
+    
+    $scope.cancel = function() {
+      $uibModalInstance.dismiss(false);
+    };
+}]);
+
+//Muestra el modal para el cambio de mesa
+angular.module("app").controller('MoveBoardOfOrderController',
+['$scope', 'Order', 'Board', 'cm01', 'ms01', '$uibModalInstance', '$log', 
+function($scope, Order, Board, cm01, ms01, $uibModalInstance,
+  $log) {
+
+    //Pedido seleccionado
+    $scope.order = cm01.getData07();
+
+    //Encuentra todas las mesas disponibles
+    $scope.boardFind = function( ) {
+        Board.find({"filter":{"where": {"active":"true"}}}).$promise
+        .then(function(results) {
+            $scope.boards = results;
+            console.log(results);
+        });
+    }
+
+    $scope.selectedBoard = function( board ) {
+        cm01.setData08(board);
+        ms01.moveBoardOfOrder();
+    }
+
+    //Acción ejecutada después de confirmar la movilizacion de mesa
+    $scope.$watch(function() { return cm01.getEvnt14() }, function() {
+        if( cm01.isValid(cm01.getEvnt14()) ){
+            alert("SE EFECTUA EL CAMBIO A LA MESA: "+cm01.getData08().number);
+            $scope.cancel();
+        }
+    });
+
+    $scope.boardFind();
+    
+    $scope.cancel = function() {
+      $uibModalInstance.dismiss(false);
+    };
+}]);
+
 angular
   .module('app')
-  .controller('OrderController', ['$scope', 'Order', 'Board', 'Category', 'Product', 'Ingrediente', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', 
+  .controller('NewOrderController', ['$scope', 'Order', 'Board', 'Category', 'Product', 'Ingrediente', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', 
   function($scope, Order, Board, Category, Product, Ingrediente, INGR, cm01, ms01,
       $uibModal, $location, $log) {
         var vm = this;
@@ -227,20 +359,16 @@ angular
         }
 
         $scope.boardFind();
-  }])
-    
-  angular.module("app").controller('ListOrderController',
-  ['$scope', 'Order', 'cm01', '$log', function($scope, Order, cm01,
-    $log) {
+  }]);
 
-    //Encuentra todas las ordenes en estado abierto
-    $scope.orderFind = function( ) {
-        Order.find({"filter":{"where": {"active":"true"}}}).$promise
-        .then(function(results) {
-            $scope.orders = results;
-            $log.info("LISTA DE ORDENES");$log.info(results);
-        });
-    }
+  angular.module('app').component('detailOrderComponent',
+  {
+        templateUrl: '../../views/order/detail.html',
+        controller : 'OrderController'
+  });
 
-    $scope.orderFind();
-}]);
+  angular.module('app').component('moveBoardOfOrderComponent',
+  {
+        templateUrl: '../../views/order/moveBoardOfOrder.html',
+        controller : 'OrderController'
+  });

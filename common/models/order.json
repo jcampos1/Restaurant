@@ -2,10 +2,11 @@
   "name": "order",
   "plural": "orders",
   "base": "PersistedModel",
-  "idInjection": true,
+  "idInjection": false,
   "options": {
     "validateUpsert": true
   },
+  "forceId": false,
   "properties": {
     "number": {
       "type": "string"
