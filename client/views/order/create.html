@@ -14,13 +14,13 @@
         <!--/¿Para llevar? -->
     </div>
     
-    <section class="cls55">
+    <section class="cls55" id="items">
         <div ng-repeat="(key, item) in lstItems" class="cls43 cls80 a_icon" ng-click="selectProductForIngr(key)">
 
             <!-- Imagen del producto -->
             <img class="cls40" src="{{'../../images/storage/container1/'+item.product.image}}" alt="Imagen de producto">
             <!--/Imagen del producto -->
-
+            
             <!-- Descripción del prod y cantidades -->
             <div class="cls44">
                 <!-- Descripcion -->
@@ -187,11 +187,9 @@
 </section>
 
 <script>
-$(document).ready(function(){ 
-    jQuery('.cls80').click(function(){ 
-        alert("se ejecuto");
-        var id = $(this).id;
-        alert("id es "+id);
+$(document).ready(function(){
+    $("#items").on('click', '.cls80', function(){
+        $(this).addClass("clsselected");
     });
 });
 
