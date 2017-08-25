@@ -75,9 +75,9 @@ footer p{
     transform: translate(-50%, -50%);
     max-width: 250px;
     max-height: 140px;
-    animation-name: logo-init;
+    /*animation-name: logo-init;
     animation-duration: 0.7s;
-    animation-delay: 1s;
+    animation-delay: 1s;*/
     z-index: 1000;
 }
 
