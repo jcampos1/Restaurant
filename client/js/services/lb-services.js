@@ -1346,6 +1346,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "GET",
             },
 
+            // INTERNAL. Use Order.user() instead.
+            "::get::Order::user": {
+              url: urlBase + "/orders/:id/user",
+              method: "GET",
+            },
+
             /**
              * @ngdoc method
              * @name lbServices.User#getCurrent
@@ -5327,6 +5333,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               url: urlBase + "/Boards/change-stream",
               method: "POST",
             },
+
+            // INTERNAL. Use Order.board() instead.
+            "::get::Order::board": {
+              url: urlBase + "/orders/:id/board",
+              method: "GET",
+            },
           }
         );
 
@@ -9176,6 +9188,18 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
           { 'id': '@id' },
           {
 
+            // INTERNAL. Use Order.board() instead.
+            "prototype$__get__board": {
+              url: urlBase + "/orders/:id/board",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Order.user() instead.
+            "prototype$__get__user": {
+              url: urlBase + "/orders/:id/user",
+              method: "GET",
+            },
+
             // INTERNAL. Use Order.items.findById() instead.
             "prototype$__findById__items": {
               params: {
@@ -10039,6 +10063,86 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         */
         R.modelName = "Order";
 
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Order#board
+             * @methodOf lbServices.Order
+             *
+             * @description
+             *
+             * Fetches belongsTo relation board.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - order id
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Board` object.)
+             * </em>
+             */
+        R.board = function() {
+          var TargetResource = $injector.get("Board");
+          var action = TargetResource["::get::Order::board"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Order#user
+             * @methodOf lbServices.Order
+             *
+             * @description
+             *
+             * Fetches belongsTo relation user.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - order id
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `User` object.)
+             * </em>
+             */
+        R.user = function() {
+          var TargetResource = $injector.get("User");
+          var action = TargetResource["::get::Order::user"];
+          return action.apply(R, arguments);
+        };
     /**
      * @ngdoc object
      * @name lbServices.Order.items
@@ -11130,6 +11234,47 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              */
             "createChangeStream": {
               url: urlBase + "/items/change-stream",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Item#addProduct
+             * @methodOf lbServices.Item
+             *
+             * @description
+             *
+             * <em>
+             * (The remote method definition does not provide any description.)
+             * </em>
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `itemId` – `{number}` -
+             *
+             *  - `productId` – `{number}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `item` – `{object=}` -
+             */
+            "addProduct": {
+              url: urlBase + "/items/addProduct",
               method: "POST",
             },
 

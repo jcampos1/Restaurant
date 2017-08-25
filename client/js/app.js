@@ -68,15 +68,15 @@ angular
       templateUrl: 'views/ingrediente/list.html',
       controller: 'IngredienteController'
     })
-    .state('order', {
-        url: '/order',
+    .state('newOrder', {
+        url: '/newOrder',
         templateUrl: 'views/order/create.html',
-        controller: 'OrderController'
+        controller: 'NewOrderController'
     })
     .state('orderList', {
         url: '/orderList',
         templateUrl: 'views/order/list.html',
-        controller: 'ListOrderController'
+        controller: 'OrderController'
     });
 
     $urlRouterProvider.otherwise('login');
@@ -126,6 +126,9 @@ angular
       "CONF":         "Confirmación",
       "CONF2":        "Confirmar",
       "INSI":         "¿Comer aqui?",
+      "TOTAL":        "Total",
+      "MOVE":         "Mover",
+      "CANT":         "Cantidad",
 
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",
@@ -183,6 +186,9 @@ angular
       "CONF":         "Confirmación",
       "CONF2":        "Confirmar",
       "INSI":         "¿Comer aqui?",
+      "TOTAL":        "Total",
+      "MOVE":         "Mover",
+      "CANT":         "Cantidad",
       
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",

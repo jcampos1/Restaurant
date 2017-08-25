@@ -15,7 +15,9 @@ angular.module("comunication01").factory('cm01', function($log, $rootScope) {
 		evnt09: null, //Confirmación de eliminación de usuario
 		evnt10: null, //Actualizar lista de ingredientes
 		evnt11: null, //Confirmación de eliminación de ingrediente
-		evnt11: null, //Confirmación de eliminación de ingrediente
+		evnt12: null, //Actualizar lista de pedidos
+		evnt13: null, //Confirmación de cancelacion de pedido
+		evnt14: null, //Confirmacion de movilizacion de mesa
 
 		data01: null, //Mesa seleccionada
 		data02: null, //Categoria Seleccionada
@@ -23,6 +25,8 @@ angular.module("comunication01").factory('cm01', function($log, $rootScope) {
 		data04: null, //Usuario Seleccionado
 		data05: null, //Ingrediente Seleccionado
 		data06: null, //Producto seleccionado para agregar ingrediente (adicional o principal)
+		data07: null, //Pedido Seleccionado
+		data08: null, //Mesa a la cual van a ser movilizados
 		roles: null,  //Roles de la aplicacion
 
 		admin: null, //El usuario es administrador?
@@ -95,6 +99,24 @@ angular.module("comunication01").factory('cm01', function($log, $rootScope) {
 		setEvnt11: function(data) {
 				this.evnt11 = data;
 		},
+		getEvnt12: function() {
+			return this.evnt12;
+		},
+		setEvnt12: function(data) {
+				this.evnt12 = data;
+		},
+		getEvnt13: function() {
+			return this.evnt13;
+		},
+		setEvnt13: function(data) {
+				this.evnt13 = data;
+		},
+		getEvnt14: function() {
+			return this.evnt14;
+		},
+		setEvnt14: function(data) {
+				this.evnt14 = data;
+		},
 		getData01: function() {
 					return this.data01;
 		},
@@ -130,6 +152,18 @@ angular.module("comunication01").factory('cm01', function($log, $rootScope) {
 		},
 		setData06: function(data) {
 				this.data06 = data;
+		},
+		getData07: function() {
+			return this.data07;
+		},
+		setData07: function(data) {
+				this.data07 = data;
+		},
+		getData08: function() {
+			return this.data08;
+		},
+		setData08: function(data) {
+				this.data08 = data;
 		},
 
 		isAdmin: function() {

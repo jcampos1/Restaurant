@@ -1,0 +1,46 @@
+<a class="a_icon" ng-click="$ctrl.moveBoardOfOrder()">
+    <img class="cls20" src="../../images/ico-change-board.png" alt="list">
+</a>
+
+<script type="text/ng-template" id="modalMoveBoardOfOrder.html">
+    <div class="modal-header">
+        <h3 class="box-title">{{'GENE.MOVE' | translate}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <label for="">{{'GENE.MESA' | translate}}</label>
+                
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <label for="">{{'GENE.USER' | translate}}</label>
+                
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <label for="">{{'GENE.TOTAL' | translate}}</label>
+                
+            </div>
+        </div>
+
+        <div class="container07">
+            <!-- Lista de mesas -->
+            <section class="cls04" style="width: 100%;">
+            <label for="listado" class="cls17 cls18">{{"GENE.MESAS" | translate}}</label>
+    
+            <div class="cls05" ng-repeat="board in boards" ng-click="selectedBoard(board)">
+                <span class="cls06 cls07"></span>
+                <img src="../../images/ico-mesa.png" alt="Norway" style="width:100%">
+                <div class="cls09">
+                    <p>{{ board.number }} / {{ board.space }} {{'GENE.LUGA' | translate}}</p>
+                </div>
+            </div>
+        </section>
+        <!-- /Lista de mesas  -->
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
+            class="fa fa-close"></i>{{'GENE.CANC' | translate}}
+        </a>
+    </div>
+</script>

@@ -17,6 +17,16 @@ ul{
     padding: 0;
 }
 
+ul.cls78 {
+    list-style-type: square;
+    margin: 17px;
+}
+
+ul.cls79 {
+    list-style-type: circle;
+    margin: 17px;
+}
+
 .navbar {
     height: 50px;
     z-index: 1;
@@ -42,6 +52,10 @@ ul{
 
 a, span, label, p {
     font-family: 'Oswald', sans-serif;
+}
+
+.clsSelected{
+    border: 2px solid rgba(211, 69, 59, 0.6);
 }
 /***************************************************/
 
@@ -422,7 +436,6 @@ a:link {
 }
 
 ul.cls01 {
-    border: 1px solid blue;
     width: 90%;
     height: 100px;
     margin: 0 0 10px 0;
@@ -442,6 +455,14 @@ ul.cls01 li {
     font-size: 18px;
     text-align: center;
     display: block;
+}
+
+.cls80{
+    font-family:  'Oswald', sans-serif;
+    font-style: italic;
+    color: gray;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .cls33 {
@@ -614,9 +635,8 @@ ul li.cls03:hover {
 }
 
 .container04{
-    border: 2px solid lightgray;
     position: absolute;
-    top: 160px;
+    top: 250px;
     left: 20%;
     width: 80%;
     height: 100%;
@@ -627,13 +647,30 @@ ul li.cls03:hover {
 .container05{
     border: 2px solid lightgray;
     position: absolute;
-    top: 160px;
+    top: 250px;
     left: 0;
     width: 20%;
     height: 100%;
     padding: 10px;
 }
+
+.container06{
+    position: relative;
+    top: 60px;
+    left: 0;
+    padding: 10px;
+}
+
 /*****************************/
+
+.container07{
+    width: 100%;
+    height: 500px;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
 /*estado de mesa libre*/
 .cls07 {
@@ -655,6 +692,13 @@ ul li.cls03:hover {
 }
 
 .cls09 p{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.centerAbs {
     position: absolute;
     top: 50%;
     left: 50%;

@@ -81,6 +81,23 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
         });
     },
 
+    dropOrder: function( ) {
+        SweetAlert.swal({
+            title: "Confirmación",
+            text: "¿Seguro de eliminar el pedido de la mesa: " + "MESAX" + "?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Ok",
+            closeOnConfirm: true,
+            closeOnCancel: true}, 
+            function(isConfirm){
+                if (isConfirm) {
+                    cm01.setEvnt13("emit");
+                }
+        });
+    },
+
     dropUser: function( ) {
         SweetAlert.swal({
             title: "Confirmación",
@@ -145,6 +162,23 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
             function(isConfirm){
                 if (isConfirm) {
                     cm01.setEvnt11("emit");
+                }
+        });
+    },
+
+    moveBoardOfOrder: function( ) {
+        SweetAlert.swal({
+            title: "Confirmación",
+            text: "¿Seguro de efectuar el cambio de mesa a la mesa: "+cm01.getData08().number+"?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Ok",
+            closeOnConfirm: true,
+            closeOnCancel: true}, 
+            function(isConfirm){
+                if (isConfirm) {
+                    cm01.setEvnt14("emit");
                 }
         });
     },
