@@ -10,12 +10,7 @@ module.exports = function(Item) {
 
           Product.findOne({where: {id:productId}}, function(err, product){
             if (err) {cb(err)};
-            item.product({
-                product
-            }, function(err, elem) {
-                if (err) {cb(err)};
-                cb(null, item);
-            });
+            item.product(product);
           });
         });
     };

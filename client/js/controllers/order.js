@@ -5,8 +5,8 @@
 
 angular
   .module('app')
-  .controller('OrderController', ['$scope', 'Order', 'Board', 'Category', 'Product', 'Ingrediente', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', 
-  function($scope, Order, Board, Category, Product, Ingrediente, INGR, cm01, ms01,
+  .controller('OrderController', ['$scope', 'Order', 'Board', 'Category', 'Item', 'Product', 'Ingrediente', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', 
+  function($scope, Order, Board, Category, Item, Product, Ingrediente, INGR, cm01, ms01,
       $uibModal, $location, $log) {
         var vm = this;
 
@@ -194,12 +194,48 @@ angular
                 if( $scope.order.onSite ){
                     //Se selecciono una mesa?
                     if( $scope.order.board instanceof Object ){
-                        $scope.order.lstProducts = $scope.lstItems;
+                        $scope.order.items = $scope.lstItems;
                         $scope.order.total = $scope.total;
                         $log.info("LA COMANDA A ATENDER ES:");
                         $log.info($scope.order);
 
-                        /*AQUI ESTA LA MAGIA*/ 
+                        /*AQUI ESTA LA MAGIA*/
+                        $scope.order.orderdate = "2017-08-24T22:53:44.688Z";
+                        $scope.order.boardnumb = $scope.order.board.number;
+                        $scope.order.hola = "hola";
+
+                        Order.create($scope.order).$promise
+                        .then(function(order) {
+                            $scope.order.items.forEach(function (item){
+                                console.log('item product:' + item.product.name);
+                                //item.orderId = order.id;
+                                item.productId = item.product.id;
+
+                                Order.items.create({id: order.id}, item).$promise
+                                .then(function(miitem) {
+                                    item.lstAdd.forEach(function(ingr) {
+                                        Item.adds.link({id: miitem.id}, {fk: ingr.id}).$promise
+                                        .then(function(elem) {
+                                            console.log('Ingrediente añadido');
+                                        });
+                                    });
+
+                                    item.lstQuit.forEach(function(ingr) {
+                                        Item.quits.link({id: miitem.id}, {fk: ingr.id}).$promise
+                                        .then(function(elem) {
+                                            console.log('Ingrediente añadido');
+                                        });
+                                    });
+                                });
+                                /*Item.create(item).$promise
+                                .then(function(miitem) {
+                                    console.log('item añadido');
+                                });*/
+                            });
+
+                            ms01.msgSuccess();
+                            $scope.cancel();
+                        });
                     }else{
                         //Alerta de mesa no seleccionada
                         ms01.dontBoard();
@@ -238,6 +274,10 @@ angular
         Order.find({"filter":{"where": {"active":"true"}}}).$promise
         .then(function(results) {
             $scope.orders = results;
+
+            $scope.orders.forEach(function (order) {
+                order.items = Order.items({id: order.id});
+            });
             $log.info("LISTA DE ORDENES");$log.info(results);
         });
     }

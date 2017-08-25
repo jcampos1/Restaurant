@@ -7,8 +7,8 @@
     "validateUpsert": true
   },
   "properties": {
-    "number": {
-      "type": "string"
+    "orderdate": {
+      "type": "date"
     },
     "total": {
       "type": "number",
@@ -30,6 +30,16 @@
       "type": "hasMany",
       "model": "item",
       "foreignKey": "orderId"
+    },
+    "board": {
+      "type": "belongsTo",
+      "model": "Board",
+      "foreignKey": "boardId"
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
     }
   },
   "acls": [],
