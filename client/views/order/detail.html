@@ -26,7 +26,10 @@
                         {{item.cant}} {{item.product.name}}
                         <ul class="cls79">
                             <li ng-repeat="add in item.lstAdd">
-                                {{add.name}}
+                                + {{add.name}}
+                            </li>
+                            <li ng-repeat="quit in item.lstQuit">
+                                - {{quit.name}}
                             </li>
                         </ul>
                     </li>

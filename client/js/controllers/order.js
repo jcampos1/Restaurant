@@ -64,6 +64,10 @@ function($scope, Order, $uibModal, cm01,ms01, $log) {
         Order.find({"filter":{"where": {"active":"true"}}}).$promise
         .then(function(results) {
             $scope.orders = results;
+            $scope.orders.forEach(function(order, $index){
+                $scope.orders[$index].board = Order.board({id: order.id});
+            });
+
             $log.info("LISTA DE ORDENES");$log.info(results);
         });
     }
@@ -78,6 +82,14 @@ function($scope, Order, $uibModal, cm01,ms01, $log) {
             cm01.setData07(null);
             cm01.setEvnt13(null);
           });
+        }
+    });
+
+    //Actualizar lista de pedidos
+    $scope.$watch(function() { return cm01.getEvnt12() }, function() {
+        if( cm01.isValid(cm01.getEvnt12()) ){
+            $scope.orderFind();
+            cm01.setEvnt12(null);
         }
     });
 
@@ -134,14 +146,43 @@ function($scope, Order, Board, cm01, ms01, $uibModalInstance,
 
     //Acción ejecutada después de confirmar la movilizacion de mesa
     $scope.$watch(function() { return cm01.getEvnt14() }, function() {
+        
         if( cm01.isValid(cm01.getEvnt14()) ){
-            alert("SE EFECTUA EL CAMBIO A LA MESA: "+cm01.getData08().number);
-            $scope.cancel();
+            $scope.order.board = cm01.getData08();
+            $scope.order.$save().then(function(instance){
+                ms01.msgSuccess();
+                cm01.setData08(null);
+                cm01.setEvnt14(null);
+                cm01.setEvnt12("emit")
+                $scope.cancel();
+            });
         }
     });
 
     $scope.boardFind();
     
+    $scope.cancel = function() {
+      $uibModalInstance.dismiss(false);
+    };
+}]);
+
+//Muestra el modal de confirmacion de pedido
+angular.module("app").controller('ConfirmOrderController',
+['$scope', 'Order', 'Board', 'cm01', 'ms01', '$uibModalInstance', '$log', 'order', 'items',
+function($scope, Order, Board, cm01, ms01, $uibModalInstance,
+  $log, order, items) {
+
+    console.log(order);
+    console.log(items);
+    
+    $scope.order = order;
+    $scope.board = order.board;
+    $scope.items = items;
+
+    $scope.confirm = function() {
+      $uibModalInstance.close(true);
+    };
+
     $scope.cancel = function() {
       $uibModalInstance.dismiss(false);
     };
@@ -331,6 +372,28 @@ angular
             ms01.msgDestroy();
         }
 
+            //Muestra el proceso de cambio de mesa
+        $scope.process = function() {
+            var modalInstance = $uibModal.open({
+            animation : true,
+            templateUrl : 'modalConfirmOrder.html',
+            controller : 'ConfirmOrderController',
+            backdrop: true,
+            size : "lg",
+            resolve: {
+                order: function () {return $scope.order},
+                items: function(){return $scope.lstItems}
+            }
+            });
+            modalInstance.result.then(
+            function(confim) {
+                if(confim) {
+                    $scope.confirm();
+                }
+            }, function() {
+            });
+        }
+
         //CONFIRMAR PEDIDO
         $scope.confirm = function( ){
           //Se selecciono al menos un producto?
@@ -379,6 +442,7 @@ angular
                             });
 
                             ms01.msgSuccess();
+                            valorsInitials( );
                             $scope.cancel();
                         });
                     }else{
