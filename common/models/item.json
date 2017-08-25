@@ -11,7 +11,7 @@
       "type": "number",
       "required": true
     },
-    "llevar": {
+    "onsite": {
       "type": "boolean",
       "required": true,
       "default": true
@@ -32,7 +32,7 @@
     "order": {
       "type": "belongsTo",
       "model": "order",
-      "foreignKey": ""
+      "foreignKey": "orderId"
     },
     "quits": {
       "type": "hasAndBelongsToMany",
