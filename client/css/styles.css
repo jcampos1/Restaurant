@@ -54,8 +54,8 @@ a, span, label, p {
     font-family: 'Oswald', sans-serif;
 }
 
-.clsSelected{
-    border: 4px solid rgba(211, 69, 59, 1);
+.clsSelected {
+    border: 4px solid rgba(211, 69, 59, 1) !important;
 }
 /***************************************************/
 
@@ -595,6 +595,11 @@ ul li.cls03:hover {
 .cls05 img {
     width:100%;
     height: 140px;
+}
+
+.cls05Selected {
+    transform: scale(1.1);
+    border: 2px solid rgba(211, 69, 59, 0.6);
 }
 
 /*Item de la lista de pedidos*/

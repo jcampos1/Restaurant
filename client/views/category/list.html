@@ -52,3 +52,11 @@
     </section>
     <!-- /Lista de mesas  -->
 </div>
+<script>
+$(document).ready(function(){
+    $(".cls04").on('click', '.cls05', function(){
+        $('.cls05').removeClass("cls05Selected");
+        $(this).addClass("cls05Selected");
+    });
+});
+</script>
