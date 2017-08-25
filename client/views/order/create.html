@@ -238,8 +238,9 @@
 <script>
 $(document).ready(function(){
     $("#items").on('click', '.cls80', function(){
-        $(this).css("border", "2px solid rgba(211, 69, 59, 1)");
-
+        // $(this).css("border", "2px solid rgba(211, 69, 59, 1)");
+        $('.cls80').removeClass("clsSelected");
+        $(this).addClass("clsSelected");
     });
 });
 
