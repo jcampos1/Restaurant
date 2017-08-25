@@ -86,25 +86,24 @@ function($scope, Order, $uibModal, cm01,ms01, $log) {
 
 //Detalle de pedido de usuario
 angular.module("app").controller('DetailOrderController',
-['$scope', 'Order', 'cm01', '$uibModalInstance', '$log', function($scope, Order, cm01, $uibModalInstance,
+['$scope', 'Order', 'Item', 'cm01', '$uibModalInstance', '$log', 
+function($scope, Order, Item, cm01, $uibModalInstance,
   $log) {
 
     //Pedido seleccionado
     $scope.order = cm01.getData07();
-
-    //Encuentra todas las ordenes en estado abierto
-    $scope.orderFind = function( ) {
-        Order.find({"filter":{"where": {"active":"true"}}}).$promise
-        .then(function(results) {
-            $scope.orders = results;
-
-            $scope.orders.forEach(function (order) {
-                order.items = Order.items({id: order.id});
-            });
-            $log.info("LISTA DE ORDENES");$log.info(results);
-        });
-    }
     
+    //Lista de items
+    Order.items({id: $scope.order.id}, function(items){
+        $scope.items = items;
+        $scope.items.forEach(function(item, $index){
+            $scope.items[$index].product = Item.product({id: item.id});
+        });
+    });
+    
+    //Mesa asignada a la orden
+    $scope.board = Order.board({id: $scope.order.id});
+
     $scope.cancel = function() {
       $uibModalInstance.dismiss(false);
     };

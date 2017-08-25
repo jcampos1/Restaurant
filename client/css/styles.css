@@ -17,6 +17,16 @@ ul{
     padding: 0;
 }
 
+ul.cls78 {
+    list-style-type: square;
+    margin: 17px;
+}
+
+ul.cls79 {
+    list-style-type: circle;
+    margin: 17px;
+}
+
 .navbar {
     height: 50px;
     z-index: 1;
@@ -42,6 +52,10 @@ ul{
 
 a, span, label, p {
     font-family: 'Oswald', sans-serif;
+}
+
+.clsSelected{
+    border: 2px solid rgba(211, 69, 59, 0.6);
 }
 /***************************************************/
 
@@ -441,6 +455,14 @@ ul.cls01 li {
     font-size: 18px;
     text-align: center;
     display: block;
+}
+
+.cls80{
+    font-family:  'Oswald', sans-serif;
+    font-style: italic;
+    color: gray;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .cls33 {

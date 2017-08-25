@@ -128,6 +128,7 @@ angular
       "INSI":         "¿Comer aqui?",
       "TOTAL":        "Total",
       "MOVE":         "Mover",
+      "CANT":         "Cantidad",
 
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",
@@ -187,6 +188,7 @@ angular
       "INSI":         "¿Comer aqui?",
       "TOTAL":        "Total",
       "MOVE":         "Mover",
+      "CANT":         "Cantidad",
       
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",

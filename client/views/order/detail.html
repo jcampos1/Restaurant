@@ -8,19 +8,31 @@
     </div>
     <div class="modal-body">
         <div class="row">
-            <div class="col-xs-4 col-sm-3">
-                <label for="">{{'GENE.MESA' | translate}}</label>
-                
+            <div class="col-sm-12">
+                <label for=""><span class="cls80">{{'GENE.MESA' | translate}}:</span></label>
+                <span class="cls81">{{board.number}}</span> |
+                <span class="cls81">{{board.space}} {{'GENE.LUGA' | translate}}</span>
             </div>
-            <div class="col-xs-4 col-sm-3">
-                <label for="">{{'GENE.USER' | translate}}</label>
-                
-            </div>
-            <div class="col-xs-4 col-sm-3">
-                <label for="">{{'GENE.TOTAL' | translate}}</label>
-                
+            <div class="col-sm-12">
+                <label for=""><span class="cls80">{{'GENE.TOTAL' | translate}}:</span></label>
+                <span class="cls81">{{order.total | number:2}}</span>
             </div>
         </div>
+        <ul class="cls78">
+            <li>
+                <span class="cls80">{{'GENE.PROD' | translate}}:</span><br>
+                <ul class="cls78">
+                    <li ng-repeat="item in items">
+                        {{item.cant}} {{item.product.name}}
+                        <ul class="cls79">
+                            <li ng-repeat="add in item.lstAdd">
+                                {{add.name}}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div class="modal-footer">
         <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
