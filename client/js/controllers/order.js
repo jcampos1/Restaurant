@@ -373,6 +373,8 @@ angular
 
             //Muestra el proceso de cambio de mesa
         $scope.process = function() {
+            $scope.order.total = $scope.total;
+
             var modalInstance = $uibModal.open({
             animation : true,
             templateUrl : 'modalConfirmOrder.html',
@@ -401,49 +403,8 @@ angular
                 if( $scope.order.onSite ){
                     //Se selecciono una mesa?
                     if( $scope.order.board instanceof Object ){
-                        $scope.order.items = $scope.lstItems;
-                        $scope.order.total = $scope.total;
-                        $log.info("LA COMANDA A ATENDER ES:");
-                        $log.info($scope.order);
-
-                        /*AQUI ESTA LA MAGIA*/
-                        $scope.order.orderdate = "2017-08-24T22:53:44.688Z";
                         $scope.order.boardnumb = $scope.order.board.number;
-                        $scope.order.hola = "hola";
-
-                        Order.create($scope.order).$promise
-                        .then(function(order) {
-                            $scope.order.items.forEach(function (item){
-                                console.log('item product:' + item.product.name);
-                                //item.orderId = order.id;
-                                item.productId = item.product.id;
-
-                                Order.items.create({id: order.id}, item).$promise
-                                .then(function(miitem) {
-                                    item.lstAdd.forEach(function(ingr) {
-                                        Item.adds.link({id: miitem.id}, {fk: ingr.id}).$promise
-                                        .then(function(elem) {
-                                            console.log('Ingrediente añadido');
-                                        });
-                                    });
-
-                                    item.lstQuit.forEach(function(ingr) {
-                                        Item.quits.link({id: miitem.id}, {fk: ingr.id}).$promise
-                                        .then(function(elem) {
-                                            console.log('Ingrediente añadido');
-                                        });
-                                    });
-                                });
-                                /*Item.create(item).$promise
-                                .then(function(miitem) {
-                                    console.log('item añadido');
-                                });*/
-                            });
-
-                            ms01.msgSuccess();
-                            valorsInitials( );
-                            $scope.cancel();
-                        });
+                        create();
                     }else{
                         //Alerta de mesa no seleccionada
                         ms01.dontBoard();
@@ -451,6 +412,9 @@ angular
                 }else{
                     $scope.order.lstProducts = $scope.lstItems;
                     $scope.order.total = $scope.total;
+                    $scope.order.board = undefined;
+                    $scope.order.boardnumb = "mesempty";
+                    create();
                     $log.info("LA COMANDA A ATENDER ES:");
                     $log.info($scope.order);
                 }
@@ -468,6 +432,52 @@ angular
                 }
             }, this);
             return false;
+        }
+
+        //Crea un pedido
+        function create() {
+            $scope.order.items = $scope.lstItems;
+            $scope.order.total = $scope.total;
+            $log.info("LA COMANDA A ATENDER ES:");
+            $log.info($scope.order);
+
+            /*AQUI ESTA LA MAGIA*/
+            $scope.order.orderdate = "2017-08-24T22:53:44.688Z";
+            $scope.order.hola = "hola";
+
+            Order.create($scope.order).$promise
+            .then(function(order) {
+                $scope.order.items.forEach(function (item){
+                    console.log('item product:' + item.product.name);
+                    //item.orderId = order.id;
+                    item.productId = item.product.id;
+
+                    Order.items.create({id: order.id}, item).$promise
+                    .then(function(miitem) {
+                        item.lstAdd.forEach(function(ingr) {
+                            Item.adds.link({id: miitem.id}, {fk: ingr.id}).$promise
+                            .then(function(elem) {
+                                console.log('Ingrediente añadido');
+                            });
+                        });
+
+                        item.lstQuit.forEach(function(ingr) {
+                            Item.quits.link({id: miitem.id}, {fk: ingr.id}).$promise
+                            .then(function(elem) {
+                                console.log('Ingrediente añadido');
+                            });
+                        });
+                    });
+                    /*Item.create(item).$promise
+                    .then(function(miitem) {
+                        console.log('item añadido');
+                    });*/
+                });
+
+                ms01.msgSuccess();
+                valorsInitials( );
+                $scope.cancel();
+            });
         }
 
         $scope.boardFind();

@@ -248,6 +248,11 @@ angular.module("app").controller('EditUserController',
           $log.error(err);
         });
 
+      User.findRolesByUser({user: $scope.user.id}, function(result){
+        console.log(result.roles);
+          $scope.rolesSelected = result.roles;
+      });
+
       //Creación de usuario
       $scope.edit = function( form ) {
         if( form.$valid ) {
