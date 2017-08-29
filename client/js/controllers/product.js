@@ -180,7 +180,8 @@ angular.module("app").controller('NewProductController',
 }]);
 
 angular.module("app").controller('EditProductController',
-  ['$scope', 'Product', 'Category', 'cm01', 'ms01', '$uibModalInstance', '$state', '$location', '$log', function($scope, Product, Category, cm01, ms01, $uibModalInstance,
+  ['$scope', 'Product', 'Category', 'Container', 'FileUploader', 'cm01', 'ms01', '$uibModalInstance', '$state', '$location', '$log', 
+  function($scope, Product, Category, Container, FileUploader, cm01, ms01, $uibModalInstance,
     $state, $location, $log) {
 
       $scope.product = cm01.getData03();
@@ -202,6 +203,19 @@ angular.module("app").controller('EditProductController',
       //Ediciòn de producto
       $scope.edit = function( form ) {
         if( form.$valid ) {
+          if( $scope.image ){
+            $scope.product.image= $scope.image.file.name
+            Container.getFile(
+              {container: "container1", file: $scope.product.image},
+              //Se ejecuta si existe el archivo
+              function(file){
+              },
+            //Es ejecutado si no existe
+            function(err) {
+              $scope.image.upload();
+            });
+          }
+
           $scope.product.categoryId = $scope.category.id;
           Category.products.updateById(
             {id: beforeCat.id, fk: $scope.product.id},
@@ -215,6 +229,21 @@ angular.module("app").controller('EditProductController',
           });
         }
       }
+
+      // create a uploader with options
+      var uploader = $scope.uploader = new FileUploader({
+        scope: $scope,                       
+        url: '/api/containers/container1/upload',
+        formData: [
+          { key: 'value' }
+        ]
+      });
+
+      // REGISTER HANDLERS
+      // --------------------
+      uploader.onAfterAddingFile = function(item) {
+        $scope.image = item;
+      };
 
       $scope.cancel = function() {
         $uibModalInstance.dismiss(false);

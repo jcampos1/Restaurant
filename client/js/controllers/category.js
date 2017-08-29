@@ -165,13 +165,26 @@ angular.module("app").controller('NewCategoryController',
 }]);
 
 angular.module("app").controller('EditCategoryController',
-  ['$scope', 'Category', 'cm01', 'ms01', '$uibModalInstance', '$state', '$location', '$log', function($scope, Category, cm01, ms01, $uibModalInstance,
+  ['$scope', 'Category', 'Container', 'FileUploader', 'cm01', 'ms01', '$uibModalInstance', '$state', '$location', '$log', 
+  function($scope, Category, Container, FileUploader, cm01, ms01, $uibModalInstance,
     $state, $location, $log) {
 
       $scope.category = cm01.getData02();
       
       $scope.edit = function( form ) {
         if( form.$valid ) {
+          if( $scope.image ){
+            $scope.category.image= $scope.image.file.name
+            Container.getFile(
+              {container: "container1", file: $scope.category.image},
+              //Se ejecuta si existe el archivo
+              function(file){
+              },
+            //Es ejecutado si no existe
+            function(err) {
+              $scope.image.upload();
+            });
+          }
           $scope.category.$save().then(function(instance){
             ms01.msgSuccess();
             cm01.setEvnt03("emit");
@@ -180,6 +193,21 @@ angular.module("app").controller('EditCategoryController',
           });
         }
       }
+
+      // create a uploader with options
+      var uploader = $scope.uploader = new FileUploader({
+        scope: $scope,                       
+        url: '/api/containers/container1/upload',
+        formData: [
+          { key: 'value' }
+        ]
+      });
+
+      // REGISTER HANDLERS
+      // --------------------
+      uploader.onAfterAddingFile = function(item) {
+        $scope.image = item;
+      };
 
       $scope.cancel = function() {
         $uibModalInstance.dismiss(false);

@@ -9,15 +9,38 @@
   "forceId": false,
   "properties": {
     "orderdate": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "total": {
       "type": "number",
       "required": true
     },
+    "abon": {
+      "type": "number",
+      "required": false
+    },
+    "changing": {
+      "type": "number",
+      "required": false
+    },
     "boardnumb": {
       "type": "string",
       "required": true
+    },
+    "stat": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "payment": {
+      "type": "number",
+      "required": false,
+      "default": 0
+    },
+    "closedate": {
+      "type": "date",
+      "required": false
     },
     "active": {
       "type": "boolean",

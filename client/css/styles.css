@@ -603,6 +603,11 @@ ul li.cls03:hover {
     border: 2px solid rgba(211, 69, 59, 0.6);
 }
 
+.cls81 {
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 /*Item de la lista de pedidos*/
 .cls72 {
     width: 270px;

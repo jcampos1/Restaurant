@@ -52,6 +52,15 @@
                     <input type="text" class="general" name="descripcion" placeholder="{{'GENE.DSCA' | translate}}" ng-model="product.description">
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <img src="{{'../../images/storage/container1/'+product.image}}" class="cls81">
+                </div>
+                <div class="col-xs-9">
+                    <label class="font02">{{'GENE.SELIMG' | translate}}</label>
+                    <input class="general" nv-file-select uploader="uploader" type="file"/>
+                </div>
+            </div>
             <br />
             <div class="modal-footer">
                 <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i

@@ -8,12 +8,10 @@ angular
     'lbServices', 'comunication01', 'myservices01', 'angularFileUpload',
     'ui.router', 'ngResource', 'oitozero.ngSweetAlert', 'cgNotify', 'localytics.directives', 'ui.bootstrap', 'pascalprecht.translate'
   ])
-.constant('INGR', 
-[
-{ value: 0, dsca: "Observación"}, 
-{ value: 1, dsca: "Adicional"}
-])
-  .config(['$stateProvider', '$urlRouterProvider', '$httpProvider',  function($stateProvider,
+.constant('INGR', [{ value: 0, dsca: "Observación"}, { value: 1, dsca: "Adicional"}])
+.constant('STOR', [{ value: 0, dsca: "Abierto"}, { value: 1, dsca: "Cerrado"}, { value: 2, dsca: "Cancelado"}])
+.constant('PAY', [{ value: 0, dsca: "Tarjeta"}, { value: 1, dsca: "Efectivo"}])  
+.config(['$stateProvider', '$urlRouterProvider', '$httpProvider',  function($stateProvider,
       $urlRouterProvider, $httpProvider) {
 
     //Configuración de rutas
@@ -129,6 +127,9 @@ angular
       "TOTAL":        "Total",
       "MOVE":         "Mover",
       "CANT":         "Cantidad",
+      "SELIMG":       "Seleccione una imagen",
+      "true":         "Si",
+      "false":        "No",
 
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",
@@ -189,6 +190,9 @@ angular
       "TOTAL":        "Total",
       "MOVE":         "Mover",
       "CANT":         "Cantidad",
+      "SELIMG":       "Seleccione una imagen",
+      "true":         "Si",
+      "false":        "No",
       
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",

@@ -178,8 +178,8 @@ angular.module("app").controller('NewIngredienteController',
 }]);
 
 angular.module("app").controller('EditIngredienteController',
-  ['$scope', 'Ingrediente', 'cm01', 'ms01', 'FileUploader', '$uibModalInstance', 'INGR', '$state', '$location', '$log', function($scope, Ingrediente, cm01, ms01, FileUploader, $uibModalInstance, INGR,
-    $state, $location, $log) {
+  ['$scope', 'Ingrediente', 'cm01', 'ms01', 'Container', 'FileUploader', '$uibModalInstance', 'INGR', '$state', '$location', '$log', 
+function($scope, Ingrediente, cm01, ms01, Container, FileUploader, $uibModalInstance, INGR, $state, $location, $log) {
 
       $scope.ingrediente = cm01.getData05();
 
@@ -191,6 +191,15 @@ angular.module("app").controller('EditIngredienteController',
         if( form.$valid ) {
           if( $scope.image ){
             $scope.ingrediente.image= $scope.image.file.name
+            Container.getFile(
+              {container: "container1", file: $scope.ingrediente.image},
+              //Se ejecuta si existe el archivo
+              function(file){
+              },
+            //Es ejecutado si no existe
+            function(err) {
+              $scope.image.upload();
+            });
           }
           $scope.ingrediente.type = $scope.type.value;
           $scope.ingrediente.$save().then(function(instance){

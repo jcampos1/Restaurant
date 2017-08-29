@@ -4,8 +4,8 @@
 // License text available at https://opensource.org/licenses/MIT
 
 angular.module("app").controller('OrderController',
-['$scope', 'Order', '$uibModal', 'cm01', 'ms01', '$log', 
-function($scope, Order, $uibModal, cm01,ms01, $log) {
+['$scope', 'Order', '$uibModal', 'cm01', 'ms01', '$log', 'STOR', 
+function($scope, Order, $uibModal, cm01,ms01, $log, STOR) {
 
     var vm = this;
 
@@ -61,7 +61,7 @@ function($scope, Order, $uibModal, cm01,ms01, $log) {
 
     //Encuentra todas las ordenes en estado abierto
     $scope.orderFind = function( ) {
-        Order.find({"filter":{"where": {"active":"true"}}}).$promise
+        Order.find({"filter":{"where": {"active":"true", "stat":""+STOR[0].value}}}).$promise
         .then(function(results) {
             $scope.orders = results;
             $scope.orders.forEach(function(order, $index){
@@ -75,6 +75,7 @@ function($scope, Order, $uibModal, cm01,ms01, $log) {
     //Acción ejecutada después de confirmar eliminación
     $scope.$watch(function() { return cm01.getEvnt13() }, function() {
         if( cm01.isValid(cm01.getEvnt13()) ){
+          cm01.getData07().stat = STOR[2].value;
           cm01.getData07().active = false;
           cm01.getData07().$save().then(function(instance){
             $scope.orderFind();
@@ -190,9 +191,9 @@ function($scope, Order, Board, cm01, ms01, $uibModalInstance,
 angular
   .module('app')
 
-  .controller('NewOrderController', ['$scope', 'Order', 'Board', 'Category', 'Item', 'Product', 'Ingrediente', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', 
+  .controller('NewOrderController', ['$scope', 'Order', 'Board', 'Category', 'Item', 'Product', 'Ingrediente', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', 'STOR', 
   function($scope, Order, Board, Category, Item, Product, Ingrediente, INGR, cm01, ms01,
-      $uibModal, $location, $log) {
+      $uibModal, $location, $log, STOR) {
         var vm = this;
 
         $scope.boards = [];
@@ -211,7 +212,6 @@ angular
           $scope.order = new Object();
           //Por defecto el pedido es para comer en el sitio
           $scope.order.onSite = true;
-
         }
 
         /****************ACCIONES SOBRE MESAS ************************ */
@@ -338,7 +338,6 @@ angular
 
         //Graba el indice del producto seleccionado para agregar ingrediente (adicional o principal)
         $scope.selectProductForIngr = function( $index ){
-            console.log("SE SELECCIONO PRODUCTO");
             cm01.setData06($index);
         }
 
@@ -371,7 +370,7 @@ angular
             ms01.msgDestroy();
         }
 
-            //Muestra el proceso de cambio de mesa
+        //Muestra el proceso de cambio de mesa
         $scope.process = function() {
             $scope.order.total = $scope.total;
 
@@ -442,7 +441,8 @@ angular
             $log.info($scope.order);
 
             /*AQUI ESTA LA MAGIA*/
-            $scope.order.orderdate = "2017-08-24T22:53:44.688Z";
+            $scope.order.orderdate = new Date();
+            $log.info("LA fecha es: "+$scope.order.orderdate);
             $scope.order.hola = "hola";
 
             Order.create($scope.order).$promise
@@ -476,7 +476,6 @@ angular
 
                 ms01.msgSuccess();
                 valorsInitials( );
-                $scope.cancel();
             });
         }
 
