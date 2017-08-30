@@ -9,6 +9,7 @@ module.exports = function(app) {
   var Role = app.models.Role;
   var RoleMapping = app.models.RoleMapping;
   var Category = app.models.category;
+  var Ingrediente = app.models.Ingrediente;
   var Order = app.models.order;
 
   /***************** CREACIÓN DE USUARIOS INICIALES *****************/
@@ -112,7 +113,7 @@ module.exports = function(app) {
   /******************************************************************/
 
   /***************** CREACIÓN CATEGORIAS INICIALES *****************/
-  Category.create([
+  /*Category.create([
     {name: "Xis", description: "Descripción Xis", image: 'sin-img-01.png'},
     {name: "Bebidas", description: "Descripción Bebidas", image: 'sin-img-01.png'},
     {name: "Petiscos", description: "Descripción Petiscos", image: 'sin-img-01.png'},
@@ -123,6 +124,18 @@ module.exports = function(app) {
 
     console.log('Categorias creadas:', categorys);
   });
+
+  Ingrediente.create([
+    {name: "Jamon", type: "1", price: "100", description: "Jamon de pavo", image: 'sin-img-01.png'},
+    {name: "Queso", type: "1", price: "120", description: "Queso", image: 'sin-img-01.png'},
+    {name: "Sin lechuga", type: "0", description: "Descripción sin lechuga", image: 'sin-img-01.png'},
+    {name: "Sin mostaza", type: "0", image: 'sin-img-01.png'},
+    {name: "Tocineta", type: "1", price: "150", description: "Mucha tocineta", image: 'sin-img-01.png'}
+  ], function(err, ingredientes) {
+    if (err) throw err;
+
+    console.log('Ingredientes creados:', ingredientes);
+  });*/
   /*****************************************************************/
   //  Order.create([
   //   {number: "00001", total: 1000, boardnumb: '1'},

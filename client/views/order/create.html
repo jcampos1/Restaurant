@@ -80,7 +80,7 @@
         <div class="cls56">
             <button ng-click="process()" class="button2 cls61">
                 <span class="glyphicon glyphicon-ok-sign"></span>
-                <span style="font-size: 16px;">{{ 'GENE.CONF2' | translate }}</span>
+                <span style="font-size: 16px;">{{ 'GENE.PROCES' | translate }}</span>
 					
 				</button>
         </div>
@@ -154,6 +154,7 @@
 
         <!-- Adicionales -->
         <uib-tab index="2" ng-click="ingredienteFind()">
+            
             <uib-tab-heading>
                 <img src="../../images/ico-ingr.png" alt="Norway" style="width:120px; height: 80px;">
                 <label for="mesas" class="cls17">{{'GENE.INGRE' | translate}}</label>
@@ -194,7 +195,7 @@
         <h3 class="box-title">{{'GENE.DETA' | translate}}</h3>
     </div>
     <div class="modal-body">
-        <div class="row">
+        <!--<div class="row">
             <div class="col-sm-12">
                 <label for=""><span class="cls80">{{'GENE.MESA' | translate}}:</span></label>
                 <span class="cls81">{{board.number}}</span> |
@@ -204,8 +205,45 @@
                 <label for=""><span class="cls80">{{'GENE.TOTAL' | translate}}:</span></label>
                 <span class="cls81">{{order.total | number:2}}</span>
             </div>
+        </div>-->
+
+        <!-- Contenedor -->
+        <div class="com01" style="margin:auto;">
+            <!-- Header -->
+            <div class="com02">
+                <label>{{board.number | uppercase}}</label>
+            </div>
+            <!-- Fecha y hora -->
+            <div class="com04">
+                <label style="float:left;">
+                    {{today | date:"dd/MM/yyyy"}}
+                </label>
+                <label style="float:right;">
+                    {{today | date:"H:mm"}}
+                </label>
+            </div>
+            <!-- cuerpo -->
+            <div class="com05">
+                <ul style=" padding-left:18px; margin:10px 0; list-style: square;">
+                    <li ng-repeat="item in items">{{item.cant}} {{item.product.name | uppercase}}
+                    <ul style="list-style:none; margin:0; padding:5px 12px;">
+                        <li ng-repeat="add in item.lstAdd">
+                                + {{add.name | uppercase}}
+                        </li>
+                        <li ng-repeat="quit in item.lstQuit">
+                            - {{quit.name | uppercase}}
+                        </li>
+                    </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- Mesero -->
+            <div class="com02">
+                <label>MESERO: JUAN</label>
+            </div>
         </div>
-        <ul class="cls78">
+
+        <!--<ul class="cls78">
             <li>
                 <span class="cls80">{{'GENE.PROD' | translate}}:</span><br>
                 <ul class="cls78">
@@ -222,7 +260,7 @@
                     </li>
                 </ul>
             </li>
-        </ul>
+        </ul>-->
     </div>
     <div class="modal-footer">
         <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i

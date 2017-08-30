@@ -178,6 +178,7 @@ function($scope, Order, Board, cm01, ms01, $uibModalInstance,
     $scope.order = order;
     $scope.board = order.board;
     $scope.items = items;
+    $scope.today = new Date();
 
     $scope.confirm = function() {
       $uibModalInstance.close(true);
@@ -379,7 +380,7 @@ angular
             templateUrl : 'modalConfirmOrder.html',
             controller : 'ConfirmOrderController',
             backdrop: true,
-            size : "lg",
+            size : "md",
             resolve: {
                 order: function () {return $scope.order},
                 items: function(){return $scope.lstItems}

@@ -130,6 +130,7 @@ angular
       "SELIMG":       "Seleccione una imagen",
       "true":         "Si",
       "false":        "No",
+      "PROCES":       "Procesar",
 
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",
@@ -193,6 +194,7 @@ angular
       "SELIMG":       "Seleccione una imagen",
       "true":         "Si",
       "false":        "No",
+      "PROCES":       "Procesar",
       
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",
