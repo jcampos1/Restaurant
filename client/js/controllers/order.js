@@ -45,6 +45,42 @@ function($scope, Order, $uibModal, cm01,ms01, $log, STOR) {
         }
     }
 
+    //Muestra el tiket de una orden para su posterior impresión
+    vm.printOrder = function() {
+        if( cm01.isValid(cm01.getData07()) ) {
+            var modalInstance = $uibModal.open({
+            animation : true,
+            templateUrl : 'printOrder.html',
+            controller : 'PrintOrderController',
+            backdrop: true,
+            size : "md"
+            });
+            modalInstance.result.then(function() {
+            }, function() {
+            });
+        }else{
+            ms01.unselected();
+        }
+    }
+
+    //Muestra el modal para el pago del pedido
+    vm.paymentOrder = function() {
+        if( cm01.isValid(cm01.getData07()) ) {
+            var modalInstance = $uibModal.open({
+            animation : true,
+            templateUrl : 'paymentOrder.html',
+            controller : 'PaymentOrderController',
+            backdrop: true,
+            size : "lg"
+            });
+            modalInstance.result.then(function() {
+            }, function() {
+            });
+        }else{
+            ms01.unselected();
+        }
+    }
+
     //Eliminación
     $scope.dropOrder = function() {
         if( cm01.isValid(cm01.getData07()) ) {
@@ -116,6 +152,74 @@ function($scope, Order, Item, cm01, $uibModalInstance,
     
     //Mesa asignada a la orden
     $scope.board = Order.board({id: $scope.order.id});
+
+    $scope.cancel = function() {
+      $uibModalInstance.dismiss(false);
+    };
+}]);
+
+//Impresión de pedido de usuario
+angular.module("app").controller('PrintOrderController',
+['$scope', 'Order', 'Item', 'cm01', '$uibModalInstance', '$log', 
+function($scope, Order, Item, cm01, $uibModalInstance,
+  $log) {
+
+    //Pedido seleccionado
+    $scope.order = cm01.getData07();
+    $scope.today = new Date(); 
+
+    //Lista de items
+    Order.items({id: $scope.order.id}, function(items){
+        $scope.items = items;
+        $scope.items.forEach(function(item, $index){
+            $scope.items[$index].product = Item.product({id: item.id});
+        });
+    });
+    
+    //Mesa asignada a la orden
+    $scope.board = Order.board({id: $scope.order.id});
+
+    $scope.confirm = function() {
+        var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        popupWinindow.document.open();
+        popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + $("#printAreaId").html() + '</html>');
+        popupWinindow.document.close();
+        $uibModalInstance.dismiss(false);
+    };
+
+    $scope.cancel = function() {
+      $uibModalInstance.dismiss(false);
+    };
+}]);
+
+//Pago de pedido de usuario
+angular.module("app").controller('PaymentOrderController',
+['$scope', 'Order', 'Item', 'cm01', '$uibModalInstance', '$log', 
+function($scope, Order, Item, cm01, $uibModalInstance,
+  $log) {
+
+    //Pedido seleccionado
+    $scope.order = cm01.getData07();
+    $scope.today = new Date(); 
+
+    //Lista de items
+    Order.items({id: $scope.order.id}, function(items){
+        $scope.items = items;
+        $scope.items.forEach(function(item, $index){
+            $scope.items[$index].product = Item.product({id: item.id});
+        });
+    });
+    
+    //Mesa asignada a la orden
+    $scope.board = Order.board({id: $scope.order.id});
+
+    $scope.confirm = function() {
+        var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        popupWinindow.document.open();
+        popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + $("#printAreaId").html() + '</html>');
+        popupWinindow.document.close();
+        $uibModalInstance.dismiss(false);
+    };
 
     $scope.cancel = function() {
       $uibModalInstance.dismiss(false);
@@ -269,6 +373,13 @@ angular
           var item = $scope.lstItems[$index];
           item.cant++;
           $scope.total += item.product.price;
+
+          $scope.lstItems[$index].lstAdd.forEach( function( add ) {
+              if (add.type == INGR[1].value ) {
+                  console.log( add );
+                  $scope.total += add.price;
+              }
+            });
           $scope.lstItems[$index] = item;
           $("#cant"+$index).val(item.cant);
         }
@@ -278,6 +389,12 @@ angular
           var item = $scope.lstItems[$index]
           item.cant--;
           $scope.total -= item.product.price;
+          $scope.lstItems[$index].lstAdd.forEach( function( add ) {
+              if (add.type == INGR[1].value ) {
+                  console.log( add );
+                  $scope.total -= add.price;
+              }
+            });
           $scope.lstItems[$index] = item;
           $("#cant"+$index).val(item.cant);
         }
@@ -350,7 +467,7 @@ angular
               if( ingr.type == INGR[1].value ) {
                   $scope.lstItems[cm01.getData06()].lstAdd.push(angular.copy(ingr));
                   $log.info("Lista de adicionales es: "); $log.info($scope.lstItems[cm01.getData06()].lstAdd);
-                  $scope.total += ingr.price;
+                  $scope.total += $scope.lstItems[cm01.getData06()].cant*ingr.price;
               }else{
                   $scope.lstItems[cm01.getData06()].lstQuit.push(angular.copy(ingr));
               }
@@ -361,7 +478,7 @@ angular
 
         //Cancela ingrediente adicional asociado a un producto
         $scope.quitIngrOfProd = function( $key, $index ){
-            $scope.total -= $scope.lstItems[$key].lstAdd[$index].price;
+            $scope.total -= $scope.lstItems[$key].cant*$scope.lstItems[$key].lstAdd[$index].price;
             $scope.lstItems[$key].lstAdd.splice($index, 1);
             ms01.msgDestroy();
         }
@@ -469,8 +586,6 @@ angular
                                 console.log('Ingrediente añadido');
                             });
                         });
-
-                        var innerContents = $("#printAreaId").html();
                         var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
                         popupWinindow.document.open();
                         popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + cm01.getData09() + '</html>');
@@ -499,5 +614,17 @@ angular
   angular.module('app').component('moveBoardOfOrderComponent',
   {
         templateUrl: '../../views/order/moveBoardOfOrder.html',
+        controller : 'OrderController'
+  });
+
+  angular.module('app').component('printOrderComponent',
+  {
+        templateUrl: '../../views/order/printOrder.html',
+        controller : 'OrderController'
+  });
+
+  angular.module('app').component('paymentOrderComponent',
+  {
+        templateUrl: '../../views/order/paymentOrder.html',
         controller : 'OrderController'
   });

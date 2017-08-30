@@ -1,0 +1,57 @@
+<a class="a_icon" ng-click="$ctrl.printOrder()">
+    <img class="cls20" src="../../images/ico-print.png" alt="print">
+</a>
+
+<script type="text/ng-template" id="printOrder.html">
+    <div class="modal-header">
+        <h3 class="box-title">{{'GENE.ORDER' | translate}}</h3>
+    </div>
+    <div class="modal-body">
+        <form name="formComanda" novalidate id="printAreaId">
+            <!-- Contenedor -->
+            <div style="margin:auto;" >
+                <!-- Header -->
+                <div class="com02">
+                    <label>{{board.number | uppercase}}</label>
+                </div>
+                <!-- Fecha y hora -->
+                <div class="com04">
+                    <label style="float:left;">
+                        {{today | date:"dd/MM/yyyy"}}
+                    </label>
+                    <label style="float:right;">
+                        {{today | date:"H:mm"}}
+                    </label>
+                </div>
+                <!-- cuerpo -->
+                <div class="com05">
+                    <ul style=" padding-left:18px; margin:10px 0; list-style: square;">
+                        <li ng-repeat="item in items">{{item.cant}} {{item.product.name | uppercase}}
+                        <ul style="list-style:none; margin:0; padding:5px 12px;">
+                            <li ng-repeat="add in item.lstAdd">
+                                    + {{add.name | uppercase}}
+                            </li>
+                            <li ng-repeat="quit in item.lstQuit">
+                                - {{quit.name | uppercase}}
+                            </li>
+                        </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Mesero -->
+                <div class="com02">
+                    <label>MESERO: JUAN</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
+            class="fa fa-close"></i>{{'GENE.CANC' | translate}}
+        </a>
+        <a ng-click="confirm()"
+            class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
+            {{ 'GENE.CONF2' | translate }}
+        </a>
+    </div>
+</script>

@@ -1,0 +1,42 @@
+<a class="a_icon" ng-click="$ctrl.paymentOrder()">
+    <img class="cls20" src="../../images/ico-cobrar.png" alt="cobrar">
+</a>
+
+<script type="text/ng-template" id="paymentOrder.html">
+    <div class="modal-header">
+        <h3 class="box-title">{{'GENE.PAYMENT' | translate}}</h3>
+    </div>
+    <div class="modal-body">
+        <form name="formComanda" novalidate id="printAreaId">
+            <!-- Contenedor -->
+            <div style="margin:auto;" >
+                <!-- Header -->
+                <div class="com02">
+                    <label>{{board.number | uppercase}}</label>
+                </div>
+                <!-- Fecha y hora -->
+                <div class="com04">
+                    <label style="float:left;">
+                        {{today | date:"dd/MM/yyyy"}}
+                    </label>
+                    <label style="float:right;">
+                        {{today | date:"H:mm"}}
+                    </label>
+                </div>
+                <!-- Mesero -->
+                <div class="com02">
+                    <label>MESERO: JUAN</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
+            class="fa fa-close"></i>{{'GENE.CANC' | translate}}
+        </a>
+        <a ng-click="confirm()"
+            class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
+            {{ 'GENE.CONF2' | translate }}
+        </a>
+    </div>
+</script>

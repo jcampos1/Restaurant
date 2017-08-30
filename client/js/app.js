@@ -131,6 +131,10 @@ angular
       "true":         "Si",
       "false":        "No",
       "PROCES":       "Procesar",
+      "ORDER":        "Orden",
+      "PRINT":        "Imprimir",
+      "PAYMENT":      "Pago",
+
 
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",
@@ -195,6 +199,9 @@ angular
       "true":         "Si",
       "false":        "No",
       "PROCES":       "Procesar",
+      "ORDER":        "Orden",
+      "PRINT":        "Imprimir",
+      "PAYMENT":      "Pago",
       
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",
