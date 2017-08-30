@@ -207,41 +207,43 @@
             </div>
         </div>-->
 
-        <!-- Contenedor -->
-        <div class="com01" style="margin:auto;">
-            <!-- Header -->
-            <div class="com02">
-                <label>{{board.number | uppercase}}</label>
-            </div>
-            <!-- Fecha y hora -->
-            <div class="com04">
-                <label style="float:left;">
-                    {{today | date:"dd/MM/yyyy"}}
-                </label>
-                <label style="float:right;">
-                    {{today | date:"H:mm"}}
-                </label>
-            </div>
-            <!-- cuerpo -->
-            <div class="com05">
-                <ul style=" padding-left:18px; margin:10px 0; list-style: square;">
-                    <li ng-repeat="item in items">{{item.cant}} {{item.product.name | uppercase}}
-                    <ul style="list-style:none; margin:0; padding:5px 12px;">
-                        <li ng-repeat="add in item.lstAdd">
-                                + {{add.name | uppercase}}
-                        </li>
-                        <li ng-repeat="quit in item.lstQuit">
-                            - {{quit.name | uppercase}}
+        <form name="formComanda" novalidate id="printAreaId">
+            <!-- Contenedor -->
+            <div style="margin:auto;" >
+                <!-- Header -->
+                <div class="com02">
+                    <label>{{board.number | uppercase}}</label>
+                </div>
+                <!-- Fecha y hora -->
+                <div class="com04">
+                    <label style="float:left;">
+                        {{today | date:"dd/MM/yyyy"}}
+                    </label>
+                    <label style="float:right;">
+                        {{today | date:"H:mm"}}
+                    </label>
+                </div>
+                <!-- cuerpo -->
+                <div class="com05">
+                    <ul style=" padding-left:18px; margin:10px 0; list-style: square;">
+                        <li ng-repeat="item in items">{{item.cant}} {{item.product.name | uppercase}}
+                        <ul style="list-style:none; margin:0; padding:5px 12px;">
+                            <li ng-repeat="add in item.lstAdd">
+                                    + {{add.name | uppercase}}
+                            </li>
+                            <li ng-repeat="quit in item.lstQuit">
+                                - {{quit.name | uppercase}}
+                            </li>
+                        </ul>
                         </li>
                     </ul>
-                    </li>
-                </ul>
+                </div>
+                <!-- Mesero -->
+                <div class="com02">
+                    <label>MESERO: JUAN</label>
+                </div>
             </div>
-            <!-- Mesero -->
-            <div class="com02">
-                <label>MESERO: JUAN</label>
-            </div>
-        </div>
+        </form>
 
         <!--<ul class="cls78">
             <li>

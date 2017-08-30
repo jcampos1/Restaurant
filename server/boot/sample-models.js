@@ -113,7 +113,7 @@ module.exports = function(app) {
   /******************************************************************/
 
   /***************** CREACIÓN CATEGORIAS INICIALES *****************/
-  /*Category.create([
+  Category.create([
     {name: "Xis", description: "Descripción Xis", image: 'sin-img-01.png'},
     {name: "Bebidas", description: "Descripción Bebidas", image: 'sin-img-01.png'},
     {name: "Petiscos", description: "Descripción Petiscos", image: 'sin-img-01.png'},
@@ -135,7 +135,7 @@ module.exports = function(app) {
     if (err) throw err;
 
     console.log('Ingredientes creados:', ingredientes);
-  });*/
+  });
   /*****************************************************************/
   //  Order.create([
   //   {number: "00001", total: 1000, boardnumb: '1'},

@@ -181,11 +181,12 @@ function($scope, Order, Board, cm01, ms01, $uibModalInstance,
     $scope.today = new Date();
 
     $scope.confirm = function() {
-      $uibModalInstance.close(true);
+        cm01.setData09($("#printAreaId").html());
+        $uibModalInstance.close(true);
     };
 
     $scope.cancel = function() {
-      $uibModalInstance.dismiss(false);
+        $uibModalInstance.dismiss(false);
     };
 }]);
 
@@ -468,6 +469,12 @@ angular
                                 console.log('Ingrediente añadido');
                             });
                         });
+
+                        var innerContents = $("#printAreaId").html();
+                        var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+                        popupWinindow.document.open();
+                        popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + cm01.getData09() + '</html>');
+                        popupWinindow.document.close();
                     });
                     /*Item.create(item).$promise
                     .then(function(miitem) {

@@ -27,6 +27,7 @@ angular.module("comunication01").factory('cm01', function($log, $rootScope) {
 		data06: null, //Producto seleccionado para agregar ingrediente (adicional o principal)
 		data07: null, //Pedido Seleccionado
 		data08: null, //Mesa a la cual van a ser movilizados
+		data09: null, //Comanda a imprimir
 		roles: null,  //Roles de la aplicacion
 
 		admin: null, //El usuario es administrador?
@@ -164,6 +165,12 @@ angular.module("comunication01").factory('cm01', function($log, $rootScope) {
 		},
 		setData08: function(data) {
 				this.data08 = data;
+		},
+		getData09: function() {
+			return this.data09;
+		},
+		setData09: function(data) {
+				this.data09 = data;
 		},
 
 		isAdmin: function() {
