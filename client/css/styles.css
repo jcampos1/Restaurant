@@ -37,10 +37,10 @@ ul.cls79 {
     padding: 3px 0;
     position: absolute;
     top: 23px;
-    right: -25px;
+    right: -20px;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 16px;
+    font-size: 12px;
     margin-right: 5px;
     transition: border 0.2s;
 }
@@ -84,11 +84,11 @@ footer p{
 /**** LOGOS ****/
 .logo {
     position: fixed;
-    top: 10%;
+    top: 7%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 250px;
-    max-height: 140px;
+    max-width: 140px;
+    max-height: 100px;
     /*animation-name: logo-init;
     animation-duration: 0.7s;
     animation-delay: 1s;*/
@@ -97,8 +97,8 @@ footer p{
 
 .logo:hover {
     cursor: pointer;
-    max-width: 253px;
-    max-height: 143px;
+    max-width: 143px;
+    max-height: 103px;
 }
 
 .logo2 {
@@ -128,15 +128,15 @@ form.login{
     box-sizing: border-box;
     /*padding: 15px;*/
     box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.5), 0 6px 20px 0 rgba(255, 255, 255, 0.5);
-    width: 400px;
-    max-width: 400px;
-    min-height: 470px;
+    width: 250px;
+    max-width: 250px;
+    min-height: 250px;
     background-color: rgba(211, 69, 59, 1);
 }
 
 form.login:hover{
-    max-width: 402px;
-    min-height: 472px; 
+    max-width: 252px;
+    min-height: 252px; 
 }
 
 /*Header del login*/
@@ -145,14 +145,14 @@ form.login:hover{
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
     position: relative;
-    height: 80px;
+    height: 60px;
     margin: 0;
 }
 
 /*Body del login*/
 .cls22 {
     padding: 15px 20px;
-    height: 320px;
+    height: 220px;
 }
 
 /*Footer del login*/
@@ -168,7 +168,7 @@ form.login:hover{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 45px;
+    font-size: 30px;
     color: white;
     font-weight: bold;
 }
@@ -176,13 +176,13 @@ form.login:hover{
 
 input.login {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 13px;
     padding-left: 80px;
     border: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding-bottom: 15px;
     outline: none;
-    font-size: 20px;
+    font-size: 15px;
     color: rgba(255, 255, 255, 0.6);
     background-color: inherit;
 }
@@ -208,6 +208,7 @@ input.login:focus .cls26 {
     color: rgba(255, 255, 255, 1);
     margin-left: 4px;
     margin-top: 5px;
+    font-size: 10px;
     display: block;
 }
 
@@ -223,7 +224,7 @@ input.login::placeholder { color: rgba(255, 255, 255, 0.6); }
 .inner-addon .glyphicon {
   position: absolute;
   padding-left: 10px;
-  padding-top: 50px;
+  padding-top: 18px;
   pointer-events: none;
 }
 
@@ -237,13 +238,13 @@ input.login::placeholder { color: rgba(255, 255, 255, 0.6); }
 
 .cls29 {
     display: block;
-    margin-top: 40px;
+    margin-top: 25px;
 }
 
 .btnLogin {
     display: block;
-    width: 200px;
-    padding: 15px 60px;
+    width: 150px;
+    padding: 12px 30px;
     border: 0;
     border-radius: 8px;
     margin: auto;
@@ -251,16 +252,16 @@ input.login::placeholder { color: rgba(255, 255, 255, 0.6); }
 }
 
 .fontBtnLogin {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .fontForg{
     padding-top: 20px;
     display: block;
     text-align: center;
-    font-size: 18px;
+    font-size: 14px;
     font-style: italic;
-    width: 300px;
+    width: 250px;
     color:rgba(255, 255, 255, 1);
     margin: auto;
 }

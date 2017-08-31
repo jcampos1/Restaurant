@@ -8,24 +8,31 @@
     </div>
     <div class="modal-body">
         <form name="formComanda" novalidate id="printAreaId">
-            <!-- Contenedor -->
-            <div style="margin:auto;" >
-                <!-- Header -->
-                <div class="com02">
-                    <label>{{board.number | uppercase}}</label>
+            <div class="row">
+                <div class="col-sm-6">
+                    <!-- Contenedor -->
+                    <div class="com04" style="margin:auto;" >
+                        <!-- Header -->
+                        <div class="com02">
+                            <label>{{board.number | uppercase}}</label>
+                        </div>
+                        <!-- Fecha y hora -->
+                        <div class="com04">
+                            <label style="float:left;">
+                                {{order.orderdate | date:"dd/MM/yyyy"}}
+                            </label>
+                            <label style="float:right;">
+                                {{order.orderdate | date:"H:mm"}}
+                            </label>
+                        </div>
+                        <!-- Mesero -->
+                        <div class="com02">
+                            <label>MESERO: JUAN</label>
+                        </div>
+                    </div>
                 </div>
-                <!-- Fecha y hora -->
-                <div class="com04">
-                    <label style="float:left;">
-                        {{today | date:"dd/MM/yyyy"}}
-                    </label>
-                    <label style="float:right;">
-                        {{today | date:"H:mm"}}
-                    </label>
-                </div>
-                <!-- Mesero -->
-                <div class="com02">
-                    <label>MESERO: JUAN</label>
+                <div class="col-sm-6">
+                    campos
                 </div>
             </div>
         </form>

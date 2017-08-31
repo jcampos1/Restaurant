@@ -194,9 +194,9 @@ function($scope, Order, Item, cm01, $uibModalInstance,
 
 //Pago de pedido de usuario
 angular.module("app").controller('PaymentOrderController',
-['$scope', 'Order', 'Item', 'cm01', '$uibModalInstance', '$log', 
+['$scope', 'Order', 'Item', 'cm01', '$uibModalInstance', '$log', '$window', 
 function($scope, Order, Item, cm01, $uibModalInstance,
-  $log) {
+  $log, $window) {
 
     //Pedido seleccionado
     $scope.order = cm01.getData07();
@@ -214,7 +214,7 @@ function($scope, Order, Item, cm01, $uibModalInstance,
     $scope.board = Order.board({id: $scope.order.id});
 
     $scope.confirm = function() {
-        var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        var popupWinindow = $window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
         popupWinindow.document.open();
         popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + $("#printAreaId").html() + '</html>');
         popupWinindow.document.close();
@@ -297,9 +297,10 @@ function($scope, Order, Board, cm01, ms01, $uibModalInstance,
 angular
   .module('app')
 
-  .controller('NewOrderController', ['$scope', 'Order', 'Board', 'Category', 'Item', 'Product', 'Ingrediente', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', 'STOR', 
+  .controller('NewOrderController', [
+'$scope', 'Order', 'Board', 'Category', 'Item', 'Product', 'Ingrediente', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', '$window', 'STOR', 
   function($scope, Order, Board, Category, Item, Product, Ingrediente, INGR, cm01, ms01,
-      $uibModal, $location, $log, STOR) {
+      $uibModal, $location, $log, $window, STOR) {
         var vm = this;
 
         $scope.boards = [];
@@ -554,6 +555,7 @@ angular
 
         //Crea un pedido
         function create() {
+             var popupWinindow = $window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
             $scope.order.items = $scope.lstItems;
             $scope.order.total = $scope.total;
             $log.info("LA COMANDA A ATENDER ES:");
@@ -586,7 +588,7 @@ angular
                                 console.log('Ingrediente añadido');
                             });
                         });
-                        var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+
                         popupWinindow.document.open();
                         popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + cm01.getData09() + '</html>');
                         popupWinindow.document.close();
@@ -596,7 +598,6 @@ angular
                         console.log('item añadido');
                     });*/
                 });
-
                 ms01.msgSuccess();
                 valorsInitials( );
             });
