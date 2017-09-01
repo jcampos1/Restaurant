@@ -134,6 +134,10 @@ angular
       "ORDER":        "Orden",
       "PRINT":        "Imprimir",
       "PAYMENT":      "Pago",
+      "MODU":         "Módulos",
+      "ADMI":         "Administración",
+      "LSTPE":        "Lista de pedidos",
+      "NEWPE":        "Nuevo pedido",
 
 
       "LBL01":        "Sin resultados",
@@ -202,6 +206,10 @@ angular
       "ORDER":        "Orden",
       "PRINT":        "Imprimir",
       "PAYMENT":      "Pago",
+      "MODU":         "Módulos",
+      "ADMI":         "Administración",
+      "LSTPE":        "Lista de pedidos",
+      "NEWPE":        "Nuevo pedido",
       
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",

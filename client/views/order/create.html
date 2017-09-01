@@ -11,7 +11,7 @@
         <!-- ¿Para llevar? -->
         <label class="checkbox-inline">
             <input ng-model="order.onSite" class="form-control a_icon cls64" type="checkbox" id="checkboxEnLinea1" value="opcion_1" >
-             <span class="cls17 cls65"> {{'GENE.INSI' | translate }}</span>
+             <span style="font-size: 16px;" class="cls17 cls65"> {{'GENE.INSI' | translate }}</span>
         </label>
         <!--/¿Para llevar? -->
     </div>
@@ -27,12 +27,12 @@
             <div class="cls44">
                 <!-- Descripcion -->
                 <div class="cls46">
-                    <span class="cls17">{{ item.product.name }}</span>
-                    <span class="cls17">{{ item.product.price}}</span>
+                    <span class="cls17 cls83">{{ item.product.name }}</span>
+                    <span class="cls17 cls83">{{ item.product.price}}</span>
                 </div>
                 <!-- Cantidades -->
                 <div class="cls47">
-                    <a class="cls48 cls53" href="" ng-click="reduc(key)"><span class=" cls50 glyphicon glyphicon-minus-sign"></span></a>
+                    <a class="cls48 cls53" href="" ng-click="reduc(key)"><span class="cls50 glyphicon glyphicon-minus-sign"></span></a>
                     <input class="cls49" type="number" value="1" class="cls42" id="cant{{key}}" min="1" readonly="true">
                     <a class="cls48 cls51" href="" ng-click="aument(key)"> <span class="cls50 glyphicon glyphicon-plus-sign"></span></a>
                 </div>
@@ -51,7 +51,7 @@
                     <li ng-repeat="(index1, add) in item.lstAdd">
                         <div class="row cls69">
                             <div class="col-xs-8 col-sm-8">
-                                <span class="cls17">+ {{add.name}}</span>
+                                <span class="cls17 cls84">+ {{add.name}}</span>
                             </div>
                             <div class="col-xs-4 col-sm-4">
                                 <a href="" ng-click="quitIngrOfProd(key, index1)"> <span class="cls70"> <span class="glyphicon glyphicon-remove"> </span>
@@ -63,7 +63,7 @@
                     <li ng-repeat="(index1, quit) in item.lstQuit">
                         <div class="row cls69">
                             <div class="col-xs-8 col-sm-8">
-                                <span class="cls17">- {{quit.name}}</span>
+                                <span class="cls17 cls84">- {{quit.name}}</span>
                             </div>
                             <div class="col-xs-4 col-sm-4">
                                 <a href="" ng-click="quitObserOfProd(key, index1)"> <span class="cls70"> <span class="glyphicon glyphicon-remove"> </span>
@@ -80,12 +80,12 @@
         <div class="cls56">
             <button ng-click="process()" class="button2 cls61">
                 <span class="glyphicon glyphicon-ok-sign"></span>
-                <span style="font-size: 16px;">{{ 'GENE.PROCES' | translate }}</span>
+                <span class="cls82">{{ 'GENE.PROCES' | translate }}</span>
 					
 				</button>
         </div>
         <div class="cls57">
-            <label for="total" class="cls17 cls59 cls62">Total: <span style="font-size: 18px;" class="cls58 cls62">{{total | number : 2}}</span></label>
+            <label for="total" class="cls17 cls59 cls62">Total: <span class="cls58 cls62 cls83">{{total | number : 2}}</span></label>
             <!--<img src="../../images/ico-pay.png" class="cls60">-->
         </div>
     </div>
@@ -102,8 +102,8 @@
         <!-- Mesas -->
         <uib-tab index="0">
             <uib-tab-heading>
-                <img src="../../images/ico-mesa.png" alt="Icono mesa" style="width:120px; height: 80px;">
-                <label for="mesas" class="cls17">{{'GENE.MESAS' | translate}}</label>
+                <img src="../../images/ico-mesa.png" alt="Icono mesa" class="clsIcoTab">
+                <label for="mesas" style="font-size: 16px;" class="cls17">{{'GENE.MESAS' | translate}}</label>
             </uib-tab-heading>
             <section class="cls31">
                 <!-- Entradas para las mesas -->
@@ -122,8 +122,8 @@
         <!-- Productos -->
         <uib-tab index="1" ng-click="productFind()">
             <uib-tab-heading>
-                <img src="../../images/icon-menu01.png" alt="Norway" style="width:120px; height: 80px;">
-                <label for="mesas" class="cls17">{{'GENE.PROD' | translate}}</label>
+                <img src="../../images/icon-menu01.png" alt="Norway" class="clsIcoTab">
+                <label for="mesas" style="font-size: 16px;" class="cls17">{{'GENE.PROD' | translate}}</label>
             </uib-tab-heading>
             <label for="filtro" class="cls17 cls36"> {{filterProduct | uppercase}}</label>
             <section class="cls34">
@@ -156,8 +156,8 @@
         <uib-tab index="2" ng-click="ingredienteFind()">
             
             <uib-tab-heading>
-                <img src="../../images/ico-ingr.png" alt="Norway" style="width:120px; height: 80px;">
-                <label for="mesas" class="cls17">{{'GENE.INGRE' | translate}}</label>
+                <img src="../../images/ico-ingr.png" alt="Norway" class="clsIcoTab">
+                <label for="mesas" style="font-size: 16px;" class="cls17">{{'GENE.INGRE' | translate}}</label>
             </uib-tab-heading>
             <label for="filtro" class="cls17 cls36"> {{filterIngrediente | uppercase}}</label>
             <section class="cls34">

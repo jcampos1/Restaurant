@@ -38,8 +38,8 @@
     <!-- /Iconos operaciones crud  -->
 
     <!-- Barra lateral izquierda -->
-    <aside class="cls02" ng-include="'/views/sideBarRightAdmin.html'">
-    </aside>
+    <div class="asideLeft" ng-include="'/views/sideBarRightAdmin.html'">
+    </div>
     <!-- /Barra lateral izquierda -->
 
     <!-- Lista de mesas -->
@@ -48,7 +48,7 @@
 
         <div class="cls05" ng-repeat="board in boards" ng-click="selectedBoard(board)">
             <span class="cls06 cls07"></span>
-            <img src="../../images/ico-mesa.png" alt="Norway" style="width:100%">
+            <img src="../../images/ico-mesa.png" alt="Norway" >
             <div class="cls09">
                 <p>{{ board.number }} / {{ board.space }} {{'GENE.LUGA' | translate}}</p>
             </div>

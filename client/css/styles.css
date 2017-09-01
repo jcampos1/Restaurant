@@ -28,7 +28,7 @@ ul.cls79 {
 }
 
 .navbar {
-    height: 50px;
+    height: 20px;
     z-index: 1;
     background: #D34539;
 }
@@ -66,6 +66,7 @@ img.bg{
     left: 0;
     z-index: -100;
     width: 100%;
+    height: 100%;
     max-height: 120%;
     opacity: 0.9;
     -webkit-filter: blur(3px);
@@ -87,8 +88,8 @@ footer p{
     top: 7%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 140px;
-    max-height: 100px;
+    max-width: 110px;
+    max-height: 80px;
     /*animation-name: logo-init;
     animation-duration: 0.7s;
     animation-delay: 1s;*/
@@ -97,8 +98,8 @@ footer p{
 
 .logo:hover {
     cursor: pointer;
-    max-width: 143px;
-    max-height: 103px;
+    max-width: 113px;
+    max-height: 83px;
 }
 
 .logo2 {
@@ -306,7 +307,6 @@ input[type=text].general, input[type=password].general, input[type=number].gener
 }
 
 input[type=text].general:focus, input[type=password].general:focus, input[type=number]:focus{
-    border: 3px solid #D34539;
 }
 
 .button {
@@ -431,15 +431,14 @@ a:link {
 
 /***Lista de los cruds***/
 .container03{
-    
     padding: 0 10px;
-    margin-top: 80px;
+    margin-top: 70px;
 }
 
 ul.cls01 {
     width: 90%;
-    height: 100px;
-    margin: 0 0 10px 0;
+    height: 90px;
+    margin: 0 0 2px 0;
     overflow: visible;
 }
 
@@ -473,7 +472,7 @@ ul.cls01 li {
 
 .cls18{
     margin-bottom: 15px;
-    font-size: 30px;
+    font-size: 22px;
     border-bottom: 2px solid #D34539;
     border-top: 2px solid #D34539;
 }
@@ -492,8 +491,8 @@ ul.cls01 a:hover {
 
 /*Tamaño de los iconos de crud*/
 .cls20 {
-    width: 70px;
-    height: 70px; 
+    width: 45px;
+    height: 45px; 
 }
 
 /***********************/
@@ -506,7 +505,7 @@ ul.cls01 a:hover {
     right: 0;
     width: 100px; 
     border-left: thin solid #D34539;
-    min-height: 100%;
+    height: 95%;
 }
 
 ul li.cls03 {
@@ -556,18 +555,23 @@ ul li.cls03:hover {
 .cls04 {
     position: relative;
     text-align: center;
-    width: 93%;
+    width: 90%;
     clear: both;
-    margin-top: 20px;
+    margin-top: 10px;
     overflow:visible;
+}
+
+.cls05 img {
+    width: 100%;
+    max-height: 90px;
 }
 
 .cls05 {
     position: relative;
-    font-size: 14px;
+    font-size: 12px;
     float: left;
-    width: 180px;
-    height: 200px;
+    width: 120px;
+    height: 130px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 0 15px 15px 0;
     overflow: visible;
@@ -609,6 +613,12 @@ ul li.cls03:hover {
     height: 100px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.clsIcoTab{
+    width:100px; height: 60px;
+}
+
+
 /*Item de la lista de pedidos*/
 .cls72 {
     width: 270px;
@@ -718,9 +728,9 @@ ul li.cls03:hover {
     position: relative;
     background: #D34539;
     color: white;
-    font-size: 14px; font-weight: bold;
+    font-size: 10px;
     text-align: center;
-    height: 60px;
+    height: 40px;
 }
 
 .cls09 p{
@@ -780,7 +790,7 @@ ul li.cls03:hover {
     left: 0;
     border-right: 1px solid rgba(211, 69, 59, 0.7);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    overflow: auto;
+    overflow: visible;
 }
 
 .cls43 {
@@ -792,25 +802,27 @@ ul li.cls03:hover {
     height: auto;
     padding: 5px;
     margin-bottom: 10px;
-    overflow: auto;
+    overflow: visible;
 }
 
 .cls44 {
+    border: 1px solid orange;
     width: 60%;
-    height: 100px;
+    height: 70px;
     float: left;
 }
 
 /*Descripcion del prod seleccionado*/
 .cls46 {
+    border: 1px solid green;
     /*border: 1px solid blue;*/
     width: 100%;
     height: 60px;
 }
 
-/*Descripcion del prod seleccionado*/
+/*Cantidades del prod seleccionado*/
 .cls47 {
-    /*border: 1px solid black;*/
+    border: 1px solid black;
     width: 100%;
     height: 40px;
 }
@@ -880,7 +892,7 @@ ul li.cls03:hover {
 
 .cls61 {
     padding: 2px;
-    font-size: 22px;
+    font-size: 15px;
     background-color: rgba(211, 69, 59, 1);
     width: 100%;
     height: 100%;
@@ -905,6 +917,7 @@ ul li.cls03:hover {
 }
 
 .cls67 {
+    border: 1px solid black;
     max-height: 100px;
     overflow-y: auto;
     overflow-x: hidden; 
@@ -923,24 +936,32 @@ ul li.cls03:hover {
 .modulos{
     position: fixed;
     top: 50%;
-    left: 20px;
+    left: 10px;
     transform: translate(0, -50%);
-    min-width: 250px;
+    min-width: 150px;
     height: auto;
 }
 
 div.polaroid {
     border: 1px solid rgba(211, 69, 59, 0.8);
-    width: 250px;
-    height: 180px;
+    width: 150px;
+    height: 140px;
     background-color: white;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     padding: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 div.cls71 {
   padding: 10px 20px;
+}
+
+.cls82 {
+    font-size: 16px;
+}
+
+.cls83 {
+    font-size: 18px;
 }
 
 .cls52 {
@@ -986,6 +1007,7 @@ div.cls71 {
 
 /*imagen de producto seleccionado*/
 .cls40 {
+    border: 1px solid blue;
     width: 35%;
     height: 100px;
     float: left;
@@ -1020,7 +1042,7 @@ div.cls71 {
     background: #fafad2;
     width: 130px;
     border-left: thin solid #D34539;
-    height: 100%;
+    height: 75%;
     position: absolute;
     right: 0;
     overflow-y: auto;
@@ -1063,6 +1085,7 @@ div.cls39:hover .cls37{
 body, html {
     height: 100%;
 }
+
 /*********************************/
 
 /*****Animaciones******/
@@ -1122,5 +1145,81 @@ body, html {
         cursor: pointer;
         max-width: 180px;
         max-height: 120px;
+    }
+}
+
+@media only screen and (max-height: 768px) {
+    /*******ICONOS DE LA BARRA LATERAL IZQUIERDA********/
+    ul li img.cls13 {
+        width: 68px;
+        height: 68px;
+    }
+
+    ul li label.cls14 {
+        font-size: 14px;
+    }
+
+    ul li.cls03 {
+        height: 120px;
+    }
+    /****************************************************/
+
+    /***********LITERALES DE CREAR PEDIDO****************/
+    .cls82 {
+        font-size: 12px;
+    }
+
+    .cls62 {
+        font-size: 14px;
+    }
+
+    .cls83 {
+        font-size: 14px;
+    }
+
+    /*imagen de producto seleccionado*/
+    .cls40 {
+        height: 70px;
+    }
+    /*********************************/
+
+    /*Descripcion del prod seleccionado*/
+    .cls46 {
+        border: 1px solid green;
+        height: 40px;
+    }
+    /***************************************************/
+
+    .cls83{
+        font-size: 12px;
+    }
+
+    .cls50{
+        font-size: 20px;
+    }
+
+    .clsSelected {
+        border: 2px solid rgba(211, 69, 59, 1) !important;
+    }
+
+    .cls49 {   
+        height: 30px;
+    }
+
+    .cls84 {
+        font-size: 10px;
+    }
+
+    .cls70{
+        font-size: 10px;
+    }
+
+    .cls45 {
+        height: 70px;
+    }
+
+    /********ICONOS TAB CREACION DE PEDIDO********/
+    .clsIcoTab{
+        width:60px; height: 40px;
     }
 }
