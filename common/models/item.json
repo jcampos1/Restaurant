@@ -24,7 +24,7 @@
       "model": "product",
       "foreignKey": "productId"
     },
-    "adds": {
+    "ingrds": {
       "type": "hasAndBelongsToMany",
       "model": "ingrediente",
       "foreignKey": ""
@@ -33,11 +33,6 @@
       "type": "belongsTo",
       "model": "order",
       "foreignKey": "orderId"
-    },
-    "quits": {
-      "type": "hasAndBelongsToMany",
-      "model": "ingrediente",
-      "foreignKey": ""
     }
   },
   "acls": [],

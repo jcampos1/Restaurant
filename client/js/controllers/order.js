@@ -298,8 +298,8 @@ angular
   .module('app')
 
   .controller('NewOrderController', [
-'$scope', 'Order', 'Board', 'Category', 'Item', 'Product', 'Ingrediente', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', '$window', 'STOR', 
-  function($scope, Order, Board, Category, Item, Product, Ingrediente, INGR, cm01, ms01,
+'$scope', 'Order', 'Board', 'Category', 'Item', 'Product', 'Ingrediente', 'User', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', '$window', 'STOR', 
+  function($scope, Order, Board, Category, Item, Product, Ingrediente, User, INGR, cm01, ms01,
       $uibModal, $location, $log, $window, STOR) {
         var vm = this;
 
@@ -564,43 +564,48 @@ angular
             /*AQUI ESTA LA MAGIA*/
             $scope.order.orderdate = new Date();
             $log.info("LA fecha es: "+$scope.order.orderdate);
-            $scope.order.hola = "hola";
 
-            Order.create($scope.order).$promise
-            .then(function(order) {
-                $scope.order.items.forEach(function (item){
-                    console.log('item product:' + item.product.name);
-                    //item.orderId = order.id;
-                    item.productId = item.product.id;
+            User.getPrincipal().$promise
+            .then(function(res) {
+                $scope.order.userId = res.userId;
+                Order.create($scope.order).$promise
+                .then(function(order) {
+                    $scope.order.items.forEach(function (item){
+                        console.log('item product:' + item.product.name);
+                        //item.orderId = order.id;
+                        item.productId = item.product.id;
 
-                    Order.items.create({id: order.id}, item).$promise
-                    .then(function(miitem) {
-                        item.lstAdd.forEach(function(ingr) {
-                            Item.adds.link({id: miitem.id}, {fk: ingr.id}).$promise
-                            .then(function(elem) {
-                                console.log('Ingrediente añadido');
+                        Order.items.create({id: order.id}, item).$promise
+                        .then(function(miitem) {
+                            item.lstAdd.forEach(function(ingr) {
+                                Item.ingrds.link({id: miitem.id}, {fk: ingr.id}).$promise
+                                .then(function(elem) {
+                                    console.log('Ingrediente add añadido');
+                                });
                             });
-                        });
 
-                        item.lstQuit.forEach(function(ingr) {
-                            Item.quits.link({id: miitem.id}, {fk: ingr.id}).$promise
-                            .then(function(elem) {
-                                console.log('Ingrediente añadido');
+                            item.lstQuit.forEach(function(ingr) {
+                                Item.ingrds.link({id: miitem.id}, {fk: ingr.id}).$promise
+                                .then(function(elem) {
+                                    console.log('Ingrediente quit añadido');
+                                });
                             });
-                        });
 
-                        popupWinindow.document.open();
-                        popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + cm01.getData09() + '</html>');
-                        popupWinindow.document.close();
+                            popupWinindow.document.open();
+                            popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + cm01.getData09() + '</html>');
+                            popupWinindow.document.close();
+                        });
+                        /*Item.create(item).$promise
+                        .then(function(miitem) {
+                            console.log('item añadido');
+                        });*/
                     });
-                    /*Item.create(item).$promise
-                    .then(function(miitem) {
-                        console.log('item añadido');
-                    });*/
+                    ms01.msgSuccess();
+                    valorsInitials( );
                 });
-                ms01.msgSuccess();
-                valorsInitials( );
             });
+
+            
         }
 
         $scope.boardFind();

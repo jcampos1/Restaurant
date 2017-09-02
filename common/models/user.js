@@ -172,4 +172,30 @@ module.exports = function(User) {
     });
   });
   /************************************************************** */
+
+  User.getPrincipal = function(options, cb) {
+        var currentDate = new Date();
+        var currentHour = currentDate.getHours();
+        var OPEN_HOUR = 6;
+        var CLOSE_HOUR = 20;
+        
+        const token = options && options.accessToken;
+        const userId = token && token.userId;
+        cb(null, userId);
+    };
+  User.remoteMethod(
+    'getPrincipal', {
+      http: {
+        path: '/getPrincipal',
+        verb: 'get'
+      },
+      accepts: [
+        {"arg": "options", "type": "object", "http": "optionsFromRequest"}
+      ],
+      returns: {
+        arg: 'userId',
+        type: 'string'
+      }
+    }
+  );
 }

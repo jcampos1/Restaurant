@@ -1346,6 +1346,40 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "GET",
             },
 
+            /**
+             * @ngdoc method
+             * @name lbServices.User#getPrincipal
+             * @methodOf lbServices.User
+             *
+             * @description
+             *
+             * <em>
+             * (The remote method definition does not provide any description.)
+             * </em>
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `userId` – `{string=}` -
+             */
+            "getPrincipal": {
+              url: urlBase + "/users/getPrincipal",
+              method: "GET",
+            },
+
             // INTERNAL. Use Order.user() instead.
             "::get::Order::user": {
               url: urlBase + "/orders/:id/user",
@@ -8355,175 +8389,89 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "POST",
             },
 
-            // INTERNAL. Use Item.adds.findById() instead.
-            "::findById::Item::adds": {
+            // INTERNAL. Use Item.ingrds.findById() instead.
+            "::findById::Item::ingrds": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/items/:id/adds/:fk",
+              url: urlBase + "/items/:id/ingrds/:fk",
               method: "GET",
             },
 
-            // INTERNAL. Use Item.adds.destroyById() instead.
-            "::destroyById::Item::adds": {
+            // INTERNAL. Use Item.ingrds.destroyById() instead.
+            "::destroyById::Item::ingrds": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/items/:id/adds/:fk",
+              url: urlBase + "/items/:id/ingrds/:fk",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Item.adds.updateById() instead.
-            "::updateById::Item::adds": {
+            // INTERNAL. Use Item.ingrds.updateById() instead.
+            "::updateById::Item::ingrds": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/items/:id/adds/:fk",
+              url: urlBase + "/items/:id/ingrds/:fk",
               method: "PUT",
             },
 
-            // INTERNAL. Use Item.adds.link() instead.
-            "::link::Item::adds": {
+            // INTERNAL. Use Item.ingrds.link() instead.
+            "::link::Item::ingrds": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/items/:id/adds/rel/:fk",
+              url: urlBase + "/items/:id/ingrds/rel/:fk",
               method: "PUT",
             },
 
-            // INTERNAL. Use Item.adds.unlink() instead.
-            "::unlink::Item::adds": {
+            // INTERNAL. Use Item.ingrds.unlink() instead.
+            "::unlink::Item::ingrds": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/items/:id/adds/rel/:fk",
+              url: urlBase + "/items/:id/ingrds/rel/:fk",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Item.adds.exists() instead.
-            "::exists::Item::adds": {
+            // INTERNAL. Use Item.ingrds.exists() instead.
+            "::exists::Item::ingrds": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/items/:id/adds/rel/:fk",
+              url: urlBase + "/items/:id/ingrds/rel/:fk",
               method: "HEAD",
             },
 
-            // INTERNAL. Use Item.quits.findById() instead.
-            "::findById::Item::quits": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/items/:id/quits/:fk",
+            // INTERNAL. Use Item.ingrds() instead.
+            "::get::Item::ingrds": {
+              isArray: true,
+              url: urlBase + "/items/:id/ingrds",
               method: "GET",
             },
 
-            // INTERNAL. Use Item.quits.destroyById() instead.
-            "::destroyById::Item::quits": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/items/:id/quits/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use Item.quits.updateById() instead.
-            "::updateById::Item::quits": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/items/:id/quits/:fk",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use Item.quits.link() instead.
-            "::link::Item::quits": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/items/:id/quits/rel/:fk",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use Item.quits.unlink() instead.
-            "::unlink::Item::quits": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/items/:id/quits/rel/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use Item.quits.exists() instead.
-            "::exists::Item::quits": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/items/:id/quits/rel/:fk",
-              method: "HEAD",
-            },
-
-            // INTERNAL. Use Item.adds() instead.
-            "::get::Item::adds": {
-              isArray: true,
-              url: urlBase + "/items/:id/adds",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Item.adds.create() instead.
-            "::create::Item::adds": {
-              url: urlBase + "/items/:id/adds",
+            // INTERNAL. Use Item.ingrds.create() instead.
+            "::create::Item::ingrds": {
+              url: urlBase + "/items/:id/ingrds",
               method: "POST",
             },
 
-            // INTERNAL. Use Item.adds.createMany() instead.
-            "::createMany::Item::adds": {
+            // INTERNAL. Use Item.ingrds.createMany() instead.
+            "::createMany::Item::ingrds": {
               isArray: true,
-              url: urlBase + "/items/:id/adds",
+              url: urlBase + "/items/:id/ingrds",
               method: "POST",
             },
 
-            // INTERNAL. Use Item.adds.destroyAll() instead.
-            "::delete::Item::adds": {
-              url: urlBase + "/items/:id/adds",
+            // INTERNAL. Use Item.ingrds.destroyAll() instead.
+            "::delete::Item::ingrds": {
+              url: urlBase + "/items/:id/ingrds",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Item.adds.count() instead.
-            "::count::Item::adds": {
-              url: urlBase + "/items/:id/adds/count",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Item.quits() instead.
-            "::get::Item::quits": {
-              isArray: true,
-              url: urlBase + "/items/:id/quits",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Item.quits.create() instead.
-            "::create::Item::quits": {
-              url: urlBase + "/items/:id/quits",
-              method: "POST",
-            },
-
-            // INTERNAL. Use Item.quits.createMany() instead.
-            "::createMany::Item::quits": {
-              isArray: true,
-              url: urlBase + "/items/:id/quits",
-              method: "POST",
-            },
-
-            // INTERNAL. Use Item.quits.destroyAll() instead.
-            "::delete::Item::quits": {
-              url: urlBase + "/items/:id/quits",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use Item.quits.count() instead.
-            "::count::Item::quits": {
-              url: urlBase + "/items/:id/quits/count",
+            // INTERNAL. Use Item.ingrds.count() instead.
+            "::count::Item::ingrds": {
+              url: urlBase + "/items/:id/ingrds/count",
               method: "GET",
             },
           }
@@ -10516,57 +10464,57 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "GET",
             },
 
-            // INTERNAL. Use Item.adds.findById() instead.
-            "prototype$__findById__adds": {
+            // INTERNAL. Use Item.ingrds.findById() instead.
+            "prototype$__findById__ingrds": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/items/:id/adds/:fk",
+              url: urlBase + "/items/:id/ingrds/:fk",
               method: "GET",
             },
 
-            // INTERNAL. Use Item.adds.destroyById() instead.
-            "prototype$__destroyById__adds": {
+            // INTERNAL. Use Item.ingrds.destroyById() instead.
+            "prototype$__destroyById__ingrds": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/items/:id/adds/:fk",
+              url: urlBase + "/items/:id/ingrds/:fk",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Item.adds.updateById() instead.
-            "prototype$__updateById__adds": {
+            // INTERNAL. Use Item.ingrds.updateById() instead.
+            "prototype$__updateById__ingrds": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/items/:id/adds/:fk",
+              url: urlBase + "/items/:id/ingrds/:fk",
               method: "PUT",
             },
 
-            // INTERNAL. Use Item.adds.link() instead.
-            "prototype$__link__adds": {
+            // INTERNAL. Use Item.ingrds.link() instead.
+            "prototype$__link__ingrds": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/items/:id/adds/rel/:fk",
+              url: urlBase + "/items/:id/ingrds/rel/:fk",
               method: "PUT",
             },
 
-            // INTERNAL. Use Item.adds.unlink() instead.
-            "prototype$__unlink__adds": {
+            // INTERNAL. Use Item.ingrds.unlink() instead.
+            "prototype$__unlink__ingrds": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/items/:id/adds/rel/:fk",
+              url: urlBase + "/items/:id/ingrds/rel/:fk",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Item.adds.exists() instead.
-            "prototype$__exists__adds": {
+            // INTERNAL. Use Item.ingrds.exists() instead.
+            "prototype$__exists__ingrds": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/items/:id/adds/rel/:fk",
+              url: urlBase + "/items/:id/ingrds/rel/:fk",
               method: "HEAD",
             },
 
@@ -10576,107 +10524,28 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "GET",
             },
 
-            // INTERNAL. Use Item.quits.findById() instead.
-            "prototype$__findById__quits": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/items/:id/quits/:fk",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Item.quits.destroyById() instead.
-            "prototype$__destroyById__quits": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/items/:id/quits/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use Item.quits.updateById() instead.
-            "prototype$__updateById__quits": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/items/:id/quits/:fk",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use Item.quits.link() instead.
-            "prototype$__link__quits": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/items/:id/quits/rel/:fk",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use Item.quits.unlink() instead.
-            "prototype$__unlink__quits": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/items/:id/quits/rel/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use Item.quits.exists() instead.
-            "prototype$__exists__quits": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/items/:id/quits/rel/:fk",
-              method: "HEAD",
-            },
-
-            // INTERNAL. Use Item.adds() instead.
-            "prototype$__get__adds": {
+            // INTERNAL. Use Item.ingrds() instead.
+            "prototype$__get__ingrds": {
               isArray: true,
-              url: urlBase + "/items/:id/adds",
+              url: urlBase + "/items/:id/ingrds",
               method: "GET",
             },
 
-            // INTERNAL. Use Item.adds.create() instead.
-            "prototype$__create__adds": {
-              url: urlBase + "/items/:id/adds",
+            // INTERNAL. Use Item.ingrds.create() instead.
+            "prototype$__create__ingrds": {
+              url: urlBase + "/items/:id/ingrds",
               method: "POST",
             },
 
-            // INTERNAL. Use Item.adds.destroyAll() instead.
-            "prototype$__delete__adds": {
-              url: urlBase + "/items/:id/adds",
+            // INTERNAL. Use Item.ingrds.destroyAll() instead.
+            "prototype$__delete__ingrds": {
+              url: urlBase + "/items/:id/ingrds",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Item.adds.count() instead.
-            "prototype$__count__adds": {
-              url: urlBase + "/items/:id/adds/count",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Item.quits() instead.
-            "prototype$__get__quits": {
-              isArray: true,
-              url: urlBase + "/items/:id/quits",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Item.quits.create() instead.
-            "prototype$__create__quits": {
-              url: urlBase + "/items/:id/quits",
-              method: "POST",
-            },
-
-            // INTERNAL. Use Item.quits.destroyAll() instead.
-            "prototype$__delete__quits": {
-              url: urlBase + "/items/:id/quits",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use Item.quits.count() instead.
-            "prototype$__count__quits": {
-              url: urlBase + "/items/:id/quits/count",
+            // INTERNAL. Use Item.ingrds.count() instead.
+            "prototype$__count__ingrds": {
+              url: urlBase + "/items/:id/ingrds/count",
               method: "GET",
             },
 
@@ -11627,27 +11496,27 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         };
     /**
      * @ngdoc object
-     * @name lbServices.Item.adds
-     * @header lbServices.Item.adds
+     * @name lbServices.Item.ingrds
+     * @header lbServices.Item.ingrds
      * @object
      * @description
      *
-     * The object `Item.adds` groups methods
+     * The object `Item.ingrds` groups methods
      * manipulating `Ingrediente` instances related to `Item`.
      *
-     * Call {@link lbServices.Item#adds Item.adds()}
+     * Call {@link lbServices.Item#ingrds Item.ingrds()}
      * to query all related instances.
      */
 
 
             /**
              * @ngdoc method
-             * @name lbServices.Item#adds
+             * @name lbServices.Item#ingrds
              * @methodOf lbServices.Item
              *
              * @description
              *
-             * Queries adds of item.
+             * Queries ingrds of item.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -11674,20 +11543,20 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * This usually means the response is a `Ingrediente` object.)
              * </em>
              */
-        R.adds = function() {
+        R.ingrds = function() {
           var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::get::Item::adds"];
+          var action = TargetResource["::get::Item::ingrds"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Item.adds#count
-             * @methodOf lbServices.Item.adds
+             * @name lbServices.Item.ingrds#count
+             * @methodOf lbServices.Item.ingrds
              *
              * @description
              *
-             * Counts adds of item.
+             * Counts ingrds of item.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -11713,20 +11582,20 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              *  - `count` – `{number=}` -
              */
-        R.adds.count = function() {
+        R.ingrds.count = function() {
           var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::count::Item::adds"];
+          var action = TargetResource["::count::Item::ingrds"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Item.adds#create
-             * @methodOf lbServices.Item.adds
+             * @name lbServices.Item.ingrds#create
+             * @methodOf lbServices.Item.ingrds
              *
              * @description
              *
-             * Creates a new instance in adds of this model.
+             * Creates a new instance in ingrds of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -11755,20 +11624,20 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * This usually means the response is a `Ingrediente` object.)
              * </em>
              */
-        R.adds.create = function() {
+        R.ingrds.create = function() {
           var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::create::Item::adds"];
+          var action = TargetResource["::create::Item::ingrds"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Item.adds#createMany
-             * @methodOf lbServices.Item.adds
+             * @name lbServices.Item.ingrds#createMany
+             * @methodOf lbServices.Item.ingrds
              *
              * @description
              *
-             * Creates a new instance in adds of this model.
+             * Creates a new instance in ingrds of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -11797,20 +11666,20 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * This usually means the response is a `Ingrediente` object.)
              * </em>
              */
-        R.adds.createMany = function() {
+        R.ingrds.createMany = function() {
           var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::createMany::Item::adds"];
+          var action = TargetResource["::createMany::Item::ingrds"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Item.adds#destroyAll
-             * @methodOf lbServices.Item.adds
+             * @name lbServices.Item.ingrds#destroyAll
+             * @methodOf lbServices.Item.ingrds
              *
              * @description
              *
-             * Deletes all adds of this model.
+             * Deletes all ingrds of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -11834,20 +11703,20 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * This method returns no data.
              */
-        R.adds.destroyAll = function() {
+        R.ingrds.destroyAll = function() {
           var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::delete::Item::adds"];
+          var action = TargetResource["::delete::Item::ingrds"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Item.adds#destroyById
-             * @methodOf lbServices.Item.adds
+             * @name lbServices.Item.ingrds#destroyById
+             * @methodOf lbServices.Item.ingrds
              *
              * @description
              *
-             * Delete a related item by id for adds.
+             * Delete a related item by id for ingrds.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -11855,7 +11724,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              *  - `options` – `{object=}` -
              *
-             *  - `fk` – `{*}` - Foreign key for adds
+             *  - `fk` – `{*}` - Foreign key for ingrds
              *
              *  - `options` – `{object=}` -
              *
@@ -11871,20 +11740,20 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * This method returns no data.
              */
-        R.adds.destroyById = function() {
+        R.ingrds.destroyById = function() {
           var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::destroyById::Item::adds"];
+          var action = TargetResource["::destroyById::Item::ingrds"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Item.adds#exists
-             * @methodOf lbServices.Item.adds
+             * @name lbServices.Item.ingrds#exists
+             * @methodOf lbServices.Item.ingrds
              *
              * @description
              *
-             * Check the existence of adds relation to an item by id.
+             * Check the existence of ingrds relation to an item by id.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -11892,7 +11761,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              *  - `options` – `{object=}` -
              *
-             *  - `fk` – `{*}` - Foreign key for adds
+             *  - `fk` – `{*}` - Foreign key for ingrds
              *
              *  - `options` – `{object=}` -
              *
@@ -11911,20 +11780,20 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * This usually means the response is a `Ingrediente` object.)
              * </em>
              */
-        R.adds.exists = function() {
+        R.ingrds.exists = function() {
           var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::exists::Item::adds"];
+          var action = TargetResource["::exists::Item::ingrds"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Item.adds#findById
-             * @methodOf lbServices.Item.adds
+             * @name lbServices.Item.ingrds#findById
+             * @methodOf lbServices.Item.ingrds
              *
              * @description
              *
-             * Find a related item by id for adds.
+             * Find a related item by id for ingrds.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -11932,7 +11801,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              *  - `options` – `{object=}` -
              *
-             *  - `fk` – `{*}` - Foreign key for adds
+             *  - `fk` – `{*}` - Foreign key for ingrds
              *
              *  - `options` – `{object=}` -
              *
@@ -11951,26 +11820,26 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * This usually means the response is a `Ingrediente` object.)
              * </em>
              */
-        R.adds.findById = function() {
+        R.ingrds.findById = function() {
           var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::findById::Item::adds"];
+          var action = TargetResource["::findById::Item::ingrds"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Item.adds#link
-             * @methodOf lbServices.Item.adds
+             * @name lbServices.Item.ingrds#link
+             * @methodOf lbServices.Item.ingrds
              *
              * @description
              *
-             * Add a related item by id for adds.
+             * Add a related item by id for ingrds.
              *
              * @param {Object=} parameters Request parameters.
              *
              *  - `id` – `{*}` - item id
              *
-             *  - `fk` – `{*}` - Foreign key for adds
+             *  - `fk` – `{*}` - Foreign key for ingrds
              *
              * @param {Object} postData Request data.
              *
@@ -11995,20 +11864,20 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * This usually means the response is a `Ingrediente` object.)
              * </em>
              */
-        R.adds.link = function() {
+        R.ingrds.link = function() {
           var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::link::Item::adds"];
+          var action = TargetResource["::link::Item::ingrds"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Item.adds#unlink
-             * @methodOf lbServices.Item.adds
+             * @name lbServices.Item.ingrds#unlink
+             * @methodOf lbServices.Item.ingrds
              *
              * @description
              *
-             * Remove the adds relation to an item by id.
+             * Remove the ingrds relation to an item by id.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -12016,7 +11885,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              *  - `options` – `{object=}` -
              *
-             *  - `fk` – `{*}` - Foreign key for adds
+             *  - `fk` – `{*}` - Foreign key for ingrds
              *
              *  - `options` – `{object=}` -
              *
@@ -12032,26 +11901,26 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * This method returns no data.
              */
-        R.adds.unlink = function() {
+        R.ingrds.unlink = function() {
           var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::unlink::Item::adds"];
+          var action = TargetResource["::unlink::Item::ingrds"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Item.adds#updateById
-             * @methodOf lbServices.Item.adds
+             * @name lbServices.Item.ingrds#updateById
+             * @methodOf lbServices.Item.ingrds
              *
              * @description
              *
-             * Update a related item by id for adds.
+             * Update a related item by id for ingrds.
              *
              * @param {Object=} parameters Request parameters.
              *
              *  - `id` – `{*}` - item id
              *
-             *  - `fk` – `{*}` - Foreign key for adds
+             *  - `fk` – `{*}` - Foreign key for ingrds
              *
              * @param {Object} postData Request data.
              *
@@ -12076,9 +11945,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * This usually means the response is a `Ingrediente` object.)
              * </em>
              */
-        R.adds.updateById = function() {
+        R.ingrds.updateById = function() {
           var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::updateById::Item::adds"];
+          var action = TargetResource["::updateById::Item::ingrds"];
           return action.apply(R, arguments);
         };
 
@@ -12119,462 +11988,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         R.order = function() {
           var TargetResource = $injector.get("Order");
           var action = TargetResource["::get::Item::order"];
-          return action.apply(R, arguments);
-        };
-    /**
-     * @ngdoc object
-     * @name lbServices.Item.quits
-     * @header lbServices.Item.quits
-     * @object
-     * @description
-     *
-     * The object `Item.quits` groups methods
-     * manipulating `Ingrediente` instances related to `Item`.
-     *
-     * Call {@link lbServices.Item#quits Item.quits()}
-     * to query all related instances.
-     */
-
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Item#quits
-             * @methodOf lbServices.Item
-             *
-             * @description
-             *
-             * Queries quits of item.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - item id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `filter` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Ingrediente` object.)
-             * </em>
-             */
-        R.quits = function() {
-          var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::get::Item::quits"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Item.quits#count
-             * @methodOf lbServices.Item.quits
-             *
-             * @description
-             *
-             * Counts quits of item.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - item id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * Data properties:
-             *
-             *  - `count` – `{number=}` -
-             */
-        R.quits.count = function() {
-          var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::count::Item::quits"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Item.quits#create
-             * @methodOf lbServices.Item.quits
-             *
-             * @description
-             *
-             * Creates a new instance in quits of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - item id
-             *
-             * @param {Object} postData Request data.
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `data` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Ingrediente` object.)
-             * </em>
-             */
-        R.quits.create = function() {
-          var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::create::Item::quits"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Item.quits#createMany
-             * @methodOf lbServices.Item.quits
-             *
-             * @description
-             *
-             * Creates a new instance in quits of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - item id
-             *
-             * @param {Object} postData Request data.
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `data` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Ingrediente` object.)
-             * </em>
-             */
-        R.quits.createMany = function() {
-          var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::createMany::Item::quits"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Item.quits#destroyAll
-             * @methodOf lbServices.Item.quits
-             *
-             * @description
-             *
-             * Deletes all quits of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - item id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `where` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.quits.destroyAll = function() {
-          var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::delete::Item::quits"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Item.quits#destroyById
-             * @methodOf lbServices.Item.quits
-             *
-             * @description
-             *
-             * Delete a related item by id for quits.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - item id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `fk` – `{*}` - Foreign key for quits
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.quits.destroyById = function() {
-          var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::destroyById::Item::quits"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Item.quits#exists
-             * @methodOf lbServices.Item.quits
-             *
-             * @description
-             *
-             * Check the existence of quits relation to an item by id.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - item id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `fk` – `{*}` - Foreign key for quits
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Ingrediente` object.)
-             * </em>
-             */
-        R.quits.exists = function() {
-          var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::exists::Item::quits"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Item.quits#findById
-             * @methodOf lbServices.Item.quits
-             *
-             * @description
-             *
-             * Find a related item by id for quits.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - item id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `fk` – `{*}` - Foreign key for quits
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Ingrediente` object.)
-             * </em>
-             */
-        R.quits.findById = function() {
-          var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::findById::Item::quits"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Item.quits#link
-             * @methodOf lbServices.Item.quits
-             *
-             * @description
-             *
-             * Add a related item by id for quits.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - item id
-             *
-             *  - `fk` – `{*}` - Foreign key for quits
-             *
-             * @param {Object} postData Request data.
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `data` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Ingrediente` object.)
-             * </em>
-             */
-        R.quits.link = function() {
-          var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::link::Item::quits"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Item.quits#unlink
-             * @methodOf lbServices.Item.quits
-             *
-             * @description
-             *
-             * Remove the quits relation to an item by id.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - item id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `fk` – `{*}` - Foreign key for quits
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.quits.unlink = function() {
-          var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::unlink::Item::quits"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Item.quits#updateById
-             * @methodOf lbServices.Item.quits
-             *
-             * @description
-             *
-             * Update a related item by id for quits.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - item id
-             *
-             *  - `fk` – `{*}` - Foreign key for quits
-             *
-             * @param {Object} postData Request data.
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `data` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Ingrediente` object.)
-             * </em>
-             */
-        R.quits.updateById = function() {
-          var TargetResource = $injector.get("Ingrediente");
-          var action = TargetResource["::updateById::Item::quits"];
           return action.apply(R, arguments);
         };
 
