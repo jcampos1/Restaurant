@@ -38,15 +38,16 @@
 
 <p style="position:relative;top:50px;"><label for="lista" class="cls17 cls18">Lista de ordenes</label></p>
 <div class="container04">
-    <div class="cls72 cls70" ng-repeat="order in orders" ng-click="selectedOrder(order)">
+    <div class="cls72" ng-repeat="order in orders" ng-click="selectedOrder(order)">
         <div class="cls73">
             <img src="../../images/ico-mesa.png" class="cls74">
-            <span class="cls17 cls76">{{order.board.number}}</span>
+            <span style="font-size: 12px;" class="cls17 cls76">{{order.board.number | uppercase}}</span>
         </div>
         <div class="cls75">
-            <span class="cls17">
-                Atendido por:<br><span class="cls77"> Nombre Aqui</span>
+            <span style="font-size: 16px;" class="cls17">
+                Atendido por:<br><span class="cls77">{{order.user.name}}</span>
             </span>
+            <span style="font-size: 12px; margin:3px;" class="infDer">{{order.orderdate | date: "dd/MM/yy hh:mm" }}</span>
         </div>
     </div>
 </div>

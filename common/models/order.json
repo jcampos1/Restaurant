@@ -24,10 +24,6 @@
       "type": "number",
       "required": false
     },
-    "boardnumb": {
-      "type": "string",
-      "required": true
-    },
     "stat": {
       "type": "number",
       "required": true,

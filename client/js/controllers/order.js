@@ -102,9 +102,8 @@ function($scope, Order, $uibModal, cm01,ms01, $log, STOR) {
             $scope.orders = results;
             $scope.orders.forEach(function(order, $index){
                 $scope.orders[$index].board = Order.board({id: order.id});
+                $scope.orders[$index].user = Order.user({id: order.id});
             });
-
-            $log.info("LISTA DE ORDENES");$log.info(results);
         });
     }
 
@@ -567,14 +566,16 @@ angular
 
             User.getPrincipal().$promise
             .then(function(res) {
+                //Usuario que crea la orden
                 $scope.order.userId = res.userId;
+                //Se crea la orden
                 Order.create($scope.order).$promise
                 .then(function(order) {
                     $scope.order.items.forEach(function (item){
                         console.log('item product:' + item.product.name);
                         //item.orderId = order.id;
                         item.productId = item.product.id;
-
+                        //Se crean los items para la orden
                         Order.items.create({id: order.id}, item).$promise
                         .then(function(miitem) {
                             item.lstAdd.forEach(function(ingr) {
