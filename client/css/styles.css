@@ -57,6 +57,13 @@ a, span, label, p {
 .clsSelected {
     border: 4px solid rgba(211, 69, 59, 1) !important;
 }
+
+.has-error {
+    padding-left: 15px;
+    font-style: italic;
+    color: red;
+}
+
 /***************************************************/
 
 /****IMAGEN DE FONDO****/
