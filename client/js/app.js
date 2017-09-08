@@ -138,7 +138,13 @@ angular
       "ADMI":         "Administración",
       "LSTPE":        "Lista de pedidos",
       "NEWPE":        "Nuevo pedido",
-
+      "UNID":         "Unid.",
+      "PVP":          "PVP.",
+      "IMPO":         "Importe",
+      "DATE":         "Fecha",
+      "HOUR":         "Hora",
+      "ATND":         "Atendido por",
+      "CAMB":         "Cambio",
 
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",
@@ -210,6 +216,13 @@ angular
       "ADMI":         "Administración",
       "LSTPE":        "Lista de pedidos",
       "NEWPE":        "Nuevo pedido",
+      "UNID":         "Unid.",
+      "PVP":          "PVP.",
+      "IMPO":         "Importe",
+      "DATE":         "Fecha",
+      "HOUR":         "Hora",
+      "ATND":         "Atendido por",
+      "CAMB":         "Cambio",
       
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",

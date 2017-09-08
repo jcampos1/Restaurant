@@ -193,19 +193,33 @@ function($scope, Order, Item, cm01, $uibModalInstance,
 
 //Pago de pedido de usuario
 angular.module("app").controller('PaymentOrderController',
-['$scope', 'Order', 'Item', 'cm01', '$uibModalInstance', '$log', '$window', 
-function($scope, Order, Item, cm01, $uibModalInstance,
+['$scope', 'Order', 'Item', 'INGR', 'cm01', '$uibModalInstance', '$log', '$window', 
+function($scope, Order, Item, INGR, cm01, $uibModalInstance,
   $log, $window) {
 
     //Pedido seleccionado
     $scope.order = cm01.getData07();
+    $scope.isPunto = false;
     $scope.today = new Date(); 
+    $scope.lstAdd = new Array();
+    $scope.user = Order.user({id: $scope.order.id}); 
+    var obj = new Object();
 
     //Lista de items
     Order.items({id: $scope.order.id}, function(items){
         $scope.items = items;
         $scope.items.forEach(function(item, $index){
             $scope.items[$index].product = Item.product({id: item.id});
+            Item.ingrds({id: item.id}, function(adds){
+                //¿Es adicional?
+                adds.forEach(function(add, $index2){
+                    if( add.type == INGR[1].value ) {
+                        obj.cant = item.cant;
+                        obj.add = angular.copy(add);
+                        $scope.lstAdd.push(angular.copy(obj));
+                    }
+                });
+            });
         });
     });
     

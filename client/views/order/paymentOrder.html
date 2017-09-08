@@ -10,29 +10,77 @@
         <form name="formComanda" novalidate id="printAreaId">
             <div class="row">
                 <div class="col-sm-6">
-                    <!-- Contenedor -->
-                    <div class="com04" style="margin:auto;" >
-                        <!-- Header -->
-                        <div class="com02">
-                            <label>{{board.number | uppercase}}</label>
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <img src="../../images/logo.png" class="logoFact" alt="logo">
                         </div>
-                        <!-- Fecha y hora -->
-                        <div class="com04">
-                            <label style="float:left;">
-                                {{order.orderdate | date:"dd/MM/yyyy"}}
-                            </label>
-                            <label style="float:right;">
-                                {{order.orderdate | date:"H:mm"}}
-                            </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="fact02">
+                                <span class="fact01">{{'GENE.DATE' | translate}}: </span>{{today | date:"dd/MM/yyyy"}}<br>
+                                <span class="fact01">{{'GENE.HOUR' | translate}}: </span>{{today | date:"H:mm"}}
+                            </p>
                         </div>
-                        <!-- Mesero -->
-                        <div class="com02">
-                            <label>MESERO: JUAN</label>
+                        <div class="col-sm-9 fact04" >
+                            <span class="fact01">{{'GENE.MESA' | translate}}: </span>{{board.number | uppercase}}<br>
+                            <span class="fact01">{{'GENE.ATND' | translate}}: </span>{{user.name | uppercase}}<br>
+                        </div>
+                    </div>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>{{'GENE.UNID' | translate}}</th>
+                                <th>{{'GENE.DSCA' | translate}}</th>
+                                <th>{{'GENE.PVP' | translate}}</th>
+                                <th>{{'GENE.IMPO' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in items">
+                                <td>{{item.cant}}</td>
+                                <td>{{item.product.name | uppercase}}</td>
+                                <td>{{item.product.price | number:2}}</td>
+                                <td>{{item.cant * item.product.price | number:2}}</td>
+                            </tr>
+                            <tr ng-repeat="add in lstAdd">
+                                <td>{{add.cant}}</td>
+                                <td>{{add.add.name | uppercase}}</td>
+                                <td>{{add.add.price | number:2}}</td>
+                                <td>{{add.cant * add.add.price | number:2}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-4 fact04">
+                            <label for="total" class="fact02" style="font-size: 14px;">
+                                <span class="fact01">{{'GENE.TOTAL' | translate}}:</span></label> {{order.total | number:2}}
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    campos
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" readonly="true" ng-model="order.total">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="order.total | number:2" ng-model="isPunto">
+                                    Punto de venta
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" readonly="isPunto" ng-model="abon" placeholder="Cantidad abonada">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 fact04">
+                            <label for="total" class="fact02" style="font-size: 14px;">
+                                <span class="fact01">{{'GENE.CAMB' | translate}}:</span></label> {{order.abon-order.total | number:2}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>

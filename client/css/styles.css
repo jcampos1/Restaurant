@@ -103,6 +103,12 @@ footer p{
     z-index: 1000;
 }
 
+.logoFact {
+    max-width: 60px;
+    max-height: 50px;
+    margin: auto;
+}
+
 .logo:hover {
     cursor: pointer;
     max-width: 113px;
@@ -713,6 +719,26 @@ ul li.cls03:hover {
 }
 /*********************************/
 
+/***********factura***************/
+.fact01{
+    font-weight: bold;
+}
+
+.fact02{
+    line-height: 1;
+}
+
+.fact03{
+    font-size: 10px;
+    font-style: italic;
+}
+
+.fact04{
+    text-align: right;
+}
+
+/*********************************/
+
 .container07{
     width: 100%;
     height: 500px;
@@ -789,7 +815,6 @@ ul li.cls03:hover {
 
 /******** SECCION DE PEDIDO *********/
 .cls32 {
-    border: 1px solid blue;
     width: 22%;
     height: 100%;
     padding: 5px;
@@ -814,7 +839,6 @@ ul li.cls03:hover {
 }
 
 .cls44 {
-    border: 1px solid orange;
     width: 60%;
     height: 70px;
     float: left;
@@ -822,21 +846,17 @@ ul li.cls03:hover {
 
 /*Descripcion del prod seleccionado*/
 .cls46 {
-    border: 1px solid green;
-    /*border: 1px solid blue;*/
     width: 100%;
     height: 60px;
 }
 
 /*Cantidades del prod seleccionado*/
 .cls47 {
-    border: 1px solid black;
     width: 100%;
     height: 40px;
 }
 
 .cls48 {
-    /*border: 1px solid green;;*/
     width: 15%;
     margin-left: 15%;
     height: 40px;
@@ -925,7 +945,6 @@ ul li.cls03:hover {
 }
 
 .cls67 {
-    border: 1px solid black;
     max-height: 100px;
     overflow-y: auto;
     overflow-x: hidden; 
@@ -982,7 +1001,6 @@ div.cls71 {
 }
 
 .cls49 {
-    /*border: 1px solid blue;;*/
     width: 40%;
     height: 40px;
     float: left;
@@ -1015,7 +1033,6 @@ div.cls71 {
 
 /*imagen de producto seleccionado*/
 .cls40 {
-    border: 1px solid blue;
     width: 35%;
     height: 100px;
     float: left;
@@ -1219,7 +1236,6 @@ body, html {
 
     /*Descripcion del prod seleccionado*/
     .cls46 {
-        border: 1px solid green;
         height: 40px;
     }
     /***************************************************/
