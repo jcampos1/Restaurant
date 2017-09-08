@@ -72,13 +72,13 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" readonly="isPunto" ng-model="abon" placeholder="Cantidad abonada">
+                            <input type="text" class="form-control" ng-disabled="isPunto" ng-model="abon" placeholder="Cantidad abonada">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 fact04">
                             <label for="total" class="fact02" style="font-size: 14px;">
-                                <span class="fact01">{{'GENE.CAMB' | translate}}:</span></label> {{order.abon-order.total | number:2}}
+                                <span class="fact01">{{'GENE.CAMB' | translate}}:</span></label> {{abon-order.total | number:2}}
                         </div>
                     </div>
                 </div>

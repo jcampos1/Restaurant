@@ -229,7 +229,7 @@ function($scope, Order, Item, INGR, cm01, $uibModalInstance,
     $scope.confirm = function() {
         var popupWinindow = $window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
         popupWinindow.document.open();
-        popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + $("#printAreaId").html() + '</html>');
+        popupWinindow.document.write('<html><link href="../../vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet"><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + $("#printAreaId").html() + '</html>');
         popupWinindow.document.close();
         $uibModalInstance.dismiss(false);
     };
