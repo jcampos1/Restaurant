@@ -145,6 +145,10 @@ angular
       "HOUR":         "Hora",
       "ATND":         "Atendido por",
       "CAMB":         "Cambio",
+      "PNTVNT":       "Punto de Venta",
+      "ABON":         "Cantidad abonada",
+      "MESE":         "Mesero",
+      "CAMA":         "Camarero",
 
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",
@@ -223,6 +227,10 @@ angular
       "HOUR":         "Hora",
       "ATND":         "Atendido por",
       "CAMB":         "Cambio",
+      "PNTVNT":       "Punto de Venta",
+      "ABON":         "Cantidad abonada",
+      "MESE":         "Mesero",
+      "CAMA":         "Camarero",
       
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",

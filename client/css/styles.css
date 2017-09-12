@@ -737,6 +737,23 @@ ul li.cls03:hover {
     text-align: right;
 }
 
+.fact05{
+    text-align: center;
+}
+
+.fact06{
+    height: 60px;
+    padding: 3px;
+    border-radius: 5px;
+    background: rgba(211, 69, 59, 0.9);
+    text-align: center;
+}
+
+.fact07{
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+}
 /*********************************/
 
 .container07{

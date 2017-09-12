@@ -159,13 +159,21 @@ function($scope, Order, Item, cm01, $uibModalInstance,
 
 //Impresión de pedido de usuario
 angular.module("app").controller('PrintOrderController',
-['$scope', 'Order', 'Item', 'cm01', '$uibModalInstance', '$log', 
-function($scope, Order, Item, cm01, $uibModalInstance,
+['$scope', 'Order', 'User', 'Item', 'cm01', '$uibModalInstance', '$log', 
+function($scope, Order, User, Item, cm01, $uibModalInstance,
   $log) {
 
     //Pedido seleccionado
     $scope.order = cm01.getData07();
     $scope.today = new Date(); 
+
+    User.getCurrent(
+        function(user){
+            $scope.user = user;
+        },
+        function(err){
+            $log.warn(err);
+    });
 
     //Lista de items
     Order.items({id: $scope.order.id}, function(items){
@@ -193,8 +201,8 @@ function($scope, Order, Item, cm01, $uibModalInstance,
 
 //Pago de pedido de usuario
 angular.module("app").controller('PaymentOrderController',
-['$scope', 'Order', 'Item', 'INGR', 'cm01', '$uibModalInstance', '$log', '$window', 
-function($scope, Order, Item, INGR, cm01, $uibModalInstance,
+['$scope', 'Order', 'Item', 'INGR', 'STOR', 'cm01', 'ms01', '$uibModalInstance', '$log', '$window', 
+function($scope, Order, Item, INGR, STOR, cm01, ms01, $uibModalInstance,
   $log, $window) {
 
     //Pedido seleccionado
@@ -226,12 +234,31 @@ function($scope, Order, Item, INGR, cm01, $uibModalInstance,
     //Mesa asignada a la orden
     $scope.board = Order.board({id: $scope.order.id});
 
-    $scope.confirm = function() {
-        var popupWinindow = $window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
-        popupWinindow.document.open();
-        popupWinindow.document.write('<html><link href="../../vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet"><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + $("#printAreaId").html() + '</html>');
-        popupWinindow.document.close();
-        $uibModalInstance.dismiss(false);
+    $scope.confirm = function( form ) {
+        if( form.$valid ) {
+            var popupWinindow = $window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+            $scope.order.stat = STOR[1].value;
+            $scope.order.payment = $scope.isPunto;
+            //Pago en efectivo
+            if( !$scope.order.payment ) {
+                $scope.order.abon = $scope.abon;
+                $scope.order.changing = $scope.abon - $scope.order.total;
+            }else{
+                $scope.order.abon = $scope.order.total;
+                $scope.order.changing = 0;
+            }
+            $scope.order.$save().then(function(instance){
+                //Se indica que la mesa esta disponible
+                $scope.board.free = true;
+                $scope.board.$save().then(function(instance){
+                    ms01.msgSuccess();
+                    popupWinindow.document.open();
+                    popupWinindow.document.write('<html><link href="../../vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet"><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + $("#printAreaId").html() + '</html>');
+                    popupWinindow.document.close();
+                    $uibModalInstance.dismiss(false);
+                });
+            });
+        }
     };
 
     $scope.cancel = function() {
@@ -252,7 +279,7 @@ function($scope, Order, Board, cm01, ms01, $uibModalInstance,
 
     //Encuentra todas las mesas disponibles
     $scope.boardFind = function( ) {
-        Board.find({"filter":{"where": {"active":"true"}}}).$promise
+        Board.find({"filter":{"where": {"active":"true", "free":"true"}}}).$promise
         .then(function(results) {
             $scope.boards = results;
             console.log(results);
@@ -270,6 +297,16 @@ function($scope, Order, Board, cm01, ms01, $uibModalInstance,
         if( cm01.isValid(cm01.getEvnt14()) ){
             $scope.order.board = cm01.getData08();
             $scope.order.$save().then(function(instance){
+                //Se indica que la nueva mesa asignada no esta disponible
+                cm01.getData08().free = false;
+                cm01.getData08().$save().then(function(instance){
+                     $log.info("Nueva mesa: " +instance.number+" ahora esta no disponible " );
+                });
+                //Se indica que la antigua mesa asignada ahora esta disponible
+                $scope.board.free = true;
+                $scope.board.$save().then(function(instance){
+                    $log.info("Antigua mesa: " +$scope.board.number+" ahora esta disponible " );
+                });
                 ms01.msgSuccess();
                 cm01.setData08(null);
                 cm01.setEvnt14(null);
@@ -288,14 +325,22 @@ function($scope, Order, Board, cm01, ms01, $uibModalInstance,
 
 //Muestra el modal de confirmacion de pedido
 angular.module("app").controller('ConfirmOrderController',
-['$scope', 'Order', 'Board', 'cm01', 'ms01', '$uibModalInstance', '$log', 'order', 'items',
-function($scope, Order, Board, cm01, ms01, $uibModalInstance,
+['$scope', 'Order', 'User', 'Board', 'cm01', 'ms01', '$uibModalInstance', '$log', 'order', 'items',
+function($scope, Order, User, Board, cm01, ms01, $uibModalInstance,
   $log, order, items) {
 
     $scope.order = order;
     $scope.board = order.board;
     $scope.items = items;
     $scope.today = new Date();
+
+    User.getCurrent(
+        function(user){
+            $scope.user = user;
+        },
+        function(err){
+            $log.warn(err);
+    });
 
     $scope.confirm = function() {
         cm01.setData09($("#printAreaId").html());
@@ -327,11 +372,11 @@ angular
 
         //Asigna/restaura valores
         function valorsInitials( ) {
-          $scope.lstItems = [];
-          $scope.total = 0;
-          $scope.order = new Object();
-          //Por defecto el pedido es para comer en el sitio
-          $scope.order.onSite = true;
+            $scope.lstItems = [];
+            $scope.total = 0;
+            $scope.order = new Object();
+            //Por defecto el pedido es para comer en el sitio
+            $scope.order.onSite = true;
         }
 
         /****************ACCIONES SOBRE MESAS ************************ */
@@ -348,7 +393,7 @@ angular
         $scope.boardFind = function( ) {
           Board.find({"filter": {"where": {"active":"true", "free": "true"}}}).$promise
           .then(function(results) {
-            $scope.boards = results;
+                $scope.boards = results;
           });
         }
         /************************************************************* */
@@ -585,6 +630,12 @@ angular
                 //Se crea la orden
                 Order.create($scope.order).$promise
                 .then(function(order) {
+                    //Se indica que la mesa ya esta asignada
+                    $scope.order.board.free = false;
+                    $scope.order.board.$save().then(function(instance){
+                        $log.info("Mesa " + instance.number+ " ocupada ");
+                    });
+
                     $scope.order.items.forEach(function (item){
                         console.log('item product:' + item.product.name);
                         //item.orderId = order.id;

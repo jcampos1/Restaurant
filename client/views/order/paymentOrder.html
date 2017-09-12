@@ -7,9 +7,9 @@
         <h3 class="box-title">{{'GENE.PAYMENT' | translate}}</h3>
     </div>
     <div class="modal-body">
-        <form name="formComanda" novalidate id="printAreaId">
-            <div class="row">
-                <div class="col-sm-6">
+        <form name="formFactura" novalidate>
+            <div  class="row">
+                <div id="printAreaId" class="col-sm-6">
                     <div class="row">
                         <div class="col-sm-4 col-sm-offset-4">
                             <img src="../../images/logo.png" class="logoFact" alt="logo">
@@ -58,27 +58,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-5 col-sm-offset-1">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" readonly="true" ng-model="order.total">
+                        <div class="col-sm-7 col-sm-offset-5">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" value="order.total | number:2" ng-model="isPunto">
-                                    Punto de venta
+                                    <label class="font02">{{'GENE.PNTVNT' | translate}}</label>
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" ng-disabled="isPunto" ng-model="abon" placeholder="Cantidad abonada">
+                            <label class="font02">{{'GENE.TOTAL' | translate}}</label>
+                            <div class="fact06 fact07">
+                                {{order.total | number:2}}
+                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12 fact04">
-                            <label for="total" class="fact02" style="font-size: 14px;">
-                                <span class="fact01">{{'GENE.CAMB' | translate}}:</span></label> {{abon-order.total | number:2}}
+                        <div class="col-sm-12">
+                            <label class="font02">(*) {{'GENE.ABON' | translate}}</label>
+                            <input type="text" class="form-control fact05 fact06 fact07" ng-disabled="isPunto" ng-model="abon" placeholder="{{'GENE.ABON' | translate}}" ng-required="!isPunto">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="cambio" class="font02 fact02">
+                                <span class="fact01">{{'GENE.CAMB' | translate}}:</span></label>
+                                <div class="fact06 fact07">
+                                    {{abon-order.total | number:2}}
+                                </div> 
                         </div>
                     </div>
                 </div>
@@ -89,7 +100,7 @@
         <a ng-click="cancel()" class="btn btn-app btn btn-warning"> <i
             class="fa fa-close"></i>{{'GENE.CANC' | translate}}
         </a>
-        <a ng-click="confirm()"
+        <a ng-disabled="!formFactura.$valid" ng-click="confirm(formFactura)" 
             class="btn btn-app btn btn-primary"> <i class="fa fa-save"></i>
             {{ 'GENE.CONF2' | translate }}
         </a>
