@@ -199,73 +199,6 @@ function($scope, Order, User, Item, cm01, $uibModalInstance,
     };
 }]);
 
-//Pago de pedido de usuario
-angular.module("app").controller('PaymentOrderController',
-['$scope', 'Order', 'Item', 'INGR', 'STOR', 'cm01', 'ms01', '$uibModalInstance', '$log', '$window', 
-function($scope, Order, Item, INGR, STOR, cm01, ms01, $uibModalInstance,
-  $log, $window) {
-
-    //Pedido seleccionado
-    $scope.order = cm01.getData07();
-    $scope.isPunto = false;
-    $scope.today = new Date(); 
-    $scope.lstAdd = new Array();
-    $scope.user = Order.user({id: $scope.order.id}); 
-    var obj = new Object();
-
-    //Lista de items
-    Order.items({id: $scope.order.id}, function(items){
-        $scope.items = items;
-        $scope.items.forEach(function(item, $index){
-            $scope.items[$index].product = Item.product({id: item.id});
-            Item.ingrds({id: item.id}, function(adds){
-                //¿Es adicional?
-                adds.forEach(function(add, $index2){
-                    if( add.type == INGR[1].value ) {
-                        obj.cant = item.cant;
-                        obj.add = angular.copy(add);
-                        $scope.lstAdd.push(angular.copy(obj));
-                    }
-                });
-            });
-        });
-    });
-    
-    //Mesa asignada a la orden
-    $scope.board = Order.board({id: $scope.order.id});
-
-    $scope.confirm = function( form ) {
-        if( form.$valid ) {
-            var popupWinindow = $window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
-            $scope.order.stat = STOR[1].value;
-            $scope.order.payment = $scope.isPunto;
-            //Pago en efectivo
-            if( !$scope.order.payment ) {
-                $scope.order.abon = $scope.abon;
-                $scope.order.changing = $scope.abon - $scope.order.total;
-            }else{
-                $scope.order.abon = $scope.order.total;
-                $scope.order.changing = 0;
-            }
-            $scope.order.$save().then(function(instance){
-                //Se indica que la mesa esta disponible
-                $scope.board.free = true;
-                $scope.board.$save().then(function(instance){
-                    ms01.msgSuccess();
-                    popupWinindow.document.open();
-                    popupWinindow.document.write('<html><link href="../../vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet"><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + $("#printAreaId").html() + '</html>');
-                    popupWinindow.document.close();
-                    $uibModalInstance.dismiss(false);
-                });
-            });
-        }
-    };
-
-    $scope.cancel = function() {
-      $uibModalInstance.dismiss(false);
-    };
-}]);
-
 //Muestra el modal para el cambio de mesa
 angular.module("app").controller('MoveBoardOfOrderController',
 ['$scope', 'Order', 'Board', 'cm01', 'ms01', '$uibModalInstance', '$log', 
@@ -356,9 +289,9 @@ angular
   .module('app')
 
   .controller('NewOrderController', [
-'$scope', 'Order', 'Board', 'Category', 'Item', 'Product', 'Ingrediente', 'User', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', '$window', 'STOR', 
-  function($scope, Order, Board, Category, Item, Product, Ingrediente, User, INGR, cm01, ms01,
-      $uibModal, $location, $log, $window, STOR) {
+'$scope', '$rootScope', 'Order', 'Board', 'Category', 'Item', 'Product', 'Ingrediente', 'User', 'INGR', 'cm01', 'ms01', '$uibModal', '$location', '$log', '$timeout', '$window', 'STOR', 
+  function($scope, $rootScope, Order, Board, Category, Item, Product, Ingrediente, User, INGR, cm01, ms01,
+      $uibModal, $location, $log, $timeout, $window, STOR) {
         var vm = this;
 
         $scope.boards = [];
@@ -384,6 +317,9 @@ angular
         $scope.selectBoard = function ( board ) {
             if( !($scope.order.board instanceof Object) ){
                 $scope.order.board = board;
+                //Se activa el tab de productos
+                $scope.productFind()
+                $scope.active = 1;
             }else{
               ms01.twiceBoard();
             }
@@ -413,6 +349,17 @@ angular
 
             $scope.lstItems.push($scope.item);
             ms01.msgAdd();
+
+            //Se activa el tab de ingredientes
+            $scope.active = 2;
+            $scope.ingredienteFind();
+            
+            //Se marca el producto seleccionado
+            $timeout(function() {
+                $scope.selectProductForIngr( $scope.lstItems.length-1 );
+                $('.cls80').removeClass("clsSelected");
+                $('#item'+$scope.lstItems.length).addClass("clsSelected");
+            }, 600);
         }
 
         //Cancela un item del pedido
@@ -590,7 +537,6 @@ angular
                     $scope.order.lstProducts = $scope.lstItems;
                     $scope.order.total = $scope.total;
                     $scope.order.board = undefined;
-                    $scope.order.boardnumb = "mesempty";
                     create();
                     $log.info("LA COMANDA A ATENDER ES:");
                     $log.info($scope.order);
@@ -613,7 +559,7 @@ angular
 
         //Crea un pedido
         function create() {
-             var popupWinindow = $window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+            var popupWinindow = $window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
             $scope.order.items = $scope.lstItems;
             $scope.order.total = $scope.total;
             $log.info("LA COMANDA A ATENDER ES:");
@@ -668,6 +614,7 @@ angular
                     });
                     ms01.msgSuccess();
                     valorsInitials( );
+                    $scope.active = 0;
                 });
             });
 
@@ -676,6 +623,195 @@ angular
 
         $scope.boardFind();
   }]);
+
+//Pago de pedido de usuario
+angular.module("app").controller('BoxController',
+['$scope', 'Order', 'Item', '$uibModal', 'cm01', 'ms01', '$log', '$timeout', '$window', 'STOR', 'PAY', 'INGR', 
+function($scope, Order, Item, $uibModal, cm01, ms01, $log, $timeout, $window, STOR, PAY, INGR) {
+
+    var vm = this;
+    $scope.isPunto = 0;
+
+    function valorsInitials(  ) {
+        $scope.order = new Object( );  
+        $scope.board = new Object( );
+        $scope.items = new Array( );
+        $scope.lstAdd = new Array();
+        $scope.isPunto = 0;
+        $scope.abon = null;
+        //Se marca el producto seleccionado
+        $timeout(function() {
+            $('.cls89').removeClass("cls06Selected");
+        }, 0);
+    }
+    
+    //Encuentra todas las ordenes en estado cerrado para el dia actual
+    $scope.orderFindClose = function(  ) {
+        Order.orderFindClose(function(result){
+            console.log("ordenes cerradas");
+            console.log(result.orders);
+            $scope.ordersClose = result.orders;
+            $scope.ordersClose.forEach(function(order, $index){
+                $scope.ordersClose[$index].board = Order.board({id: order.id});
+                $scope.ordersClose[$index].payment = PAY[order.payment].dsca;
+            });
+        });
+    }
+
+    //Encuentra todas las ordenes en estado abierto para el dia actual
+    $scope.orderFindOpen = function(  ) {
+        Order.orderFindOpen(function(result){
+            console.log("ordenes abiertas");
+            console.log(result.orders);
+            $scope.ordersOpen = result.orders;
+            $scope.ordersOpen.forEach(function(order, $index){
+                $scope.ordersOpen[$index].board = Order.board({id: order.id});
+                $scope.ordersOpen[$index].payment = PAY[order.payment].dsca;
+            });
+      });
+    }
+
+    //Encuentra todas las ordenes en estado cerrado para el dia actual
+    $scope.selectedOrder = function(  order ) {
+        console.log(  order )
+
+        $scope.order = order;  
+        $scope.isPunto = 0;
+        $scope.today = new Date(); 
+        $scope.lstAdd = new Array();
+        $scope.user = Order.user({id: $scope.order.id}); 
+        var obj = new Object();
+
+        //Lista de items
+        Order.items({id: $scope.order.id}, function(items){
+            $scope.items = items;
+            $scope.items.forEach(function(item, $index){
+                $scope.items[$index].product = Item.product({id: item.id});
+                Item.ingrds({id: item.id}, function(adds){
+                    //¿Es adicional?
+                    adds.forEach(function(add, $index2){
+                        if( add.type == INGR[1].value ) {
+                            obj.cant = item.cant;
+                            obj.add = angular.copy(add);
+                            $scope.lstAdd.push(angular.copy(obj));
+                        }
+                    });
+                });
+            });
+        });
+        
+        //Mesa asignada a la orden
+        $scope.board = Order.board({id: $scope.order.id});
+    }
+
+    $scope.process = function( form ) {
+        if( form.$valid ) {
+            var modalInstance = $uibModal.open({
+            animation : true,
+            templateUrl : 'paymentOrder.html',
+            controller : 'PaymentOrderController',
+            backdrop: true,
+            size : "md",
+            resolve: {
+                order: function () {return $scope.order},
+                isPunto: function(){return $scope.isPunto},
+                abon: function(){return $scope.abon}
+            }
+            });
+            modalInstance.result.then(
+            function(confim) {
+                if(confim) {
+                    $scope.confirm();
+                }
+            }, function() {
+            });
+        //Encuentra los ingredientes con un filtro
+          /**/
+        }
+    };
+
+    $scope.confirm = function(  ) {
+        Order.findById({"id":""+$scope.order.id}).$promise
+          .then(function(model) {
+              console.log(model)
+              var popupWinindow = $window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+                model.stat = STOR[1].value;
+                model.payment = $scope.isPunto;
+                model.closedate = new Date();
+                
+                //Pago en efectivo
+                if( !model.payment ) {
+                    model.abon = $scope.abon;
+                    model.changing = $scope.abon - model.total;
+                }else{
+                    model.abon = model.total;
+                    model.changing = 0;
+                }
+                
+                model.$save().then(function(instance){
+                    //Se indica que la mesa esta disponible
+                    $scope.board.free = true;
+                    $scope.board.$save().then(function(instance){
+                        ms01.msgSuccess();
+                        valorsInitials(  );
+                        $scope.orderFindClose();
+                        $scope.orderFindOpen();
+                        popupWinindow.document.open();
+                        popupWinindow.document.write('<html><link href="../../vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet"><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + cm01.getData09( ) + '</html>');
+                        popupWinindow.document.close();
+                    });
+                });
+            });
+    }
+
+    $scope.orderFindClose();
+    $scope.orderFindOpen();
+}]);
+
+//Confirmación de Pago de pedido de usuario
+angular.module("app").controller('PaymentOrderController',
+['$scope', 'Order', 'Item', 'order', 'isPunto', 'abon', 'INGR', 'STOR', 'cm01', 'ms01', '$uibModalInstance', '$log', '$window', 
+function($scope, Order, Item, order, isPunto, abon, INGR, STOR, cm01, ms01, $uibModalInstance,
+  $log, $window) {
+
+    //Pedido seleccionado
+    $scope.order = order;
+    $scope.abon = abon;
+    $scope.today = new Date(); 
+    $scope.lstAdd = new Array();
+    $scope.user = Order.user({id: $scope.order.id}); 
+    var obj = new Object();
+
+    //Lista de items
+    Order.items({id: $scope.order.id}, function(items){
+        $scope.items = items;
+        $scope.items.forEach(function(item, $index){
+            $scope.items[$index].product = Item.product({id: item.id});
+            Item.ingrds({id: item.id}, function(adds){
+                //¿Es adicional?
+                adds.forEach(function(add, $index2){
+                    if( add.type == INGR[1].value ) {
+                        obj.cant = item.cant;
+                        obj.add = angular.copy(add);
+                        $scope.lstAdd.push(angular.copy(obj));
+                    }
+                });
+            });
+        });
+    });
+    
+    //Mesa asignada a la orden
+    $scope.board = Order.board({id: $scope.order.id});
+
+    $scope.confirm = function( form ) {
+        cm01.setData09($("#printAreaId").html());
+        $uibModalInstance.close(true);
+    };
+
+    $scope.cancel = function() {
+      $uibModalInstance.dismiss(false);
+    };
+}]);
 
   angular.module('app').component('detailOrderComponent',
   {

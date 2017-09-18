@@ -64,7 +64,7 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
         });
     },
 
-    dropBoard: function( ) {
+    dropBoard: function( cb ) {
         SweetAlert.swal({
             title: "Confirmación",
             text: "¿Seguro de eliminar la mesa: " + cm01.getData01().number + "?",
@@ -76,7 +76,7 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
             closeOnCancel: true}, 
             function(isConfirm){
                 if (isConfirm) {
-                    cm01.setEvnt02("emit");
+                    cb();
                 }
         });
     },
@@ -115,7 +115,7 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
         });
     },
 
-    dropCategory: function( ) {
+    dropCategory: function( cb ) {
         SweetAlert.swal({
             title: "Confirmación",
             text: "¿Seguro de eliminar la categoria: " + cm01.getData02().name + "?",
@@ -127,12 +127,12 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
             closeOnCancel: true}, 
             function(isConfirm){
                 if (isConfirm) {
-                    cm01.setEvnt04("emit");
+                    cb();
                 }
         });
     },
 
-    dropProduct: function( ) {
+    dropProduct: function( cb ) {
         SweetAlert.swal({
             title: "Confirmación",
             text: "¿Seguro de eliminar el producto: " + cm01.getData03().code + "?",
@@ -144,12 +144,12 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
             closeOnCancel: true}, 
             function(isConfirm){
                 if (isConfirm) {
-                    cm01.setEvnt06("emit");
+                    cb();
                 }
         });
     },
 
-    dropIngrediente: function( ) {
+    dropIngrediente: function( cb ) {
         SweetAlert.swal({
             title: "Confirmación",
             text: "¿Seguro de eliminar el ingrediente: " + cm01.getData05().name + "?",
@@ -161,7 +161,7 @@ angular.module("myservices01").factory('ms01', function($log, cm01, SweetAlert, 
             closeOnCancel: true}, 
             function(isConfirm){
                 if (isConfirm) {
-                    cm01.setEvnt11("emit");
+                    cb();
                 }
         });
     },

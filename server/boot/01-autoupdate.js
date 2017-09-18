@@ -33,6 +33,6 @@ module.exports = function(app) {
     //TODO: change to autoUpdateAll when ready for CI deployment to production
     //Auto-migration will drop an existing table if its name matches a model name. When tables with data exist, use auto-update to avoid data loss.
     //autoMigrateAll();
-    //autoUpdateAll();
+    autoUpdateAll();
 
 };

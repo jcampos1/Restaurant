@@ -11,12 +11,12 @@
             <div class="row">
                 <p class="cls10">{{ messageStatus }}</p>
                 <div class="col-sm-6">
-                    <label class="font02">(*) {{'GENE.USER' | translate}}</label>
-                    <input type="text" class="general" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="user.email">
-                    <span class="has-error control-label" ng-show="
-                        newUser.email.$invalid && newUser.email.$dirty">
-                    {{'FORM.REQU' | translate}}
-                    </span>
+                        <label class="font02">(*) {{'GENE.USER' | translate}}</label>
+                        <input type="text" class="general" name="username" placeholder="{{'GENE.USER' | translate}}" required ng-model="user.username">
+                        <span class="has-error control-label" ng-show="
+                            newUser.username.$invalid && newUser.username.$dirty">
+                        {{'FORM.REQU' | translate}}
+                        </span>
                 </div>
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.PASS' | translate}}</label>
@@ -67,6 +67,16 @@
                         newUser.roles.$invalid && newUser.roles.$dirty">
                         {{'FORM.REQU' | translate}}
                     </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                        <label class="font02">(*) {{'GENE.EMAIL' | translate}}</label>
+                        <input type="text" class="general" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="user.email">
+                        <span class="has-error control-label" ng-show="
+                            newUser.email.$invalid && newUser.email.$dirty">
+                        {{'FORM.REQU' | translate}}
+                        </span>
                 </div>
             </div>
             <div class="row">

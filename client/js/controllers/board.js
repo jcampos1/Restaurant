@@ -64,7 +64,7 @@ angular
         //Eliminación
         $scope.dropBoard = function() {
           if( cm01.isValid(cm01.getData01()) ) {
-            ms01.dropBoard();
+            ms01.dropBoard(drop);
           }else{
             ms01.unselected();
           }
@@ -90,19 +90,15 @@ angular
             cm01.setEvnt01(null);
           }
         });
-              
-        //Acción ejecutada después de confirmar eliminación
-        $scope.$watch(function() { return cm01.getEvnt02() }, function() {
-          if( cm01.isValid(cm01.getEvnt02()) ){
-            cm01.getData01().active = false;
-            cm01.getData01().$save().then(function(instance){
-              $scope.boardFind();
-              ms01.msgSuccess();
-              cm01.setData01(null);
-              cm01.setEvnt02(null);
-            });
-          }
-	      });
+
+        function drop () {
+          cm01.getData01().active = false;
+          cm01.getData01().$save().then(function(instance){
+            $scope.boardFind();
+            ms01.msgSuccess();
+            cm01.setData01(null);
+          });
+        }
 
         //Encuentra todas las mesas
         $scope.boardFind( );

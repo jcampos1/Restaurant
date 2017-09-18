@@ -15,7 +15,7 @@ module.exports = function(app) {
   /***************** CREACIÓN DE USUARIOS INICIALES *****************/
   User.create([
     {
-      username: 'John',
+      username: 'john',
       email: 'john@doe.com', 
       password: 'jun',
       name: 'John',
@@ -23,7 +23,7 @@ module.exports = function(app) {
       address: 'Urb. Bello Monte III'
     },
     {
-      username: 'Jane', 
+      username: 'jane', 
       email: 'junior.uc.91@hotmail.com', 
       password: 'jun',
       name: 'Jane Foster',
@@ -31,7 +31,7 @@ module.exports = function(app) {
       address: 'Urb. La Isabelica'
     },
     {
-      username: 'Bob', 
+      username: 'bob', 
       email: 'bob@projects.com', 
       password: 'jun',
       name: 'Bob Restrepo',
@@ -113,12 +113,11 @@ module.exports = function(app) {
   /******************************************************************/
 
   /***************** CREACIÓN CATEGORIAS INICIALES *****************/
-  Category.create([
+  /*Category.create([
     {name: "Xis", description: "Descripción Xis", image: 'sin-img-01.png'},
     {name: "Bebidas", description: "Descripción Bebidas", image: 'sin-img-01.png'},
     {name: "Petiscos", description: "Descripción Petiscos", image: 'sin-img-01.png'},
-    {name: "Sobremesa", description: "Descripción Sobremesa", image: 'sin-img-01.png'},
-    {"name": "Ensaladas","description": "Todas las ensaladas","image": "icon-ens01.png"}
+    {name: "Sobremesa", description: "Descripción Sobremesa", image: 'sin-img-01.png'}
   ], function(err, categorys) {
     if (err) throw err;
 
@@ -135,7 +134,7 @@ module.exports = function(app) {
     if (err) throw err;
 
     console.log('Ingredientes creados:', ingredientes);
-  });
+  });*/
   /*****************************************************************/
   //  Order.create([
   //   {number: "00001", total: 1000, boardnumb: '1'},

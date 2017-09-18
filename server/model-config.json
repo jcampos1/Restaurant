@@ -38,19 +38,19 @@
     "public": true
   },
   "Board": {
-    "dataSource": "db",
+    "dataSource": "mysql",
     "public": true
   },
   "category": {
-    "dataSource": "db",
+    "dataSource": "mysql",
     "public": true
   },
   "product": {
-    "dataSource": "db",
+    "dataSource": "mysql",
     "public": true
   },
   "ingrediente": {
-    "dataSource": "db",
+    "dataSource": "mysql",
     "public": true
   },
   "container": {
