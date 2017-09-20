@@ -756,6 +756,9 @@ function($scope, Order, Item, $uibModal, cm01, ms01, $log, $timeout, $window, ST
                         valorsInitials(  );
                         $scope.orderFindClose();
                         $scope.orderFindOpen();
+
+                        
+
                         popupWinindow.document.open();
                         popupWinindow.document.write('<html><link href="../../vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet"><head><link rel="stylesheet" type="text/css" href="../../css/styles.css" /></head><body onload="window.print()">' + cm01.getData09( ) + '</html>');
                         popupWinindow.document.close();
@@ -804,8 +807,18 @@ function($scope, Order, Item, order, isPunto, abon, INGR, STOR, cm01, ms01, $uib
     $scope.board = Order.board({id: $scope.order.id});
 
     $scope.confirm = function( form ) {
+
+        var html = '<p><b>Click</b> to change the</p>'
+
+        console.log(  typeof $("#printAreaId").prop('outerHTML') );
+        console.log(  ""+$("#printAreaId").prop('outerHTML'));
+        Order.sendToPrinter({html:$("#printAreaId").prop('outerHTML')},function(result){
+            alert(  "se ejecuto correctamente");
+            
+          });
+
         cm01.setData09($("#printAreaId").html());
-        $uibModalInstance.close(true);
+        $uibModalInstance.close(false);
     };
 
     $scope.cancel = function() {

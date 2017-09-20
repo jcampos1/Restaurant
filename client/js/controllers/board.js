@@ -5,7 +5,8 @@
 
 angular
   .module('app')
-  .controller('BoardController', ['$scope', 'Board', 'cm01', 'ms01', '$uibModal', '$location', '$log', function($scope, Board, cm01, ms01,
+  .controller('BoardController', ['$scope', 'Board', 'Order',  'cm01', 'ms01', '$uibModal', '$location', '$log', 
+  function($scope, Board, Order, cm01, ms01,
       $uibModal, $location, $log) {
         var vm = this;
 
