@@ -1,0 +1,127 @@
+<ul style="position:fixed; top:10px; left: 10px; z-index: 10000;">
+    <li style="display: inline-block;"><a class="cls80" href="" ui-sref="principal"><span style="color:white;" class="cls17">Inicio</span></a></li>
+</ul>
+<!-- logo -->
+<img src="../../images/logo.png" class="logo" alt="logo">
+
+<div class="container08">
+    <div class="row container09" style="margin-right: 1%; overflow: auto;" >
+            <div class="col-sm-12">
+                <table class="table table-condensed table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{'GENE.MESA' | translate}}</th>
+                            <th>{{'GENE.FORPAY' | translate}}</th>
+                            <th>{{'GENE.HOUR' | translate}}</th>
+                            <th>{{'GENE.TOTAL' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="order in ordersClose">
+                            <td>{{order.board.number | uppercase}}</td>
+                            <td>{{order.payment | uppercase}}</td>
+                            <td>{{order.closedate | date:"H:mm" }}</td>
+                            <td>{{order.total | currency: 'R$ '}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+    <div class="row container10">
+        <div class="col-sm-12">
+            <div class="container11">
+                <label for="list" class="cls17">{{"GENE.CLSEME" | translate}}</label>
+            </div>
+            <div class="container12">
+                <div class="cls89 a_icon" ng-repeat="order in ordersOpen" ng-click="selectedOrder(order)" >
+                    <span class="cls06 cls08"></span>
+                    <img src="../../images/ico-mesa.png" alt="Norway" class="cls90" >
+                    <label class="cls85 cls86">{{ order.board.number }}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row container10" style="padding: 1%;">
+        <div class="col-sm-12" style="height: 100%;">
+            <div class="row container09" style="margin-right: 4%; min-height: 70%; overflow: auto;" >
+                <div class="col-sm-12">
+                    <table class="table table-condensed table-striped cls91">
+                        <thead>
+                            <tr>
+                                <th>{{'GENE.UNID' | translate}}</th>
+                                <th>{{'GENE.DSCA' | translate}}</th>
+                                <th>{{'GENE.PVP' | translate}}</th>
+                                <th>{{'GENE.IMPO' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in items">
+                                <td>{{item.cant}}</td>
+                                <td>{{item.product.name | uppercase}}</td>
+                                <td>{{item.product.price | currency: 'R$ '}}</td>
+                                <td>{{item.cant * item.product.price  | currency: 'R$ '}}</td>
+                            </tr>
+                            <tr ng-repeat="add in lstAdd">
+                                <td>{{add.cant}}</td>
+                                <td>{{add.add.name | uppercase}}</td>
+                                <td>{{add.add.price | currency: 'R$ '}}</td>
+                                <td>{{add.cant * add.add.price | currency: 'R$ '}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-4 fact04">
+                            <label for="total" class="fact02" style="font-size: 14px;">
+                                <span class="fact01">{{'GENE.TOTAL' | translate}}:</span></label> {{order.total | currency: 'R$ '}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row container10" style="height: 80%; padding: 1%;">
+                <div class="col-sm-12" style="height: 100%;">
+                    <label class="cls17">{{"GENE.FORPAY" | translate}}</label>
+                    <div class="radio-inline">
+                        <label>
+                            <input type="radio" ng-model="isPunto" ng-value="0" checked>
+                            <label style="font-size: 14px;" class="cls17">{{'GENE.CASH' | translate}}</label>
+                        </label>
+                    </div>
+                    <div class="radio-inline">
+                        <label>
+                            <input type="radio" ng-model="isPunto" ng-value="1">
+                            <label style="font-size: 14px;" class="cls17">{{'GENE.CARD' | translate}}</label>
+                        </label>
+                    </div>
+                    <div class="row">
+                        <form name="formFactura" novalidate>
+                            <div class="col-sm-6">
+                                <label style="font-size: 14px;" class="cls17">(*) {{'GENE.PAYMENT' | translate}}</label>
+                                <input name="abon" style="font-size: 20px; color: black !important;" type="number" class="form-control fact05 fact06 fact07" ng-disabled="isPunto==1" ng-model="abon" placeholder="{{'GENE.PAYMENT' | translate}}" ng-required="isPunto==0">
+                            </div>
+                            <div class="col-sm-6">
+                                <label style="font-size: 14px;" class="cls17">{{'GENE.CAMB' | translate}}</label>
+                                <input style="font-size: 20px; color: black;" type="number" readonly class="form-control fact05 fact06 fact07" ng-value="abon-order.total" placeholder="{{'GENE.CAMB' | translate}}">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row container10" style="height: 20%; ">
+                <div class="col-sm-12" style="height: 100%; padding: 0;">
+                    <button type="button" class="form-control btn btn-success" style="border-radius: 0; height: 100%;" ng-click="process(formFactura)">{{ 'GENE.PROCES' | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<payment-order-component/>
+
+<script>
+$(document).ready(function(){
+    $(".container12").on('click', '.cls89', function(){
+        $('.cls89').removeClass("cls06Selected");
+        $(this).addClass("cls06Selected");
+    });
+});
+</script>

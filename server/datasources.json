@@ -29,10 +29,10 @@
     "root": "./client/images/storage"
   },
   "mysql": {
-    "host": "127.0.0.1",
+    "host": "localhost",
     "port": 3306,
-    "url": "mysql://root:toor@127.0.0.1/goc_rest",
-    "database": "asc_rest",
+    "url": "mysql://root:toor@localhost/rest",
+    "database": "rest",
     "password": "toor",
     "name": "mysql",
     "user": "root",

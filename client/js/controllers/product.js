@@ -63,7 +63,7 @@ angular
         //Eliminación
         $scope.dropProduct = function() {
           if( cm01.isValid(cm01.getData03()) ) {
-            ms01.dropProduct();
+            ms01.dropProduct(drop);
           }else{
             ms01.unselected();
           }
@@ -90,9 +90,7 @@ angular
           }
         });
 
-        //Acción ejecutada después de confirmar eliminación
-        $scope.$watch(function() { return cm01.getEvnt06() }, function() {
-          if( cm01.isValid(cm01.getEvnt06()) ){
+        function drop () {
             cm01.getData03().active = false;
             Category.products.updateById(
             {id: cm01.getData03().categoryId, fk: cm01.getData03().id},
@@ -101,10 +99,8 @@ angular
               $scope.productFind();
               ms01.msgSuccess();
               cm01.setData03(null);
-              cm01.setEvnt06(null);
             });
-          }
-	      });
+        }
 
         //Encuentra todos las productos
         $scope.productFind( );

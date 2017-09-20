@@ -12,9 +12,9 @@
                 <p class="cls10">{{ messageStatus }}</p>
                 <div class="col-sm-6">
                     <label class="font02">(*) {{'GENE.USER' | translate}}</label>
-                    <input type="text" class="general" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="user.email">
+                    <input type="text" class="general" name="username" placeholder="{{'GENE.USER' | translate}}" required ng-model="user.username">
                     <span class="has-error control-label" ng-show="
-                        editUser.email.$invalid && editUser.email.$dirty">
+                        editUser.username.$invalid && editUser.username.$dirty">
                     {{'FORM.REQU' | translate}}
                     </span>
                 </div>
@@ -67,6 +67,16 @@
                         editUser.roles.$invalid && editUser.roles.$dirty">
                         {{'FORM.REQU' | translate}}
                     </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                        <label class="font02">(*) {{'GENE.EMAIL' | translate}}</label>
+                        <input type="text" class="general" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="user.email">
+                        <span class="has-error control-label" ng-show="
+                            editUser.email.$invalid && editUser.email.$dirty">
+                        {{'FORM.REQU' | translate}}
+                        </span>
                 </div>
             </div>
             <div class="row">

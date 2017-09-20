@@ -64,7 +64,7 @@ angular
         //Eliminación
         $scope.dropIngrediente = function() {
           if( cm01.isValid(cm01.getData05()) ) {
-            ms01.dropIngrediente();
+            ms01.dropIngrediente(drop);
           }else{
             ms01.unselected();
           }
@@ -90,19 +90,15 @@ angular
             cm01.setEvnt10(null);
           }
         });
-              
-        //Acción ejecutada después de confirmar eliminación
-        $scope.$watch(function() { return cm01.getEvnt11() }, function() {
-          if( cm01.isValid(cm01.getEvnt11()) ){
+
+        function drop () {
             cm01.getData05().active = false;
             cm01.getData05().$save().then(function(instance){
               $scope.ingredienteFind();
               ms01.msgSuccess();
               cm01.setData05(null);
-              cm01.setEvnt11(null);
             });
-          }
-	      });
+        }
 
         //Encuentra todas las mesas
         $scope.ingredienteFind( );

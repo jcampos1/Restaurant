@@ -1,4 +1,9 @@
 /**************** ESTILOS GENERALES ***************/
+
+*{
+    font-family:  'Oswald', sans-serif;
+}
+
 footer {
     text-align: center;
     background: lightgray;
@@ -10,6 +15,7 @@ footer {
     padding-top: 3px;
     z-index: 1000;
 }
+
 
 ul{
     list-style-type: none;
@@ -28,9 +34,15 @@ ul.cls79 {
 }
 
 .navbar {
-    height: 20px;
+    margin-bottom: 0;
+    position: static;
+    height: 5%;
     z-index: 1;
     background: #D34539;
+}
+
+.navbar-header {
+    height: 100%;
 }
 
 .navbar-header a{
@@ -101,6 +113,12 @@ footer p{
     animation-duration: 0.7s;
     animation-delay: 1s;*/
     z-index: 1000;
+}
+
+.logoFact {
+    max-width: 60px;
+    max-height: 50px;
+    margin: auto;
 }
 
 .logo:hover {
@@ -299,6 +317,15 @@ input.login::placeholder { color: rgba(255, 255, 255, 0.6); }
     margin-top: 25px;
 }
 
+/*** Elimina spin de campo type number ***/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
 input[type=text].general, input[type=password].general, input[type=number].general, input[type=file], select {
     width: 100%;
     box-sizing: border-box;
@@ -420,7 +447,7 @@ input[type=text].general:focus, input[type=password].general:focus, input[type=n
 }
 
 .font02{
-    font-family: "Times New Roman", Times, serif;
+    font-family: Oswald, serif;
     font-size: 20px;
     font-weight: bold;
     color: #D34539;
@@ -439,7 +466,7 @@ a:link {
 /***Lista de los cruds***/
 .container03{
     padding: 0 10px;
-    margin-top: 70px;
+    margin-top: 40px;
 }
 
 ul.cls01 {
@@ -465,7 +492,7 @@ ul.cls01 li {
 }
 
 .cls80{
-    font-family:  'Oswald', sans-serif;
+    font-family:  ''Oswald'', sans-serif;
     font-style: italic;
     color: gray;
     font-weight: bold;
@@ -531,7 +558,7 @@ ul li img.cls13 {
 ul li label.cls14 {
     width: 100%;
     padding: 2px;
-    font-family: "Times New Roman", Times, serif;
+    font-family: 'Oswald', serif;
     color: orange;
     font-weight: bold;
     font-size: 18px;
@@ -569,8 +596,10 @@ ul li.cls03:hover {
 }
 
 .cls05 img {
+    position: relative;
+    top: 10px;
     width: 100%;
-    max-height: 90px;
+    max-height: 80px;
 }
 
 .cls05 {
@@ -615,14 +644,35 @@ ul li.cls03:hover {
     border: 2px solid rgba(211, 69, 59, 0.6);
 }
 
+.cls06Selected {
+    border: 2px solid green !important ;
+}
+
 .cls81 {
     width: 100px;
     height: 100px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.cls85 {
+    position: absolute;
+    top: 10px;
+    transform: translate(-50%, -50%);
+}
+
+.cls86 {
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+    color: rgba(211, 69, 59, 1);
+}
+
 .clsIcoTab{
     width:100px; height: 60px;
+}
+
+.clsIcoTab2{
+    width:30px; height: 15px;
 }
 
 
@@ -686,10 +736,75 @@ ul li.cls03:hover {
 
 .container06{
     position: relative;
-    top: 60px;
+    top: 40px;
     left: 0;
     padding: 10px;
 }
+
+.container08{
+    position: absolute;
+    padding: 2% 2% 0 2%;
+    height: 90%;
+    width: 100%;
+    margin-top: 1%; 
+    box-sizing: border-box;
+}
+
+.container09{
+    border: 1px solid rgba(211, 69, 59, 0.6);
+    position: relative;
+    width: 51%;
+    height: 100%;
+    float: left;
+    background-color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container10{
+    border: 1px solid rgba(211, 69, 59, 0.6);
+    position: relative;
+    width: 51%;
+    height: 50%;
+    float: left;
+    background-color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0s.19);
+    overflow: auto;
+}
+
+.container11{
+    position: relative;
+    width: 100%;
+    height: 10%;
+    overflow: visible;
+}
+
+.container12{
+    position: relative;
+    width: 100%;
+    height: 90%;
+    float: left;
+}
+
+.cls89{
+    border: 1px solid rgba(211, 69, 59, 0.6);
+    position: relative;
+    width: 20%;
+    height: 25%;
+    float: left;
+    text-align: center;
+}
+
+.cls90{
+    position: relative;
+    max-width: 100%;
+    min-height: 20%;
+}
+
+.cls91{
+    font-size: 9px;
+}
+
+
 
 /*****************************/
 
@@ -710,6 +825,43 @@ ul li.cls03:hover {
 
 .com05{
     padding: 15px 0;
+}
+/*********************************/
+
+/***********factura***************/
+.fact01{
+    font-weight: bold;
+}
+
+.fact02{
+    line-height: 1;
+}
+
+.fact03{
+    font-size: 10px;
+    font-style: italic;
+}
+
+.fact04{
+    text-align: right;
+}
+
+.fact05{
+    text-align: center;
+}
+
+.fact06{
+    height: 60px;
+    padding: 3px;
+    border-radius: 5px;
+    background: rgba(211, 69, 59, 0.9);
+    text-align: center;
+}
+
+.fact07{
+    font-size: 35px;
+    font-weight: bold;
+    color: black;
 }
 /*********************************/
 
@@ -734,6 +886,7 @@ ul li.cls03:hover {
 
 .cls09 {
     position: relative;
+    top: 10px;
     background: #D34539;
     color: white;
     font-size: 10px;
@@ -789,7 +942,6 @@ ul li.cls03:hover {
 
 /******** SECCION DE PEDIDO *********/
 .cls32 {
-    border: 1px solid blue;
     width: 22%;
     height: 100%;
     padding: 5px;
@@ -814,7 +966,6 @@ ul li.cls03:hover {
 }
 
 .cls44 {
-    border: 1px solid orange;
     width: 60%;
     height: 70px;
     float: left;
@@ -822,21 +973,17 @@ ul li.cls03:hover {
 
 /*Descripcion del prod seleccionado*/
 .cls46 {
-    border: 1px solid green;
-    /*border: 1px solid blue;*/
     width: 100%;
     height: 60px;
 }
 
 /*Cantidades del prod seleccionado*/
 .cls47 {
-    border: 1px solid black;
     width: 100%;
     height: 40px;
 }
 
 .cls48 {
-    /*border: 1px solid green;;*/
     width: 15%;
     margin-left: 15%;
     height: 40px;
@@ -925,7 +1072,6 @@ ul li.cls03:hover {
 }
 
 .cls67 {
-    border: 1px solid black;
     max-height: 100px;
     overflow-y: auto;
     overflow-x: hidden; 
@@ -944,18 +1090,20 @@ ul li.cls03:hover {
 .modulos{
     position: fixed;
     top: 50%;
-    left: 10px;
-    transform: translate(0, -50%);
-    min-width: 150px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 620px;
     height: auto;
+    box-sizing: border-box;
 }
 
 div.polaroid {
+    float: left;
     border: 1px solid rgba(211, 69, 59, 0.8);
     width: 150px;
     height: 140px;
     background-color: white;
-    margin-bottom: 10px;
+    margin-right: 5px;
     padding: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -982,7 +1130,6 @@ div.cls71 {
 }
 
 .cls49 {
-    /*border: 1px solid blue;;*/
     width: 40%;
     height: 40px;
     float: left;
@@ -1015,7 +1162,6 @@ div.cls71 {
 
 /*imagen de producto seleccionado*/
 .cls40 {
-    border: 1px solid blue;
     width: 35%;
     height: 100px;
     float: left;
@@ -1037,6 +1183,7 @@ div.cls71 {
     position: relative;
     top: 20px;
     height: 100%;
+    text-align: center;
 }
 
 .cls34 {
@@ -1219,7 +1366,6 @@ body, html {
 
     /*Descripcion del prod seleccionado*/
     .cls46 {
-        border: 1px solid green;
         height: 40px;
     }
     /***************************************************/

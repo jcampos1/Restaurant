@@ -9,8 +9,11 @@ angular
     'ui.router', 'ngResource', 'oitozero.ngSweetAlert', 'cgNotify', 'localytics.directives', 'ui.bootstrap', 'pascalprecht.translate'
   ])
 .constant('INGR', [{ value: 0, dsca: "Observación"}, { value: 1, dsca: "Adicional"}])
+//CONSTANTE PARA EL ESTADO DE LA ORDEN
 .constant('STOR', [{ value: 0, dsca: "Abierto"}, { value: 1, dsca: "Cerrado"}, { value: 2, dsca: "Cancelado"}])
-.constant('PAY', [{ value: 0, dsca: "Tarjeta"}, { value: 1, dsca: "Efectivo"}])  
+//CONSTANTE PARA LA FORMA DE PAGO
+.constant('PAY', [{ value: 1, dsca: "Efectivo"}, { value: 0, dsca: "Tarjeta"}])
+
 .config(['$stateProvider', '$urlRouterProvider', '$httpProvider',  function($stateProvider,
       $urlRouterProvider, $httpProvider) {
 
@@ -75,6 +78,11 @@ angular
         url: '/orderList',
         templateUrl: 'views/order/list.html',
         controller: 'OrderController'
+    })
+    .state('box', {
+        url: '/box',
+        templateUrl: 'views/order/box.html',
+        controller: 'BoxController'
     });
 
     $urlRouterProvider.otherwise('login');
@@ -138,7 +146,27 @@ angular
       "ADMI":         "Administración",
       "LSTPE":        "Lista de pedidos",
       "NEWPE":        "Nuevo pedido",
+      "UNID":         "Unid.",
+      "PVP":          "PVP.",
+      "IMPO":         "Importe",
+      "DATE":         "Fecha",
+      "HOUR":         "Hora",
+      "ATND":         "Atendido por",
+      "CAMB":         "Cambio",
+      "PNTVNT":       "Punto de Venta",
+      "ABON":         "Cantidad abonada",
+      "MESE":         "Mesero",
+      "CAMA":         "Camarero",
 
+      "EMAIL":        "Correo",
+      "BOX":          "Caja",
+      "FORPAY":       "Forma de pago",
+      "CLSEME":       "Cerrar mesa",
+      "CASH":         "Dinero",
+      "CARD":         "Tarjeta",
+      "BEGIN":        "Inicio",
+
+      
 
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",
@@ -210,6 +238,25 @@ angular
       "ADMI":         "Administración",
       "LSTPE":        "Lista de pedidos",
       "NEWPE":        "Nuevo pedido",
+      "UNID":         "Unid.",
+      "PVP":          "PVP.",
+      "IMPO":         "Importe",
+      "DATE":         "Fecha",
+      "HOUR":         "Hora",
+      "ATND":         "Atendido por",
+      "CAMB":         "Cambio",
+      "PNTVNT":       "Punto de Venta",
+      "ABON":         "Cantidad abonada",
+      "MESE":         "Mesero",
+      "CAMA":         "Camarero",
+
+      "EMAIL":        "Correo",
+      "BOX":          "Caja",
+      "FORPAY":       "Forma de pago",
+      "CLSEME":       "Cerrar mesa",
+      "CASH":         "Dinero",
+      "CARD":         "Tarjeta",
+      "BEGIN":        "Inicio",
       
       "LBL01":        "Sin resultados",
       "LBL02":        "Seleccione",
@@ -225,5 +272,5 @@ angular
     }
   });
 
-  $translateProvider.preferredLanguage("es");
+  $translateProvider.preferredLanguage("pt");
 }]);

@@ -8,9 +8,9 @@
         <span class="cls25" ng-show="messageStatus">{{ 'USER.' + messageStatus | translate }}</span>
         <div class="inner-addon left-addon">
             <i class="glyphicon glyphicon-envelope cls26"></i>
-            <input type="email" autocomplete="off" class="login" name="email" placeholder="{{'GENE.USER' | translate}}" required ng-model="credentials.email">
+            <input type="text" autocomplete="off" class="login" name="username" placeholder="{{'GENE.USER' | translate}}" required ng-model="credentials.username">
             <span class="cls25" ng-show="
-                userForm.email.$invalid && userForm.email.$dirty">
+                userForm.username.$invalid && userForm.username.$dirty">
             {{"FORM.REQU" | translate}}
             </span>
         </div>

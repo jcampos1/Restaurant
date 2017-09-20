@@ -5,16 +5,12 @@ angular.module("comunication01", []);
 angular.module("comunication01").factory('cm01', function($log, $rootScope) {
   return {
 		evnt01: null, //Actualizar lista de mesas
-		evnt02: null, //Confirmación de eliminación de mesa
 		evnt03: null, //Actualizar lista de categorias
-		evnt04: null, //Confirmación de eliminación de categoria
 		evnt05: null, //Actualizar lista de productos
-		evnt06: null, //Confirmación de eliminación de producto
 		evnt07: null, //Verificación si el usuario esta logueado o no
 		evnt08: null, //Actualizar lista de usuarios
 		evnt09: null, //Confirmación de eliminación de usuario
 		evnt10: null, //Actualizar lista de ingredientes
-		evnt11: null, //Confirmación de eliminación de ingrediente
 		evnt12: null, //Actualizar lista de pedidos
 		evnt13: null, //Confirmación de cancelacion de pedido
 		evnt14: null, //Confirmacion de movilizacion de mesa
